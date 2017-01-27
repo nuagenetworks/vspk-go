@@ -27,7 +27,7 @@
 
 package vspk
 
-import "github.com/nuagenetworks/go-bambou/bambou"
+import "github.com/FlorianOtel/go-bambou/bambou"
 
 // RateLimiterIdentity represents the Identity of the object
 var RateLimiterIdentity = bambou.Identity{

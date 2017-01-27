@@ -27,7 +27,7 @@
 
 package vspk
 
-import "github.com/nuagenetworks/go-bambou/bambou"
+import "github.com/FlorianOtel/go-bambou/bambou"
 
 // ExternalServiceIdentity represents the Identity of the object
 var ExternalServiceIdentity = bambou.Identity{

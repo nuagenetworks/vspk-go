@@ -27,7 +27,7 @@
 
 package vspk
 
-import "github.com/nuagenetworks/go-bambou/bambou"
+import "github.com/FlorianOtel/go-bambou/bambou"
 
 // EgressACLEntryTemplateIdentity represents the Identity of the object
 var EgressACLEntryTemplateIdentity = bambou.Identity{

@@ -82,6 +82,8 @@ type NSGateway struct {
 	LastConfigurationReloadTimestamp     int           `json:"lastConfigurationReloadTimestamp,omitempty"`
 	LastUpdatedBy                        string        `json:"lastUpdatedBy,omitempty"`
 	DatapathID                           string        `json:"datapathID,omitempty"`
+	GatewayConfigRawVersion              string        `json:"gatewayConfigRawVersion,omitempty"`
+	GatewayConfigVersion                 string        `json:"gatewayConfigVersion,omitempty"`
 	GatewayConnected                     bool          `json:"gatewayConnected"`
 	RedundancyGroupID                    string        `json:"redundancyGroupID,omitempty"`
 	TemplateID                           string        `json:"templateID,omitempty"`
@@ -93,12 +95,14 @@ type NSGateway struct {
 	Description                          string        `json:"description,omitempty"`
 	NetworkAcceleration                  string        `json:"networkAcceleration,omitempty"`
 	Libraries                            string        `json:"libraries,omitempty"`
+	EmbeddedMetadata                     []interface{} `json:"embeddedMetadata,omitempty"`
 	InheritedSSHServiceState             string        `json:"inheritedSSHServiceState,omitempty"`
 	EnterpriseID                         string        `json:"enterpriseID,omitempty"`
 	EntityScope                          string        `json:"entityScope,omitempty"`
 	LocationID                           string        `json:"locationID,omitempty"`
 	ConfigurationReloadState             string        `json:"configurationReloadState,omitempty"`
 	ConfigurationStatus                  string        `json:"configurationStatus,omitempty"`
+	ConfigureLoadBalancing               string        `json:"configureLoadBalancing,omitempty"`
 	ControlTrafficCOSValue               int           `json:"controlTrafficCOSValue,omitempty"`
 	ControlTrafficDSCPValue              int           `json:"controlTrafficDSCPValue,omitempty"`
 	BootstrapID                          string        `json:"bootstrapID,omitempty"`
@@ -112,8 +116,10 @@ type NSGateway struct {
 	AssociatedNSGUpgradeProfileID        string        `json:"associatedNSGUpgradeProfileID,omitempty"`
 	AssociatedOverlayManagementProfileID string        `json:"associatedOverlayManagementProfileID,omitempty"`
 	Functions                            []interface{} `json:"functions,omitempty"`
+	TunnelShaping                        string        `json:"tunnelShaping,omitempty"`
 	AutoDiscGatewayID                    string        `json:"autoDiscGatewayID,omitempty"`
 	ExternalID                           string        `json:"externalID,omitempty"`
+	SyslogLevel                          string        `json:"syslogLevel,omitempty"`
 	SystemID                             string        `json:"systemID,omitempty"`
 }
 
@@ -132,8 +138,11 @@ func NewNSGateway() *NSGateway {
 		InheritedSSHServiceState:         "ENABLED",
 		ConfigurationReloadState:         "UNKNOWN",
 		ConfigurationStatus:              "UNKNOWN",
+		ConfigureLoadBalancing:           "INHERITED",
 		ControlTrafficCOSValue:           7,
 		ControlTrafficDSCPValue:          56,
+		TunnelShaping:                    "DISABLED",
+		SyslogLevel:                      "INFO",
 	}
 }
 

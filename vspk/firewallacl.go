@@ -65,6 +65,7 @@ type FirewallAcl struct {
 	DefaultAllowIP       bool          `json:"defaultAllowIP"`
 	DefaultAllowNonIP    bool          `json:"defaultAllowNonIP"`
 	Description          string        `json:"description,omitempty"`
+	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope          string        `json:"entityScope,omitempty"`
 	RuleIds              []interface{} `json:"ruleIds,omitempty"`
 	AutoGeneratePriority bool          `json:"autoGeneratePriority"`

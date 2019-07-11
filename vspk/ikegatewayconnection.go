@@ -55,28 +55,32 @@ type IKEGatewayConnectionsParent interface {
 
 // IKEGatewayConnection represents the model of a ikegatewayconnection
 type IKEGatewayConnection struct {
-	ID                               string `json:"ID,omitempty"`
-	ParentID                         string `json:"parentID,omitempty"`
-	ParentType                       string `json:"parentType,omitempty"`
-	Owner                            string `json:"owner,omitempty"`
-	NSGIdentifier                    string `json:"NSGIdentifier,omitempty"`
-	NSGIdentifierType                string `json:"NSGIdentifierType,omitempty"`
-	NSGRole                          string `json:"NSGRole,omitempty"`
-	Name                             string `json:"name,omitempty"`
-	Mark                             int    `json:"mark,omitempty"`
-	LastUpdatedBy                    string `json:"lastUpdatedBy,omitempty"`
-	Sequence                         int    `json:"sequence,omitempty"`
-	AllowAnySubnet                   bool   `json:"allowAnySubnet"`
-	UnencryptedPSK                   string `json:"unencryptedPSK,omitempty"`
-	EntityScope                      string `json:"entityScope,omitempty"`
-	PortVLANName                     string `json:"portVLANName,omitempty"`
-	Priority                         int    `json:"priority,omitempty"`
-	AssociatedIKEAuthenticationID    string `json:"associatedIKEAuthenticationID,omitempty"`
-	AssociatedIKEAuthenticationType  string `json:"associatedIKEAuthenticationType,omitempty"`
-	AssociatedIKEEncryptionProfileID string `json:"associatedIKEEncryptionProfileID,omitempty"`
-	AssociatedIKEGatewayProfileID    string `json:"associatedIKEGatewayProfileID,omitempty"`
-	AssociatedVLANID                 string `json:"associatedVLANID,omitempty"`
-	ExternalID                       string `json:"externalID,omitempty"`
+	ID                               string        `json:"ID,omitempty"`
+	ParentID                         string        `json:"parentID,omitempty"`
+	ParentType                       string        `json:"parentType,omitempty"`
+	Owner                            string        `json:"owner,omitempty"`
+	NSGIdentifier                    string        `json:"NSGIdentifier,omitempty"`
+	NSGIdentifierType                string        `json:"NSGIdentifierType,omitempty"`
+	NSGRole                          string        `json:"NSGRole,omitempty"`
+	Name                             string        `json:"name,omitempty"`
+	Mark                             int           `json:"mark,omitempty"`
+	LastUpdatedBy                    string        `json:"lastUpdatedBy,omitempty"`
+	Sequence                         int           `json:"sequence,omitempty"`
+	AllowAnySubnet                   bool          `json:"allowAnySubnet"`
+	EmbeddedMetadata                 []interface{} `json:"embeddedMetadata,omitempty"`
+	UnencryptedPSK                   string        `json:"unencryptedPSK,omitempty"`
+	EntityScope                      string        `json:"entityScope,omitempty"`
+	ConfigurationStatus              string        `json:"configurationStatus,omitempty"`
+	PortVLANName                     string        `json:"portVLANName,omitempty"`
+	Priority                         int           `json:"priority,omitempty"`
+	AssociatedCloudID                string        `json:"associatedCloudID,omitempty"`
+	AssociatedCloudType              string        `json:"associatedCloudType,omitempty"`
+	AssociatedIKEAuthenticationID    string        `json:"associatedIKEAuthenticationID,omitempty"`
+	AssociatedIKEAuthenticationType  string        `json:"associatedIKEAuthenticationType,omitempty"`
+	AssociatedIKEEncryptionProfileID string        `json:"associatedIKEEncryptionProfileID,omitempty"`
+	AssociatedIKEGatewayProfileID    string        `json:"associatedIKEGatewayProfileID,omitempty"`
+	AssociatedVLANID                 string        `json:"associatedVLANID,omitempty"`
+	ExternalID                       string        `json:"externalID,omitempty"`
 }
 
 // NewIKEGatewayConnection returns a new *IKEGatewayConnection
@@ -175,6 +179,20 @@ func (o *IKEGatewayConnection) GlobalMetadatas(info *bambou.FetchingInfo) (Globa
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the IKEGatewayConnection
 func (o *IKEGatewayConnection) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// Jobs retrieves the list of child Jobs of the IKEGatewayConnection
+func (o *IKEGatewayConnection) Jobs(info *bambou.FetchingInfo) (JobsList, *bambou.Error) {
+
+	var list JobsList
+	err := bambou.CurrentSession().FetchChildren(o, JobIdentity, &list, info)
+	return list, err
+}
+
+// CreateJob creates a new child Job under the IKEGatewayConnection
+func (o *IKEGatewayConnection) CreateJob(child *Job) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

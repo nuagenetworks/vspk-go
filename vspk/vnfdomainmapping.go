@@ -55,17 +55,18 @@ type VNFDomainMappingsParent interface {
 
 // VNFDomainMapping represents the model of a vnfdomainmapping
 type VNFDomainMapping struct {
-	ID                      string `json:"ID,omitempty"`
-	ParentID                string `json:"parentID,omitempty"`
-	ParentType              string `json:"parentType,omitempty"`
-	Owner                   string `json:"owner,omitempty"`
-	LastUpdatedBy           string `json:"lastUpdatedBy,omitempty"`
-	SegmentationID          int    `json:"segmentationID,omitempty"`
-	SegmentationType        string `json:"segmentationType,omitempty"`
-	EntityScope             string `json:"entityScope,omitempty"`
-	AssociatedNSGatewayID   string `json:"associatedNSGatewayID,omitempty"`
-	AssociatedNSGatewayName string `json:"associatedNSGatewayName,omitempty"`
-	ExternalID              string `json:"externalID,omitempty"`
+	ID                      string        `json:"ID,omitempty"`
+	ParentID                string        `json:"parentID,omitempty"`
+	ParentType              string        `json:"parentType,omitempty"`
+	Owner                   string        `json:"owner,omitempty"`
+	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	SegmentationID          int           `json:"segmentationID,omitempty"`
+	SegmentationType        string        `json:"segmentationType,omitempty"`
+	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope             string        `json:"entityScope,omitempty"`
+	AssociatedNSGatewayID   string        `json:"associatedNSGatewayID,omitempty"`
+	AssociatedNSGatewayName string        `json:"associatedNSGatewayName,omitempty"`
+	ExternalID              string        `json:"externalID,omitempty"`
 }
 
 // NewVNFDomainMapping returns a new *VNFDomainMapping

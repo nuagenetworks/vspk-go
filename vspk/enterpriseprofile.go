@@ -73,9 +73,11 @@ type EnterpriseProfile struct {
 	AllowTrustedForwardingClass            bool          `json:"allowTrustedForwardingClass"`
 	AllowedForwardingClasses               []interface{} `json:"allowedForwardingClasses,omitempty"`
 	FloatingIPsQuota                       int           `json:"floatingIPsQuota,omitempty"`
+	EmbeddedMetadata                       []interface{} `json:"embeddedMetadata,omitempty"`
 	EnableApplicationPerformanceManagement bool          `json:"enableApplicationPerformanceManagement"`
 	EncryptionManagementMode               string        `json:"encryptionManagementMode,omitempty"`
 	EntityScope                            string        `json:"entityScope,omitempty"`
+	ForwardingClass                        []interface{} `json:"forwardingClass,omitempty"`
 	ExternalID                             string        `json:"externalID,omitempty"`
 }
 

@@ -55,16 +55,17 @@ type MACFilterProfilesParent interface {
 
 // MACFilterProfile represents the model of a macfilterprofile
 type MACFilterProfile struct {
-	ID              string `json:"ID,omitempty"`
-	ParentID        string `json:"parentID,omitempty"`
-	ParentType      string `json:"parentType,omitempty"`
-	Owner           string `json:"owner,omitempty"`
-	Name            string `json:"name,omitempty"`
-	LastUpdatedBy   string `json:"lastUpdatedBy,omitempty"`
-	Description     string `json:"description,omitempty"`
-	EntityScope     string `json:"entityScope,omitempty"`
-	AssocEntityType string `json:"assocEntityType,omitempty"`
-	ExternalID      string `json:"externalID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	AssocEntityType  string        `json:"assocEntityType,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewMACFilterProfile returns a new *MACFilterProfile

@@ -80,7 +80,7 @@ func NewPerformanceMonitor() *PerformanceMonitor {
 		PayloadSize:     137,
 		ReadOnly:        false,
 		ServiceClass:    "H",
-		Interval:        3000,
+		Interval:        180,
 		HoldDownTimer:   1000,
 		ProbeType:       "ONEWAY",
 		NumberOfPackets: 1,

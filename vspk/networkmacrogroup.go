@@ -55,16 +55,18 @@ type NetworkMacroGroupsParent interface {
 
 // NetworkMacroGroup represents the model of a networkmacrogroup
 type NetworkMacroGroup struct {
-	ID            string `json:"ID,omitempty"`
-	ParentID      string `json:"parentID,omitempty"`
-	ParentType    string `json:"parentType,omitempty"`
-	Owner         string `json:"owner,omitempty"`
-	Name          string `json:"name,omitempty"`
-	LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-	Description   string `json:"description,omitempty"`
-	EntityScope   string `json:"entityScope,omitempty"`
-	IsSaaSType    bool   `json:"isSaaSType"`
-	ExternalID    string `json:"externalID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	MacroGroupType   string        `json:"macroGroupType,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	IsSaaSType       bool          `json:"isSaaSType"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewNetworkMacroGroup returns a new *NetworkMacroGroup

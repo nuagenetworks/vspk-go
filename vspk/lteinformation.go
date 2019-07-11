@@ -55,14 +55,15 @@ type LTEInformationsParent interface {
 
 // LTEInformation represents the model of a lteinformation
 type LTEInformation struct {
-	ID                string `json:"ID,omitempty"`
-	ParentID          string `json:"parentID,omitempty"`
-	ParentType        string `json:"parentType,omitempty"`
-	Owner             string `json:"owner,omitempty"`
-	LTEConnectionInfo string `json:"LTEConnectionInfo,omitempty"`
-	LastUpdatedBy     string `json:"lastUpdatedBy,omitempty"`
-	EntityScope       string `json:"entityScope,omitempty"`
-	ExternalID        string `json:"externalID,omitempty"`
+	ID                string        `json:"ID,omitempty"`
+	ParentID          string        `json:"parentID,omitempty"`
+	ParentType        string        `json:"parentType,omitempty"`
+	Owner             string        `json:"owner,omitempty"`
+	LTEConnectionInfo string        `json:"LTEConnectionInfo,omitempty"`
+	LastUpdatedBy     string        `json:"lastUpdatedBy,omitempty"`
+	EmbeddedMetadata  []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope       string        `json:"entityScope,omitempty"`
+	ExternalID        string        `json:"externalID,omitempty"`
 }
 
 // NewLTEInformation returns a new *LTEInformation

@@ -55,22 +55,23 @@ type DomainTemplatesParent interface {
 
 // DomainTemplate represents the model of a domaintemplate
 type DomainTemplate struct {
-	ID                              string `json:"ID,omitempty"`
-	ParentID                        string `json:"parentID,omitempty"`
-	ParentType                      string `json:"parentType,omitempty"`
-	Owner                           string `json:"owner,omitempty"`
-	DPI                             string `json:"DPI,omitempty"`
-	Name                            string `json:"name,omitempty"`
-	LastUpdatedBy                   string `json:"lastUpdatedBy,omitempty"`
-	Description                     string `json:"description,omitempty"`
-	Encryption                      string `json:"encryption,omitempty"`
-	EntityScope                     string `json:"entityScope,omitempty"`
-	PolicyChangeStatus              string `json:"policyChangeStatus,omitempty"`
-	AssociatedBGPProfileID          string `json:"associatedBGPProfileID,omitempty"`
-	AssociatedMulticastChannelMapID string `json:"associatedMulticastChannelMapID,omitempty"`
-	AssociatedPATMapperID           string `json:"associatedPATMapperID,omitempty"`
-	Multicast                       string `json:"multicast,omitempty"`
-	ExternalID                      string `json:"externalID,omitempty"`
+	ID                              string        `json:"ID,omitempty"`
+	ParentID                        string        `json:"parentID,omitempty"`
+	ParentType                      string        `json:"parentType,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
+	DPI                             string        `json:"DPI,omitempty"`
+	Name                            string        `json:"name,omitempty"`
+	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	Description                     string        `json:"description,omitempty"`
+	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
+	Encryption                      string        `json:"encryption,omitempty"`
+	EntityScope                     string        `json:"entityScope,omitempty"`
+	PolicyChangeStatus              string        `json:"policyChangeStatus,omitempty"`
+	AssociatedBGPProfileID          string        `json:"associatedBGPProfileID,omitempty"`
+	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
+	AssociatedPATMapperID           string        `json:"associatedPATMapperID,omitempty"`
+	Multicast                       string        `json:"multicast,omitempty"`
+	ExternalID                      string        `json:"externalID,omitempty"`
 }
 
 // NewDomainTemplate returns a new *DomainTemplate

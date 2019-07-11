@@ -55,14 +55,16 @@ type WebDomainNamesParent interface {
 
 // WebDomainName represents the model of a webdomainname
 type WebDomainName struct {
-	ID            string `json:"ID,omitempty"`
-	ParentID      string `json:"parentID,omitempty"`
-	ParentType    string `json:"parentType,omitempty"`
-	Owner         string `json:"owner,omitempty"`
-	Name          string `json:"name,omitempty"`
-	LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-	EntityScope   string `json:"entityScope,omitempty"`
-	ExternalID    string `json:"externalID,omitempty"`
+	ID                    string        `json:"ID,omitempty"`
+	ParentID              string        `json:"parentID,omitempty"`
+	ParentType            string        `json:"parentType,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
+	Name                  string        `json:"name,omitempty"`
+	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	WebCategoryIdentifier int           `json:"webCategoryIdentifier,omitempty"`
+	EmbeddedMetadata      []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope           string        `json:"entityScope,omitempty"`
+	ExternalID            string        `json:"externalID,omitempty"`
 }
 
 // NewWebDomainName returns a new *WebDomainName

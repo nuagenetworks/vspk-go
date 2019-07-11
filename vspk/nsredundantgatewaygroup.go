@@ -76,6 +76,7 @@ type NSRedundantGatewayGroup struct {
 	PermittedAction                     string        `json:"permittedAction,omitempty"`
 	Personality                         string        `json:"personality,omitempty"`
 	Description                         string        `json:"description,omitempty"`
+	EmbeddedMetadata                    []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseID                        string        `json:"enterpriseID,omitempty"`
 	EntityScope                         string        `json:"entityScope,omitempty"`
 	ConsecutiveFailuresCount            int           `json:"consecutiveFailuresCount,omitempty"`

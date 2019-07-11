@@ -55,17 +55,18 @@ type SSHKeysParent interface {
 
 // SSHKey represents the model of a sshkey
 type SSHKey struct {
-	ID            string `json:"ID,omitempty"`
-	ParentID      string `json:"parentID,omitempty"`
-	ParentType    string `json:"parentType,omitempty"`
-	Owner         string `json:"owner,omitempty"`
-	Name          string `json:"name,omitempty"`
-	LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-	Description   string `json:"description,omitempty"`
-	KeyType       string `json:"keyType,omitempty"`
-	EntityScope   string `json:"entityScope,omitempty"`
-	PublicKey     string `json:"publicKey,omitempty"`
-	ExternalID    string `json:"externalID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	KeyType          string        `json:"keyType,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	PublicKey        string        `json:"publicKey,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewSSHKey returns a new *SSHKey

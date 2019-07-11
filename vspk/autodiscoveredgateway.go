@@ -55,21 +55,22 @@ type AutoDiscoveredGatewaysParent interface {
 
 // AutoDiscoveredGateway represents the model of a autodiscoveredgateway
 type AutoDiscoveredGateway struct {
-	ID            string        `json:"ID,omitempty"`
-	ParentID      string        `json:"parentID,omitempty"`
-	ParentType    string        `json:"parentType,omitempty"`
-	Owner         string        `json:"owner,omitempty"`
-	Name          string        `json:"name,omitempty"`
-	LastUpdatedBy string        `json:"lastUpdatedBy,omitempty"`
-	GatewayID     string        `json:"gatewayID,omitempty"`
-	Peer          string        `json:"peer,omitempty"`
-	Personality   string        `json:"personality,omitempty"`
-	Description   string        `json:"description,omitempty"`
-	EntityScope   string        `json:"entityScope,omitempty"`
-	Controllers   []interface{} `json:"controllers,omitempty"`
-	Vtep          string        `json:"vtep,omitempty"`
-	ExternalID    string        `json:"externalID,omitempty"`
-	SystemID      string        `json:"systemID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	GatewayID        string        `json:"gatewayID,omitempty"`
+	Peer             string        `json:"peer,omitempty"`
+	Personality      string        `json:"personality,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	Controllers      []interface{} `json:"controllers,omitempty"`
+	Vtep             string        `json:"vtep,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
+	SystemID         string        `json:"systemID,omitempty"`
 }
 
 // NewAutoDiscoveredGateway returns a new *AutoDiscoveredGateway

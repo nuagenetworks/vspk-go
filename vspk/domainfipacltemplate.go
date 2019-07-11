@@ -65,6 +65,7 @@ type DomainFIPAclTemplate struct {
 	DefaultAllowIP         bool          `json:"defaultAllowIP"`
 	DefaultAllowNonIP      bool          `json:"defaultAllowNonIP"`
 	Description            string        `json:"description,omitempty"`
+	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope            string        `json:"entityScope,omitempty"`
 	Entries                []interface{} `json:"entries,omitempty"`
 	PolicyState            string        `json:"policyState,omitempty"`

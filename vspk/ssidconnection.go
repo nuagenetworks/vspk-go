@@ -73,6 +73,7 @@ type SSIDConnection struct {
 	WhiteList                        []interface{} `json:"whiteList,omitempty"`
 	BlackList                        []interface{} `json:"blackList,omitempty"`
 	VlanID                           int           `json:"vlanID,omitempty"`
+	EmbeddedMetadata                 []interface{} `json:"embeddedMetadata,omitempty"`
 	InterfaceName                    string        `json:"interfaceName,omitempty"`
 	EntityScope                      string        `json:"entityScope,omitempty"`
 	VportID                          string        `json:"vportID,omitempty"`

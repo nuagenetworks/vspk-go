@@ -55,20 +55,21 @@ type ShuntLinksParent interface {
 
 // ShuntLink represents the model of a shuntlink
 type ShuntLink struct {
-	ID              string `json:"ID,omitempty"`
-	ParentID        string `json:"parentID,omitempty"`
-	ParentType      string `json:"parentType,omitempty"`
-	Owner           string `json:"owner,omitempty"`
-	VLANPeer1ID     string `json:"VLANPeer1ID,omitempty"`
-	VLANPeer2ID     string `json:"VLANPeer2ID,omitempty"`
-	Name            string `json:"name,omitempty"`
-	LastUpdatedBy   string `json:"lastUpdatedBy,omitempty"`
-	GatewayPeer1ID  string `json:"gatewayPeer1ID,omitempty"`
-	GatewayPeer2ID  string `json:"gatewayPeer2ID,omitempty"`
-	PermittedAction string `json:"permittedAction,omitempty"`
-	Description     string `json:"description,omitempty"`
-	EntityScope     string `json:"entityScope,omitempty"`
-	ExternalID      string `json:"externalID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	VLANPeer1ID      string        `json:"VLANPeer1ID,omitempty"`
+	VLANPeer2ID      string        `json:"VLANPeer2ID,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	GatewayPeer1ID   string        `json:"gatewayPeer1ID,omitempty"`
+	GatewayPeer2ID   string        `json:"gatewayPeer2ID,omitempty"`
+	PermittedAction  string        `json:"permittedAction,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewShuntLink returns a new *ShuntLink

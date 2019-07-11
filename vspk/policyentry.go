@@ -55,17 +55,18 @@ type PolicyEntriesParent interface {
 
 // PolicyEntry represents the model of a policyentry
 type PolicyEntry struct {
-	ID            string      `json:"ID,omitempty"`
-	ParentID      string      `json:"parentID,omitempty"`
-	ParentType    string      `json:"parentType,omitempty"`
-	Owner         string      `json:"owner,omitempty"`
-	Name          string      `json:"name,omitempty"`
-	LastUpdatedBy string      `json:"lastUpdatedBy,omitempty"`
-	MatchCriteria interface{} `json:"matchCriteria,omitempty"`
-	Actions       interface{} `json:"actions,omitempty"`
-	Description   string      `json:"description,omitempty"`
-	EntityScope   string      `json:"entityScope,omitempty"`
-	ExternalID    string      `json:"externalID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	MatchCriteria    interface{}   `json:"matchCriteria,omitempty"`
+	Actions          interface{}   `json:"actions,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewPolicyEntry returns a new *PolicyEntry

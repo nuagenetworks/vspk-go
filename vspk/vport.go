@@ -55,55 +55,57 @@ type VPortsParent interface {
 
 // VPort represents the model of a vport
 type VPort struct {
-	ID                                  string `json:"ID,omitempty"`
-	ParentID                            string `json:"parentID,omitempty"`
-	ParentType                          string `json:"parentType,omitempty"`
-	Owner                               string `json:"owner,omitempty"`
-	FIPIgnoreDefaultRoute               string `json:"FIPIgnoreDefaultRoute,omitempty"`
-	VLAN                                int    `json:"VLAN,omitempty"`
-	VLANID                              string `json:"VLANID,omitempty"`
-	DPI                                 string `json:"DPI,omitempty"`
-	BackhaulSubnetVNID                  int    `json:"backhaulSubnetVNID,omitempty"`
-	Name                                string `json:"name,omitempty"`
-	HasAttachedInterfaces               bool   `json:"hasAttachedInterfaces"`
-	LastUpdatedBy                       string `json:"lastUpdatedBy,omitempty"`
-	GatewayMACMoveRole                  string `json:"gatewayMACMoveRole,omitempty"`
-	GatewayPortName                     string `json:"gatewayPortName,omitempty"`
-	AccessRestrictionEnabled            bool   `json:"accessRestrictionEnabled"`
-	Active                              bool   `json:"active"`
-	AddressSpoofing                     string `json:"addressSpoofing,omitempty"`
-	PeerOperationalState                string `json:"peerOperationalState,omitempty"`
-	SegmentationID                      int    `json:"segmentationID,omitempty"`
-	SegmentationType                    string `json:"segmentationType,omitempty"`
-	ServiceID                           int    `json:"serviceID,omitempty"`
-	Description                         string `json:"description,omitempty"`
-	EntityScope                         string `json:"entityScope,omitempty"`
-	DomainID                            string `json:"domainID,omitempty"`
-	DomainName                          string `json:"domainName,omitempty"`
-	DomainServiceLabel                  string `json:"domainServiceLabel,omitempty"`
-	DomainVLANID                        int    `json:"domainVLANID,omitempty"`
-	ZoneID                              string `json:"zoneID,omitempty"`
-	OperationalState                    string `json:"operationalState,omitempty"`
-	TrunkRole                           string `json:"trunkRole,omitempty"`
-	AssocEntityID                       string `json:"assocEntityID,omitempty"`
-	AssociatedEgressProfileID           string `json:"associatedEgressProfileID,omitempty"`
-	AssociatedFloatingIPID              string `json:"associatedFloatingIPID,omitempty"`
-	AssociatedGatewayID                 string `json:"associatedGatewayID,omitempty"`
-	AssociatedGatewayPersonality        string `json:"associatedGatewayPersonality,omitempty"`
-	AssociatedGatewayType               string `json:"associatedGatewayType,omitempty"`
-	AssociatedIngressProfileID          string `json:"associatedIngressProfileID,omitempty"`
-	AssociatedMulticastChannelMapID     string `json:"associatedMulticastChannelMapID,omitempty"`
-	AssociatedSSID                      string `json:"associatedSSID,omitempty"`
-	AssociatedSendMulticastChannelMapID string `json:"associatedSendMulticastChannelMapID,omitempty"`
-	AssociatedTrunkID                   string `json:"associatedTrunkID,omitempty"`
-	SubType                             string `json:"subType,omitempty"`
-	SubnetVNID                          int    `json:"subnetVNID,omitempty"`
-	MultiNICVPortID                     string `json:"multiNICVPortID,omitempty"`
-	Multicast                           string `json:"multicast,omitempty"`
-	GwEligible                          bool   `json:"gwEligible"`
-	ExternalID                          string `json:"externalID,omitempty"`
-	Type                                string `json:"type,omitempty"`
-	SystemType                          string `json:"systemType,omitempty"`
+	ID                                  string        `json:"ID,omitempty"`
+	ParentID                            string        `json:"parentID,omitempty"`
+	ParentType                          string        `json:"parentType,omitempty"`
+	Owner                               string        `json:"owner,omitempty"`
+	FIPIgnoreDefaultRoute               string        `json:"FIPIgnoreDefaultRoute,omitempty"`
+	VLAN                                int           `json:"VLAN,omitempty"`
+	VLANID                              string        `json:"VLANID,omitempty"`
+	DPI                                 string        `json:"DPI,omitempty"`
+	BackhaulSubnetVNID                  int           `json:"backhaulSubnetVNID,omitempty"`
+	Name                                string        `json:"name,omitempty"`
+	HasAttachedInterfaces               bool          `json:"hasAttachedInterfaces"`
+	LastUpdatedBy                       string        `json:"lastUpdatedBy,omitempty"`
+	GatewayMACMoveRole                  string        `json:"gatewayMACMoveRole,omitempty"`
+	GatewayPortName                     string        `json:"gatewayPortName,omitempty"`
+	AccessRestrictionEnabled            bool          `json:"accessRestrictionEnabled"`
+	Active                              bool          `json:"active"`
+	AddressSpoofing                     string        `json:"addressSpoofing,omitempty"`
+	PeerOperationalState                string        `json:"peerOperationalState,omitempty"`
+	SegmentationID                      int           `json:"segmentationID,omitempty"`
+	SegmentationType                    string        `json:"segmentationType,omitempty"`
+	ServiceID                           int           `json:"serviceID,omitempty"`
+	Description                         string        `json:"description,omitempty"`
+	EmbeddedMetadata                    []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope                         string        `json:"entityScope,omitempty"`
+	Color                               int           `json:"color,omitempty"`
+	DomainID                            string        `json:"domainID,omitempty"`
+	DomainName                          string        `json:"domainName,omitempty"`
+	DomainServiceLabel                  string        `json:"domainServiceLabel,omitempty"`
+	DomainVLANID                        int           `json:"domainVLANID,omitempty"`
+	ZoneID                              string        `json:"zoneID,omitempty"`
+	OperationalState                    string        `json:"operationalState,omitempty"`
+	TrunkRole                           string        `json:"trunkRole,omitempty"`
+	AssocEntityID                       string        `json:"assocEntityID,omitempty"`
+	AssociatedEgressProfileID           string        `json:"associatedEgressProfileID,omitempty"`
+	AssociatedFloatingIPID              string        `json:"associatedFloatingIPID,omitempty"`
+	AssociatedGatewayID                 string        `json:"associatedGatewayID,omitempty"`
+	AssociatedGatewayPersonality        string        `json:"associatedGatewayPersonality,omitempty"`
+	AssociatedGatewayType               string        `json:"associatedGatewayType,omitempty"`
+	AssociatedIngressProfileID          string        `json:"associatedIngressProfileID,omitempty"`
+	AssociatedMulticastChannelMapID     string        `json:"associatedMulticastChannelMapID,omitempty"`
+	AssociatedSSID                      string        `json:"associatedSSID,omitempty"`
+	AssociatedSendMulticastChannelMapID string        `json:"associatedSendMulticastChannelMapID,omitempty"`
+	AssociatedTrunkID                   string        `json:"associatedTrunkID,omitempty"`
+	SubType                             string        `json:"subType,omitempty"`
+	SubnetVNID                          int           `json:"subnetVNID,omitempty"`
+	MultiNICVPortID                     string        `json:"multiNICVPortID,omitempty"`
+	Multicast                           string        `json:"multicast,omitempty"`
+	GwEligible                          bool          `json:"gwEligible"`
+	ExternalID                          string        `json:"externalID,omitempty"`
+	Type                                string        `json:"type,omitempty"`
+	SystemType                          string        `json:"systemType,omitempty"`
 }
 
 // NewVPort returns a new *VPort
@@ -113,6 +115,7 @@ func NewVPort() *VPort {
 		DPI: "INHERITED",
 		AccessRestrictionEnabled: false,
 		AddressSpoofing:          "INHERITED",
+		Color:                    0,
 		OperationalState:         "INIT",
 		SubType:                  "NONE",
 		Multicast:                "INHERITED",
@@ -204,6 +207,20 @@ func (o *VPort) CreateDeploymentFailure(child *DeploymentFailure) *bambou.Error 
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// TestSuiteRuns retrieves the list of child TestSuiteRuns of the VPort
+func (o *VPort) TestSuiteRuns(info *bambou.FetchingInfo) (TestSuiteRunsList, *bambou.Error) {
+
+	var list TestSuiteRunsList
+	err := bambou.CurrentSession().FetchChildren(o, TestSuiteRunIdentity, &list, info)
+	return list, err
+}
+
+// CreateTestSuiteRun creates a new child TestSuiteRun under the VPort
+func (o *VPort) CreateTestSuiteRun(child *TestSuiteRun) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the VPort
 func (o *VPort) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
@@ -258,6 +275,20 @@ func (o *VPort) DHCPOptions(info *bambou.FetchingInfo) (DHCPOptionsList, *bambou
 
 // CreateDHCPOption creates a new child DHCPOption under the VPort
 func (o *VPort) CreateDHCPOption(child *DHCPOption) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// DHCPv6Options retrieves the list of child DHCPv6Options of the VPort
+func (o *VPort) DHCPv6Options(info *bambou.FetchingInfo) (DHCPv6OptionsList, *bambou.Error) {
+
+	var list DHCPv6OptionsList
+	err := bambou.CurrentSession().FetchChildren(o, DHCPv6OptionIdentity, &list, info)
+	return list, err
+}
+
+// CreateDHCPv6Option creates a new child DHCPv6Option under the VPort
+func (o *VPort) CreateDHCPv6Option(child *DHCPv6Option) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

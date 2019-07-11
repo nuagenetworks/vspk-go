@@ -71,6 +71,7 @@ type Container struct {
 	SiteIdentifier     string        `json:"siteIdentifier,omitempty"`
 	ImageID            string        `json:"imageID,omitempty"`
 	ImageName          string        `json:"imageName,omitempty"`
+	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	Interfaces         []interface{} `json:"interfaces,omitempty"`
 	EnterpriseID       string        `json:"enterpriseID,omitempty"`
 	EnterpriseName     string        `json:"enterpriseName,omitempty"`
@@ -79,6 +80,8 @@ type Container struct {
 	ComputeProvisioned bool          `json:"computeProvisioned"`
 	ZoneIDs            []interface{} `json:"zoneIDs,omitempty"`
 	OrchestrationID    string        `json:"orchestrationID,omitempty"`
+	VrsRawVersion      string        `json:"vrsRawVersion,omitempty"`
+	VrsVersion         string        `json:"vrsVersion,omitempty"`
 	UserID             string        `json:"userID,omitempty"`
 	UserName           string        `json:"userName,omitempty"`
 	Status             string        `json:"status,omitempty"`

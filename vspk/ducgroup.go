@@ -55,17 +55,19 @@ type DUCGroupsParent interface {
 
 // DUCGroup represents the model of a ducgroup
 type DUCGroup struct {
-	ID                             string `json:"ID,omitempty"`
-	ParentID                       string `json:"parentID,omitempty"`
-	ParentType                     string `json:"parentType,omitempty"`
-	Owner                          string `json:"owner,omitempty"`
-	Name                           string `json:"name,omitempty"`
-	LastUpdatedBy                  string `json:"lastUpdatedBy,omitempty"`
-	Description                    string `json:"description,omitempty"`
-	EntityScope                    string `json:"entityScope,omitempty"`
-	AssociatedPerformanceMonitorID string `json:"associatedPerformanceMonitorID,omitempty"`
-	Function                       string `json:"function,omitempty"`
-	ExternalID                     string `json:"externalID,omitempty"`
+	ID                             string        `json:"ID,omitempty"`
+	ParentID                       string        `json:"parentID,omitempty"`
+	ParentType                     string        `json:"parentType,omitempty"`
+	Owner                          string        `json:"owner,omitempty"`
+	Name                           string        `json:"name,omitempty"`
+	LastUpdatedBy                  string        `json:"lastUpdatedBy,omitempty"`
+	Description                    string        `json:"description,omitempty"`
+	EmbeddedMetadata               []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope                    string        `json:"entityScope,omitempty"`
+	AssociatedPerformanceMonitorID string        `json:"associatedPerformanceMonitorID,omitempty"`
+	DucMeshGroupID                 int           `json:"ducMeshGroupID,omitempty"`
+	Function                       string        `json:"function,omitempty"`
+	ExternalID                     string        `json:"externalID,omitempty"`
 }
 
 // NewDUCGroup returns a new *DUCGroup

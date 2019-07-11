@@ -55,33 +55,34 @@ type LicenseStatusParent interface {
 
 // LicenseStatus represents the model of a licensestatus
 type LicenseStatus struct {
-	ID                           string `json:"ID,omitempty"`
-	ParentID                     string `json:"parentID,omitempty"`
-	ParentType                   string `json:"parentType,omitempty"`
-	Owner                        string `json:"owner,omitempty"`
-	AccumulateLicensesEnabled    bool   `json:"accumulateLicensesEnabled"`
-	EntityScope                  string `json:"entityScope,omitempty"`
-	TotalLicensedAVRSGsCount     int    `json:"totalLicensedAVRSGsCount,omitempty"`
-	TotalLicensedAVRSsCount      int    `json:"totalLicensedAVRSsCount,omitempty"`
-	TotalLicensedGatewaysCount   int    `json:"totalLicensedGatewaysCount,omitempty"`
-	TotalLicensedNICsCount       int    `json:"totalLicensedNICsCount,omitempty"`
-	TotalLicensedNSGsCount       int    `json:"totalLicensedNSGsCount,omitempty"`
-	TotalLicensedUsedAVRSGsCount int    `json:"totalLicensedUsedAVRSGsCount,omitempty"`
-	TotalLicensedUsedAVRSsCount  int    `json:"totalLicensedUsedAVRSsCount,omitempty"`
-	TotalLicensedUsedNICsCount   int    `json:"totalLicensedUsedNICsCount,omitempty"`
-	TotalLicensedUsedNSGsCount   int    `json:"totalLicensedUsedNSGsCount,omitempty"`
-	TotalLicensedUsedVDFGsCount  int    `json:"totalLicensedUsedVDFGsCount,omitempty"`
-	TotalLicensedUsedVDFsCount   int    `json:"totalLicensedUsedVDFsCount,omitempty"`
-	TotalLicensedUsedVMsCount    int    `json:"totalLicensedUsedVMsCount,omitempty"`
-	TotalLicensedUsedVRSGsCount  int    `json:"totalLicensedUsedVRSGsCount,omitempty"`
-	TotalLicensedUsedVRSsCount   int    `json:"totalLicensedUsedVRSsCount,omitempty"`
-	TotalLicensedVDFGsCount      int    `json:"totalLicensedVDFGsCount,omitempty"`
-	TotalLicensedVDFsCount       int    `json:"totalLicensedVDFsCount,omitempty"`
-	TotalLicensedVMsCount        int    `json:"totalLicensedVMsCount,omitempty"`
-	TotalLicensedVRSGsCount      int    `json:"totalLicensedVRSGsCount,omitempty"`
-	TotalLicensedVRSsCount       int    `json:"totalLicensedVRSsCount,omitempty"`
-	TotalUsedGatewaysCount       int    `json:"totalUsedGatewaysCount,omitempty"`
-	ExternalID                   string `json:"externalID,omitempty"`
+	ID                           string        `json:"ID,omitempty"`
+	ParentID                     string        `json:"parentID,omitempty"`
+	ParentType                   string        `json:"parentType,omitempty"`
+	Owner                        string        `json:"owner,omitempty"`
+	AccumulateLicensesEnabled    bool          `json:"accumulateLicensesEnabled"`
+	EmbeddedMetadata             []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope                  string        `json:"entityScope,omitempty"`
+	TotalLicensedAVRSGsCount     int           `json:"totalLicensedAVRSGsCount,omitempty"`
+	TotalLicensedAVRSsCount      int           `json:"totalLicensedAVRSsCount,omitempty"`
+	TotalLicensedGatewaysCount   int           `json:"totalLicensedGatewaysCount,omitempty"`
+	TotalLicensedNICsCount       int           `json:"totalLicensedNICsCount,omitempty"`
+	TotalLicensedNSGsCount       int           `json:"totalLicensedNSGsCount,omitempty"`
+	TotalLicensedUsedAVRSGsCount int           `json:"totalLicensedUsedAVRSGsCount,omitempty"`
+	TotalLicensedUsedAVRSsCount  int           `json:"totalLicensedUsedAVRSsCount,omitempty"`
+	TotalLicensedUsedNICsCount   int           `json:"totalLicensedUsedNICsCount,omitempty"`
+	TotalLicensedUsedNSGsCount   int           `json:"totalLicensedUsedNSGsCount,omitempty"`
+	TotalLicensedUsedVDFGsCount  int           `json:"totalLicensedUsedVDFGsCount,omitempty"`
+	TotalLicensedUsedVDFsCount   int           `json:"totalLicensedUsedVDFsCount,omitempty"`
+	TotalLicensedUsedVMsCount    int           `json:"totalLicensedUsedVMsCount,omitempty"`
+	TotalLicensedUsedVRSGsCount  int           `json:"totalLicensedUsedVRSGsCount,omitempty"`
+	TotalLicensedUsedVRSsCount   int           `json:"totalLicensedUsedVRSsCount,omitempty"`
+	TotalLicensedVDFGsCount      int           `json:"totalLicensedVDFGsCount,omitempty"`
+	TotalLicensedVDFsCount       int           `json:"totalLicensedVDFsCount,omitempty"`
+	TotalLicensedVMsCount        int           `json:"totalLicensedVMsCount,omitempty"`
+	TotalLicensedVRSGsCount      int           `json:"totalLicensedVRSGsCount,omitempty"`
+	TotalLicensedVRSsCount       int           `json:"totalLicensedVRSsCount,omitempty"`
+	TotalUsedGatewaysCount       int           `json:"totalUsedGatewaysCount,omitempty"`
+	ExternalID                   string        `json:"externalID,omitempty"`
 }
 
 // NewLicenseStatus returns a new *LicenseStatus

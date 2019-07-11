@@ -74,6 +74,7 @@ type VNF struct {
 	Vendor                         string        `json:"vendor,omitempty"`
 	Description                    string        `json:"description,omitempty"`
 	AllowedActions                 []interface{} `json:"allowedActions,omitempty"`
+	EmbeddedMetadata               []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseID                   string        `json:"enterpriseID,omitempty"`
 	EntityScope                    string        `json:"entityScope,omitempty"`
 	IsAttachedToDescriptor         bool          `json:"isAttachedToDescriptor"`

@@ -55,23 +55,24 @@ type PolicyGroupsParent interface {
 
 // PolicyGroup represents the model of a policygroup
 type PolicyGroup struct {
-	ID                           string `json:"ID,omitempty"`
-	ParentID                     string `json:"parentID,omitempty"`
-	ParentType                   string `json:"parentType,omitempty"`
-	Owner                        string `json:"owner,omitempty"`
-	EVPNCommunityTag             string `json:"EVPNCommunityTag,omitempty"`
-	Name                         string `json:"name,omitempty"`
-	LastUpdatedBy                string `json:"lastUpdatedBy,omitempty"`
-	TemplateID                   string `json:"templateID,omitempty"`
-	Description                  string `json:"description,omitempty"`
-	EntityScope                  string `json:"entityScope,omitempty"`
-	EntityState                  string `json:"entityState,omitempty"`
-	PolicyGroupID                int    `json:"policyGroupID,omitempty"`
-	AssocPolicyGroupCategoryID   string `json:"assocPolicyGroupCategoryID,omitempty"`
-	AssocPolicyGroupCategoryName string `json:"assocPolicyGroupCategoryName,omitempty"`
-	External                     bool   `json:"external"`
-	ExternalID                   string `json:"externalID,omitempty"`
-	Type                         string `json:"type,omitempty"`
+	ID                           string        `json:"ID,omitempty"`
+	ParentID                     string        `json:"parentID,omitempty"`
+	ParentType                   string        `json:"parentType,omitempty"`
+	Owner                        string        `json:"owner,omitempty"`
+	EVPNCommunityTag             string        `json:"EVPNCommunityTag,omitempty"`
+	Name                         string        `json:"name,omitempty"`
+	LastUpdatedBy                string        `json:"lastUpdatedBy,omitempty"`
+	TemplateID                   string        `json:"templateID,omitempty"`
+	Description                  string        `json:"description,omitempty"`
+	EmbeddedMetadata             []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope                  string        `json:"entityScope,omitempty"`
+	EntityState                  string        `json:"entityState,omitempty"`
+	PolicyGroupID                int           `json:"policyGroupID,omitempty"`
+	AssocPolicyGroupCategoryID   string        `json:"assocPolicyGroupCategoryID,omitempty"`
+	AssocPolicyGroupCategoryName string        `json:"assocPolicyGroupCategoryName,omitempty"`
+	External                     bool          `json:"external"`
+	ExternalID                   string        `json:"externalID,omitempty"`
+	Type                         string        `json:"type,omitempty"`
 }
 
 // NewPolicyGroup returns a new *PolicyGroup

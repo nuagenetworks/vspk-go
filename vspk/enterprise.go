@@ -81,11 +81,13 @@ type Enterprise struct {
 	FloatingIPsQuota                       int           `json:"floatingIPsQuota,omitempty"`
 	FloatingIPsUsed                        int           `json:"floatingIPsUsed,omitempty"`
 	FlowCollectionEnabled                  string        `json:"flowCollectionEnabled,omitempty"`
+	EmbeddedMetadata                       []interface{} `json:"embeddedMetadata,omitempty"`
 	EnableApplicationPerformanceManagement bool          `json:"enableApplicationPerformanceManagement"`
 	EncryptionManagementMode               string        `json:"encryptionManagementMode,omitempty"`
 	EnterpriseProfileID                    string        `json:"enterpriseProfileID,omitempty"`
 	EntityScope                            string        `json:"entityScope,omitempty"`
 	LocalAS                                int           `json:"localAS,omitempty"`
+	ForwardingClass                        []interface{} `json:"forwardingClass,omitempty"`
 	UseGlobalMAC                           bool          `json:"useGlobalMAC"`
 	AssociatedEnterpriseSecurityID         string        `json:"associatedEnterpriseSecurityID,omitempty"`
 	AssociatedGroupKeyEncryptionProfileID  string        `json:"associatedGroupKeyEncryptionProfileID,omitempty"`
@@ -360,6 +362,14 @@ func (o *Enterprise) CreateRedundancyGroup(child *RedundancyGroup) *bambou.Error
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// DeploymentFailures retrieves the list of child DeploymentFailures of the Enterprise
+func (o *Enterprise) DeploymentFailures(info *bambou.FetchingInfo) (DeploymentFailuresList, *bambou.Error) {
+
+	var list DeploymentFailuresList
+	err := bambou.CurrentSession().FetchChildren(o, DeploymentFailureIdentity, &list, info)
+	return list, err
+}
+
 // PerformanceMonitors retrieves the list of child PerformanceMonitors of the Enterprise
 func (o *Enterprise) PerformanceMonitors(info *bambou.FetchingInfo) (PerformanceMonitorsList, *bambou.Error) {
 
@@ -370,6 +380,20 @@ func (o *Enterprise) PerformanceMonitors(info *bambou.FetchingInfo) (Performance
 
 // CreatePerformanceMonitor creates a new child PerformanceMonitor under the Enterprise
 func (o *Enterprise) CreatePerformanceMonitor(child *PerformanceMonitor) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// TestSuites retrieves the list of child TestSuites of the Enterprise
+func (o *Enterprise) TestSuites(info *bambou.FetchingInfo) (TestSuitesList, *bambou.Error) {
+
+	var list TestSuitesList
+	err := bambou.CurrentSession().FetchChildren(o, TestSuiteIdentity, &list, info)
+	return list, err
+}
+
+// CreateTestSuite creates a new child TestSuite under the Enterprise
+func (o *Enterprise) CreateTestSuite(child *TestSuite) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }
@@ -758,6 +782,14 @@ func (o *Enterprise) CreateDomain(child *Domain) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// DomainKindSummaries retrieves the list of child DomainKindSummaries of the Enterprise
+func (o *Enterprise) DomainKindSummaries(info *bambou.FetchingInfo) (DomainKindSummariesList, *bambou.Error) {
+
+	var list DomainKindSummariesList
+	err := bambou.CurrentSession().FetchChildren(o, DomainKindSummaryIdentity, &list, info)
+	return list, err
+}
+
 // DomainTemplates retrieves the list of child DomainTemplates of the Enterprise
 func (o *Enterprise) DomainTemplates(info *bambou.FetchingInfo) (DomainTemplatesList, *bambou.Error) {
 
@@ -1048,6 +1080,20 @@ func (o *Enterprise) SyslogDestinations(info *bambou.FetchingInfo) (SyslogDestin
 
 // CreateSyslogDestination creates a new child SyslogDestination under the Enterprise
 func (o *Enterprise) CreateSyslogDestination(child *SyslogDestination) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// AzureClouds retrieves the list of child AzureClouds of the Enterprise
+func (o *Enterprise) AzureClouds(info *bambou.FetchingInfo) (AzureCloudsList, *bambou.Error) {
+
+	var list AzureCloudsList
+	err := bambou.CurrentSession().FetchChildren(o, AzureCloudIdentity, &list, info)
+	return list, err
+}
+
+// CreateAzureCloud creates a new child AzureCloud under the Enterprise
+func (o *Enterprise) CreateAzureCloud(child *AzureCloud) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

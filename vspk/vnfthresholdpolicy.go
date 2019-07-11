@@ -55,22 +55,23 @@ type VNFThresholdPoliciesParent interface {
 
 // VNFThresholdPolicy represents the model of a vnfthresholdpolicy
 type VNFThresholdPolicy struct {
-	ID               string `json:"ID,omitempty"`
-	ParentID         string `json:"parentID,omitempty"`
-	ParentType       string `json:"parentType,omitempty"`
-	Owner            string `json:"owner,omitempty"`
-	CPUThreshold     int    `json:"CPUThreshold,omitempty"`
-	Name             string `json:"name,omitempty"`
-	LastUpdatedBy    string `json:"lastUpdatedBy,omitempty"`
-	Action           string `json:"action,omitempty"`
-	MemoryThreshold  int    `json:"memoryThreshold,omitempty"`
-	Description      string `json:"description,omitempty"`
-	MinOccurrence    int    `json:"minOccurrence,omitempty"`
-	EntityScope      string `json:"entityScope,omitempty"`
-	MonitInterval    int    `json:"monitInterval,omitempty"`
-	AssocEntityType  string `json:"assocEntityType,omitempty"`
-	StorageThreshold int    `json:"storageThreshold,omitempty"`
-	ExternalID       string `json:"externalID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	CPUThreshold     int           `json:"CPUThreshold,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	Action           string        `json:"action,omitempty"`
+	MemoryThreshold  int           `json:"memoryThreshold,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	MinOccurrence    int           `json:"minOccurrence,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	MonitInterval    int           `json:"monitInterval,omitempty"`
+	AssocEntityType  string        `json:"assocEntityType,omitempty"`
+	StorageThreshold int           `json:"storageThreshold,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewVNFThresholdPolicy returns a new *VNFThresholdPolicy

@@ -55,24 +55,25 @@ type EgressProfilesParent interface {
 
 // EgressProfile represents the model of a egressprofile
 type EgressProfile struct {
-	ID                                string `json:"ID,omitempty"`
-	ParentID                          string `json:"parentID,omitempty"`
-	ParentType                        string `json:"parentType,omitempty"`
-	Owner                             string `json:"owner,omitempty"`
-	Name                              string `json:"name,omitempty"`
-	LastUpdatedBy                     string `json:"lastUpdatedBy,omitempty"`
-	Description                       string `json:"description,omitempty"`
-	EntityScope                       string `json:"entityScope,omitempty"`
-	AssocEntityType                   string `json:"assocEntityType,omitempty"`
-	AssociatedIPFilterProfileID       string `json:"associatedIPFilterProfileID,omitempty"`
-	AssociatedIPFilterProfileName     string `json:"associatedIPFilterProfileName,omitempty"`
-	AssociatedIPv6FilterProfileID     string `json:"associatedIPv6FilterProfileID,omitempty"`
-	AssociatedIPv6FilterProfileName   string `json:"associatedIPv6FilterProfileName,omitempty"`
-	AssociatedMACFilterProfileID      string `json:"associatedMACFilterProfileID,omitempty"`
-	AssociatedMACFilterProfileName    string `json:"associatedMACFilterProfileName,omitempty"`
-	AssociatedSAPEgressQoSProfileID   string `json:"associatedSAPEgressQoSProfileID,omitempty"`
-	AssociatedSAPEgressQoSProfileName string `json:"associatedSAPEgressQoSProfileName,omitempty"`
-	ExternalID                        string `json:"externalID,omitempty"`
+	ID                                string        `json:"ID,omitempty"`
+	ParentID                          string        `json:"parentID,omitempty"`
+	ParentType                        string        `json:"parentType,omitempty"`
+	Owner                             string        `json:"owner,omitempty"`
+	Name                              string        `json:"name,omitempty"`
+	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	Description                       string        `json:"description,omitempty"`
+	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope                       string        `json:"entityScope,omitempty"`
+	AssocEntityType                   string        `json:"assocEntityType,omitempty"`
+	AssociatedIPFilterProfileID       string        `json:"associatedIPFilterProfileID,omitempty"`
+	AssociatedIPFilterProfileName     string        `json:"associatedIPFilterProfileName,omitempty"`
+	AssociatedIPv6FilterProfileID     string        `json:"associatedIPv6FilterProfileID,omitempty"`
+	AssociatedIPv6FilterProfileName   string        `json:"associatedIPv6FilterProfileName,omitempty"`
+	AssociatedMACFilterProfileID      string        `json:"associatedMACFilterProfileID,omitempty"`
+	AssociatedMACFilterProfileName    string        `json:"associatedMACFilterProfileName,omitempty"`
+	AssociatedSAPEgressQoSProfileID   string        `json:"associatedSAPEgressQoSProfileID,omitempty"`
+	AssociatedSAPEgressQoSProfileName string        `json:"associatedSAPEgressQoSProfileName,omitempty"`
+	ExternalID                        string        `json:"externalID,omitempty"`
 }
 
 // NewEgressProfile returns a new *EgressProfile

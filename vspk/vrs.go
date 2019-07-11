@@ -59,7 +59,6 @@ type VRS struct {
 	ParentID                  string        `json:"parentID,omitempty"`
 	ParentType                string        `json:"parentType,omitempty"`
 	Owner                     string        `json:"owner,omitempty"`
-	JSONRPCConnectionState    string        `json:"JSONRPCConnectionState,omitempty"`
 	Name                      string        `json:"name,omitempty"`
 	ManagementIP              string        `json:"managementIP,omitempty"`
 	ParentIDs                 []interface{} `json:"parentIDs,omitempty"`
@@ -73,7 +72,6 @@ type VRS struct {
 	Address                   string        `json:"address,omitempty"`
 	PeakCPUUsage              float64       `json:"peakCPUUsage,omitempty"`
 	PeakMemoryUsage           float64       `json:"peakMemoryUsage,omitempty"`
-	Peer                      string        `json:"peer,omitempty"`
 	Personality               string        `json:"personality,omitempty"`
 	Description               string        `json:"description,omitempty"`
 	Messages                  []interface{} `json:"messages,omitempty"`
@@ -83,7 +81,7 @@ type VRS struct {
 	RevertFailedCount         int           `json:"revertFailedCount,omitempty"`
 	LicensedState             string        `json:"licensedState,omitempty"`
 	Disks                     []interface{} `json:"disks,omitempty"`
-	ClusterNodeRole           string        `json:"clusterNodeRole,omitempty"`
+	EmbeddedMetadata          []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope               string        `json:"entityScope,omitempty"`
 	Location                  string        `json:"location,omitempty"`
 	Role                      string        `json:"role,omitempty"`
@@ -91,8 +89,6 @@ type VRS struct {
 	PrimaryVSCConnectionLost  bool          `json:"primaryVSCConnectionLost"`
 	ProductVersion            string        `json:"productVersion,omitempty"`
 	IsResilient               bool          `json:"isResilient"`
-	VscConfigState            string        `json:"vscConfigState,omitempty"`
-	VscCurrentState           string        `json:"vscCurrentState,omitempty"`
 	Status                    string        `json:"status,omitempty"`
 	MultiNICVPortEnabled      bool          `json:"multiNICVPortEnabled"`
 	NumberOfBridgeInterfaces  int           `json:"numberOfBridgeInterfaces,omitempty"`
@@ -104,7 +100,6 @@ type VRS struct {
 	AverageCPUUsage           float64       `json:"averageCPUUsage,omitempty"`
 	AverageMemoryUsage        float64       `json:"averageMemoryUsage,omitempty"`
 	ExternalID                string        `json:"externalID,omitempty"`
-	Dynamic                   bool          `json:"dynamic"`
 	HypervisorConnectionState string        `json:"hypervisorConnectionState,omitempty"`
 	HypervisorIdentifier      string        `json:"hypervisorIdentifier,omitempty"`
 	HypervisorName            string        `json:"hypervisorName,omitempty"`
@@ -216,6 +211,14 @@ func (o *VRS) Containers(info *bambou.FetchingInfo) (ContainersList, *bambou.Err
 
 	var list ContainersList
 	err := bambou.CurrentSession().FetchChildren(o, ContainerIdentity, &list, info)
+	return list, err
+}
+
+// ControllerVRSLinks retrieves the list of child ControllerVRSLinks of the VRS
+func (o *VRS) ControllerVRSLinks(info *bambou.FetchingInfo) (ControllerVRSLinksList, *bambou.Error) {
+
+	var list ControllerVRSLinksList
+	err := bambou.CurrentSession().FetchChildren(o, ControllerVRSLinkIdentity, &list, info)
 	return list, err
 }
 

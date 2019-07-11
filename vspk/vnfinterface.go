@@ -55,32 +55,33 @@ type VNFInterfacesParent interface {
 
 // VNFInterface represents the model of a vnfinterface
 type VNFInterface struct {
-	ID                  string `json:"ID,omitempty"`
-	ParentID            string `json:"parentID,omitempty"`
-	ParentType          string `json:"parentType,omitempty"`
-	Owner               string `json:"owner,omitempty"`
-	MAC                 string `json:"MAC,omitempty"`
-	VNFUUID             string `json:"VNFUUID,omitempty"`
-	IPAddress           string `json:"IPAddress,omitempty"`
-	VPortID             string `json:"VPortID,omitempty"`
-	VPortName           string `json:"VPortName,omitempty"`
-	IPv6Address         string `json:"IPv6Address,omitempty"`
-	IPv6Gateway         string `json:"IPv6Gateway,omitempty"`
-	Name                string `json:"name,omitempty"`
-	LastUpdatedBy       string `json:"lastUpdatedBy,omitempty"`
-	Gateway             string `json:"gateway,omitempty"`
-	Netmask             string `json:"netmask,omitempty"`
-	NetworkName         string `json:"networkName,omitempty"`
-	EntityScope         string `json:"entityScope,omitempty"`
-	PolicyDecisionID    string `json:"policyDecisionID,omitempty"`
-	DomainID            string `json:"domainID,omitempty"`
-	DomainName          string `json:"domainName,omitempty"`
-	ZoneID              string `json:"zoneID,omitempty"`
-	ZoneName            string `json:"zoneName,omitempty"`
-	AttachedNetworkID   string `json:"attachedNetworkID,omitempty"`
-	AttachedNetworkType string `json:"attachedNetworkType,omitempty"`
-	ExternalID          string `json:"externalID,omitempty"`
-	Type                string `json:"type,omitempty"`
+	ID                  string        `json:"ID,omitempty"`
+	ParentID            string        `json:"parentID,omitempty"`
+	ParentType          string        `json:"parentType,omitempty"`
+	Owner               string        `json:"owner,omitempty"`
+	MAC                 string        `json:"MAC,omitempty"`
+	VNFUUID             string        `json:"VNFUUID,omitempty"`
+	IPAddress           string        `json:"IPAddress,omitempty"`
+	VPortID             string        `json:"VPortID,omitempty"`
+	VPortName           string        `json:"VPortName,omitempty"`
+	IPv6Address         string        `json:"IPv6Address,omitempty"`
+	IPv6Gateway         string        `json:"IPv6Gateway,omitempty"`
+	Name                string        `json:"name,omitempty"`
+	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
+	Gateway             string        `json:"gateway,omitempty"`
+	Netmask             string        `json:"netmask,omitempty"`
+	NetworkName         string        `json:"networkName,omitempty"`
+	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope         string        `json:"entityScope,omitempty"`
+	PolicyDecisionID    string        `json:"policyDecisionID,omitempty"`
+	DomainID            string        `json:"domainID,omitempty"`
+	DomainName          string        `json:"domainName,omitempty"`
+	ZoneID              string        `json:"zoneID,omitempty"`
+	ZoneName            string        `json:"zoneName,omitempty"`
+	AttachedNetworkID   string        `json:"attachedNetworkID,omitempty"`
+	AttachedNetworkType string        `json:"attachedNetworkType,omitempty"`
+	ExternalID          string        `json:"externalID,omitempty"`
+	Type                string        `json:"type,omitempty"`
 }
 
 // NewVNFInterface returns a new *VNFInterface

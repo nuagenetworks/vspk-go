@@ -55,60 +55,66 @@ type L2DomainsParent interface {
 
 // L2Domain represents the model of a l2domain
 type L2Domain struct {
-	ID                                string `json:"ID,omitempty"`
-	ParentID                          string `json:"parentID,omitempty"`
-	ParentType                        string `json:"parentType,omitempty"`
-	Owner                             string `json:"owner,omitempty"`
-	DHCPManaged                       bool   `json:"DHCPManaged"`
-	DPI                               string `json:"DPI,omitempty"`
-	IPType                            string `json:"IPType,omitempty"`
-	IPv6Address                       string `json:"IPv6Address,omitempty"`
-	IPv6Gateway                       string `json:"IPv6Gateway,omitempty"`
-	VXLANECMPEnabled                  bool   `json:"VXLANECMPEnabled"`
-	MaintenanceMode                   string `json:"maintenanceMode,omitempty"`
-	Name                              string `json:"name,omitempty"`
-	LastUpdatedBy                     string `json:"lastUpdatedBy,omitempty"`
-	Gateway                           string `json:"gateway,omitempty"`
-	GatewayMACAddress                 string `json:"gatewayMACAddress,omitempty"`
-	Address                           string `json:"address,omitempty"`
-	TemplateID                        string `json:"templateID,omitempty"`
-	ServiceID                         int    `json:"serviceID,omitempty"`
-	Description                       string `json:"description,omitempty"`
-	Netmask                           string `json:"netmask,omitempty"`
-	FlowCollectionEnabled             string `json:"flowCollectionEnabled,omitempty"`
-	VnId                              int    `json:"vnId,omitempty"`
-	Encryption                        string `json:"encryption,omitempty"`
-	IngressReplicationEnabled         bool   `json:"ingressReplicationEnabled"`
-	EntityScope                       string `json:"entityScope,omitempty"`
-	EntityState                       string `json:"entityState,omitempty"`
-	PolicyChangeStatus                string `json:"policyChangeStatus,omitempty"`
-	RouteDistinguisher                string `json:"routeDistinguisher,omitempty"`
-	RouteTarget                       string `json:"routeTarget,omitempty"`
-	RoutedVPLSEnabled                 bool   `json:"routedVPLSEnabled"`
-	UplinkPreference                  string `json:"uplinkPreference,omitempty"`
-	UseGlobalMAC                      string `json:"useGlobalMAC,omitempty"`
-	AssociatedMulticastChannelMapID   string `json:"associatedMulticastChannelMapID,omitempty"`
-	AssociatedSharedNetworkResourceID string `json:"associatedSharedNetworkResourceID,omitempty"`
-	AssociatedUnderlayID              string `json:"associatedUnderlayID,omitempty"`
-	Stretched                         bool   `json:"stretched"`
-	Multicast                         string `json:"multicast,omitempty"`
-	CustomerID                        int    `json:"customerID,omitempty"`
-	ExternalID                        string `json:"externalID,omitempty"`
-	DynamicIpv6Address                bool   `json:"dynamicIpv6Address"`
+	ID                                string        `json:"ID,omitempty"`
+	ParentID                          string        `json:"parentID,omitempty"`
+	ParentType                        string        `json:"parentType,omitempty"`
+	Owner                             string        `json:"owner,omitempty"`
+	L2EncapType                       string        `json:"l2EncapType,omitempty"`
+	DHCPManaged                       bool          `json:"DHCPManaged"`
+	DPI                               string        `json:"DPI,omitempty"`
+	IPType                            string        `json:"IPType,omitempty"`
+	IPv6Address                       string        `json:"IPv6Address,omitempty"`
+	IPv6Gateway                       string        `json:"IPv6Gateway,omitempty"`
+	VXLANECMPEnabled                  bool          `json:"VXLANECMPEnabled"`
+	MaintenanceMode                   string        `json:"maintenanceMode,omitempty"`
+	Name                              string        `json:"name,omitempty"`
+	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	Gateway                           string        `json:"gateway,omitempty"`
+	GatewayMACAddress                 string        `json:"gatewayMACAddress,omitempty"`
+	Address                           string        `json:"address,omitempty"`
+	TemplateID                        string        `json:"templateID,omitempty"`
+	ServiceID                         int           `json:"serviceID,omitempty"`
+	Description                       string        `json:"description,omitempty"`
+	Netmask                           string        `json:"netmask,omitempty"`
+	FlowCollectionEnabled             string        `json:"flowCollectionEnabled,omitempty"`
+	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
+	VnId                              int           `json:"vnId,omitempty"`
+	EnableDHCPv4                      bool          `json:"enableDHCPv4"`
+	EnableDHCPv6                      bool          `json:"enableDHCPv6"`
+	Encryption                        string        `json:"encryption,omitempty"`
+	IngressReplicationEnabled         bool          `json:"ingressReplicationEnabled"`
+	EntityScope                       string        `json:"entityScope,omitempty"`
+	EntityState                       string        `json:"entityState,omitempty"`
+	PolicyChangeStatus                string        `json:"policyChangeStatus,omitempty"`
+	Color                             int           `json:"color,omitempty"`
+	RouteDistinguisher                string        `json:"routeDistinguisher,omitempty"`
+	RouteTarget                       string        `json:"routeTarget,omitempty"`
+	RoutedVPLSEnabled                 bool          `json:"routedVPLSEnabled"`
+	UplinkPreference                  string        `json:"uplinkPreference,omitempty"`
+	UseGlobalMAC                      string        `json:"useGlobalMAC,omitempty"`
+	AssociatedMulticastChannelMapID   string        `json:"associatedMulticastChannelMapID,omitempty"`
+	AssociatedSharedNetworkResourceID string        `json:"associatedSharedNetworkResourceID,omitempty"`
+	AssociatedUnderlayID              string        `json:"associatedUnderlayID,omitempty"`
+	Stretched                         bool          `json:"stretched"`
+	DualStackDynamicIPAllocation      bool          `json:"dualStackDynamicIPAllocation"`
+	Multicast                         string        `json:"multicast,omitempty"`
+	CustomerID                        int           `json:"customerID,omitempty"`
+	ExternalID                        string        `json:"externalID,omitempty"`
 }
 
 // NewL2Domain returns a new *L2Domain
 func NewL2Domain() *L2Domain {
 
 	return &L2Domain{
+		L2EncapType:               "VXLAN",
 		DPI:                       "DISABLED",
 		VXLANECMPEnabled:          false,
 		MaintenanceMode:           "DISABLED",
 		FlowCollectionEnabled:     "INHERITED",
 		IngressReplicationEnabled: false,
-		RoutedVPLSEnabled:         false,
-		UseGlobalMAC:              "DISABLED",
-		DynamicIpv6Address:        false,
+		Color:             0,
+		RoutedVPLSEnabled: false,
+		UseGlobalMAC:      "DISABLED",
 	}
 }
 
@@ -316,6 +322,34 @@ func (o *L2Domain) DHCPOptions(info *bambou.FetchingInfo) (DHCPOptionsList, *bam
 
 // CreateDHCPOption creates a new child DHCPOption under the L2Domain
 func (o *L2Domain) CreateDHCPOption(child *DHCPOption) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// DHCPv6Options retrieves the list of child DHCPv6Options of the L2Domain
+func (o *L2Domain) DHCPv6Options(info *bambou.FetchingInfo) (DHCPv6OptionsList, *bambou.Error) {
+
+	var list DHCPv6OptionsList
+	err := bambou.CurrentSession().FetchChildren(o, DHCPv6OptionIdentity, &list, info)
+	return list, err
+}
+
+// CreateDHCPv6Option creates a new child DHCPv6Option under the L2Domain
+func (o *L2Domain) CreateDHCPv6Option(child *DHCPv6Option) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// MirrorDestinationGroups retrieves the list of child MirrorDestinationGroups of the L2Domain
+func (o *L2Domain) MirrorDestinationGroups(info *bambou.FetchingInfo) (MirrorDestinationGroupsList, *bambou.Error) {
+
+	var list MirrorDestinationGroupsList
+	err := bambou.CurrentSession().FetchChildren(o, MirrorDestinationGroupIdentity, &list, info)
+	return list, err
+}
+
+// CreateMirrorDestinationGroup creates a new child MirrorDestinationGroup under the L2Domain
+func (o *L2Domain) CreateMirrorDestinationGroup(child *MirrorDestinationGroup) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

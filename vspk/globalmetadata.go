@@ -66,6 +66,7 @@ type GlobalMetadata struct {
 	NetworkNotificationDisabled bool          `json:"networkNotificationDisabled"`
 	Blob                        string        `json:"blob,omitempty"`
 	GlobalMetadata              bool          `json:"globalMetadata"`
+	EmbeddedMetadata            []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                 string        `json:"entityScope,omitempty"`
 	AssocEntityType             string        `json:"assocEntityType,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`

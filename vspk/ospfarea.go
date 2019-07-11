@@ -66,6 +66,7 @@ type OSPFArea struct {
 	Description                 string        `json:"description,omitempty"`
 	AggregateAreaRange          []interface{} `json:"aggregateAreaRange,omitempty"`
 	AggregateAreaRangeNSSA      []interface{} `json:"aggregateAreaRangeNSSA,omitempty"`
+	EmbeddedMetadata            []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                 string        `json:"entityScope,omitempty"`
 	AreaID                      int           `json:"areaID,omitempty"`
 	AreaType                    string        `json:"areaType,omitempty"`

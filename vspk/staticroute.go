@@ -67,6 +67,7 @@ type StaticRoute struct {
 	Netmask              string        `json:"netmask,omitempty"`
 	NextHopIp            string        `json:"nextHopIp,omitempty"`
 	BlackHoleEnabled     bool          `json:"blackHoleEnabled"`
+	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope          string        `json:"entityScope,omitempty"`
 	RouteDistinguisher   string        `json:"routeDistinguisher,omitempty"`
 	AssociatedGatewayIDs []interface{} `json:"associatedGatewayIDs,omitempty"`

@@ -55,19 +55,20 @@ type OverlayAddressPoolsParent interface {
 
 // OverlayAddressPool represents the model of a overlayaddresspool
 type OverlayAddressPool struct {
-	ID                 string `json:"ID,omitempty"`
-	ParentID           string `json:"parentID,omitempty"`
-	ParentType         string `json:"parentType,omitempty"`
-	Owner              string `json:"owner,omitempty"`
-	IPType             string `json:"IPType,omitempty"`
-	Name               string `json:"name,omitempty"`
-	LastUpdatedBy      string `json:"lastUpdatedBy,omitempty"`
-	Description        string `json:"description,omitempty"`
-	EndAddressRange    string `json:"endAddressRange,omitempty"`
-	EntityScope        string `json:"entityScope,omitempty"`
-	AssociatedDomainID string `json:"associatedDomainID,omitempty"`
-	StartAddressRange  string `json:"startAddressRange,omitempty"`
-	ExternalID         string `json:"externalID,omitempty"`
+	ID                 string        `json:"ID,omitempty"`
+	ParentID           string        `json:"parentID,omitempty"`
+	ParentType         string        `json:"parentType,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
+	IPType             string        `json:"IPType,omitempty"`
+	Name               string        `json:"name,omitempty"`
+	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	Description        string        `json:"description,omitempty"`
+	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
+	EndAddressRange    string        `json:"endAddressRange,omitempty"`
+	EntityScope        string        `json:"entityScope,omitempty"`
+	AssociatedDomainID string        `json:"associatedDomainID,omitempty"`
+	StartAddressRange  string        `json:"startAddressRange,omitempty"`
+	ExternalID         string        `json:"externalID,omitempty"`
 }
 
 // NewOverlayAddressPool returns a new *OverlayAddressPool

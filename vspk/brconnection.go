@@ -55,25 +55,26 @@ type BRConnectionsParent interface {
 
 // BRConnection represents the model of a brconnection
 type BRConnection struct {
-	ID                    string `json:"ID,omitempty"`
-	ParentID              string `json:"parentID,omitempty"`
-	ParentType            string `json:"parentType,omitempty"`
-	Owner                 string `json:"owner,omitempty"`
-	DNSAddress            string `json:"DNSAddress,omitempty"`
-	DNSAddressV6          string `json:"DNSAddressV6,omitempty"`
-	LastUpdatedBy         string `json:"lastUpdatedBy,omitempty"`
-	Gateway               string `json:"gateway,omitempty"`
-	GatewayV6             string `json:"gatewayV6,omitempty"`
-	Address               string `json:"address,omitempty"`
-	AddressFamily         string `json:"addressFamily,omitempty"`
-	AddressV6             string `json:"addressV6,omitempty"`
-	AdvertisementCriteria string `json:"advertisementCriteria,omitempty"`
-	Netmask               string `json:"netmask,omitempty"`
-	Inherited             bool   `json:"inherited"`
-	EntityScope           string `json:"entityScope,omitempty"`
-	Mode                  string `json:"mode,omitempty"`
-	UplinkID              int    `json:"uplinkID,omitempty"`
-	ExternalID            string `json:"externalID,omitempty"`
+	ID                    string        `json:"ID,omitempty"`
+	ParentID              string        `json:"parentID,omitempty"`
+	ParentType            string        `json:"parentType,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
+	DNSAddress            string        `json:"DNSAddress,omitempty"`
+	DNSAddressV6          string        `json:"DNSAddressV6,omitempty"`
+	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	Gateway               string        `json:"gateway,omitempty"`
+	GatewayV6             string        `json:"gatewayV6,omitempty"`
+	Address               string        `json:"address,omitempty"`
+	AddressFamily         string        `json:"addressFamily,omitempty"`
+	AddressV6             string        `json:"addressV6,omitempty"`
+	AdvertisementCriteria string        `json:"advertisementCriteria,omitempty"`
+	Netmask               string        `json:"netmask,omitempty"`
+	EmbeddedMetadata      []interface{} `json:"embeddedMetadata,omitempty"`
+	Inherited             bool          `json:"inherited"`
+	EntityScope           string        `json:"entityScope,omitempty"`
+	Mode                  string        `json:"mode,omitempty"`
+	UplinkID              int           `json:"uplinkID,omitempty"`
+	ExternalID            string        `json:"externalID,omitempty"`
 }
 
 // NewBRConnection returns a new *BRConnection

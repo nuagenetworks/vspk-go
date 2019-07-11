@@ -133,6 +133,7 @@ type VCenterHypervisor struct {
 	AllowMgmtDHCP                             bool          `json:"allowMgmtDHCP"`
 	FlowEvictionThreshold                     int           `json:"flowEvictionThreshold,omitempty"`
 	VmNetworkPortgroup                        string        `json:"vmNetworkPortgroup,omitempty"`
+	EmbeddedMetadata                          []interface{} `json:"embeddedMetadata,omitempty"`
 	EnableVRSResourceReservation              bool          `json:"enableVRSResourceReservation"`
 	EntityScope                               string        `json:"entityScope,omitempty"`
 	ConfiguredMetricsPushInterval             int           `json:"configuredMetricsPushInterval,omitempty"`

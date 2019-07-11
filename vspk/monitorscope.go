@@ -65,6 +65,7 @@ type Monitorscope struct {
 	DestinationNSGs         []interface{} `json:"destinationNSGs,omitempty"`
 	AllowAllDestinationNSGs bool          `json:"allowAllDestinationNSGs"`
 	AllowAllSourceNSGs      bool          `json:"allowAllSourceNSGs"`
+	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope             string        `json:"entityScope,omitempty"`
 	SourceNSGs              []interface{} `json:"sourceNSGs,omitempty"`
 	ExternalID              string        `json:"externalID,omitempty"`

@@ -55,17 +55,18 @@ type DiskStatsParent interface {
 
 // DiskStat represents the model of a diskstat
 type DiskStat struct {
-	ID          string  `json:"ID,omitempty"`
-	ParentID    string  `json:"parentID,omitempty"`
-	ParentType  string  `json:"parentType,omitempty"`
-	Owner       string  `json:"owner,omitempty"`
-	Name        string  `json:"name,omitempty"`
-	Size        float64 `json:"size,omitempty"`
-	Unit        string  `json:"unit,omitempty"`
-	EntityScope string  `json:"entityScope,omitempty"`
-	Used        float64 `json:"used,omitempty"`
-	Available   float64 `json:"available,omitempty"`
-	ExternalID  string  `json:"externalID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	Size             float64       `json:"size,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	Unit             string        `json:"unit,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	Used             float64       `json:"used,omitempty"`
+	Available        float64       `json:"available,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewDiskStat returns a new *DiskStat

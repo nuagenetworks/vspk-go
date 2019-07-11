@@ -67,6 +67,8 @@ type Domain struct {
 	FIPIgnoreDefaultRoute           string        `json:"FIPIgnoreDefaultRoute,omitempty"`
 	FIPUnderlay                     bool          `json:"FIPUnderlay"`
 	DPI                             string        `json:"DPI,omitempty"`
+	GRTEnabled                      bool          `json:"GRTEnabled"`
+	EVPNRT5Type                     string        `json:"EVPNRT5Type,omitempty"`
 	VXLANECMPEnabled                bool          `json:"VXLANECMPEnabled"`
 	LabelID                         int           `json:"labelID,omitempty"`
 	BackHaulRouteDistinguisher      string        `json:"backHaulRouteDistinguisher,omitempty"`
@@ -79,14 +81,17 @@ type Domain struct {
 	AdvertiseCriteria               string        `json:"advertiseCriteria,omitempty"`
 	LeakingEnabled                  bool          `json:"leakingEnabled"`
 	SecondaryDHCPServerAddress      string        `json:"secondaryDHCPServerAddress,omitempty"`
+	SecondaryRouteTarget            string        `json:"secondaryRouteTarget,omitempty"`
 	TemplateID                      string        `json:"templateID,omitempty"`
 	PermittedAction                 string        `json:"permittedAction,omitempty"`
 	ServiceID                       int           `json:"serviceID,omitempty"`
 	Description                     string        `json:"description,omitempty"`
 	AggregateFlowsEnabled           bool          `json:"aggregateFlowsEnabled"`
+	AggregationFlowType             string        `json:"aggregationFlowType,omitempty"`
 	DhcpServerAddresses             []interface{} `json:"dhcpServerAddresses,omitempty"`
 	GlobalRoutingEnabled            bool          `json:"globalRoutingEnabled"`
 	FlowCollectionEnabled           string        `json:"flowCollectionEnabled,omitempty"`
+	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
 	ImportRouteTarget               string        `json:"importRouteTarget,omitempty"`
 	Encryption                      string        `json:"encryption,omitempty"`
 	UnderlayEnabled                 string        `json:"underlayEnabled,omitempty"`
@@ -94,11 +99,14 @@ type Domain struct {
 	EntityScope                     string        `json:"entityScope,omitempty"`
 	LocalAS                         int           `json:"localAS,omitempty"`
 	PolicyChangeStatus              string        `json:"policyChangeStatus,omitempty"`
+	Color                           int           `json:"color,omitempty"`
+	DomainAggregationEnabled        bool          `json:"domainAggregationEnabled"`
 	DomainID                        int           `json:"domainID,omitempty"`
 	DomainVLANID                    int           `json:"domainVLANID,omitempty"`
 	RouteDistinguisher              string        `json:"routeDistinguisher,omitempty"`
 	RouteTarget                     string        `json:"routeTarget,omitempty"`
 	UplinkPreference                string        `json:"uplinkPreference,omitempty"`
+	CreateBackHaulSubnet            bool          `json:"createBackHaulSubnet"`
 	AssociatedBGPProfileID          string        `json:"associatedBGPProfileID,omitempty"`
 	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
 	AssociatedPATMapperID           string        `json:"associatedPATMapperID,omitempty"`
@@ -122,13 +130,18 @@ func NewDomain() *Domain {
 		FIPIgnoreDefaultRoute: "DISABLED",
 		FIPUnderlay:           false,
 		DPI:                   "DISABLED",
+		GRTEnabled:            false,
+		EVPNRT5Type:           "IP",
 		VXLANECMPEnabled:      false,
 		MaintenanceMode:       "DISABLED",
 		AggregateFlowsEnabled: false,
 		FlowCollectionEnabled: "INHERITED",
 		Encryption:            "DISABLED",
 		UnderlayEnabled:       "DISABLED",
-		TunnelType:            "DC_DEFAULT",
+		Color:                 0,
+		DomainAggregationEnabled: false,
+		CreateBackHaulSubnet:     true,
+		TunnelType:               "DC_DEFAULT",
 	}
 }
 
@@ -166,6 +179,14 @@ func (o *Domain) Save() *bambou.Error {
 func (o *Domain) Delete() *bambou.Error {
 
 	return bambou.CurrentSession().DeleteEntity(o)
+}
+
+// Gateways retrieves the list of child Gateways of the Domain
+func (o *Domain) Gateways(info *bambou.FetchingInfo) (GatewaysList, *bambou.Error) {
+
+	var list GatewaysList
+	err := bambou.CurrentSession().FetchChildren(o, GatewayIdentity, &list, info)
+	return list, err
 }
 
 // TCAs retrieves the list of child TCAs of the Domain
@@ -232,6 +253,44 @@ func (o *Domain) CreateMetadata(child *Metadata) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// NetconfGateways retrieves the list of child NetconfGateways of the Domain
+func (o *Domain) NetconfGateways(info *bambou.FetchingInfo) (NetconfGatewaysList, *bambou.Error) {
+
+	var list NetconfGatewaysList
+	err := bambou.CurrentSession().FetchChildren(o, NetconfGatewayIdentity, &list, info)
+	return list, err
+}
+
+// AssignNetconfGateways assigns the list of NetconfGateways to the Domain
+func (o *Domain) AssignNetconfGateways(children NetconfGatewaysList) *bambou.Error {
+
+	list := []bambou.Identifiable{}
+	for _, c := range children {
+		list = append(list, c)
+	}
+
+	return bambou.CurrentSession().AssignChildren(o, list, NetconfGatewayIdentity)
+}
+
+// NetworkMacroGroups retrieves the list of child NetworkMacroGroups of the Domain
+func (o *Domain) NetworkMacroGroups(info *bambou.FetchingInfo) (NetworkMacroGroupsList, *bambou.Error) {
+
+	var list NetworkMacroGroupsList
+	err := bambou.CurrentSession().FetchChildren(o, NetworkMacroGroupIdentity, &list, info)
+	return list, err
+}
+
+// AssignNetworkMacroGroups assigns the list of NetworkMacroGroups to the Domain
+func (o *Domain) AssignNetworkMacroGroups(children NetworkMacroGroupsList) *bambou.Error {
+
+	list := []bambou.Identifiable{}
+	for _, c := range children {
+		list = append(list, c)
+	}
+
+	return bambou.CurrentSession().AssignChildren(o, list, NetworkMacroGroupIdentity)
+}
+
 // NetworkPerformanceBindings retrieves the list of child NetworkPerformanceBindings of the Domain
 func (o *Domain) NetworkPerformanceBindings(info *bambou.FetchingInfo) (NetworkPerformanceBindingsList, *bambou.Error) {
 
@@ -258,6 +317,25 @@ func (o *Domain) PGExpressions(info *bambou.FetchingInfo) (PGExpressionsList, *b
 func (o *Domain) CreatePGExpression(child *PGExpression) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// AggregatedDomains retrieves the list of child AggregatedDomains of the Domain
+func (o *Domain) AggregatedDomains(info *bambou.FetchingInfo) (AggregatedDomainsList, *bambou.Error) {
+
+	var list AggregatedDomainsList
+	err := bambou.CurrentSession().FetchChildren(o, AggregatedDomainIdentity, &list, info)
+	return list, err
+}
+
+// AssignAggregatedDomains assigns the list of AggregatedDomains to the Domain
+func (o *Domain) AssignAggregatedDomains(children AggregatedDomainsList) *bambou.Error {
+
+	list := []bambou.Identifiable{}
+	for _, c := range children {
+		list = append(list, c)
+	}
+
+	return bambou.CurrentSession().AssignChildren(o, list, AggregatedDomainIdentity)
 }
 
 // EgressACLEntryTemplates retrieves the list of child EgressACLEntryTemplates of the Domain
@@ -324,6 +402,20 @@ func (o *Domain) CreateDHCPOption(child *DHCPOption) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// DHCPv6Options retrieves the list of child DHCPv6Options of the Domain
+func (o *Domain) DHCPv6Options(info *bambou.FetchingInfo) (DHCPv6OptionsList, *bambou.Error) {
+
+	var list DHCPv6OptionsList
+	err := bambou.CurrentSession().FetchChildren(o, DHCPv6OptionIdentity, &list, info)
+	return list, err
+}
+
+// CreateDHCPv6Option creates a new child DHCPv6Option under the Domain
+func (o *Domain) CreateDHCPv6Option(child *DHCPv6Option) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Links retrieves the list of child Links of the Domain
 func (o *Domain) Links(info *bambou.FetchingInfo) (LinksList, *bambou.Error) {
 
@@ -344,6 +436,20 @@ func (o *Domain) FirewallAcls(info *bambou.FetchingInfo) (FirewallAclsList, *bam
 	var list FirewallAclsList
 	err := bambou.CurrentSession().FetchChildren(o, FirewallAclIdentity, &list, info)
 	return list, err
+}
+
+// MirrorDestinationGroups retrieves the list of child MirrorDestinationGroups of the Domain
+func (o *Domain) MirrorDestinationGroups(info *bambou.FetchingInfo) (MirrorDestinationGroupsList, *bambou.Error) {
+
+	var list MirrorDestinationGroupsList
+	err := bambou.CurrentSession().FetchChildren(o, MirrorDestinationGroupIdentity, &list, info)
+	return list, err
+}
+
+// CreateMirrorDestinationGroup creates a new child MirrorDestinationGroup under the Domain
+func (o *Domain) CreateMirrorDestinationGroup(child *MirrorDestinationGroup) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
 }
 
 // VirtualFirewallPolicies retrieves the list of child VirtualFirewallPolicies of the Domain

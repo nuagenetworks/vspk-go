@@ -55,20 +55,21 @@ type DestinationurlsParent interface {
 
 // Destinationurl represents the model of a destinationurl
 type Destinationurl struct {
-	ID                 string `json:"ID,omitempty"`
-	ParentID           string `json:"parentID,omitempty"`
-	ParentType         string `json:"parentType,omitempty"`
-	Owner              string `json:"owner,omitempty"`
-	URL                string `json:"URL,omitempty"`
-	HTTPMethod         string `json:"HTTPMethod,omitempty"`
-	PacketCount        int    `json:"packetCount,omitempty"`
-	LastUpdatedBy      string `json:"lastUpdatedBy,omitempty"`
-	PercentageWeight   int    `json:"percentageWeight,omitempty"`
-	Timeout            int    `json:"timeout,omitempty"`
-	EntityScope        string `json:"entityScope,omitempty"`
-	DownThresholdCount int    `json:"downThresholdCount,omitempty"`
-	ProbeInterval      int    `json:"probeInterval,omitempty"`
-	ExternalID         string `json:"externalID,omitempty"`
+	ID                 string        `json:"ID,omitempty"`
+	ParentID           string        `json:"parentID,omitempty"`
+	ParentType         string        `json:"parentType,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
+	URL                string        `json:"URL,omitempty"`
+	HTTPMethod         string        `json:"HTTPMethod,omitempty"`
+	PacketCount        int           `json:"packetCount,omitempty"`
+	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	PercentageWeight   int           `json:"percentageWeight,omitempty"`
+	Timeout            int           `json:"timeout,omitempty"`
+	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope        string        `json:"entityScope,omitempty"`
+	DownThresholdCount int           `json:"downThresholdCount,omitempty"`
+	ProbeInterval      int           `json:"probeInterval,omitempty"`
+	ExternalID         string        `json:"externalID,omitempty"`
 }
 
 // NewDestinationurl returns a new *Destinationurl

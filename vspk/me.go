@@ -37,31 +37,32 @@ var MeIdentity = bambou.Identity{
 
 // Me represents the model of a me
 type Me struct {
-	ID                    string `json:"ID,omitempty"`
-	ParentID              string `json:"parentID,omitempty"`
-	ParentType            string `json:"parentType,omitempty"`
-	Owner                 string `json:"owner,omitempty"`
-	AARFlowStatsInterval  int    `json:"AARFlowStatsInterval,omitempty"`
-	AARProbeStatsInterval int    `json:"AARProbeStatsInterval,omitempty"`
-	VSSStatsInterval      int    `json:"VSSStatsInterval,omitempty"`
-	Password              string `json:"password,omitempty"`
-	LastName              string `json:"lastName,omitempty"`
-	LastUpdatedBy         string `json:"lastUpdatedBy,omitempty"`
-	FirstName             string `json:"firstName,omitempty"`
-	Disabled              bool   `json:"disabled"`
-	ElasticSearchAddress  string `json:"elasticSearchAddress,omitempty"`
-	FlowCollectionEnabled bool   `json:"flowCollectionEnabled"`
-	Email                 string `json:"email,omitempty"`
-	EnterpriseID          string `json:"enterpriseID,omitempty"`
-	EnterpriseName        string `json:"enterpriseName,omitempty"`
-	EntityScope           string `json:"entityScope,omitempty"`
-	MobileNumber          string `json:"mobileNumber,omitempty"`
-	Role                  string `json:"role,omitempty"`
-	UserName              string `json:"userName,omitempty"`
-	StatisticsEnabled     bool   `json:"statisticsEnabled"`
-	AvatarData            string `json:"avatarData,omitempty"`
-	AvatarType            string `json:"avatarType,omitempty"`
-	ExternalID            string `json:"externalID,omitempty"`
+	ID                    string        `json:"ID,omitempty"`
+	ParentID              string        `json:"parentID,omitempty"`
+	ParentType            string        `json:"parentType,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
+	AARFlowStatsInterval  int           `json:"AARFlowStatsInterval,omitempty"`
+	AARProbeStatsInterval int           `json:"AARProbeStatsInterval,omitempty"`
+	VSSStatsInterval      int           `json:"VSSStatsInterval,omitempty"`
+	Password              string        `json:"password,omitempty"`
+	LastName              string        `json:"lastName,omitempty"`
+	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	FirstName             string        `json:"firstName,omitempty"`
+	Disabled              bool          `json:"disabled"`
+	ElasticSearchAddress  string        `json:"elasticSearchAddress,omitempty"`
+	FlowCollectionEnabled bool          `json:"flowCollectionEnabled"`
+	Email                 string        `json:"email,omitempty"`
+	EmbeddedMetadata      []interface{} `json:"embeddedMetadata,omitempty"`
+	EnterpriseID          string        `json:"enterpriseID,omitempty"`
+	EnterpriseName        string        `json:"enterpriseName,omitempty"`
+	EntityScope           string        `json:"entityScope,omitempty"`
+	MobileNumber          string        `json:"mobileNumber,omitempty"`
+	Role                  string        `json:"role,omitempty"`
+	UserName              string        `json:"userName,omitempty"`
+	StatisticsEnabled     bool          `json:"statisticsEnabled"`
+	AvatarData            string        `json:"avatarData,omitempty"`
+	AvatarType            string        `json:"avatarType,omitempty"`
+	ExternalID            string        `json:"externalID,omitempty"`
 
 	Token        string `json:"APIKey,omitempty"`
 	Organization string `json:"enterprise,omitempty"`
@@ -293,6 +294,20 @@ func (o *Me) CreateRedundancyGroup(child *RedundancyGroup) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// RemoteVrsInfos retrieves the list of child RemoteVrsInfos of the Me
+func (o *Me) RemoteVrsInfos(info *bambou.FetchingInfo) (RemoteVrsInfosList, *bambou.Error) {
+
+	var list RemoteVrsInfosList
+	err := bambou.CurrentSession().FetchChildren(o, RemoteVrsInfoIdentity, &list, info)
+	return list, err
+}
+
+// CreateRemoteVrsInfo creates a new child RemoteVrsInfo under the Me
+func (o *Me) CreateRemoteVrsInfo(child *RemoteVrsInfo) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // PerformanceMonitors retrieves the list of child PerformanceMonitors of the Me
 func (o *Me) PerformanceMonitors(info *bambou.FetchingInfo) (PerformanceMonitorsList, *bambou.Error) {
 
@@ -309,6 +324,20 @@ func (o *Me) CreatePerformanceMonitor(child *PerformanceMonitor) *bambou.Error {
 
 // CreateCertificate creates a new child Certificate under the Me
 func (o *Me) CreateCertificate(child *Certificate) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// TestDefinitions retrieves the list of child TestDefinitions of the Me
+func (o *Me) TestDefinitions(info *bambou.FetchingInfo) (TestDefinitionsList, *bambou.Error) {
+
+	var list TestDefinitionsList
+	err := bambou.CurrentSession().FetchChildren(o, TestDefinitionIdentity, &list, info)
+	return list, err
+}
+
+// CreateTestDefinition creates a new child TestDefinition under the Me
+func (o *Me) CreateTestDefinition(child *TestDefinition) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }
@@ -956,6 +985,14 @@ func (o *Me) VCenterVRSConfigs(info *bambou.FetchingInfo) (VCenterVRSConfigsList
 
 	var list VCenterVRSConfigsList
 	err := bambou.CurrentSession().FetchChildren(o, VCenterVRSConfigIdentity, &list, info)
+	return list, err
+}
+
+// vrsInfos retrieves the list of child vrsInfos of the Me
+func (o *Me) vrsInfos(info *bambou.FetchingInfo) (vrsInfosList, *bambou.Error) {
+
+	var list vrsInfosList
+	err := bambou.CurrentSession().FetchChildren(o, vrsInfoIdentity, &list, info)
 	return list, err
 }
 

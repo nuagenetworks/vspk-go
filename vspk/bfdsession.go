@@ -55,19 +55,20 @@ type BFDSessionsParent interface {
 
 // BFDSession represents the model of a bfdsession
 type BFDSession struct {
-	ID                   string `json:"ID,omitempty"`
-	ParentID             string `json:"parentID,omitempty"`
-	ParentType           string `json:"parentType,omitempty"`
-	Owner                string `json:"owner,omitempty"`
-	BFDDestinationIP     string `json:"BFDDestinationIP,omitempty"`
-	BFDDestinationIPType string `json:"BFDDestinationIPType,omitempty"`
-	BFDDestinationIPv6   string `json:"BFDDestinationIPv6,omitempty"`
-	BFDMultiplier        int    `json:"BFDMultiplier,omitempty"`
-	BFDTimer             int    `json:"BFDTimer,omitempty"`
-	LastUpdatedBy        string `json:"lastUpdatedBy,omitempty"`
-	EntityScope          string `json:"entityScope,omitempty"`
-	MultiHopEnabled      bool   `json:"multiHopEnabled"`
-	ExternalID           string `json:"externalID,omitempty"`
+	ID                   string        `json:"ID,omitempty"`
+	ParentID             string        `json:"parentID,omitempty"`
+	ParentType           string        `json:"parentType,omitempty"`
+	Owner                string        `json:"owner,omitempty"`
+	BFDDestinationIP     string        `json:"BFDDestinationIP,omitempty"`
+	BFDDestinationIPType string        `json:"BFDDestinationIPType,omitempty"`
+	BFDDestinationIPv6   string        `json:"BFDDestinationIPv6,omitempty"`
+	BFDMultiplier        int           `json:"BFDMultiplier,omitempty"`
+	BFDTimer             int           `json:"BFDTimer,omitempty"`
+	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
+	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope          string        `json:"entityScope,omitempty"`
+	MultiHopEnabled      bool          `json:"multiHopEnabled"`
+	ExternalID           string        `json:"externalID,omitempty"`
 }
 
 // NewBFDSession returns a new *BFDSession

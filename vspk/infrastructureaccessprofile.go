@@ -55,20 +55,21 @@ type InfrastructureAccessProfilesParent interface {
 
 // InfrastructureAccessProfile represents the model of a infrastructureaccessprofile
 type InfrastructureAccessProfile struct {
-	ID             string `json:"ID,omitempty"`
-	ParentID       string `json:"parentID,omitempty"`
-	ParentType     string `json:"parentType,omitempty"`
-	Owner          string `json:"owner,omitempty"`
-	SSHAuthMode    string `json:"SSHAuthMode,omitempty"`
-	Name           string `json:"name,omitempty"`
-	Password       string `json:"password,omitempty"`
-	LastUpdatedBy  string `json:"lastUpdatedBy,omitempty"`
-	Description    string `json:"description,omitempty"`
-	EnterpriseID   string `json:"enterpriseID,omitempty"`
-	EntityScope    string `json:"entityScope,omitempty"`
-	SourceIPFilter string `json:"sourceIPFilter,omitempty"`
-	UserName       string `json:"userName,omitempty"`
-	ExternalID     string `json:"externalID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	SSHAuthMode      string        `json:"SSHAuthMode,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	Password         string        `json:"password,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EnterpriseID     string        `json:"enterpriseID,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	SourceIPFilter   string        `json:"sourceIPFilter,omitempty"`
+	UserName         string        `json:"userName,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewInfrastructureAccessProfile returns a new *InfrastructureAccessProfile

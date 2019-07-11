@@ -55,16 +55,17 @@ type ApplicationBindingsParent interface {
 
 // ApplicationBinding represents the model of a applicationbinding
 type ApplicationBinding struct {
-	ID                      string `json:"ID,omitempty"`
-	ParentID                string `json:"parentID,omitempty"`
-	ParentType              string `json:"parentType,omitempty"`
-	Owner                   string `json:"owner,omitempty"`
-	LastUpdatedBy           string `json:"lastUpdatedBy,omitempty"`
-	ReadOnly                bool   `json:"readOnly"`
-	EntityScope             string `json:"entityScope,omitempty"`
-	Priority                int    `json:"priority,omitempty"`
-	AssociatedApplicationID string `json:"associatedApplicationID,omitempty"`
-	ExternalID              string `json:"externalID,omitempty"`
+	ID                      string        `json:"ID,omitempty"`
+	ParentID                string        `json:"parentID,omitempty"`
+	ParentType              string        `json:"parentType,omitempty"`
+	Owner                   string        `json:"owner,omitempty"`
+	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	ReadOnly                bool          `json:"readOnly"`
+	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope             string        `json:"entityScope,omitempty"`
+	Priority                int           `json:"priority,omitempty"`
+	AssociatedApplicationID string        `json:"associatedApplicationID,omitempty"`
+	ExternalID              string        `json:"externalID,omitempty"`
 }
 
 // NewApplicationBinding returns a new *ApplicationBinding

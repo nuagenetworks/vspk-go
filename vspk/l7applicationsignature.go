@@ -55,28 +55,29 @@ type L7applicationsignaturesParent interface {
 
 // L7applicationsignature represents the model of a l7applicationsignature
 type L7applicationsignature struct {
-	ID                string `json:"ID,omitempty"`
-	ParentID          string `json:"parentID,omitempty"`
-	ParentType        string `json:"parentType,omitempty"`
-	Owner             string `json:"owner,omitempty"`
-	Name              string `json:"name,omitempty"`
-	LastUpdatedBy     string `json:"lastUpdatedBy,omitempty"`
-	Category          string `json:"category,omitempty"`
-	Readonly          bool   `json:"readonly"`
-	Reference         string `json:"reference,omitempty"`
-	Deprecated        bool   `json:"deprecated"`
-	DeprecatedVersion string `json:"deprecatedVersion,omitempty"`
-	Description       string `json:"description,omitempty"`
-	DictionaryVersion int    `json:"dictionaryVersion,omitempty"`
-	SignatureIndex    int    `json:"signatureIndex,omitempty"`
-	SignatureVersion  string `json:"signatureVersion,omitempty"`
-	Risk              int    `json:"risk,omitempty"`
-	PluginName        string `json:"pluginName,omitempty"`
-	EntityScope       string `json:"entityScope,omitempty"`
-	SoftwareFlags     string `json:"softwareFlags,omitempty"`
-	Productivity      int    `json:"productivity,omitempty"`
-	Guidstring        string `json:"guidstring,omitempty"`
-	ExternalID        string `json:"externalID,omitempty"`
+	ID                string        `json:"ID,omitempty"`
+	ParentID          string        `json:"parentID,omitempty"`
+	ParentType        string        `json:"parentType,omitempty"`
+	Owner             string        `json:"owner,omitempty"`
+	Name              string        `json:"name,omitempty"`
+	LastUpdatedBy     string        `json:"lastUpdatedBy,omitempty"`
+	Category          string        `json:"category,omitempty"`
+	Readonly          bool          `json:"readonly"`
+	Reference         string        `json:"reference,omitempty"`
+	Deprecated        bool          `json:"deprecated"`
+	DeprecatedVersion string        `json:"deprecatedVersion,omitempty"`
+	Description       string        `json:"description,omitempty"`
+	DictionaryVersion int           `json:"dictionaryVersion,omitempty"`
+	SignatureIndex    int           `json:"signatureIndex,omitempty"`
+	SignatureVersion  string        `json:"signatureVersion,omitempty"`
+	Risk              int           `json:"risk,omitempty"`
+	PluginName        string        `json:"pluginName,omitempty"`
+	EmbeddedMetadata  []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope       string        `json:"entityScope,omitempty"`
+	SoftwareFlags     string        `json:"softwareFlags,omitempty"`
+	Productivity      int           `json:"productivity,omitempty"`
+	Guidstring        string        `json:"guidstring,omitempty"`
+	ExternalID        string        `json:"externalID,omitempty"`
 }
 
 // NewL7applicationsignature returns a new *L7applicationsignature

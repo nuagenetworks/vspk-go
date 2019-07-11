@@ -55,17 +55,18 @@ type VSPsParent interface {
 
 // VSP represents the model of a vsp
 type VSP struct {
-	ID             string `json:"ID,omitempty"`
-	ParentID       string `json:"parentID,omitempty"`
-	ParentType     string `json:"parentType,omitempty"`
-	Owner          string `json:"owner,omitempty"`
-	Name           string `json:"name,omitempty"`
-	LastUpdatedBy  string `json:"lastUpdatedBy,omitempty"`
-	Description    string `json:"description,omitempty"`
-	EntityScope    string `json:"entityScope,omitempty"`
-	Location       string `json:"location,omitempty"`
-	ProductVersion string `json:"productVersion,omitempty"`
-	ExternalID     string `json:"externalID,omitempty"`
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	Location         string        `json:"location,omitempty"`
+	ProductVersion   string        `json:"productVersion,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewVSP returns a new *VSP

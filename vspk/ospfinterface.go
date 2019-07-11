@@ -68,6 +68,7 @@ type OSPFInterface struct {
 	Description        string        `json:"description,omitempty"`
 	MessageDigestKeys  []interface{} `json:"messageDigestKeys,omitempty"`
 	Metric             int           `json:"metric,omitempty"`
+	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	InterfaceType      string        `json:"interfaceType,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
 	Priority           int           `json:"priority,omitempty"`

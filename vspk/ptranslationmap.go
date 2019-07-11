@@ -62,6 +62,7 @@ type PTranslationMap struct {
 	SPATSourceList     []interface{} `json:"SPATSourceList,omitempty"`
 	MappingType        string        `json:"mappingType,omitempty"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
 	ProviderAliasIP    string        `json:"providerAliasIP,omitempty"`
 	ProviderIP         string        `json:"providerIP,omitempty"`

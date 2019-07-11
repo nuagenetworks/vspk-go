@@ -55,39 +55,44 @@ type L2DomainTemplatesParent interface {
 
 // L2DomainTemplate represents the model of a l2domaintemplate
 type L2DomainTemplate struct {
-	ID                              string `json:"ID,omitempty"`
-	ParentID                        string `json:"parentID,omitempty"`
-	ParentType                      string `json:"parentType,omitempty"`
-	Owner                           string `json:"owner,omitempty"`
-	DHCPManaged                     bool   `json:"DHCPManaged"`
-	DPI                             string `json:"DPI,omitempty"`
-	IPType                          string `json:"IPType,omitempty"`
-	IPv6Address                     string `json:"IPv6Address,omitempty"`
-	IPv6Gateway                     string `json:"IPv6Gateway,omitempty"`
-	Name                            string `json:"name,omitempty"`
-	LastUpdatedBy                   string `json:"lastUpdatedBy,omitempty"`
-	Gateway                         string `json:"gateway,omitempty"`
-	Address                         string `json:"address,omitempty"`
-	Description                     string `json:"description,omitempty"`
-	Netmask                         string `json:"netmask,omitempty"`
-	Encryption                      string `json:"encryption,omitempty"`
-	EntityScope                     string `json:"entityScope,omitempty"`
-	EntityState                     string `json:"entityState,omitempty"`
-	PolicyChangeStatus              string `json:"policyChangeStatus,omitempty"`
-	UseGlobalMAC                    string `json:"useGlobalMAC,omitempty"`
-	AssociatedMulticastChannelMapID string `json:"associatedMulticastChannelMapID,omitempty"`
-	Multicast                       string `json:"multicast,omitempty"`
-	ExternalID                      string `json:"externalID,omitempty"`
-	DynamicIpv6Address              bool   `json:"dynamicIpv6Address"`
+	ID                              string        `json:"ID,omitempty"`
+	ParentID                        string        `json:"parentID,omitempty"`
+	ParentType                      string        `json:"parentType,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
+	DHCPManaged                     bool          `json:"DHCPManaged"`
+	DPI                             string        `json:"DPI,omitempty"`
+	IPType                          string        `json:"IPType,omitempty"`
+	IPv6Address                     string        `json:"IPv6Address,omitempty"`
+	IPv6Gateway                     string        `json:"IPv6Gateway,omitempty"`
+	Name                            string        `json:"name,omitempty"`
+	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	Gateway                         string        `json:"gateway,omitempty"`
+	Address                         string        `json:"address,omitempty"`
+	Description                     string        `json:"description,omitempty"`
+	Netmask                         string        `json:"netmask,omitempty"`
+	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
+	EnableDHCPv4                    bool          `json:"enableDHCPv4"`
+	EnableDHCPv6                    bool          `json:"enableDHCPv6"`
+	Encryption                      string        `json:"encryption,omitempty"`
+	EntityScope                     string        `json:"entityScope,omitempty"`
+	EntityState                     string        `json:"entityState,omitempty"`
+	PolicyChangeStatus              string        `json:"policyChangeStatus,omitempty"`
+	UseGlobalMAC                    string        `json:"useGlobalMAC,omitempty"`
+	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
+	DualStackDynamicIPAllocation    bool          `json:"dualStackDynamicIPAllocation"`
+	Multicast                       string        `json:"multicast,omitempty"`
+	ExternalID                      string        `json:"externalID,omitempty"`
 }
 
 // NewL2DomainTemplate returns a new *L2DomainTemplate
 func NewL2DomainTemplate() *L2DomainTemplate {
 
 	return &L2DomainTemplate{
-		DPI:                "DISABLED",
-		UseGlobalMAC:       "DISABLED",
-		DynamicIpv6Address: false,
+		DPI:                          "DISABLED",
+		EnableDHCPv4:                 true,
+		EnableDHCPv6:                 false,
+		UseGlobalMAC:                 "DISABLED",
+		DualStackDynamicIPAllocation: true,
 	}
 }
 

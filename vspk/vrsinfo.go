@@ -29,32 +29,32 @@ package vspk
 
 import "github.com/nuagenetworks/go-bambou/bambou"
 
-// vrsInfoIdentity represents the Identity of the object
-var vrsInfoIdentity = bambou.Identity{
+// VrsInfoIdentity represents the Identity of the object
+var VrsInfoIdentity = bambou.Identity{
 	Name:     "vrsinfo",
 	Category: "vrsinfos",
 }
 
-// vrsInfosList represents a list of vrsInfos
-type vrsInfosList []*vrsInfo
+// VrsInfosList represents a list of VrsInfos
+type VrsInfosList []*VrsInfo
 
-// vrsInfosAncestor is the interface that an ancestor of a vrsInfo must implement.
-// An Ancestor is defined as an entity that has vrsInfo as a descendant.
-// An Ancestor can get a list of its child vrsInfos, but not necessarily create one.
-type vrsInfosAncestor interface {
-	vrsInfos(*bambou.FetchingInfo) (vrsInfosList, *bambou.Error)
+// VrsInfosAncestor is the interface that an ancestor of a VrsInfo must implement.
+// An Ancestor is defined as an entity that has VrsInfo as a descendant.
+// An Ancestor can get a list of its child VrsInfos, but not necessarily create one.
+type VrsInfosAncestor interface {
+	VrsInfos(*bambou.FetchingInfo) (VrsInfosList, *bambou.Error)
 }
 
-// vrsInfosParent is the interface that a parent of a vrsInfo must implement.
-// A Parent is defined as an entity that has vrsInfo as a child.
-// A Parent is an Ancestor which can create a vrsInfo.
-type vrsInfosParent interface {
-	vrsInfosAncestor
-	CreatevrsInfo(*vrsInfo) *bambou.Error
+// VrsInfosParent is the interface that a parent of a VrsInfo must implement.
+// A Parent is defined as an entity that has VrsInfo as a child.
+// A Parent is an Ancestor which can create a VrsInfo.
+type VrsInfosParent interface {
+	VrsInfosAncestor
+	CreateVrsInfo(*VrsInfo) *bambou.Error
 }
 
-// vrsInfo represents the model of a vrsinfo
-type vrsInfo struct {
+// VrsInfo represents the model of a vrsinfo
+type VrsInfo struct {
 	ID               string        `json:"ID,omitempty"`
 	ParentID         string        `json:"parentID,omitempty"`
 	ParentType       string        `json:"parentType,omitempty"`
@@ -67,72 +67,72 @@ type vrsInfo struct {
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 
-// NewvrsInfo returns a new *vrsInfo
-func NewvrsInfo() *vrsInfo {
+// NewVrsInfo returns a new *VrsInfo
+func NewVrsInfo() *VrsInfo {
 
-	return &vrsInfo{}
+	return &VrsInfo{}
 }
 
 // Identity returns the Identity of the object.
-func (o *vrsInfo) Identity() bambou.Identity {
+func (o *VrsInfo) Identity() bambou.Identity {
 
-	return vrsInfoIdentity
+	return VrsInfoIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
-func (o *vrsInfo) Identifier() string {
+func (o *VrsInfo) Identifier() string {
 
 	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
-func (o *vrsInfo) SetIdentifier(ID string) {
+func (o *VrsInfo) SetIdentifier(ID string) {
 
 	o.ID = ID
 }
 
-// Fetch retrieves the vrsInfo from the server
-func (o *vrsInfo) Fetch() *bambou.Error {
+// Fetch retrieves the VrsInfo from the server
+func (o *VrsInfo) Fetch() *bambou.Error {
 
 	return bambou.CurrentSession().FetchEntity(o)
 }
 
-// Save saves the vrsInfo into the server
-func (o *vrsInfo) Save() *bambou.Error {
+// Save saves the VrsInfo into the server
+func (o *VrsInfo) Save() *bambou.Error {
 
 	return bambou.CurrentSession().SaveEntity(o)
 }
 
-// Delete deletes the vrsInfo from the server
-func (o *vrsInfo) Delete() *bambou.Error {
+// Delete deletes the VrsInfo from the server
+func (o *VrsInfo) Delete() *bambou.Error {
 
 	return bambou.CurrentSession().DeleteEntity(o)
 }
 
-// Metadatas retrieves the list of child Metadatas of the vrsInfo
-func (o *vrsInfo) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
+// Metadatas retrieves the list of child Metadatas of the VrsInfo
+func (o *VrsInfo) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
 	var list MetadatasList
 	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
 	return list, err
 }
 
-// CreateMetadata creates a new child Metadata under the vrsInfo
-func (o *vrsInfo) CreateMetadata(child *Metadata) *bambou.Error {
+// CreateMetadata creates a new child Metadata under the VrsInfo
+func (o *VrsInfo) CreateMetadata(child *Metadata) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
-// GlobalMetadatas retrieves the list of child GlobalMetadatas of the vrsInfo
-func (o *vrsInfo) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
+// GlobalMetadatas retrieves the list of child GlobalMetadatas of the VrsInfo
+func (o *VrsInfo) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
 	var list GlobalMetadatasList
 	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
 	return list, err
 }
 
-// CreateGlobalMetadata creates a new child GlobalMetadata under the vrsInfo
-func (o *vrsInfo) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
+// CreateGlobalMetadata creates a new child GlobalMetadata under the VrsInfo
+func (o *VrsInfo) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

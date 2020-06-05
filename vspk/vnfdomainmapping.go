@@ -62,10 +62,16 @@ type VNFDomainMapping struct {
 	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
 	SegmentationID          int           `json:"segmentationID,omitempty"`
 	SegmentationType        string        `json:"segmentationType,omitempty"`
+	ServiceId               string        `json:"serviceId,omitempty"`
 	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
+	EnterpriseName          string        `json:"enterpriseName,omitempty"`
 	EntityScope             string        `json:"entityScope,omitempty"`
+	AssociatedDomainID      string        `json:"associatedDomainID,omitempty"`
+	AssociatedDomainName    string        `json:"associatedDomainName,omitempty"`
+	AssociatedEnterpriseID  string        `json:"associatedEnterpriseID,omitempty"`
 	AssociatedNSGatewayID   string        `json:"associatedNSGatewayID,omitempty"`
 	AssociatedNSGatewayName string        `json:"associatedNSGatewayName,omitempty"`
+	AutoCreated             bool          `json:"autoCreated"`
 	ExternalID              string        `json:"externalID,omitempty"`
 }
 
@@ -74,6 +80,7 @@ func NewVNFDomainMapping() *VNFDomainMapping {
 
 	return &VNFDomainMapping{
 		SegmentationType: "VLAN",
+		AutoCreated:      false,
 	}
 }
 

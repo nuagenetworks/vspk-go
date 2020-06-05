@@ -93,6 +93,7 @@ type SystemConfig struct {
 	APIKeyRenewalInterval                             int           `json:"APIKeyRenewalInterval,omitempty"`
 	APIKeyValidity                                    int           `json:"APIKeyValidity,omitempty"`
 	VPortInitStatefulTimer                            int           `json:"VPortInitStatefulTimer,omitempty"`
+	IPv6ExtendedPrefixesEnabled                       bool          `json:"IPv6ExtendedPrefixesEnabled"`
 	LRUCacheSizePerSubnet                             int           `json:"LRUCacheSizePerSubnet,omitempty"`
 	VSCOnSameVersionAsVSD                             bool          `json:"VSCOnSameVersionAsVSD"`
 	VSDAARApplicationVersion                          string        `json:"VSDAARApplicationVersion,omitempty"`
@@ -119,17 +120,25 @@ type SystemConfig struct {
 	GatewayRebalancingInterval                        int           `json:"gatewayRebalancingInterval,omitempty"`
 	MaxFailedLogins                                   int           `json:"maxFailedLogins,omitempty"`
 	MaxResponse                                       int           `json:"maxResponse,omitempty"`
+	RbacEnabled                                       bool          `json:"rbacEnabled"`
 	AccumulateLicensesEnabled                         bool          `json:"accumulateLicensesEnabled"`
 	VcinLoadBalancerIP                                string        `json:"vcinLoadBalancerIP,omitempty"`
 	SecondaryASNumber                                 int           `json:"secondaryASNumber,omitempty"`
 	SecondaryRTLowerLimit                             int           `json:"secondaryRTLowerLimit,omitempty"`
 	SecondaryRTUpperLimit                             int           `json:"secondaryRTUpperLimit,omitempty"`
+	DeniedFlowCollectionEnabled                       bool          `json:"deniedFlowCollectionEnabled"`
 	PerDomainVlanIdEnabled                            bool          `json:"perDomainVlanIdEnabled"`
 	ServiceIDUpperLimit                               int           `json:"serviceIDUpperLimit,omitempty"`
 	KeyServerMonitorEnabled                           bool          `json:"keyServerMonitorEnabled"`
 	KeyServerVSDDataSynchronizationInterval           int           `json:"keyServerVSDDataSynchronizationInterval,omitempty"`
 	OffsetCustomerID                                  int           `json:"offsetCustomerID,omitempty"`
 	OffsetServiceID                                   int           `json:"offsetServiceID,omitempty"`
+	ThreatIntelligenceEnabled                         bool          `json:"threatIntelligenceEnabled"`
+	ThreatPreventionServer                            string        `json:"threatPreventionServer,omitempty"`
+	ThreatPreventionServerPassword                    string        `json:"threatPreventionServerPassword,omitempty"`
+	ThreatPreventionServerProxyPort                   int           `json:"threatPreventionServerProxyPort,omitempty"`
+	ThreatPreventionServerUsername                    string        `json:"threatPreventionServerUsername,omitempty"`
+	ThreatPreventionSyslogProxyPort                   int           `json:"threatPreventionSyslogProxyPort,omitempty"`
 	VirtualFirewallRulesEnabled                       bool          `json:"virtualFirewallRulesEnabled"`
 	EjbcaNSGCertificateProfile                        string        `json:"ejbcaNSGCertificateProfile,omitempty"`
 	EjbcaNSGEndEntityProfile                          string        `json:"ejbcaNSGEndEntityProfile,omitempty"`
@@ -204,6 +213,7 @@ type SystemConfig struct {
 	TwoFactorCodeExpiry                               int           `json:"twoFactorCodeExpiry,omitempty"`
 	TwoFactorCodeLength                               int           `json:"twoFactorCodeLength,omitempty"`
 	TwoFactorCodeSeedLength                           int           `json:"twoFactorCodeSeedLength,omitempty"`
+	ExplicitACLMatchingEnabled                        bool          `json:"explicitACLMatchingEnabled"`
 	ExternalID                                        string        `json:"externalID,omitempty"`
 	DynamicWANServiceDiffTime                         int           `json:"dynamicWANServiceDiffTime,omitempty"`
 	SyslogDestinationHost                             string        `json:"syslogDestinationHost,omitempty"`
@@ -253,6 +263,7 @@ func NewSystemConfig() *SystemConfig {
 		APIKeyRenewalInterval:                       300,
 		APIKeyValidity:                              86400,
 		VPortInitStatefulTimer:                      300,
+		IPv6ExtendedPrefixesEnabled:                 false,
 		LRUCacheSizePerSubnet:                       32,
 		VSDReadOnlyMode:                             false,
 		NSGUplinkHoldDownTimer:                      5,
@@ -273,14 +284,19 @@ func NewSystemConfig() *SystemConfig {
 		GatewayRebalancingInterval:                  600,
 		MaxFailedLogins:                             0,
 		MaxResponse:                                 500,
+		RbacEnabled:                                 false,
 		AccumulateLicensesEnabled:                   false,
 		SecondaryASNumber:                           65533,
 		SecondaryRTLowerLimit:                       0,
 		SecondaryRTUpperLimit:                       65533,
+		DeniedFlowCollectionEnabled:                 false,
 		PerDomainVlanIdEnabled:                      false,
 		ServiceIDUpperLimit:                         2147483648,
 		OffsetCustomerID:                            10000,
 		OffsetServiceID:                             20001,
+		ThreatIntelligenceEnabled:                   false,
+		ThreatPreventionServerProxyPort:             13022,
+		ThreatPreventionSyslogProxyPort:             13514,
 		VirtualFirewallRulesEnabled:                 false,
 		EjbcaNSGCertificateProfile:                  "VSPClient",
 		EjbcaNSGEndEntityProfile:                    "NSG",
@@ -339,6 +355,7 @@ func NewSystemConfig() *SystemConfig {
 		TwoFactorCodeExpiry:                         300,
 		TwoFactorCodeLength:                         6,
 		TwoFactorCodeSeedLength:                     96,
+		ExplicitACLMatchingEnabled:                  false,
 		DynamicWANServiceDiffTime:                   1,
 		SyslogDestinationHost:                       "http://localhost",
 		SysmonCleanupTaskInterval:                   20,

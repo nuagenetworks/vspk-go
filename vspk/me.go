@@ -836,6 +836,20 @@ func (o *Me) CreateJob(child *Job) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// Roles retrieves the list of child Roles of the Me
+func (o *Me) Roles(info *bambou.FetchingInfo) (RolesList, *bambou.Error) {
+
+	var list RolesList
+	err := bambou.CurrentSession().FetchChildren(o, RoleIdentity, &list, info)
+	return list, err
+}
+
+// CreateRole creates a new child Role under the Me
+func (o *Me) CreateRole(child *Role) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // PolicyGroups retrieves the list of child PolicyGroups of the Me
 func (o *Me) PolicyGroups(info *bambou.FetchingInfo) (PolicyGroupsList, *bambou.Error) {
 
@@ -989,10 +1003,10 @@ func (o *Me) VCenterVRSConfigs(info *bambou.FetchingInfo) (VCenterVRSConfigsList
 }
 
 // vrsInfos retrieves the list of child vrsInfos of the Me
-func (o *Me) VrsInfos(info *bambou.FetchingInfo) (VrsInfosList, *bambou.Error) {
+func (o *Me) vrsInfos(info *bambou.FetchingInfo) (vrsInfosList, *bambou.Error) {
 
-	var list VrsInfosList
-	err := bambou.CurrentSession().FetchChildren(o, VrsInfoIdentity, &list, info)
+	var list vrsInfosList
+	err := bambou.CurrentSession().FetchChildren(o, vrsInfoIdentity, &list, info)
 	return list, err
 }
 
@@ -1008,6 +1022,14 @@ func (o *Me) DSCPRemarkingPolicyTables(info *bambou.FetchingInfo) (DSCPRemarking
 func (o *Me) CreateDSCPRemarkingPolicyTable(child *DSCPRemarkingPolicyTable) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// VSDConfigs retrieves the list of child VSDConfigs of the Me
+func (o *Me) VSDConfigs(info *bambou.FetchingInfo) (VSDConfigsList, *bambou.Error) {
+
+	var list VSDConfigsList
+	err := bambou.CurrentSession().FetchChildren(o, VSDConfigIdentity, &list, info)
+	return list, err
 }
 
 // Users retrieves the list of child Users of the Me
@@ -1146,6 +1168,20 @@ func (o *Me) StatsCollectorInfos(info *bambou.FetchingInfo) (StatsCollectorInfos
 	var list StatsCollectorInfosList
 	err := bambou.CurrentSession().FetchChildren(o, StatsCollectorInfoIdentity, &list, info)
 	return list, err
+}
+
+// EthernetSegmentGWGroups retrieves the list of child EthernetSegmentGWGroups of the Me
+func (o *Me) EthernetSegmentGWGroups(info *bambou.FetchingInfo) (EthernetSegmentGWGroupsList, *bambou.Error) {
+
+	var list EthernetSegmentGWGroupsList
+	err := bambou.CurrentSession().FetchChildren(o, EthernetSegmentGWGroupIdentity, &list, info)
+	return list, err
+}
+
+// CreateEthernetSegmentGWGroup creates a new child EthernetSegmentGWGroup under the Me
+func (o *Me) CreateEthernetSegmentGWGroup(child *EthernetSegmentGWGroup) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
 }
 
 // Subnets retrieves the list of child Subnets of the Me

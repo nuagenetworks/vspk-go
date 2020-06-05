@@ -72,13 +72,16 @@ type FirewallRule struct {
 	WebFilterType                string        `json:"webFilterType,omitempty"`
 	Description                  string        `json:"description,omitempty"`
 	DestinationPort              string        `json:"destinationPort,omitempty"`
+	NetworkEntityType            string        `json:"networkEntityType,omitempty"`
 	NetworkID                    string        `json:"networkID,omitempty"`
 	NetworkType                  string        `json:"networkType,omitempty"`
+	MirrorDestinationGroupID     string        `json:"mirrorDestinationGroupID,omitempty"`
 	MirrorDestinationID          string        `json:"mirrorDestinationID,omitempty"`
 	FlowLoggingEnabled           bool          `json:"flowLoggingEnabled"`
 	EmbeddedMetadata             []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseName               string        `json:"enterpriseName,omitempty"`
 	EntityScope                  string        `json:"entityScope,omitempty"`
+	LocationEntityType           string        `json:"locationEntityType,omitempty"`
 	LocationID                   string        `json:"locationID,omitempty"`
 	LocationType                 string        `json:"locationType,omitempty"`
 	DomainName                   string        `json:"domainName,omitempty"`

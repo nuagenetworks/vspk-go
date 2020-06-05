@@ -102,6 +102,7 @@ type VPort struct {
 	SubnetVNID                          int           `json:"subnetVNID,omitempty"`
 	MultiNICVPortID                     string        `json:"multiNICVPortID,omitempty"`
 	Multicast                           string        `json:"multicast,omitempty"`
+	AutoCreated                         bool          `json:"autoCreated"`
 	GwEligible                          bool          `json:"gwEligible"`
 	ExternalID                          string        `json:"externalID,omitempty"`
 	Type                                string        `json:"type,omitempty"`
@@ -119,6 +120,7 @@ func NewVPort() *VPort {
 		OperationalState:         "INIT",
 		SubType:                  "NONE",
 		Multicast:                "INHERITED",
+		AutoCreated:              false,
 		GwEligible:               false,
 		Type:                     "VM",
 	}

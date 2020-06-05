@@ -72,6 +72,7 @@ type EgressACLEntryTemplate struct {
 	WebFilterType                      string        `json:"webFilterType,omitempty"`
 	Description                        string        `json:"description,omitempty"`
 	DestinationPort                    string        `json:"destinationPort,omitempty"`
+	NetworkEntityType                  string        `json:"networkEntityType,omitempty"`
 	NetworkID                          string        `json:"networkID,omitempty"`
 	NetworkType                        string        `json:"networkType,omitempty"`
 	MirrorDestinationGroupID           string        `json:"mirrorDestinationGroupID,omitempty"`
@@ -80,6 +81,7 @@ type EgressACLEntryTemplate struct {
 	EmbeddedMetadata                   []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseName                     string        `json:"enterpriseName,omitempty"`
 	EntityScope                        string        `json:"entityScope,omitempty"`
+	LocationEntityType                 string        `json:"locationEntityType,omitempty"`
 	LocationID                         string        `json:"locationID,omitempty"`
 	LocationType                       string        `json:"locationType,omitempty"`
 	PolicyState                        string        `json:"policyState,omitempty"`

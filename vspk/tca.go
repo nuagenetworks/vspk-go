@@ -61,6 +61,7 @@ type TCA struct {
 	Owner               string        `json:"owner,omitempty"`
 	URLEndPoint         string        `json:"URLEndPoint,omitempty"`
 	Name                string        `json:"name,omitempty"`
+	TargetEntityID      string        `json:"targetEntityID,omitempty"`
 	TargetPolicyGroupID string        `json:"targetPolicyGroupID,omitempty"`
 	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
 	Action              string        `json:"action,omitempty"`
@@ -74,6 +75,7 @@ type TCA struct {
 	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope         string        `json:"entityScope,omitempty"`
 	Count               int           `json:"count,omitempty"`
+	TriggerInterval     int           `json:"triggerInterval,omitempty"`
 	Status              bool          `json:"status"`
 	ExternalID          string        `json:"externalID,omitempty"`
 	Type                string        `json:"type,omitempty"`
@@ -83,12 +85,11 @@ type TCA struct {
 func NewTCA() *TCA {
 
 	return &TCA{
-		Metric:       "BYTES_IN",
-		ThrottleTime: 10,
-		Disable:      false,
-		Count:        0,
-		Status:       false,
-		Type:         "ROLLING_AVERAGE",
+		Period:          90,
+		Metric:          "BYTES_IN",
+		ThrottleTime:    10,
+		TriggerInterval: 30,
+		Type:            "ROLLING_AVERAGE",
 	}
 }
 

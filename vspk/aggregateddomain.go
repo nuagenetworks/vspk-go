@@ -613,6 +613,25 @@ func (o *AggregatedDomain) CreateRoutingPolicy(child *RoutingPolicy) *bambou.Err
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// RoutingPolicyBindings retrieves the list of child RoutingPolicyBindings of the AggregatedDomain
+func (o *AggregatedDomain) RoutingPolicyBindings(info *bambou.FetchingInfo) (RoutingPolicyBindingsList, *bambou.Error) {
+
+	var list RoutingPolicyBindingsList
+	err := bambou.CurrentSession().FetchChildren(o, RoutingPolicyBindingIdentity, &list, info)
+	return list, err
+}
+
+// AssignRoutingPolicyBindings assigns the list of RoutingPolicyBindings to the AggregatedDomain
+func (o *AggregatedDomain) AssignRoutingPolicyBindings(children RoutingPolicyBindingsList) *bambou.Error {
+
+	list := []bambou.Identifiable{}
+	for _, c := range children {
+		list = append(list, c)
+	}
+
+	return bambou.CurrentSession().AssignChildren(o, list, RoutingPolicyBindingIdentity)
+}
+
 // SPATSourcesPools retrieves the list of child SPATSourcesPools of the AggregatedDomain
 func (o *AggregatedDomain) SPATSourcesPools(info *bambou.FetchingInfo) (SPATSourcesPoolsList, *bambou.Error) {
 

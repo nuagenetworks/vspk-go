@@ -110,6 +110,25 @@ func (o *PolicyObjectGroup) Delete() *bambou.Error {
 	return bambou.CurrentSession().DeleteEntity(o)
 }
 
+// Gateways retrieves the list of child Gateways of the PolicyObjectGroup
+func (o *PolicyObjectGroup) Gateways(info *bambou.FetchingInfo) (GatewaysList, *bambou.Error) {
+
+	var list GatewaysList
+	err := bambou.CurrentSession().FetchChildren(o, GatewayIdentity, &list, info)
+	return list, err
+}
+
+// AssignGateways assigns the list of Gateways to the PolicyObjectGroup
+func (o *PolicyObjectGroup) AssignGateways(children GatewaysList) *bambou.Error {
+
+	list := []bambou.Identifiable{}
+	for _, c := range children {
+		list = append(list, c)
+	}
+
+	return bambou.CurrentSession().AssignChildren(o, list, GatewayIdentity)
+}
+
 // Metadatas retrieves the list of child Metadatas of the PolicyObjectGroup
 func (o *PolicyObjectGroup) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

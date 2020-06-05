@@ -76,6 +76,7 @@ type L2Domain struct {
 	ServiceID                         int           `json:"serviceID,omitempty"`
 	Description                       string        `json:"description,omitempty"`
 	Netmask                           string        `json:"netmask,omitempty"`
+	ThreatIntelligenceEnabled         string        `json:"threatIntelligenceEnabled,omitempty"`
 	FlowCollectionEnabled             string        `json:"flowCollectionEnabled,omitempty"`
 	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
 	VnId                              int           `json:"vnId,omitempty"`
@@ -110,6 +111,7 @@ func NewL2Domain() *L2Domain {
 		DPI:                       "DISABLED",
 		VXLANECMPEnabled:          false,
 		MaintenanceMode:           "DISABLED",
+		ThreatIntelligenceEnabled: "INHERITED",
 		FlowCollectionEnabled:     "INHERITED",
 		IngressReplicationEnabled: false,
 		Color:                     0,
@@ -412,6 +414,20 @@ func (o *L2Domain) VMInterfaces(info *bambou.FetchingInfo) (VMInterfacesList, *b
 	var list VMInterfacesList
 	err := bambou.CurrentSession().FetchChildren(o, VMInterfaceIdentity, &list, info)
 	return list, err
+}
+
+// VMIPReservations retrieves the list of child VMIPReservations of the L2Domain
+func (o *L2Domain) VMIPReservations(info *bambou.FetchingInfo) (VMIPReservationsList, *bambou.Error) {
+
+	var list VMIPReservationsList
+	err := bambou.CurrentSession().FetchChildren(o, VMIPReservationIdentity, &list, info)
+	return list, err
+}
+
+// CreateVMIPReservation creates a new child VMIPReservation under the L2Domain
+func (o *L2Domain) CreateVMIPReservation(child *VMIPReservation) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
 }
 
 // IngressACLEntryTemplates retrieves the list of child IngressACLEntryTemplates of the L2Domain

@@ -71,6 +71,7 @@ type RedirectionTarget struct {
 	EndPointType      string        `json:"endPointType,omitempty"`
 	EntityScope       string        `json:"entityScope,omitempty"`
 	TriggerType       string        `json:"triggerType,omitempty"`
+	AutoCreated       bool          `json:"autoCreated"`
 	ExternalID        string        `json:"externalID,omitempty"`
 }
 
@@ -79,6 +80,7 @@ func NewRedirectionTarget() *RedirectionTarget {
 
 	return &RedirectionTarget{
 		EndPointType: "L3",
+		AutoCreated:  false,
 	}
 }
 

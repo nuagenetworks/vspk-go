@@ -55,24 +55,31 @@ type TestRunsParent interface {
 
 // TestRun represents the model of a testrun
 type TestRun struct {
-	ID                       string        `json:"ID,omitempty"`
-	ParentID                 string        `json:"parentID,omitempty"`
-	ParentType               string        `json:"parentType,omitempty"`
-	Owner                    string        `json:"owner,omitempty"`
-	LastUpdatedBy            string        `json:"lastUpdatedBy,omitempty"`
-	EmbeddedMetadata         []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope              string        `json:"entityScope,omitempty"`
-	Command                  string        `json:"command,omitempty"`
-	CommandExitCode          int           `json:"commandExitCode,omitempty"`
-	CommandOutput            string        `json:"commandOutput,omitempty"`
-	CommandOutputSummary     string        `json:"commandOutputSummary,omitempty"`
-	OperationStatus          string        `json:"operationStatus,omitempty"`
-	AssociatedTestID         string        `json:"associatedTestID,omitempty"`
-	AssociatedTestSuiteRunID string        `json:"associatedTestSuiteRunID,omitempty"`
-	StartDateTime            int           `json:"startDateTime,omitempty"`
-	StopDateTime             int           `json:"stopDateTime,omitempty"`
-	Duration                 int           `json:"duration,omitempty"`
-	ExternalID               string        `json:"externalID,omitempty"`
+	ID                                string        `json:"ID,omitempty"`
+	ParentID                          string        `json:"parentID,omitempty"`
+	ParentType                        string        `json:"parentType,omitempty"`
+	Owner                             string        `json:"owner,omitempty"`
+	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	TestResult                        string        `json:"testResult,omitempty"`
+	TestResultData                    interface{}   `json:"testResultData,omitempty"`
+	TestResultDataType                string        `json:"testResultDataType,omitempty"`
+	TestResultSpecificationEntityName string        `json:"testResultSpecificationEntityName,omitempty"`
+	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
+	UnderlayTestCategory              string        `json:"underlayTestCategory,omitempty"`
+	UnderlayTestDescription           string        `json:"underlayTestDescription,omitempty"`
+	UnderlayTestName                  string        `json:"underlayTestName,omitempty"`
+	EntityScope                       string        `json:"entityScope,omitempty"`
+	Command                           string        `json:"command,omitempty"`
+	CommandExitCode                   int           `json:"commandExitCode,omitempty"`
+	CommandOutput                     string        `json:"commandOutput,omitempty"`
+	CommandOutputSummary              string        `json:"commandOutputSummary,omitempty"`
+	OperationStatus                   string        `json:"operationStatus,omitempty"`
+	AssociatedTestID                  string        `json:"associatedTestID,omitempty"`
+	AssociatedTestSuiteRunID          string        `json:"associatedTestSuiteRunID,omitempty"`
+	StartDateTime                     int           `json:"startDateTime,omitempty"`
+	StopDateTime                      int           `json:"stopDateTime,omitempty"`
+	Duration                          int           `json:"duration,omitempty"`
+	ExternalID                        string        `json:"externalID,omitempty"`
 }
 
 // NewTestRun returns a new *TestRun

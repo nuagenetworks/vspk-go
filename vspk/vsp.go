@@ -139,6 +139,14 @@ func (o *VSP) CreateNetconfManager(child *NetconfManager) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// ThreatPreventionServerConnections retrieves the list of child ThreatPreventionServerConnections of the VSP
+func (o *VSP) ThreatPreventionServerConnections(info *bambou.FetchingInfo) (ThreatPreventionServerConnectionsList, *bambou.Error) {
+
+	var list ThreatPreventionServerConnectionsList
+	err := bambou.CurrentSession().FetchChildren(o, ThreatPreventionServerConnectionIdentity, &list, info)
+	return list, err
+}
+
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the VSP
 func (o *VSP) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 

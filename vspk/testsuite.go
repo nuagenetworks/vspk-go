@@ -63,6 +63,7 @@ type TestSuite struct {
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
 	Description      string        `json:"description,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	UnderlayTest     bool          `json:"underlayTest"`
 	EnterpriseID     string        `json:"enterpriseID,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
@@ -71,7 +72,9 @@ type TestSuite struct {
 // NewTestSuite returns a new *TestSuite
 func NewTestSuite() *TestSuite {
 
-	return &TestSuite{}
+	return &TestSuite{
+		UnderlayTest: false,
+	}
 }
 
 // Identity returns the Identity of the object.

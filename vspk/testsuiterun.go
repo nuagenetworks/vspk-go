@@ -55,31 +55,35 @@ type TestSuiteRunsParent interface {
 
 // TestSuiteRun represents the model of a testsuiterun
 type TestSuiteRun struct {
-	ID                      string        `json:"ID,omitempty"`
-	ParentID                string        `json:"parentID,omitempty"`
-	ParentType              string        `json:"parentType,omitempty"`
-	Owner                   string        `json:"owner,omitempty"`
-	VPortName               string        `json:"VPortName,omitempty"`
-	NSGatewayName           string        `json:"NSGatewayName,omitempty"`
-	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
-	DatapathID              string        `json:"datapathID,omitempty"`
-	Destination             string        `json:"destination,omitempty"`
-	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope             string        `json:"entityScope,omitempty"`
-	DomainName              string        `json:"domainName,omitempty"`
-	ZoneName                string        `json:"zoneName,omitempty"`
-	OperationStatus         string        `json:"operationStatus,omitempty"`
-	AssociatedEntityType    string        `json:"associatedEntityType,omitempty"`
-	AssociatedTestSuiteID   string        `json:"associatedTestSuiteID,omitempty"`
-	AssociatedTestSuiteName string        `json:"associatedTestSuiteName,omitempty"`
-	SubnetName              string        `json:"subnetName,omitempty"`
-	ExternalID              string        `json:"externalID,omitempty"`
+	ID                       string        `json:"ID,omitempty"`
+	ParentID                 string        `json:"parentID,omitempty"`
+	ParentType               string        `json:"parentType,omitempty"`
+	Owner                    string        `json:"owner,omitempty"`
+	VPortName                string        `json:"VPortName,omitempty"`
+	NSGatewayName            string        `json:"NSGatewayName,omitempty"`
+	LastUpdatedBy            string        `json:"lastUpdatedBy,omitempty"`
+	DatapathID               string        `json:"datapathID,omitempty"`
+	Destination              string        `json:"destination,omitempty"`
+	BirthCertificate         bool          `json:"birthCertificate"`
+	EmbeddedMetadata         []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope              string        `json:"entityScope,omitempty"`
+	DomainName               string        `json:"domainName,omitempty"`
+	ZoneName                 string        `json:"zoneName,omitempty"`
+	OperationStatus          string        `json:"operationStatus,omitempty"`
+	AssociatedEntityType     string        `json:"associatedEntityType,omitempty"`
+	AssociatedTestSuiteID    string        `json:"associatedTestSuiteID,omitempty"`
+	AssociatedTestSuiteName  string        `json:"associatedTestSuiteName,omitempty"`
+	AssociatedUnderlayTestID string        `json:"associatedUnderlayTestID,omitempty"`
+	SubnetName               string        `json:"subnetName,omitempty"`
+	ExternalID               string        `json:"externalID,omitempty"`
 }
 
 // NewTestSuiteRun returns a new *TestSuiteRun
 func NewTestSuiteRun() *TestSuiteRun {
 
-	return &TestSuiteRun{}
+	return &TestSuiteRun{
+		BirthCertificate: false,
+	}
 }
 
 // Identity returns the Identity of the object.

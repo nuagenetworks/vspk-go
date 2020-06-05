@@ -68,6 +68,7 @@ type EnterpriseProfile struct {
 	ReceiveMultiCastListID                 string        `json:"receiveMultiCastListID,omitempty"`
 	SendMultiCastListID                    string        `json:"sendMultiCastListID,omitempty"`
 	Description                            string        `json:"description,omitempty"`
+	ThreatPreventionManagementEnabled      bool          `json:"threatPreventionManagementEnabled"`
 	AllowAdvancedQOSConfiguration          bool          `json:"allowAdvancedQOSConfiguration"`
 	AllowGatewayManagement                 bool          `json:"allowGatewayManagement"`
 	AllowTrustedForwardingClass            bool          `json:"allowTrustedForwardingClass"`
@@ -88,6 +89,7 @@ func NewEnterpriseProfile() *EnterpriseProfile {
 		DHCPLeaseInterval:                      24,
 		VNFManagementEnabled:                   false,
 		WebFilterEnabled:                       false,
+		ThreatPreventionManagementEnabled:      false,
 		FloatingIPsQuota:                       100,
 		EnableApplicationPerformanceManagement: false,
 	}

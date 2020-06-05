@@ -60,6 +60,7 @@ type NSGInfo struct {
 	ParentType                string      `json:"parentType,omitempty"`
 	Owner                     string      `json:"owner,omitempty"`
 	MACAddress                string      `json:"MACAddress,omitempty"`
+	CACertificate             interface{} `json:"CACertificate,omitempty"`
 	AARApplicationReleaseDate string      `json:"AARApplicationReleaseDate,omitempty"`
 	AARApplicationVersion     string      `json:"AARApplicationVersion,omitempty"`
 	BIOSReleaseDate           string      `json:"BIOSReleaseDate,omitempty"`
@@ -67,6 +68,7 @@ type NSGInfo struct {
 	SKU                       string      `json:"SKU,omitempty"`
 	TPMStatus                 int         `json:"TPMStatus,omitempty"`
 	TPMVersion                string      `json:"TPMVersion,omitempty"`
+	CPUCoreAllocation         string      `json:"CPUCoreAllocation,omitempty"`
 	CPUType                   string      `json:"CPUType,omitempty"`
 	NSGVersion                string      `json:"NSGVersion,omitempty"`
 	UUID                      string      `json:"UUID,omitempty"`
@@ -75,6 +77,7 @@ type NSGInfo struct {
 	PatchesDetail             string      `json:"patchesDetail,omitempty"`
 	SerialNumber              string      `json:"serialNumber,omitempty"`
 	Personality               string      `json:"personality,omitempty"`
+	Certificate               interface{} `json:"certificate,omitempty"`
 	Libraries                 string      `json:"libraries,omitempty"`
 	CmdDetailedStatus         string      `json:"cmdDetailedStatus,omitempty"`
 	CmdDetailedStatusCode     int         `json:"cmdDetailedStatusCode,omitempty"`
@@ -90,6 +93,7 @@ type NSGInfo struct {
 	ProductName               string      `json:"productName,omitempty"`
 	AssociatedEntityType      string      `json:"associatedEntityType,omitempty"`
 	AssociatedNSGatewayID     string      `json:"associatedNSGatewayID,omitempty"`
+	HugePageSetting           string      `json:"hugePageSetting,omitempty"`
 	ExternalID                string      `json:"externalID,omitempty"`
 	SystemID                  string      `json:"systemID,omitempty"`
 }

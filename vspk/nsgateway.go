@@ -72,6 +72,7 @@ type NSGateway struct {
 	SKU                                  string        `json:"SKU,omitempty"`
 	TPMStatus                            string        `json:"TPMStatus,omitempty"`
 	TPMVersion                           string        `json:"TPMVersion,omitempty"`
+	CPUCoreAllocation                    string        `json:"CPUCoreAllocation,omitempty"`
 	CPUType                              string        `json:"CPUType,omitempty"`
 	VSDAARApplicationVersion             string        `json:"VSDAARApplicationVersion,omitempty"`
 	NSGVersion                           string        `json:"NSGVersion,omitempty"`
@@ -92,8 +93,10 @@ type NSGateway struct {
 	DerivedSSHServiceState               string        `json:"derivedSSHServiceState,omitempty"`
 	PermittedAction                      string        `json:"permittedAction,omitempty"`
 	Personality                          string        `json:"personality,omitempty"`
+	CertValidityDays                     int           `json:"certValidityDays,omitempty"`
 	Description                          string        `json:"description,omitempty"`
 	NetworkAcceleration                  string        `json:"networkAcceleration,omitempty"`
+	ThreatPreventionEnabled              bool          `json:"threatPreventionEnabled"`
 	Libraries                            string        `json:"libraries,omitempty"`
 	EmbeddedMetadata                     []interface{} `json:"embeddedMetadata,omitempty"`
 	InheritedSSHServiceState             string        `json:"inheritedSSHServiceState,omitempty"`
@@ -115,6 +118,7 @@ type NSGateway struct {
 	AssociatedNSGInfoID                  string        `json:"associatedNSGInfoID,omitempty"`
 	AssociatedNSGUpgradeProfileID        string        `json:"associatedNSGUpgradeProfileID,omitempty"`
 	AssociatedOverlayManagementProfileID string        `json:"associatedOverlayManagementProfileID,omitempty"`
+	HugePageSetting                      string        `json:"hugePageSetting,omitempty"`
 	Functions                            []interface{} `json:"functions,omitempty"`
 	TunnelShaping                        string        `json:"tunnelShaping,omitempty"`
 	AutoDiscGatewayID                    string        `json:"autoDiscGatewayID,omitempty"`
@@ -135,6 +139,7 @@ func NewNSGateway() *NSGateway {
 		LastConfigurationReloadTimestamp: -1,
 		GatewayConnected:                 false,
 		NetworkAcceleration:              "NONE",
+		ThreatPreventionEnabled:          false,
 		InheritedSSHServiceState:         "ENABLED",
 		ConfigurationReloadState:         "UNKNOWN",
 		ConfigurationStatus:              "UNKNOWN",
@@ -245,6 +250,14 @@ func (o *NSGateway) CreateMetadata(child *Metadata) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// ThreatPreventionInfos retrieves the list of child ThreatPreventionInfos of the NSGateway
+func (o *NSGateway) ThreatPreventionInfos(info *bambou.FetchingInfo) (ThreatPreventionInfosList, *bambou.Error) {
+
+	var list ThreatPreventionInfosList
+	err := bambou.CurrentSession().FetchChildren(o, ThreatPreventionInfoIdentity, &list, info)
+	return list, err
+}
+
 // WirelessPorts retrieves the list of child WirelessPorts of the NSGateway
 func (o *NSGateway) WirelessPorts(info *bambou.FetchingInfo) (WirelessPortsList, *bambou.Error) {
 
@@ -277,6 +290,20 @@ func (o *NSGateway) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasL
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the NSGateway
 func (o *NSGateway) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// UnderlayTests retrieves the list of child UnderlayTests of the NSGateway
+func (o *NSGateway) UnderlayTests(info *bambou.FetchingInfo) (UnderlayTestsList, *bambou.Error) {
+
+	var list UnderlayTestsList
+	err := bambou.CurrentSession().FetchChildren(o, UnderlayTestIdentity, &list, info)
+	return list, err
+}
+
+// CreateUnderlayTest creates a new child UnderlayTest under the NSGateway
+func (o *NSGateway) CreateUnderlayTest(child *UnderlayTest) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

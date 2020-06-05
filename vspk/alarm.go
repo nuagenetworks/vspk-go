@@ -74,6 +74,7 @@ type Alarm struct {
 	ErrorCondition     int           `json:"errorCondition,omitempty"`
 	NumberOfOccurances int           `json:"numberOfOccurances,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
+	SystemID           string        `json:"systemID,omitempty"`
 }
 
 // NewAlarm returns a new *Alarm

@@ -59,6 +59,7 @@ type Subnet struct {
 	ParentID                          string        `json:"parentID,omitempty"`
 	ParentType                        string        `json:"parentType,omitempty"`
 	Owner                             string        `json:"owner,omitempty"`
+	L2EncapType                       string        `json:"l2EncapType,omitempty"`
 	PATEnabled                        string        `json:"PATEnabled,omitempty"`
 	DHCPRelayStatus                   string        `json:"DHCPRelayStatus,omitempty"`
 	DPI                               string        `json:"DPI,omitempty"`
@@ -114,6 +115,7 @@ type Subnet struct {
 func NewSubnet() *Subnet {
 
 	return &Subnet{
+		L2EncapType:                  "VXLAN",
 		PATEnabled:                   "INHERITED",
 		DPI:                          "INHERITED",
 		IPType:                       "IPV4",
@@ -356,6 +358,20 @@ func (o *Subnet) VMInterfaces(info *bambou.FetchingInfo) (VMInterfacesList, *bam
 	var list VMInterfacesList
 	err := bambou.CurrentSession().FetchChildren(o, VMInterfaceIdentity, &list, info)
 	return list, err
+}
+
+// VMIPReservations retrieves the list of child VMIPReservations of the Subnet
+func (o *Subnet) VMIPReservations(info *bambou.FetchingInfo) (VMIPReservationsList, *bambou.Error) {
+
+	var list VMIPReservationsList
+	err := bambou.CurrentSession().FetchChildren(o, VMIPReservationIdentity, &list, info)
+	return list, err
+}
+
+// CreateVMIPReservation creates a new child VMIPReservation under the Subnet
+func (o *Subnet) CreateVMIPReservation(child *VMIPReservation) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
 }
 
 // EnterprisePermissions retrieves the list of child EnterprisePermissions of the Subnet

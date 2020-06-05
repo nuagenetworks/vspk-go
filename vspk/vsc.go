@@ -63,7 +63,6 @@ type VSC struct {
 	ManagementIP                string        `json:"managementIP,omitempty"`
 	LastStateChange             int           `json:"lastStateChange,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
-	Address                     string        `json:"address,omitempty"`
 	Addresses                   []interface{} `json:"addresses,omitempty"`
 	PeakCPUUsage                float64       `json:"peakCPUUsage,omitempty"`
 	PeakMemoryUsage             float64       `json:"peakMemoryUsage,omitempty"`
@@ -75,6 +74,7 @@ type VSC struct {
 	UnavailableTimestamp        int           `json:"unavailableTimestamp,omitempty"`
 	EntityScope                 string        `json:"entityScope,omitempty"`
 	Location                    string        `json:"location,omitempty"`
+	CommunicationId             string        `json:"communicationId,omitempty"`
 	ProductVersion              string        `json:"productVersion,omitempty"`
 	Vsds                        []interface{} `json:"vsds,omitempty"`
 	Status                      string        `json:"status,omitempty"`

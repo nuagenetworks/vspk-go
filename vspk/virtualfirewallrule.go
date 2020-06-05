@@ -64,6 +64,7 @@ type VirtualFirewallRule struct {
 	ICMPType                           string        `json:"ICMPType,omitempty"`
 	IPv6AddressOverride                string        `json:"IPv6AddressOverride,omitempty"`
 	DSCP                               string        `json:"DSCP,omitempty"`
+	FailsafeDatapath                   string        `json:"failsafeDatapath,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
 	Action                             string        `json:"action,omitempty"`
 	AddressOverride                    string        `json:"addressOverride,omitempty"`
@@ -71,13 +72,16 @@ type VirtualFirewallRule struct {
 	WebFilterType                      string        `json:"webFilterType,omitempty"`
 	Description                        string        `json:"description,omitempty"`
 	DestinationPort                    string        `json:"destinationPort,omitempty"`
+	NetworkEntityType                  string        `json:"networkEntityType,omitempty"`
 	NetworkID                          string        `json:"networkID,omitempty"`
 	NetworkType                        string        `json:"networkType,omitempty"`
+	MirrorDestinationGroupID           string        `json:"mirrorDestinationGroupID,omitempty"`
 	MirrorDestinationID                string        `json:"mirrorDestinationID,omitempty"`
 	FlowLoggingEnabled                 bool          `json:"flowLoggingEnabled"`
 	EmbeddedMetadata                   []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseName                     string        `json:"enterpriseName,omitempty"`
 	EntityScope                        string        `json:"entityScope,omitempty"`
+	LocationEntityType                 string        `json:"locationEntityType,omitempty"`
 	LocationID                         string        `json:"locationID,omitempty"`
 	LocationType                       string        `json:"locationType,omitempty"`
 	PolicyState                        string        `json:"policyState,omitempty"`
@@ -98,6 +102,7 @@ type VirtualFirewallRule struct {
 	EtherType                          string        `json:"etherType,omitempty"`
 	OverlayMirrorDestinationID         string        `json:"overlayMirrorDestinationID,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
+	Type                               string        `json:"type,omitempty"`
 }
 
 // NewVirtualFirewallRule returns a new *VirtualFirewallRule

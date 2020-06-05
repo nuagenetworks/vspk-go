@@ -89,6 +89,7 @@ type Domain struct {
 	AggregateFlowsEnabled           bool          `json:"aggregateFlowsEnabled"`
 	AggregationFlowType             string        `json:"aggregationFlowType,omitempty"`
 	DhcpServerAddresses             []interface{} `json:"dhcpServerAddresses,omitempty"`
+	ThreatIntelligenceEnabled       string        `json:"threatIntelligenceEnabled,omitempty"`
 	GlobalRoutingEnabled            bool          `json:"globalRoutingEnabled"`
 	FlowCollectionEnabled           string        `json:"flowCollectionEnabled,omitempty"`
 	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
@@ -108,6 +109,7 @@ type Domain struct {
 	UplinkPreference                string        `json:"uplinkPreference,omitempty"`
 	CreateBackHaulSubnet            bool          `json:"createBackHaulSubnet"`
 	AssociatedBGPProfileID          string        `json:"associatedBGPProfileID,omitempty"`
+	AssociatedIDPProfileID          string        `json:"associatedIDPProfileID,omitempty"`
 	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
 	AssociatedPATMapperID           string        `json:"associatedPATMapperID,omitempty"`
 	AssociatedSharedPATMapperID     string        `json:"associatedSharedPATMapperID,omitempty"`
@@ -125,23 +127,24 @@ type Domain struct {
 func NewDomain() *Domain {
 
 	return &Domain{
-		PATEnabled:               "DISABLED",
-		DHCPBehavior:             "CONSUME",
-		FIPIgnoreDefaultRoute:    "DISABLED",
-		FIPUnderlay:              false,
-		DPI:                      "DISABLED",
-		GRTEnabled:               false,
-		EVPNRT5Type:              "IP",
-		VXLANECMPEnabled:         false,
-		MaintenanceMode:          "DISABLED",
-		AggregateFlowsEnabled:    false,
-		FlowCollectionEnabled:    "INHERITED",
-		Encryption:               "DISABLED",
-		UnderlayEnabled:          "DISABLED",
-		Color:                    0,
-		DomainAggregationEnabled: false,
-		CreateBackHaulSubnet:     true,
-		TunnelType:               "DC_DEFAULT",
+		PATEnabled:                "DISABLED",
+		DHCPBehavior:              "CONSUME",
+		FIPIgnoreDefaultRoute:     "DISABLED",
+		FIPUnderlay:               false,
+		DPI:                       "DISABLED",
+		GRTEnabled:                false,
+		EVPNRT5Type:               "IP",
+		VXLANECMPEnabled:          false,
+		MaintenanceMode:           "DISABLED",
+		AggregateFlowsEnabled:     false,
+		ThreatIntelligenceEnabled: "INHERITED",
+		FlowCollectionEnabled:     "INHERITED",
+		Encryption:                "DISABLED",
+		UnderlayEnabled:           "DISABLED",
+		Color:                     0,
+		DomainAggregationEnabled:  false,
+		CreateBackHaulSubnet:      true,
+		TunnelType:                "DC_DEFAULT",
 	}
 }
 
@@ -699,6 +702,20 @@ func (o *Domain) RoutingPolicies(info *bambou.FetchingInfo) (RoutingPoliciesList
 
 // CreateRoutingPolicy creates a new child RoutingPolicy under the Domain
 func (o *Domain) CreateRoutingPolicy(child *RoutingPolicy) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// RoutingPolicyBindings retrieves the list of child RoutingPolicyBindings of the Domain
+func (o *Domain) RoutingPolicyBindings(info *bambou.FetchingInfo) (RoutingPolicyBindingsList, *bambou.Error) {
+
+	var list RoutingPolicyBindingsList
+	err := bambou.CurrentSession().FetchChildren(o, RoutingPolicyBindingIdentity, &list, info)
+	return list, err
+}
+
+// CreateRoutingPolicyBinding creates a new child RoutingPolicyBinding under the Domain
+func (o *Domain) CreateRoutingPolicyBinding(child *RoutingPolicyBinding) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

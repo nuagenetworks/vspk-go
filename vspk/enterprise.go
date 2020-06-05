@@ -71,6 +71,8 @@ type Enterprise struct {
 	SendMultiCastListID                    string        `json:"sendMultiCastListID,omitempty"`
 	Description                            string        `json:"description,omitempty"`
 	SharedEnterprise                       bool          `json:"sharedEnterprise"`
+	ThreatIntelligenceEnabled              string        `json:"threatIntelligenceEnabled,omitempty"`
+	ThreatPreventionManagementEnabled      bool          `json:"threatPreventionManagementEnabled"`
 	DictionaryVersion                      int           `json:"dictionaryVersion,omitempty"`
 	VirtualFirewallRulesEnabled            bool          `json:"virtualFirewallRulesEnabled"`
 	AllowAdvancedQOSConfiguration          bool          `json:"allowAdvancedQOSConfiguration"`
@@ -104,6 +106,8 @@ func NewEnterprise() *Enterprise {
 	return &Enterprise{
 		VNFManagementEnabled:                   false,
 		WebFilterEnabled:                       false,
+		ThreatIntelligenceEnabled:              "DISABLED",
+		ThreatPreventionManagementEnabled:      false,
 		DictionaryVersion:                      2,
 		VirtualFirewallRulesEnabled:            false,
 		FlowCollectionEnabled:                  "DISABLED",
@@ -318,6 +322,20 @@ func (o *Enterprise) LDAPConfigurations(info *bambou.FetchingInfo) (LDAPConfigur
 	var list LDAPConfigurationsList
 	err := bambou.CurrentSession().FetchChildren(o, LDAPConfigurationIdentity, &list, info)
 	return list, err
+}
+
+// IDPProfiles retrieves the list of child IDPProfiles of the Enterprise
+func (o *Enterprise) IDPProfiles(info *bambou.FetchingInfo) (IDPProfilesList, *bambou.Error) {
+
+	var list IDPProfilesList
+	err := bambou.CurrentSession().FetchChildren(o, IDPProfileIdentity, &list, info)
+	return list, err
+}
+
+// CreateIDPProfile creates a new child IDPProfile under the Enterprise
+func (o *Enterprise) CreateIDPProfile(child *IDPProfile) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
 }
 
 // WebCategories retrieves the list of child WebCategories of the Enterprise
@@ -752,6 +770,14 @@ func (o *Enterprise) Jobs(info *bambou.FetchingInfo) (JobsList, *bambou.Error) {
 func (o *Enterprise) CreateJob(child *Job) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// Roles retrieves the list of child Roles of the Enterprise
+func (o *Enterprise) Roles(info *bambou.FetchingInfo) (RolesList, *bambou.Error) {
+
+	var list RolesList
+	err := bambou.CurrentSession().FetchChildren(o, RoleIdentity, &list, info)
+	return list, err
 }
 
 // PolicyGroupCategories retrieves the list of child PolicyGroupCategories of the Enterprise

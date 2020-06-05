@@ -59,6 +59,7 @@ type OSPFInterface struct {
 	ParentID           string        `json:"parentID,omitempty"`
 	ParentType         string        `json:"parentType,omitempty"`
 	Owner              string        `json:"owner,omitempty"`
+	BFDEnabled         bool          `json:"BFDEnabled"`
 	Name               string        `json:"name,omitempty"`
 	PassiveEnabled     bool          `json:"passiveEnabled"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
@@ -83,6 +84,7 @@ type OSPFInterface struct {
 func NewOSPFInterface() *OSPFInterface {
 
 	return &OSPFInterface{
+		BFDEnabled:         false,
 		PassiveEnabled:     false,
 		AdminState:         "UP",
 		DeadInterval:       40,

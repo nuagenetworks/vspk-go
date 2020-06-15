@@ -73,6 +73,7 @@ type VirtualFirewallRule struct {
 	DestinationPort                    string        `json:"destinationPort,omitempty"`
 	NetworkID                          string        `json:"networkID,omitempty"`
 	NetworkType                        string        `json:"networkType,omitempty"`
+	MirrorDestinationGroupID           string        `json:"mirrorDestinationGroupID,omitempty"`
 	MirrorDestinationID                string        `json:"mirrorDestinationID,omitempty"`
 	FlowLoggingEnabled                 bool          `json:"flowLoggingEnabled"`
 	EmbeddedMetadata                   []interface{} `json:"embeddedMetadata,omitempty"`

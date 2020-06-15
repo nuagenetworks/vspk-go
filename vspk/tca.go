@@ -83,11 +83,9 @@ type TCA struct {
 func NewTCA() *TCA {
 
 	return &TCA{
+		Period:       90,
 		Metric:       "BYTES_IN",
 		ThrottleTime: 10,
-		Disable:      false,
-		Count:        0,
-		Status:       false,
 		Type:         "ROLLING_AVERAGE",
 	}
 }

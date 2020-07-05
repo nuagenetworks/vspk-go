@@ -55,12 +55,12 @@ type RoleentriesParent interface {
 
 // Roleentry represents the model of a roleentry
 type Roleentry struct {
-	ID                   string        `json:"ID,omitempty"`
-	ParentID             string        `json:"parentID,omitempty"`
-	ParentType           string        `json:"parentType,omitempty"`
-	Owner                string        `json:"owner,omitempty"`
-	RoleAccessTypeList   []interface{} `json:"roleAccessTypeList,omitempty"`
-	AssociatedEntityType string        `json:"associatedEntityType,omitempty"`
+	ID                 string        `json:"ID,omitempty"`
+	ParentID           string        `json:"parentID,omitempty"`
+	ParentType         string        `json:"parentType,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
+	EndPointType       string        `json:"endPointType,omitempty"`
+	RoleAccessTypeList []interface{} `json:"roleAccessTypeList,omitempty"`
 }
 
 // NewRoleentry returns a new *Roleentry

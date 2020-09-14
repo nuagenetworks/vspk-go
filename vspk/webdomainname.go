@@ -128,6 +128,20 @@ func (o *WebDomainName) AssignWebCategories(children WebCategoriesList) *bambou.
 	return bambou.CurrentSession().AssignChildren(o, list, WebCategoryIdentity)
 }
 
+// Permissions retrieves the list of child Permissions of the WebDomainName
+func (o *WebDomainName) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the WebDomainName
+func (o *WebDomainName) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the WebDomainName
 func (o *WebDomainName) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

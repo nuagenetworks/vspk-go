@@ -147,6 +147,20 @@ func (o *IKEGatewayConnection) AssignPerformanceMonitors(children PerformanceMon
 	return bambou.CurrentSession().AssignChildren(o, list, PerformanceMonitorIdentity)
 }
 
+// Permissions retrieves the list of child Permissions of the IKEGatewayConnection
+func (o *IKEGatewayConnection) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the IKEGatewayConnection
+func (o *IKEGatewayConnection) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the IKEGatewayConnection
 func (o *IKEGatewayConnection) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

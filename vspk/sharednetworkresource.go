@@ -167,6 +167,20 @@ func (o *SharedNetworkResource) CreateAddressRange(child *AddressRange) *bambou.
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// Permissions retrieves the list of child Permissions of the SharedNetworkResource
+func (o *SharedNetworkResource) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the SharedNetworkResource
+func (o *SharedNetworkResource) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the SharedNetworkResource
 func (o *SharedNetworkResource) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

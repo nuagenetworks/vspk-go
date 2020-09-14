@@ -402,6 +402,20 @@ func (o *Enterprise) CreatePerformanceMonitor(child *PerformanceMonitor) *bambou
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// Permissions retrieves the list of child Permissions of the Enterprise
+func (o *Enterprise) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the Enterprise
+func (o *Enterprise) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // TestDefinitions retrieves the list of child TestDefinitions of the Enterprise
 func (o *Enterprise) TestDefinitions(info *bambou.FetchingInfo) (TestDefinitionsList, *bambou.Error) {
 

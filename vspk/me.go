@@ -1002,11 +1002,11 @@ func (o *Me) VCenterVRSConfigs(info *bambou.FetchingInfo) (VCenterVRSConfigsList
 	return list, err
 }
 
-// VrsInfos retrieves the list of child VrsInfos of the Me
-func (o *Me) VrsInfos(info *bambou.FetchingInfo) (VrsInfosList, *bambou.Error) {
+// vrsInfos retrieves the list of child vrsInfos of the Me
+func (o *Me) vrsInfos(info *bambou.FetchingInfo) (vrsInfosList, *bambou.Error) {
 
-	var list VrsInfosList
-	err := bambou.CurrentSession().FetchChildren(o, VrsInfoIdentity, &list, info)
+	var list vrsInfosList
+	err := bambou.CurrentSession().FetchChildren(o, vrsInfoIdentity, &list, info)
 	return list, err
 }
 

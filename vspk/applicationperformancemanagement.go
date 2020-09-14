@@ -114,6 +114,20 @@ func (o *Applicationperformancemanagement) Delete() *bambou.Error {
 	return bambou.CurrentSession().DeleteEntity(o)
 }
 
+// Permissions retrieves the list of child Permissions of the Applicationperformancemanagement
+func (o *Applicationperformancemanagement) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the Applicationperformancemanagement
+func (o *Applicationperformancemanagement) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the Applicationperformancemanagement
 func (o *Applicationperformancemanagement) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

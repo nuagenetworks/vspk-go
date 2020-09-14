@@ -145,6 +145,20 @@ func (o *ContainerInterface) RedirectionTargets(info *bambou.FetchingInfo) (Redi
 	return list, err
 }
 
+// Permissions retrieves the list of child Permissions of the ContainerInterface
+func (o *ContainerInterface) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the ContainerInterface
+func (o *ContainerInterface) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the ContainerInterface
 func (o *ContainerInterface) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

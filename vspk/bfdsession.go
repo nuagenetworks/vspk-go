@@ -118,6 +118,20 @@ func (o *BFDSession) Delete() *bambou.Error {
 	return bambou.CurrentSession().DeleteEntity(o)
 }
 
+// Permissions retrieves the list of child Permissions of the BFDSession
+func (o *BFDSession) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the BFDSession
+func (o *BFDSession) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the BFDSession
 func (o *BFDSession) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

@@ -143,6 +143,20 @@ func (o *VMInterface) RedirectionTargets(info *bambou.FetchingInfo) (Redirection
 	return list, err
 }
 
+// Permissions retrieves the list of child Permissions of the VMInterface
+func (o *VMInterface) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the VMInterface
+func (o *VMInterface) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the VMInterface
 func (o *VMInterface) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

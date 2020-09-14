@@ -135,6 +135,20 @@ func (o *StaticRoute) CreateDeploymentFailure(child *DeploymentFailure) *bambou.
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// Permissions retrieves the list of child Permissions of the StaticRoute
+func (o *StaticRoute) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the StaticRoute
+func (o *StaticRoute) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the StaticRoute
 func (o *StaticRoute) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

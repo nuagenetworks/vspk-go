@@ -115,6 +115,20 @@ func (o *NetconfProfile) Delete() *bambou.Error {
 	return bambou.CurrentSession().DeleteEntity(o)
 }
 
+// Permissions retrieves the list of child Permissions of the NetconfProfile
+func (o *NetconfProfile) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the NetconfProfile
+func (o *NetconfProfile) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the NetconfProfile
 func (o *NetconfProfile) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

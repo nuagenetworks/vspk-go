@@ -109,6 +109,20 @@ func (o *NSGatewaysCount) Delete() *bambou.Error {
 	return bambou.CurrentSession().DeleteEntity(o)
 }
 
+// Permissions retrieves the list of child Permissions of the NSGatewaysCount
+func (o *NSGatewaysCount) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the NSGatewaysCount
+func (o *NSGatewaysCount) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the NSGatewaysCount
 func (o *NSGatewaysCount) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

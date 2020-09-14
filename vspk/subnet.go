@@ -233,6 +233,20 @@ func (o *Subnet) CreateDeploymentFailure(child *DeploymentFailure) *bambou.Error
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// Permissions retrieves the list of child Permissions of the Subnet
+func (o *Subnet) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the Subnet
+func (o *Subnet) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // VMResyncs retrieves the list of child VMResyncs of the Subnet
 func (o *Subnet) VMResyncs(info *bambou.FetchingInfo) (VMResyncsList, *bambou.Error) {
 

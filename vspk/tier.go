@@ -118,6 +118,20 @@ func (o *Tier) Delete() *bambou.Error {
 	return bambou.CurrentSession().DeleteEntity(o)
 }
 
+// Permissions retrieves the list of child Permissions of the Tier
+func (o *Tier) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the Tier
+func (o *Tier) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Destinationurls retrieves the list of child Destinationurls of the Tier
 func (o *Tier) Destinationurls(info *bambou.FetchingInfo) (DestinationurlsList, *bambou.Error) {
 

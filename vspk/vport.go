@@ -209,6 +209,20 @@ func (o *VPort) CreateDeploymentFailure(child *DeploymentFailure) *bambou.Error 
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// Permissions retrieves the list of child Permissions of the VPort
+func (o *VPort) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the VPort
+func (o *VPort) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // TestSuiteRuns retrieves the list of child TestSuiteRuns of the VPort
 func (o *VPort) TestSuiteRuns(info *bambou.FetchingInfo) (TestSuiteRunsList, *bambou.Error) {
 

@@ -113,6 +113,20 @@ func (o *SSHKey) Delete() *bambou.Error {
 	return bambou.CurrentSession().DeleteEntity(o)
 }
 
+// Permissions retrieves the list of child Permissions of the SSHKey
+func (o *SSHKey) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
+
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
+}
+
+// CreatePermission creates a new child Permission under the SSHKey
+func (o *SSHKey) CreatePermission(child *Permission) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Metadatas retrieves the list of child Metadatas of the SSHKey
 func (o *SSHKey) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 

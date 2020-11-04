@@ -60,13 +60,18 @@ type FloatingIp struct {
 	ParentType                        string        `json:"parentType,omitempty"`
 	Owner                             string        `json:"owner,omitempty"`
 	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                   string        `json:"lastUpdatedDate,omitempty"`
 	AccessControl                     bool          `json:"accessControl"`
 	Address                           string        `json:"address,omitempty"`
+	EgressRateLimiterID               string        `json:"egressRateLimiterID,omitempty"`
 	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
+	IngressRateLimiterID              string        `json:"ingressRateLimiterID,omitempty"`
 	EntityScope                       string        `json:"entityScope,omitempty"`
+	CreationDate                      string        `json:"creationDate,omitempty"`
 	Assigned                          bool          `json:"assigned"`
 	AssignedToObjectType              string        `json:"assignedToObjectType,omitempty"`
 	AssociatedSharedNetworkResourceID string        `json:"associatedSharedNetworkResourceID,omitempty"`
+	Owner                             string        `json:"owner,omitempty"`
 	ExternalID                        string        `json:"externalID,omitempty"`
 }
 

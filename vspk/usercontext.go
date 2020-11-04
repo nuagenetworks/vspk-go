@@ -65,17 +65,24 @@ type UserContext struct {
 	VSSStatsInterval            int           `json:"VSSStatsInterval,omitempty"`
 	PageSize                    int           `json:"pageSize,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
+	RbacEnabled                 bool          `json:"rbacEnabled"`
 	DeniedFlowCollectionEnabled bool          `json:"deniedFlowCollectionEnabled"`
 	ThreatIntelligenceEnabled   bool          `json:"threatIntelligenceEnabled"`
+	AllowEnterpriseAvatarOnNSG  bool          `json:"allowEnterpriseAvatarOnNSG"`
 	FlowCollectionEnabled       bool          `json:"flowCollectionEnabled"`
 	EmbeddedMetadata            []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                 string        `json:"entityScope,omitempty"`
 	GoogleMapsAPIKey            string        `json:"googleMapsAPIKey,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	StatisticsEnabled           bool          `json:"statisticsEnabled"`
 	StatsDatabaseProxy          string        `json:"statsDatabaseProxy,omitempty"`
 	StatsTSDBServerAddress      string        `json:"statsTSDBServerAddress,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExplicitACLMatchingEnabled  bool          `json:"explicitACLMatchingEnabled"`
 	ExternalID                  string        `json:"externalID,omitempty"`
+	SystemAvatarData            string        `json:"systemAvatarData,omitempty"`
+	SystemAvatarType            string        `json:"systemAvatarType,omitempty"`
 }
 
 // NewUserContext returns a new *UserContext
@@ -86,8 +93,10 @@ func NewUserContext() *UserContext {
 		AARProbeStatsInterval:       30,
 		VSSFeatureEnabled:           false,
 		VSSStatsInterval:            30,
+		RbacEnabled:                 false,
 		DeniedFlowCollectionEnabled: false,
 		ThreatIntelligenceEnabled:   false,
+		AllowEnterpriseAvatarOnNSG:  true,
 		ExplicitACLMatchingEnabled:  false,
 	}
 }

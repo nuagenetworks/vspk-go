@@ -67,6 +67,7 @@ type ContainerInterface struct {
 	IPv6Gateway         string        `json:"IPv6Gateway,omitempty"`
 	Name                string        `json:"name,omitempty"`
 	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
 	Gateway             string        `json:"gateway,omitempty"`
 	Netmask             string        `json:"netmask,omitempty"`
 	NetworkID           string        `json:"networkID,omitempty"`
@@ -81,9 +82,11 @@ type ContainerInterface struct {
 	ZoneID              string        `json:"zoneID,omitempty"`
 	ZoneName            string        `json:"zoneName,omitempty"`
 	ContainerUUID       string        `json:"containerUUID,omitempty"`
+	CreationDate        string        `json:"creationDate,omitempty"`
 	AttachedNetworkID   string        `json:"attachedNetworkID,omitempty"`
 	AttachedNetworkType string        `json:"attachedNetworkType,omitempty"`
 	MultiNICVPortName   string        `json:"multiNICVPortName,omitempty"`
+	Owner               string        `json:"owner,omitempty"`
 	ExternalID          string        `json:"externalID,omitempty"`
 }
 

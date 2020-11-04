@@ -64,16 +64,19 @@ type ZoneTemplate struct {
 	IPv6Address                     string        `json:"IPv6Address,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	Address                         string        `json:"address,omitempty"`
 	Description                     string        `json:"description,omitempty"`
 	Netmask                         string        `json:"netmask,omitempty"`
 	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
 	Encryption                      string        `json:"encryption,omitempty"`
 	EntityScope                     string        `json:"entityScope,omitempty"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
 	PublicZone                      bool          `json:"publicZone"`
 	Multicast                       string        `json:"multicast,omitempty"`
 	NumberOfHostsInSubnets          int           `json:"numberOfHostsInSubnets,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExternalID                      string        `json:"externalID,omitempty"`
 	DynamicIpv6Address              bool          `json:"dynamicIpv6Address"`
 }

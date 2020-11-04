@@ -60,10 +60,13 @@ type UplinkRD struct {
 	ParentType         string        `json:"parentType,omitempty"`
 	Owner              string        `json:"owner,omitempty"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
 	RouteDistinguisher string        `json:"routeDistinguisher,omitempty"`
 	UplinkType         string        `json:"uplinkType,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 }
 

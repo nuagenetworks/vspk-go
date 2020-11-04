@@ -62,15 +62,18 @@ type IKECertificate struct {
 	PEMEncoded             string        `json:"PEMEncoded,omitempty"`
 	Name                   string        `json:"name,omitempty"`
 	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
 	SerialNumber           int           `json:"serialNumber,omitempty"`
 	Description            string        `json:"description,omitempty"`
 	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope            string        `json:"entityScope,omitempty"`
 	NotAfter               float64       `json:"notAfter,omitempty"`
 	NotBefore              float64       `json:"notBefore,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
 	AssociatedEnterpriseID string        `json:"associatedEnterpriseID,omitempty"`
 	IssuerDN               string        `json:"issuerDN,omitempty"`
 	SubjectDN              string        `json:"subjectDN,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
 	ExternalID             string        `json:"externalID,omitempty"`
 }
 

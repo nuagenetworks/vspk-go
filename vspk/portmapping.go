@@ -55,15 +55,18 @@ type PortMappingsParent interface {
 
 // PortMapping represents the model of a portmapping
 type PortMapping struct {
-	ID            string `json:"ID,omitempty"`
-	ParentID      string `json:"parentID,omitempty"`
-	ParentType    string `json:"parentType,omitempty"`
-	Owner         string `json:"owner,omitempty"`
-	LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-	EntityScope   string `json:"entityScope,omitempty"`
-	PrivatePort   string `json:"privatePort,omitempty"`
-	PublicPort    string `json:"publicPort,omitempty"`
-	ExternalID    string `json:"externalID,omitempty"`
+	ID              string `json:"ID,omitempty"`
+	ParentID        string `json:"parentID,omitempty"`
+	ParentType      string `json:"parentType,omitempty"`
+	Owner           string `json:"owner,omitempty"`
+	LastUpdatedBy   string `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+	EntityScope     string `json:"entityScope,omitempty"`
+	CreationDate    string `json:"creationDate,omitempty"`
+	PrivatePort     string `json:"privatePort,omitempty"`
+	PublicPort      string `json:"publicPort,omitempty"`
+	Owner           string `json:"owner,omitempty"`
+	ExternalID      string `json:"externalID,omitempty"`
 }
 
 // NewPortMapping returns a new *PortMapping

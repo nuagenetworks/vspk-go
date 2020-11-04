@@ -62,6 +62,7 @@ type PATNATPool struct {
 	IPType                string        `json:"IPType,omitempty"`
 	Name                  string        `json:"name,omitempty"`
 	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
 	AddressRange          string        `json:"addressRange,omitempty"`
 	DefaultPATIP          string        `json:"defaultPATIP,omitempty"`
 	PermittedAction       string        `json:"permittedAction,omitempty"`
@@ -70,12 +71,14 @@ type PATNATPool struct {
 	EndAddressRange       string        `json:"endAddressRange,omitempty"`
 	EndSourceAddress      string        `json:"endSourceAddress,omitempty"`
 	EntityScope           string        `json:"entityScope,omitempty"`
+	CreationDate          string        `json:"creationDate,omitempty"`
 	AssociatedGatewayId   string        `json:"associatedGatewayId,omitempty"`
 	AssociatedGatewayType string        `json:"associatedGatewayType,omitempty"`
 	AssociatedSubnetId    string        `json:"associatedSubnetId,omitempty"`
 	AssociatedVlanId      string        `json:"associatedVlanId,omitempty"`
 	StartAddressRange     string        `json:"startAddressRange,omitempty"`
 	StartSourceAddress    string        `json:"startSourceAddress,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
 	ExternalID            string        `json:"externalID,omitempty"`
 	DynamicSourceEnabled  bool          `json:"dynamicSourceEnabled"`
 }

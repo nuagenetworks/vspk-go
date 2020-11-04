@@ -60,15 +60,19 @@ type OSPFInstance struct {
 	ParentType                      string        `json:"parentType,omitempty"`
 	Owner                           string        `json:"owner,omitempty"`
 	IPType                          string        `json:"IPType,omitempty"`
+	OSPFType                        string        `json:"OSPFType,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	Description                     string        `json:"description,omitempty"`
 	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                     string        `json:"entityScope,omitempty"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	Preference                      int           `json:"preference,omitempty"`
 	AssociatedExportRoutingPolicyID string        `json:"associatedExportRoutingPolicyID,omitempty"`
 	AssociatedImportRoutingPolicyID string        `json:"associatedImportRoutingPolicyID,omitempty"`
 	SuperBackboneEnabled            bool          `json:"superBackboneEnabled"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExportLimit                     int           `json:"exportLimit,omitempty"`
 	ExportToOverlay                 bool          `json:"exportToOverlay"`
 	ExternalID                      string        `json:"externalID,omitempty"`
@@ -80,6 +84,7 @@ func NewOSPFInstance() *OSPFInstance {
 
 	return &OSPFInstance{
 		IPType:               "IPV4",
+		OSPFType:             "OSPFv2",
 		Preference:           10,
 		SuperBackboneEnabled: false,
 		ExportToOverlay:      false,

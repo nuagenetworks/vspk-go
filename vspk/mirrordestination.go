@@ -61,10 +61,13 @@ type MirrorDestination struct {
 	Owner            string        `json:"owner,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	ServiceId        int           `json:"serviceId,omitempty"`
 	DestinationIp    string        `json:"destinationIp,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

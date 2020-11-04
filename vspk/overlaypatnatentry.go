@@ -61,12 +61,15 @@ type OverlayPATNATEntry struct {
 	Owner              string        `json:"owner,omitempty"`
 	NATEnabled         bool          `json:"NATEnabled"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
 	PrivateIP          string        `json:"privateIP,omitempty"`
 	AssociatedDomainID string        `json:"associatedDomainID,omitempty"`
 	AssociatedLinkID   string        `json:"associatedLinkID,omitempty"`
 	PublicIP           string        `json:"publicIP,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 }
 

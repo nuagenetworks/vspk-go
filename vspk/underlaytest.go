@@ -55,25 +55,28 @@ type UnderlayTestsParent interface {
 
 // UnderlayTest represents the model of a underlaytest
 type UnderlayTest struct {
-	ID                       string `json:"ID,omitempty"`
-	ParentID                 string `json:"parentID,omitempty"`
-	ParentType               string `json:"parentType,omitempty"`
-	Owner                    string `json:"owner,omitempty"`
-	Name                     string `json:"name,omitempty"`
-	TestResult               string `json:"testResult,omitempty"`
-	UnderlayTestServer       string `json:"underlayTestServer,omitempty"`
-	UnderlayTestType         string `json:"underlayTestType,omitempty"`
-	CreateOnly               bool   `json:"createOnly"`
-	AssociatedDataPathID     string `json:"associatedDataPathID,omitempty"`
-	AssociatedNSGatewayID    string `json:"associatedNSGatewayID,omitempty"`
-	AssociatedNSGatewayName  string `json:"associatedNSGatewayName,omitempty"`
-	AssociatedTestSuiteRunID string `json:"associatedTestSuiteRunID,omitempty"`
-	StartDateTime            int    `json:"startDateTime,omitempty"`
-	StopDateTime             int    `json:"stopDateTime,omitempty"`
-	RunBandwidthTest         bool   `json:"runBandwidthTest"`
-	RunConnectivityTest      bool   `json:"runConnectivityTest"`
-	RunMTUDiscoveryTest      bool   `json:"runMTUDiscoveryTest"`
-	Duration                 int    `json:"duration,omitempty"`
+	ID                           string `json:"ID,omitempty"`
+	ParentID                     string `json:"parentID,omitempty"`
+	ParentType                   string `json:"parentType,omitempty"`
+	Owner                        string `json:"owner,omitempty"`
+	Name                         string `json:"name,omitempty"`
+	TestResult                   string `json:"testResult,omitempty"`
+	UnderlayTestServer           string `json:"underlayTestServer,omitempty"`
+	UnderlayTestType             string `json:"underlayTestType,omitempty"`
+	CreateOnly                   bool   `json:"createOnly"`
+	AssociatedDataPathID         string `json:"associatedDataPathID,omitempty"`
+	AssociatedNSGatewayID        string `json:"associatedNSGatewayID,omitempty"`
+	AssociatedNSGatewayName      string `json:"associatedNSGatewayName,omitempty"`
+	AssociatedSystemID           string `json:"associatedSystemID,omitempty"`
+	AssociatedTestSuiteRunID     string `json:"associatedTestSuiteRunID,omitempty"`
+	AssociatedUplinkConnectionID string `json:"associatedUplinkConnectionID,omitempty"`
+	AssociatedUplinkInterface    string `json:"associatedUplinkInterface,omitempty"`
+	StartDateTime                int    `json:"startDateTime,omitempty"`
+	StopDateTime                 int    `json:"stopDateTime,omitempty"`
+	RunBandwidthTest             bool   `json:"runBandwidthTest"`
+	RunConnectivityTest          bool   `json:"runConnectivityTest"`
+	RunMTUDiscoveryTest          bool   `json:"runMTUDiscoveryTest"`
+	Duration                     int    `json:"duration,omitempty"`
 }
 
 // NewUnderlayTest returns a new *UnderlayTest

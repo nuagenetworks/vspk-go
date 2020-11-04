@@ -64,15 +64,19 @@ type UplinkConnection struct {
 	DNSAddressV6            string        `json:"DNSAddressV6,omitempty"`
 	Password                string        `json:"password,omitempty"`
 	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
 	Gateway                 string        `json:"gateway,omitempty"`
+	GatewayID               string        `json:"gatewayID,omitempty"`
 	GatewayV6               string        `json:"gatewayV6,omitempty"`
 	Address                 string        `json:"address,omitempty"`
 	AddressFamily           string        `json:"addressFamily,omitempty"`
 	AddressV6               string        `json:"addressV6,omitempty"`
 	AdvertisementCriteria   string        `json:"advertisementCriteria,omitempty"`
+	FecEnabled              string        `json:"fecEnabled,omitempty"`
 	SecondaryAddress        string        `json:"secondaryAddress,omitempty"`
 	Netmask                 string        `json:"netmask,omitempty"`
 	Vlan                    int           `json:"vlan,omitempty"`
+	VlanID                  string        `json:"vlanID,omitempty"`
 	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
 	UnderlayEnabled         bool          `json:"underlayEnabled"`
 	UnderlayID              int           `json:"underlayID,omitempty"`
@@ -83,9 +87,13 @@ type UplinkConnection struct {
 	Mode                    string        `json:"mode,omitempty"`
 	Role                    string        `json:"role,omitempty"`
 	RoleOrder               int           `json:"roleOrder,omitempty"`
+	PortID                  string        `json:"portID,omitempty"`
 	PortName                string        `json:"portName,omitempty"`
 	DownloadRateLimit       float64       `json:"downloadRateLimit,omitempty"`
 	UplinkID                int           `json:"uplinkID,omitempty"`
+	UplinkName              string        `json:"uplinkName,omitempty"`
+	UplinkType              string        `json:"uplinkType,omitempty"`
+	CreationDate            string        `json:"creationDate,omitempty"`
 	PrimaryDataPathID       string        `json:"primaryDataPathID,omitempty"`
 	Username                string        `json:"username,omitempty"`
 	AssocUnderlayID         string        `json:"assocUnderlayID,omitempty"`
@@ -93,6 +101,7 @@ type UplinkConnection struct {
 	AssociatedUnderlayName  string        `json:"associatedUnderlayName,omitempty"`
 	AuxMode                 string        `json:"auxMode,omitempty"`
 	AuxiliaryLink           bool          `json:"auxiliaryLink"`
+	Owner                   string        `json:"owner,omitempty"`
 	ExternalID              string        `json:"externalID,omitempty"`
 }
 
@@ -102,6 +111,7 @@ func NewUplinkConnection() *UplinkConnection {
 	return &UplinkConnection{
 		PATEnabled:              true,
 		AddressFamily:           "IPV4",
+		FecEnabled:              "DISABLED",
 		UnderlayEnabled:         true,
 		Inherited:               false,
 		InstallerManaged:        false,
@@ -202,6 +212,20 @@ func (o *UplinkConnection) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMet
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the UplinkConnection
 func (o *UplinkConnection) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// UnderlayTests retrieves the list of child UnderlayTests of the UplinkConnection
+func (o *UplinkConnection) UnderlayTests(info *bambou.FetchingInfo) (UnderlayTestsList, *bambou.Error) {
+
+	var list UnderlayTestsList
+	err := bambou.CurrentSession().FetchChildren(o, UnderlayTestIdentity, &list, info)
+	return list, err
+}
+
+// CreateUnderlayTest creates a new child UnderlayTest under the UplinkConnection
+func (o *UplinkConnection) CreateUnderlayTest(child *UnderlayTest) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

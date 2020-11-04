@@ -66,6 +66,7 @@ type VRSRedeploymentpolicy struct {
 	VRSProcessRedeploymentEnabled          bool    `json:"VRSProcessRedeploymentEnabled"`
 	VRSVSCStatusRedeploymentEnabled        bool    `json:"VRSVSCStatusRedeploymentEnabled"`
 	LastUpdatedBy                          string  `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                        string  `json:"lastUpdatedDate,omitempty"`
 	RedeploymentDelay                      int     `json:"redeploymentDelay,omitempty"`
 	MemoryUtilizationRedeploymentEnabled   bool    `json:"memoryUtilizationRedeploymentEnabled"`
 	MemoryUtilizationThreshold             float64 `json:"memoryUtilizationThreshold,omitempty"`
@@ -76,6 +77,8 @@ type VRSRedeploymentpolicy struct {
 	LogDiskUtilizationThreshold            float64 `json:"logDiskUtilizationThreshold,omitempty"`
 	RootDiskUtilizationRedeploymentEnabled bool    `json:"rootDiskUtilizationRedeploymentEnabled"`
 	RootDiskUtilizationThreshold           float64 `json:"rootDiskUtilizationThreshold,omitempty"`
+	CreationDate                           string  `json:"creationDate,omitempty"`
+	Owner                                  string  `json:"owner,omitempty"`
 	ExternalID                             string  `json:"externalID,omitempty"`
 }
 

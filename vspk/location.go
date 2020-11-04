@@ -60,6 +60,7 @@ type Location struct {
 	ParentType           string        `json:"parentType,omitempty"`
 	Owner                string        `json:"owner,omitempty"`
 	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate      string        `json:"lastUpdatedDate,omitempty"`
 	Latitude             float64       `json:"latitude,omitempty"`
 	Address              string        `json:"address,omitempty"`
 	IgnoreGeocode        bool          `json:"ignoreGeocode"`
@@ -69,9 +70,11 @@ type Location struct {
 	Locality             string        `json:"locality,omitempty"`
 	Longitude            float64       `json:"longitude,omitempty"`
 	Country              string        `json:"country,omitempty"`
+	CreationDate         string        `json:"creationDate,omitempty"`
 	AssociatedEntityName string        `json:"associatedEntityName,omitempty"`
 	AssociatedEntityType string        `json:"associatedEntityType,omitempty"`
 	State                string        `json:"state,omitempty"`
+	Owner                string        `json:"owner,omitempty"`
 	ExternalID           string        `json:"externalID,omitempty"`
 }
 

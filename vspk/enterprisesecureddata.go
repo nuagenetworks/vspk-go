@@ -61,6 +61,7 @@ type EnterpriseSecuredData struct {
 	Owner                     string        `json:"owner,omitempty"`
 	Hash                      string        `json:"hash,omitempty"`
 	LastUpdatedBy             string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate           string        `json:"lastUpdatedDate,omitempty"`
 	Data                      string        `json:"data,omitempty"`
 	SeedType                  string        `json:"seedType,omitempty"`
 	SekId                     int           `json:"sekId,omitempty"`
@@ -68,6 +69,8 @@ type EnterpriseSecuredData struct {
 	SignedHash                string        `json:"signedHash,omitempty"`
 	EmbeddedMetadata          []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope               string        `json:"entityScope,omitempty"`
+	CreationDate              string        `json:"creationDate,omitempty"`
+	Owner                     string        `json:"owner,omitempty"`
 	ExternalID                string        `json:"externalID,omitempty"`
 }
 

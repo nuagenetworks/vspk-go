@@ -65,9 +65,12 @@ type BFDSession struct {
 	BFDMultiplier        int           `json:"BFDMultiplier,omitempty"`
 	BFDTimer             int           `json:"BFDTimer,omitempty"`
 	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate      string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope          string        `json:"entityScope,omitempty"`
+	CreationDate         string        `json:"creationDate,omitempty"`
 	MultiHopEnabled      bool          `json:"multiHopEnabled"`
+	Owner                string        `json:"owner,omitempty"`
 	ExternalID           string        `json:"externalID,omitempty"`
 }
 

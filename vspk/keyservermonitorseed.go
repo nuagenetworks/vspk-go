@@ -60,6 +60,7 @@ type KeyServerMonitorSeed struct {
 	ParentType                         string        `json:"parentType,omitempty"`
 	Owner                              string        `json:"owner,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                    string        `json:"lastUpdatedDate,omitempty"`
 	SeedTrafficAuthenticationAlgorithm string        `json:"seedTrafficAuthenticationAlgorithm,omitempty"`
 	SeedTrafficEncryptionAlgorithm     string        `json:"seedTrafficEncryptionAlgorithm,omitempty"`
 	SeedTrafficEncryptionKeyLifetime   int           `json:"seedTrafficEncryptionKeyLifetime,omitempty"`
@@ -67,8 +68,10 @@ type KeyServerMonitorSeed struct {
 	Lifetime                           int           `json:"lifetime,omitempty"`
 	EmbeddedMetadata                   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                        string        `json:"entityScope,omitempty"`
+	CreationDate                       string        `json:"creationDate,omitempty"`
 	CreationTime                       int           `json:"creationTime,omitempty"`
 	StartTime                          int           `json:"startTime,omitempty"`
+	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 }
 

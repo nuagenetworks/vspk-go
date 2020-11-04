@@ -63,12 +63,15 @@ type ShuntLink struct {
 	VLANPeer2ID      string        `json:"VLANPeer2ID,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	GatewayPeer1ID   string        `json:"gatewayPeer1ID,omitempty"`
 	GatewayPeer2ID   string        `json:"gatewayPeer2ID,omitempty"`
 	PermittedAction  string        `json:"permittedAction,omitempty"`
 	Description      string        `json:"description,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 
@@ -140,6 +143,14 @@ func (o *ShuntLink) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou
 func (o *ShuntLink) CreateMetadata(child *Metadata) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// VirtualUplinks retrieves the list of child VirtualUplinks of the ShuntLink
+func (o *ShuntLink) VirtualUplinks(info *bambou.FetchingInfo) (VirtualUplinksList, *bambou.Error) {
+
+	var list VirtualUplinksList
+	err := bambou.CurrentSession().FetchChildren(o, VirtualUplinkIdentity, &list, info)
+	return list, err
 }
 
 // Alarms retrieves the list of child Alarms of the ShuntLink

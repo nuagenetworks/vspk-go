@@ -60,10 +60,13 @@ type CustomProperty struct {
 	ParentType       string        `json:"parentType,omitempty"`
 	Owner            string        `json:"owner,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	AttributeName    string        `json:"attributeName,omitempty"`
 	AttributeValue   string        `json:"attributeValue,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

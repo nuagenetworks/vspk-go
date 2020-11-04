@@ -69,6 +69,7 @@ type VNF struct {
 	TaskState                      string        `json:"taskState,omitempty"`
 	LastKnownError                 string        `json:"lastKnownError,omitempty"`
 	LastUpdatedBy                  string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                string        `json:"lastUpdatedDate,omitempty"`
 	LastUserAction                 string        `json:"lastUserAction,omitempty"`
 	MemoryMB                       int           `json:"memoryMB,omitempty"`
 	Vendor                         string        `json:"vendor,omitempty"`
@@ -77,11 +78,13 @@ type VNF struct {
 	EmbeddedMetadata               []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseID                   string        `json:"enterpriseID,omitempty"`
 	EntityScope                    string        `json:"entityScope,omitempty"`
+	CreationDate                   string        `json:"creationDate,omitempty"`
 	IsAttachedToDescriptor         bool          `json:"isAttachedToDescriptor"`
 	AssociatedVNFMetadataID        string        `json:"associatedVNFMetadataID,omitempty"`
 	AssociatedVNFThresholdPolicyID string        `json:"associatedVNFThresholdPolicyID,omitempty"`
 	Status                         string        `json:"status,omitempty"`
 	StorageGB                      int           `json:"storageGB,omitempty"`
+	Owner                          string        `json:"owner,omitempty"`
 	ExternalID                     string        `json:"externalID,omitempty"`
 	Type                           string        `json:"type,omitempty"`
 }

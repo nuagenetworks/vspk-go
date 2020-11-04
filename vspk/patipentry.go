@@ -63,8 +63,11 @@ type PATIPEntry struct {
 	IPAddress          string `json:"IPAddress,omitempty"`
 	IPType             string `json:"IPType,omitempty"`
 	LastUpdatedBy      string `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string `json:"lastUpdatedDate,omitempty"`
 	EntityScope        string `json:"entityScope,omitempty"`
+	CreationDate       string `json:"creationDate,omitempty"`
 	AssociatedDomainID string `json:"associatedDomainID,omitempty"`
+	Owner              string `json:"owner,omitempty"`
 	ExternalID         string `json:"externalID,omitempty"`
 	HypervisorID       string `json:"hypervisorID,omitempty"`
 }

@@ -65,6 +65,7 @@ type SubnetTemplate struct {
 	IPv6Gateway                     string        `json:"IPv6Gateway,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	Gateway                         string        `json:"gateway,omitempty"`
 	Address                         string        `json:"address,omitempty"`
 	Description                     string        `json:"description,omitempty"`
@@ -75,11 +76,13 @@ type SubnetTemplate struct {
 	Encryption                      string        `json:"encryption,omitempty"`
 	EntityScope                     string        `json:"entityScope,omitempty"`
 	SplitSubnet                     bool          `json:"splitSubnet"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	ProxyARP                        bool          `json:"proxyARP"`
 	UseGlobalMAC                    string        `json:"useGlobalMAC,omitempty"`
 	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
 	DualStackDynamicIPAllocation    bool          `json:"dualStackDynamicIPAllocation"`
 	Multicast                       string        `json:"multicast,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExternalID                      string        `json:"externalID,omitempty"`
 }
 

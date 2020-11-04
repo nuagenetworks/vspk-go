@@ -63,6 +63,7 @@ type InfrastructureGatewayProfile struct {
 	NTPServerKeyID                      int           `json:"NTPServerKeyID,omitempty"`
 	Name                                string        `json:"name,omitempty"`
 	LastUpdatedBy                       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                     string        `json:"lastUpdatedDate,omitempty"`
 	DatapathSyncTimeout                 int           `json:"datapathSyncTimeout,omitempty"`
 	DeadTimer                           string        `json:"deadTimer,omitempty"`
 	DeadTimerEnabled                    bool          `json:"deadTimerEnabled"`
@@ -77,6 +78,7 @@ type InfrastructureGatewayProfile struct {
 	EmbeddedMetadata                    []interface{} `json:"embeddedMetadata,omitempty"`
 	EnableUnderlayTestsDuringActivation bool          `json:"enableUnderlayTestsDuringActivation"`
 	UnderlayTestServer                  string        `json:"underlayTestServer,omitempty"`
+	UnderlayTestUplinkMode              string        `json:"underlayTestUplinkMode,omitempty"`
 	EnterpriseID                        string        `json:"enterpriseID,omitempty"`
 	EntityScope                         string        `json:"entityScope,omitempty"`
 	ControllerLessDuration              string        `json:"controllerLessDuration,omitempty"`
@@ -86,12 +88,14 @@ type InfrastructureGatewayProfile struct {
 	ForceImmediateSystemSync            bool          `json:"forceImmediateSystemSync"`
 	OpenFlowAuditTimer                  int           `json:"openFlowAuditTimer,omitempty"`
 	UpgradeAction                       string        `json:"upgradeAction,omitempty"`
+	CreationDate                        string        `json:"creationDate,omitempty"`
 	ProxyDNSName                        string        `json:"proxyDNSName,omitempty"`
 	UseTwoFactor                        bool          `json:"useTwoFactor"`
 	StatsCollectorPort                  int           `json:"statsCollectorPort,omitempty"`
 	RunUnderlayBandwidthTest            bool          `json:"runUnderlayBandwidthTest"`
 	RunUnderlayConnectivityTest         bool          `json:"runUnderlayConnectivityTest"`
 	RunUnderlayMTUDiscoveryTest         bool          `json:"runUnderlayMTUDiscoveryTest"`
+	Owner                               string        `json:"owner,omitempty"`
 	ExternalID                          string        `json:"externalID,omitempty"`
 	SystemSyncScheduler                 string        `json:"systemSyncScheduler,omitempty"`
 }
@@ -108,6 +112,7 @@ func NewInfrastructureGatewayProfile() *InfrastructureGatewayProfile {
 		RemoteLogServerPort:                 514,
 		FlowEvictionThreshold:               2500,
 		EnableUnderlayTestsDuringActivation: false,
+		UnderlayTestUplinkMode:              "BOOTSTRAP_UPLINK",
 		ControllerLessDuration:              "P7DT0H0M",
 		ControllerLessForwardingMode:        "DISABLED",
 		ControllerLessRemoteDuration:        "P3DT0H0M",

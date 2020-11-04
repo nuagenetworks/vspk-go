@@ -63,6 +63,7 @@ type NSPort struct {
 	VLANRange                   string        `json:"VLANRange,omitempty"`
 	Name                        string        `json:"name,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	TemplateID                  string        `json:"templateID,omitempty"`
 	PermittedAction             string        `json:"permittedAction,omitempty"`
 	Description                 string        `json:"description,omitempty"`
@@ -74,12 +75,14 @@ type NSPort struct {
 	PortType                    string        `json:"portType,omitempty"`
 	Speed                       string        `json:"speed,omitempty"`
 	TrafficThroughUBROnly       bool          `json:"TrafficThroughUBROnly"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	UseUserMnemonic             bool          `json:"useUserMnemonic"`
 	UserMnemonic                string        `json:"userMnemonic,omitempty"`
 	AssociatedEgressQOSPolicyID string        `json:"associatedEgressQOSPolicyID,omitempty"`
 	AssociatedRedundantPortID   string        `json:"associatedRedundantPortID,omitempty"`
 	Status                      string        `json:"status,omitempty"`
 	Mtu                         int           `json:"mtu,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 }
 

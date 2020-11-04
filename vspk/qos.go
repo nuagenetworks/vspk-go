@@ -71,6 +71,7 @@ type QOS struct {
 	BUMRateLimitingActive                  bool          `json:"BUMRateLimitingActive"`
 	Name                                   string        `json:"name,omitempty"`
 	LastUpdatedBy                          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                        string        `json:"lastUpdatedDate,omitempty"`
 	RateLimitingActive                     bool          `json:"rateLimitingActive"`
 	Active                                 bool          `json:"active"`
 	Peak                                   string        `json:"peak,omitempty"`
@@ -85,11 +86,13 @@ type QOS struct {
 	EntityScope                            string        `json:"entityScope,omitempty"`
 	CommittedBurstSize                     string        `json:"committedBurstSize,omitempty"`
 	CommittedInformationRate               string        `json:"committedInformationRate,omitempty"`
+	CreationDate                           string        `json:"creationDate,omitempty"`
 	TrustedForwardingClass                 bool          `json:"trustedForwardingClass"`
 	AssocQosId                             string        `json:"assocQosId,omitempty"`
 	AssociatedDSCPForwardingClassTableID   string        `json:"associatedDSCPForwardingClassTableID,omitempty"`
 	AssociatedDSCPForwardingClassTableName string        `json:"associatedDSCPForwardingClassTableName,omitempty"`
 	Burst                                  string        `json:"burst,omitempty"`
+	Owner                                  string        `json:"owner,omitempty"`
 	ExternalID                             string        `json:"externalID,omitempty"`
 }
 

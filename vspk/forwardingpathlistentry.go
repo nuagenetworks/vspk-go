@@ -62,13 +62,16 @@ type ForwardingPathListEntry struct {
 	FCOverride             string        `json:"FCOverride,omitempty"`
 	DSCPRemarking          string        `json:"DSCPRemarking,omitempty"`
 	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
 	RemoteUplinkPreference string        `json:"remoteUplinkPreference,omitempty"`
 	SlaAware               bool          `json:"slaAware"`
 	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope            string        `json:"entityScope,omitempty"`
 	ForwardingAction       string        `json:"forwardingAction,omitempty"`
 	UplinkPreference       string        `json:"uplinkPreference,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
 	Priority               int           `json:"priority,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
 	ExternalID             string        `json:"externalID,omitempty"`
 }
 

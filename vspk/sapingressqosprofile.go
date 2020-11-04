@@ -61,10 +61,16 @@ type SAPIngressQoSProfile struct {
 	Owner            string        `json:"owner,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	Description      string        `json:"description,omitempty"`
+	BlobText         string        `json:"blobText,omitempty"`
+	BlobType         string        `json:"blobType,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	AssocEntityType  string        `json:"assocEntityType,omitempty"`
+	CustomerID       int           `json:"customerID,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

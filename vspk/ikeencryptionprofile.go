@@ -77,11 +77,14 @@ type IKEEncryptionprofile struct {
 	ISAKMPHashAlgorithm               string        `json:"ISAKMPHashAlgorithm,omitempty"`
 	Name                              string        `json:"name,omitempty"`
 	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                   string        `json:"lastUpdatedDate,omitempty"`
 	Sequence                          int           `json:"sequence,omitempty"`
 	Description                       string        `json:"description,omitempty"`
 	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                       string        `json:"entityScope,omitempty"`
+	CreationDate                      string        `json:"creationDate,omitempty"`
 	AssociatedEnterpriseID            string        `json:"associatedEnterpriseID,omitempty"`
+	Owner                             string        `json:"owner,omitempty"`
 	ExternalID                        string        `json:"externalID,omitempty"`
 }
 

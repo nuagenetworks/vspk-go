@@ -61,6 +61,7 @@ type VLAN struct {
 	Owner                                 string        `json:"owner,omitempty"`
 	Value                                 int           `json:"value,omitempty"`
 	LastUpdatedBy                         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                       string        `json:"lastUpdatedDate,omitempty"`
 	GatewayID                             string        `json:"gatewayID,omitempty"`
 	Readonly                              bool          `json:"readonly"`
 	TemplateID                            string        `json:"templateID,omitempty"`
@@ -69,8 +70,12 @@ type VLAN struct {
 	Restricted                            bool          `json:"restricted"`
 	ShuntVLAN                             bool          `json:"shuntVLAN"`
 	EmbeddedMetadata                      []interface{} `json:"embeddedMetadata,omitempty"`
+	EnableNATProbes                       bool          `json:"enableNATProbes"`
+	InheritedPortPropertiesDiverged       bool          `json:"inheritedPortPropertiesDiverged"`
 	EntityScope                           string        `json:"entityScope,omitempty"`
 	VportID                               string        `json:"vportID,omitempty"`
+	TrafficThroughUBROnly                 bool          `json:"TrafficThroughUBROnly"`
+	CreationDate                          string        `json:"creationDate,omitempty"`
 	IsUplink                              bool          `json:"isUplink"`
 	UseUserMnemonic                       bool          `json:"useUserMnemonic"`
 	UserMnemonic                          string        `json:"userMnemonic,omitempty"`
@@ -83,7 +88,9 @@ type VLAN struct {
 	AssociatedUplinkConnectionID          string        `json:"associatedUplinkConnectionID,omitempty"`
 	AssociatedVSCProfileID                string        `json:"associatedVSCProfileID,omitempty"`
 	Status                                string        `json:"status,omitempty"`
+	Mtu                                   int           `json:"mtu,omitempty"`
 	DucVlan                               bool          `json:"ducVlan"`
+	Owner                                 string        `json:"owner,omitempty"`
 	ExternalID                            string        `json:"externalID,omitempty"`
 	Type                                  string        `json:"type,omitempty"`
 }
@@ -92,9 +99,13 @@ type VLAN struct {
 func NewVLAN() *VLAN {
 
 	return &VLAN{
-		ShuntVLAN: false,
-		IsUplink:  false,
-		DucVlan:   false,
+		ShuntVLAN:                       false,
+		EnableNATProbes:                 true,
+		InheritedPortPropertiesDiverged: false,
+		TrafficThroughUBROnly:           false,
+		IsUplink:                        false,
+		Mtu:                             1500,
+		DucVlan:                         false,
 	}
 }
 

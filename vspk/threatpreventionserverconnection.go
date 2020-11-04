@@ -55,13 +55,13 @@ type ThreatPreventionServerConnectionsParent interface {
 
 // ThreatPreventionServerConnection represents the model of a threatpreventionserverconnection
 type ThreatPreventionServerConnection struct {
-	ID         string `json:"ID,omitempty"`
-	ParentID   string `json:"parentID,omitempty"`
-	ParentType string `json:"parentType,omitempty"`
-	Owner      string `json:"owner,omitempty"`
-	FQDN       string `json:"FQDN,omitempty"`
-	VSDName    string `json:"VSDName,omitempty"`
-	Status     string `json:"status,omitempty"`
+	ID         string        `json:"ID,omitempty"`
+	ParentID   string        `json:"parentID,omitempty"`
+	ParentType string        `json:"parentType,omitempty"`
+	Owner      string        `json:"owner,omitempty"`
+	FQDN       string        `json:"FQDN,omitempty"`
+	NodeInfo   []interface{} `json:"nodeInfo,omitempty"`
+	Status     string        `json:"status,omitempty"`
 }
 
 // NewThreatPreventionServerConnection returns a new *ThreatPreventionServerConnection

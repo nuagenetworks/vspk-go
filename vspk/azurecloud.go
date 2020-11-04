@@ -61,14 +61,17 @@ type AzureCloud struct {
 	Owner                            string        `json:"owner,omitempty"`
 	Name                             string        `json:"name,omitempty"`
 	LastUpdatedBy                    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                  string        `json:"lastUpdatedDate,omitempty"`
 	TenantID                         string        `json:"tenantID,omitempty"`
 	ClientID                         string        `json:"clientID,omitempty"`
 	ClientSecret                     string        `json:"clientSecret,omitempty"`
 	EmbeddedMetadata                 []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                      string        `json:"entityScope,omitempty"`
+	CreationDate                     string        `json:"creationDate,omitempty"`
 	AssociatedIKEEncryptionProfileID string        `json:"associatedIKEEncryptionProfileID,omitempty"`
 	AssociatedIKEPSKID               string        `json:"associatedIKEPSKID,omitempty"`
 	SubscriptionID                   string        `json:"subscriptionID,omitempty"`
+	Owner                            string        `json:"owner,omitempty"`
 	ExternalID                       string        `json:"externalID,omitempty"`
 }
 
@@ -147,6 +150,14 @@ func (o *AzureCloud) IKEGatewayProfiles(info *bambou.FetchingInfo) (IKEGatewayPr
 
 	var list IKEGatewayProfilesList
 	err := bambou.CurrentSession().FetchChildren(o, IKEGatewayProfileIdentity, &list, info)
+	return list, err
+}
+
+// Alarms retrieves the list of child Alarms of the AzureCloud
+func (o *AzureCloud) Alarms(info *bambou.FetchingInfo) (AlarmsList, *bambou.Error) {
+
+	var list AlarmsList
+	err := bambou.CurrentSession().FetchChildren(o, AlarmIdentity, &list, info)
 	return list, err
 }
 

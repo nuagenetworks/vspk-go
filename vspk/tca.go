@@ -64,6 +64,7 @@ type TCA struct {
 	TargetEntityID      string        `json:"targetEntityID,omitempty"`
 	TargetPolicyGroupID string        `json:"targetPolicyGroupID,omitempty"`
 	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
 	Action              string        `json:"action,omitempty"`
 	Period              int           `json:"period,omitempty"`
 	Description         string        `json:"description,omitempty"`
@@ -75,8 +76,10 @@ type TCA struct {
 	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope         string        `json:"entityScope,omitempty"`
 	Count               int           `json:"count,omitempty"`
+	CreationDate        string        `json:"creationDate,omitempty"`
 	TriggerInterval     int           `json:"triggerInterval,omitempty"`
 	Status              bool          `json:"status"`
+	Owner               string        `json:"owner,omitempty"`
 	ExternalID          string        `json:"externalID,omitempty"`
 	Type                string        `json:"type,omitempty"`
 }

@@ -61,6 +61,7 @@ type EgressAdvFwdTemplate struct {
 	Owner                             string        `json:"owner,omitempty"`
 	Name                              string        `json:"name,omitempty"`
 	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                   string        `json:"lastUpdatedDate,omitempty"`
 	Active                            bool          `json:"active"`
 	DefaultAllowIP                    bool          `json:"defaultAllowIP"`
 	DefaultAllowNonIP                 bool          `json:"defaultAllowNonIP"`
@@ -68,11 +69,13 @@ type EgressAdvFwdTemplate struct {
 	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                       string        `json:"entityScope,omitempty"`
 	PolicyState                       string        `json:"policyState,omitempty"`
+	CreationDate                      string        `json:"creationDate,omitempty"`
 	Priority                          int           `json:"priority,omitempty"`
 	PriorityType                      string        `json:"priorityType,omitempty"`
 	AssociatedLiveEntityID            string        `json:"associatedLiveEntityID,omitempty"`
 	AssociatedVirtualFirewallPolicyID string        `json:"associatedVirtualFirewallPolicyID,omitempty"`
 	AutoGeneratePriority              bool          `json:"autoGeneratePriority"`
+	Owner                             string        `json:"owner,omitempty"`
 	ExternalID                        string        `json:"externalID,omitempty"`
 }
 

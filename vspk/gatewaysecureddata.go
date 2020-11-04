@@ -60,13 +60,16 @@ type GatewaySecuredData struct {
 	ParentType                string        `json:"parentType,omitempty"`
 	Owner                     string        `json:"owner,omitempty"`
 	LastUpdatedBy             string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate           string        `json:"lastUpdatedDate,omitempty"`
 	Data                      string        `json:"data,omitempty"`
 	GatewayCertSerialNumber   string        `json:"gatewayCertSerialNumber,omitempty"`
 	KeyserverCertSerialNumber string        `json:"keyserverCertSerialNumber,omitempty"`
 	SignedData                string        `json:"signedData,omitempty"`
 	EmbeddedMetadata          []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope               string        `json:"entityScope,omitempty"`
+	CreationDate              string        `json:"creationDate,omitempty"`
 	AssociatedEnterpriseID    string        `json:"associatedEnterpriseID,omitempty"`
+	Owner                     string        `json:"owner,omitempty"`
 	ExternalID                string        `json:"externalID,omitempty"`
 }
 

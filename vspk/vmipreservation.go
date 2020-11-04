@@ -64,10 +64,13 @@ type VMIPReservation struct {
 	IPV6Address         string        `json:"IPV6Address,omitempty"`
 	IPV6AllocationPools []interface{} `json:"IPV6AllocationPools,omitempty"`
 	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
 	AllocationPools     []interface{} `json:"allocationPools,omitempty"`
 	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope         string        `json:"entityScope,omitempty"`
+	CreationDate        string        `json:"creationDate,omitempty"`
 	State               string        `json:"state,omitempty"`
+	Owner               string        `json:"owner,omitempty"`
 	ExternalID          string        `json:"externalID,omitempty"`
 }
 

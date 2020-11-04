@@ -67,6 +67,7 @@ type RoutingPolicy struct {
 	PolicyDefinition string        `json:"policyDefinition,omitempty"`
 	ContentType      string        `json:"contentType,omitempty"`
 	RoutingProtocol  string        `json:"routingProtocol,omitempty"`
+	CustomerID       int           `json:"CustomerID,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

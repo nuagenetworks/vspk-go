@@ -62,6 +62,7 @@ type WirelessPort struct {
 	VLANRange                   string        `json:"VLANRange,omitempty"`
 	Name                        string        `json:"name,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	GenericConfig               string        `json:"genericConfig,omitempty"`
 	PermittedAction             string        `json:"permittedAction,omitempty"`
 	Description                 string        `json:"description,omitempty"`
@@ -73,11 +74,13 @@ type WirelessPort struct {
 	EntityScope                 string        `json:"entityScope,omitempty"`
 	PortType                    string        `json:"portType,omitempty"`
 	CountryCode                 string        `json:"countryCode,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	FrequencyChannel            string        `json:"frequencyChannel,omitempty"`
 	UseUserMnemonic             bool          `json:"useUserMnemonic"`
 	UserMnemonic                string        `json:"userMnemonic,omitempty"`
 	AssociatedEgressQOSPolicyID string        `json:"associatedEgressQOSPolicyID,omitempty"`
 	Status                      string        `json:"status,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 }
 

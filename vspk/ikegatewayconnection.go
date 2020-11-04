@@ -65,13 +65,16 @@ type IKEGatewayConnection struct {
 	Name                             string        `json:"name,omitempty"`
 	Mark                             int           `json:"mark,omitempty"`
 	LastUpdatedBy                    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                  string        `json:"lastUpdatedDate,omitempty"`
 	Sequence                         int           `json:"sequence,omitempty"`
+	MirroredConnection               bool          `json:"mirroredConnection"`
 	AllowAnySubnet                   bool          `json:"allowAnySubnet"`
 	EmbeddedMetadata                 []interface{} `json:"embeddedMetadata,omitempty"`
 	UnencryptedPSK                   string        `json:"unencryptedPSK,omitempty"`
 	EntityScope                      string        `json:"entityScope,omitempty"`
 	ConfigurationStatus              string        `json:"configurationStatus,omitempty"`
 	PortVLANName                     string        `json:"portVLANName,omitempty"`
+	CreationDate                     string        `json:"creationDate,omitempty"`
 	Priority                         int           `json:"priority,omitempty"`
 	AssociatedCloudID                string        `json:"associatedCloudID,omitempty"`
 	AssociatedCloudType              string        `json:"associatedCloudType,omitempty"`
@@ -80,6 +83,7 @@ type IKEGatewayConnection struct {
 	AssociatedIKEEncryptionProfileID string        `json:"associatedIKEEncryptionProfileID,omitempty"`
 	AssociatedIKEGatewayProfileID    string        `json:"associatedIKEGatewayProfileID,omitempty"`
 	AssociatedVLANID                 string        `json:"associatedVLANID,omitempty"`
+	Owner                            string        `json:"owner,omitempty"`
 	ExternalID                       string        `json:"externalID,omitempty"`
 }
 
@@ -87,8 +91,9 @@ type IKEGatewayConnection struct {
 func NewIKEGatewayConnection() *IKEGatewayConnection {
 
 	return &IKEGatewayConnection{
-		NSGIdentifierType: "ID_KEY_ID",
-		Mark:              1,
+		NSGIdentifierType:  "ID_KEY_ID",
+		Mark:               1,
+		MirroredConnection: false,
 	}
 }
 

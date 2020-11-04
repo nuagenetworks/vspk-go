@@ -61,11 +61,14 @@ type RemoteVrsInfo struct {
 	Owner            string        `json:"owner,omitempty"`
 	LabelStack       string        `json:"labelStack,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	NextHop          string        `json:"nextHop,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	Color            int           `json:"color,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	VrsIP            string        `json:"vrsIP,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

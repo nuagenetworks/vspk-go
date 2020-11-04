@@ -59,6 +59,7 @@ type ForwardingClass struct {
 	ParentID        string `json:"parentID,omitempty"`
 	ParentType      string `json:"parentType,omitempty"`
 	Owner           string `json:"owner,omitempty"`
+	FecEnabled      bool   `json:"fecEnabled"`
 	LoadBalancing   bool   `json:"loadBalancing"`
 	ForwardingClass string `json:"forwardingClass,omitempty"`
 }
@@ -67,6 +68,7 @@ type ForwardingClass struct {
 func NewForwardingClass() *ForwardingClass {
 
 	return &ForwardingClass{
+		FecEnabled:    false,
 		LoadBalancing: false,
 	}
 }

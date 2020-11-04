@@ -62,8 +62,11 @@ type Autodiscovereddatacenter struct {
 	Name                string `json:"name,omitempty"`
 	ManagedObjectID     string `json:"managedObjectID,omitempty"`
 	LastUpdatedBy       string `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate     string `json:"lastUpdatedDate,omitempty"`
 	EntityScope         string `json:"entityScope,omitempty"`
+	CreationDate        string `json:"creationDate,omitempty"`
 	AssociatedVCenterID string `json:"associatedVCenterID,omitempty"`
+	Owner               string `json:"owner,omitempty"`
 	ExternalID          string `json:"externalID,omitempty"`
 }
 

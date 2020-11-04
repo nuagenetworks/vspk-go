@@ -60,6 +60,7 @@ type VPortMirror struct {
 	ParentType            string        `json:"parentType,omitempty"`
 	Owner                 string        `json:"owner,omitempty"`
 	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
 	NetworkName           string        `json:"networkName,omitempty"`
 	MirrorDestinationID   string        `json:"mirrorDestinationID,omitempty"`
 	MirrorDestinationName string        `json:"mirrorDestinationName,omitempty"`
@@ -70,7 +71,9 @@ type VPortMirror struct {
 	DomainName            string        `json:"domainName,omitempty"`
 	VportId               string        `json:"vportId,omitempty"`
 	VportName             string        `json:"vportName,omitempty"`
+	CreationDate          string        `json:"creationDate,omitempty"`
 	AttachedNetworkType   string        `json:"attachedNetworkType,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
 	ExternalID            string        `json:"externalID,omitempty"`
 }
 

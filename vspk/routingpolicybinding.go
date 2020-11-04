@@ -59,14 +59,18 @@ type RoutingPolicyBinding struct {
 	ParentID                        string        `json:"parentID,omitempty"`
 	ParentType                      string        `json:"parentType,omitempty"`
 	Owner                           string        `json:"owner,omitempty"`
+	OSPFType                        string        `json:"OSPFType,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	Description                     string        `json:"description,omitempty"`
 	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                     string        `json:"entityScope,omitempty"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	AssociatedExportRoutingPolicyID string        `json:"associatedExportRoutingPolicyID,omitempty"`
 	AssociatedImportRoutingPolicyID string        `json:"associatedImportRoutingPolicyID,omitempty"`
 	AssociatedPolicyObjectGroupID   string        `json:"associatedPolicyObjectGroupID,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExportToOverlay                 string        `json:"exportToOverlay,omitempty"`
 	ExternalID                      string        `json:"externalID,omitempty"`
 }
@@ -75,6 +79,7 @@ type RoutingPolicyBinding struct {
 func NewRoutingPolicyBinding() *RoutingPolicyBinding {
 
 	return &RoutingPolicyBinding{
+		OSPFType:        "OSPFv2",
 		ExportToOverlay: "INHERITED",
 	}
 }

@@ -67,6 +67,7 @@ type VPort struct {
 	Name                                string        `json:"name,omitempty"`
 	HasAttachedInterfaces               bool          `json:"hasAttachedInterfaces"`
 	LastUpdatedBy                       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                     string        `json:"lastUpdatedDate,omitempty"`
 	GatewayMACMoveRole                  string        `json:"gatewayMACMoveRole,omitempty"`
 	GatewayPortName                     string        `json:"gatewayPortName,omitempty"`
 	AccessRestrictionEnabled            bool          `json:"accessRestrictionEnabled"`
@@ -77,6 +78,8 @@ type VPort struct {
 	SegmentationType                    string        `json:"segmentationType,omitempty"`
 	ServiceID                           int           `json:"serviceID,omitempty"`
 	Description                         string        `json:"description,omitempty"`
+	FlowCount                           int           `json:"flowCount,omitempty"`
+	FlowLimitEnabled                    string        `json:"flowLimitEnabled,omitempty"`
 	EmbeddedMetadata                    []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                         string        `json:"entityScope,omitempty"`
 	Color                               int           `json:"color,omitempty"`
@@ -86,7 +89,9 @@ type VPort struct {
 	DomainVLANID                        int           `json:"domainVLANID,omitempty"`
 	ZoneID                              string        `json:"zoneID,omitempty"`
 	OperationalState                    string        `json:"operationalState,omitempty"`
+	CreationDate                        string        `json:"creationDate,omitempty"`
 	TrunkRole                           string        `json:"trunkRole,omitempty"`
+	EsGroupVPortInfos                   []interface{} `json:"esGroupVPortInfos,omitempty"`
 	AssocEntityID                       string        `json:"assocEntityID,omitempty"`
 	AssociatedEgressProfileID           string        `json:"associatedEgressProfileID,omitempty"`
 	AssociatedFloatingIPID              string        `json:"associatedFloatingIPID,omitempty"`
@@ -104,6 +109,7 @@ type VPort struct {
 	Multicast                           string        `json:"multicast,omitempty"`
 	AutoCreated                         bool          `json:"autoCreated"`
 	GwEligible                          bool          `json:"gwEligible"`
+	Owner                               string        `json:"owner,omitempty"`
 	ExternalID                          string        `json:"externalID,omitempty"`
 	Type                                string        `json:"type,omitempty"`
 	SystemType                          string        `json:"systemType,omitempty"`
@@ -116,6 +122,7 @@ func NewVPort() *VPort {
 		DPI:                      "INHERITED",
 		AccessRestrictionEnabled: false,
 		AddressSpoofing:          "INHERITED",
+		FlowLimitEnabled:         "INHERITED",
 		Color:                    0,
 		OperationalState:         "INIT",
 		SubType:                  "NONE",

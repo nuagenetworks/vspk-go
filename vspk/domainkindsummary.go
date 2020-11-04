@@ -61,6 +61,7 @@ type DomainKindSummary struct {
 	Owner                 string        `json:"owner,omitempty"`
 	MajorAlarmsCount      int           `json:"majorAlarmsCount,omitempty"`
 	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
 	GatewayCount          int           `json:"gatewayCount,omitempty"`
 	MeshGroupCount        int           `json:"meshGroupCount,omitempty"`
 	MinorAlarmsCount      int           `json:"minorAlarmsCount,omitempty"`
@@ -71,9 +72,11 @@ type DomainKindSummary struct {
 	DomainKindName        string        `json:"domainKindName,omitempty"`
 	ZoneCount             int           `json:"zoneCount,omitempty"`
 	TrafficVolume         int           `json:"trafficVolume,omitempty"`
+	CreationDate          string        `json:"creationDate,omitempty"`
 	CriticalAlarmsCount   int           `json:"criticalAlarmsCount,omitempty"`
 	NsgCount              int           `json:"nsgCount,omitempty"`
 	SubNetworkCount       int           `json:"subNetworkCount,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
 	ExternalID            string        `json:"externalID,omitempty"`
 }
 

@@ -55,24 +55,30 @@ type NetconfManagersParent interface {
 
 // NetconfManager represents the model of a netconfmanager
 type NetconfManager struct {
-	ID               string        `json:"ID,omitempty"`
-	ParentID         string        `json:"parentID,omitempty"`
-	ParentType       string        `json:"parentType,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	Name             string        `json:"name,omitempty"`
-	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
-	Release          string        `json:"release,omitempty"`
-	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope      string        `json:"entityScope,omitempty"`
-	AssocEntityType  string        `json:"assocEntityType,omitempty"`
-	Status           string        `json:"status,omitempty"`
-	ExternalID       string        `json:"externalID,omitempty"`
+	ID                     string        `json:"ID,omitempty"`
+	ParentID               string        `json:"parentID,omitempty"`
+	ParentType             string        `json:"parentType,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
+	Name                   string        `json:"name,omitempty"`
+	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
+	Release                string        `json:"release,omitempty"`
+	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope            string        `json:"entityScope,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
+	AssocEntityType        string        `json:"assocEntityType,omitempty"`
+	Status                 string        `json:"status,omitempty"`
+	EventProcessingEnabled bool          `json:"eventProcessingEnabled"`
+	Owner                  string        `json:"owner,omitempty"`
+	ExternalID             string        `json:"externalID,omitempty"`
 }
 
 // NewNetconfManager returns a new *NetconfManager
 func NewNetconfManager() *NetconfManager {
 
-	return &NetconfManager{}
+	return &NetconfManager{
+		EventProcessingEnabled: false,
+	}
 }
 
 // Identity returns the Identity of the object.
@@ -171,6 +177,20 @@ func (o *NetconfManager) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetad
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the NetconfManager
 func (o *NetconfManager) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// GNMISessions retrieves the list of child GNMISessions of the NetconfManager
+func (o *NetconfManager) GNMISessions(info *bambou.FetchingInfo) (GNMISessionsList, *bambou.Error) {
+
+	var list GNMISessionsList
+	err := bambou.CurrentSession().FetchChildren(o, GNMISessionIdentity, &list, info)
+	return list, err
+}
+
+// CreateGNMISession creates a new child GNMISession under the NetconfManager
+func (o *NetconfManager) CreateGNMISession(child *GNMISession) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

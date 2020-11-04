@@ -62,6 +62,7 @@ type RedirectionTarget struct {
 	ESI               string        `json:"ESI,omitempty"`
 	Name              string        `json:"name,omitempty"`
 	LastUpdatedBy     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate   string        `json:"lastUpdatedDate,omitempty"`
 	RedundancyEnabled bool          `json:"redundancyEnabled"`
 	TemplateID        string        `json:"templateID,omitempty"`
 	Description       string        `json:"description,omitempty"`
@@ -70,8 +71,10 @@ type RedirectionTarget struct {
 	EmbeddedMetadata  []interface{} `json:"embeddedMetadata,omitempty"`
 	EndPointType      string        `json:"endPointType,omitempty"`
 	EntityScope       string        `json:"entityScope,omitempty"`
+	CreationDate      string        `json:"creationDate,omitempty"`
 	TriggerType       string        `json:"triggerType,omitempty"`
 	AutoCreated       bool          `json:"autoCreated"`
+	Owner             string        `json:"owner,omitempty"`
 	ExternalID        string        `json:"externalID,omitempty"`
 }
 

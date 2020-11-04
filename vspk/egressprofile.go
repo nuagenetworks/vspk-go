@@ -61,9 +61,11 @@ type EgressProfile struct {
 	Owner                             string        `json:"owner,omitempty"`
 	Name                              string        `json:"name,omitempty"`
 	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                   string        `json:"lastUpdatedDate,omitempty"`
 	Description                       string        `json:"description,omitempty"`
 	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                       string        `json:"entityScope,omitempty"`
+	CreationDate                      string        `json:"creationDate,omitempty"`
 	AssocEntityType                   string        `json:"assocEntityType,omitempty"`
 	AssociatedIPFilterProfileID       string        `json:"associatedIPFilterProfileID,omitempty"`
 	AssociatedIPFilterProfileName     string        `json:"associatedIPFilterProfileName,omitempty"`
@@ -73,6 +75,8 @@ type EgressProfile struct {
 	AssociatedMACFilterProfileName    string        `json:"associatedMACFilterProfileName,omitempty"`
 	AssociatedSAPEgressQoSProfileID   string        `json:"associatedSAPEgressQoSProfileID,omitempty"`
 	AssociatedSAPEgressQoSProfileName string        `json:"associatedSAPEgressQoSProfileName,omitempty"`
+	CustomerID                        int           `json:"customerID,omitempty"`
+	Owner                             string        `json:"owner,omitempty"`
 	ExternalID                        string        `json:"externalID,omitempty"`
 }
 

@@ -66,9 +66,11 @@ type VirtualFirewallRule struct {
 	DSCP                               string        `json:"DSCP,omitempty"`
 	FailsafeDatapath                   string        `json:"failsafeDatapath,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                    string        `json:"lastUpdatedDate,omitempty"`
 	Action                             string        `json:"action,omitempty"`
 	AddressOverride                    string        `json:"addressOverride,omitempty"`
 	WebFilterID                        string        `json:"webFilterID,omitempty"`
+	WebFilterStatsLoggingEnabled       bool          `json:"webFilterStatsLoggingEnabled"`
 	WebFilterType                      string        `json:"webFilterType,omitempty"`
 	Description                        string        `json:"description,omitempty"`
 	DestinationPort                    string        `json:"destinationPort,omitempty"`
@@ -87,6 +89,7 @@ type VirtualFirewallRule struct {
 	PolicyState                        string        `json:"policyState,omitempty"`
 	DomainName                         string        `json:"domainName,omitempty"`
 	SourcePort                         string        `json:"sourcePort,omitempty"`
+	CreationDate                       string        `json:"creationDate,omitempty"`
 	Priority                           int           `json:"priority,omitempty"`
 	Protocol                           string        `json:"protocol,omitempty"`
 	AssociatedEgressEntryID            string        `json:"associatedEgressEntryID,omitempty"`
@@ -101,6 +104,7 @@ type VirtualFirewallRule struct {
 	StatsLoggingEnabled                bool          `json:"statsLoggingEnabled"`
 	EtherType                          string        `json:"etherType,omitempty"`
 	OverlayMirrorDestinationID         string        `json:"overlayMirrorDestinationID,omitempty"`
+	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 	Type                               string        `json:"type,omitempty"`
 }
@@ -109,11 +113,13 @@ type VirtualFirewallRule struct {
 func NewVirtualFirewallRule() *VirtualFirewallRule {
 
 	return &VirtualFirewallRule{
-		Action:              "FORWARD",
-		NetworkType:         "ANY",
-		FlowLoggingEnabled:  false,
-		Stateful:            false,
-		StatsLoggingEnabled: false,
+		Action:                       "FORWARD",
+		WebFilterStatsLoggingEnabled: false,
+		NetworkType:                  "ANY",
+		FlowLoggingEnabled:           false,
+		Stateful:                     false,
+		StatsLoggingEnabled:          false,
+		Type:                         "L4",
 	}
 }
 

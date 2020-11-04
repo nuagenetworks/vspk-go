@@ -60,18 +60,21 @@ type VNFDomainMapping struct {
 	ParentType              string        `json:"parentType,omitempty"`
 	Owner                   string        `json:"owner,omitempty"`
 	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
 	SegmentationID          int           `json:"segmentationID,omitempty"`
 	SegmentationType        string        `json:"segmentationType,omitempty"`
 	ServiceId               string        `json:"serviceId,omitempty"`
 	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseName          string        `json:"enterpriseName,omitempty"`
 	EntityScope             string        `json:"entityScope,omitempty"`
+	CreationDate            string        `json:"creationDate,omitempty"`
 	AssociatedDomainID      string        `json:"associatedDomainID,omitempty"`
 	AssociatedDomainName    string        `json:"associatedDomainName,omitempty"`
 	AssociatedEnterpriseID  string        `json:"associatedEnterpriseID,omitempty"`
 	AssociatedNSGatewayID   string        `json:"associatedNSGatewayID,omitempty"`
 	AssociatedNSGatewayName string        `json:"associatedNSGatewayName,omitempty"`
 	AutoCreated             bool          `json:"autoCreated"`
+	Owner                   string        `json:"owner,omitempty"`
 	ExternalID              string        `json:"externalID,omitempty"`
 }
 

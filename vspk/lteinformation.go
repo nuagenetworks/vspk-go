@@ -61,8 +61,11 @@ type LTEInformation struct {
 	Owner             string        `json:"owner,omitempty"`
 	LTEConnectionInfo string        `json:"LTEConnectionInfo,omitempty"`
 	LastUpdatedBy     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate   string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata  []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope       string        `json:"entityScope,omitempty"`
+	CreationDate      string        `json:"creationDate,omitempty"`
+	Owner             string        `json:"owner,omitempty"`
 	ExternalID        string        `json:"externalID,omitempty"`
 }
 

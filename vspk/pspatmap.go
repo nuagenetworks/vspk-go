@@ -62,10 +62,13 @@ type PSPATMap struct {
 	Name                        string        `json:"name,omitempty"`
 	Family                      string        `json:"family,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	ReservedSPATIPs             []interface{} `json:"reservedSPATIPs,omitempty"`
 	EmbeddedMetadata            []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                 string        `json:"entityScope,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	AssociatedSPATSourcesPoolID string        `json:"associatedSPATSourcesPoolID,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 }
 

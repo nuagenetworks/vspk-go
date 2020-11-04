@@ -63,12 +63,15 @@ type InfrastructureAccessProfile struct {
 	Name             string        `json:"name,omitempty"`
 	Password         string        `json:"password,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	Description      string        `json:"description,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseID     string        `json:"enterpriseID,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	SourceIPFilter   string        `json:"sourceIPFilter,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	UserName         string        `json:"userName,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

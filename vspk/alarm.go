@@ -61,6 +61,7 @@ type Alarm struct {
 	Owner              string        `json:"owner,omitempty"`
 	TargetObject       string        `json:"targetObject,omitempty"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	Acknowledged       bool          `json:"acknowledged"`
 	Remedy             string        `json:"remedy,omitempty"`
 	Description        string        `json:"description,omitempty"`
@@ -71,8 +72,10 @@ type Alarm struct {
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseID       string        `json:"enterpriseID,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
 	ErrorCondition     int           `json:"errorCondition,omitempty"`
 	NumberOfOccurances int           `json:"numberOfOccurances,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 	SystemID           string        `json:"systemID,omitempty"`
 }

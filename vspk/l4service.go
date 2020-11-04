@@ -55,20 +55,23 @@ type L4ServicesParent interface {
 
 // L4Service represents the model of a l4service
 type L4Service struct {
-	ID             string `json:"ID,omitempty"`
-	ParentID       string `json:"parentID,omitempty"`
-	ParentType     string `json:"parentType,omitempty"`
-	Owner          string `json:"owner,omitempty"`
-	ICMPCode       string `json:"ICMPCode,omitempty"`
-	ICMPType       string `json:"ICMPType,omitempty"`
-	Name           string `json:"name,omitempty"`
-	LastUpdatedBy  string `json:"lastUpdatedBy,omitempty"`
-	DefaultService bool   `json:"defaultService"`
-	Description    string `json:"description,omitempty"`
-	EntityScope    string `json:"entityScope,omitempty"`
-	Ports          string `json:"ports,omitempty"`
-	Protocol       string `json:"protocol,omitempty"`
-	ExternalID     string `json:"externalID,omitempty"`
+	ID              string `json:"ID,omitempty"`
+	ParentID        string `json:"parentID,omitempty"`
+	ParentType      string `json:"parentType,omitempty"`
+	Owner           string `json:"owner,omitempty"`
+	ICMPCode        string `json:"ICMPCode,omitempty"`
+	ICMPType        string `json:"ICMPType,omitempty"`
+	Name            string `json:"name,omitempty"`
+	LastUpdatedBy   string `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+	DefaultService  bool   `json:"defaultService"`
+	Description     string `json:"description,omitempty"`
+	EntityScope     string `json:"entityScope,omitempty"`
+	Ports           string `json:"ports,omitempty"`
+	CreationDate    string `json:"creationDate,omitempty"`
+	Protocol        string `json:"protocol,omitempty"`
+	Owner           string `json:"owner,omitempty"`
+	ExternalID      string `json:"externalID,omitempty"`
 }
 
 // NewL4Service returns a new *L4Service

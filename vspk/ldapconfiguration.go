@@ -62,6 +62,7 @@ type LDAPConfiguration struct {
 	SSLEnabled            bool          `json:"SSLEnabled"`
 	Password              string        `json:"password,omitempty"`
 	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
 	AcceptAllCertificates bool          `json:"acceptAllCertificates"`
 	Certificate           string        `json:"certificate,omitempty"`
 	Server                string        `json:"server,omitempty"`
@@ -69,6 +70,7 @@ type LDAPConfiguration struct {
 	Enabled               bool          `json:"enabled"`
 	EntityScope           string        `json:"entityScope,omitempty"`
 	Port                  string        `json:"port,omitempty"`
+	CreationDate          string        `json:"creationDate,omitempty"`
 	GroupDN               string        `json:"groupDN,omitempty"`
 	GroupNamePrefix       string        `json:"groupNamePrefix,omitempty"`
 	GroupNameSuffix       string        `json:"groupNameSuffix,omitempty"`
@@ -76,6 +78,7 @@ type LDAPConfiguration struct {
 	UserNameAttribute     string        `json:"userNameAttribute,omitempty"`
 	AuthorizationEnabled  bool          `json:"authorizationEnabled"`
 	AuthorizingUserDN     string        `json:"authorizingUserDN,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
 	ExternalID            string        `json:"externalID,omitempty"`
 }
 

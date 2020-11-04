@@ -60,11 +60,14 @@ type ApplicationBinding struct {
 	ParentType              string        `json:"parentType,omitempty"`
 	Owner                   string        `json:"owner,omitempty"`
 	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
 	ReadOnly                bool          `json:"readOnly"`
 	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope             string        `json:"entityScope,omitempty"`
+	CreationDate            string        `json:"creationDate,omitempty"`
 	Priority                int           `json:"priority,omitempty"`
 	AssociatedApplicationID string        `json:"associatedApplicationID,omitempty"`
+	Owner                   string        `json:"owner,omitempty"`
 	ExternalID              string        `json:"externalID,omitempty"`
 }
 

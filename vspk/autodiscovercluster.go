@@ -62,8 +62,11 @@ type AutoDiscoverCluster struct {
 	Name                     string `json:"name,omitempty"`
 	ManagedObjectID          string `json:"managedObjectID,omitempty"`
 	LastUpdatedBy            string `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate          string `json:"lastUpdatedDate,omitempty"`
 	EntityScope              string `json:"entityScope,omitempty"`
+	CreationDate             string `json:"creationDate,omitempty"`
 	AssocVCenterDataCenterID string `json:"assocVCenterDataCenterID,omitempty"`
+	Owner                    string `json:"owner,omitempty"`
 	ExternalID               string `json:"externalID,omitempty"`
 }
 

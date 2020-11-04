@@ -61,13 +61,16 @@ type Job struct {
 	Owner            string        `json:"owner,omitempty"`
 	Parameters       interface{}   `json:"parameters,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	Result           interface{}   `json:"result,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	Command          string        `json:"command,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	Progress         float64       `json:"progress,omitempty"`
 	AssocEntityType  string        `json:"assocEntityType,omitempty"`
 	Status           string        `json:"status,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

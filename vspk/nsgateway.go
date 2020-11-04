@@ -82,6 +82,7 @@ type NSGateway struct {
 	Family                               string        `json:"family,omitempty"`
 	LastConfigurationReloadTimestamp     int           `json:"lastConfigurationReloadTimestamp,omitempty"`
 	LastUpdatedBy                        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                      string        `json:"lastUpdatedDate,omitempty"`
 	DatapathID                           string        `json:"datapathID,omitempty"`
 	GatewayConfigRawVersion              string        `json:"gatewayConfigRawVersion,omitempty"`
 	GatewayConfigVersion                 string        `json:"gatewayConfigVersion,omitempty"`
@@ -112,6 +113,7 @@ type NSGateway struct {
 	BootstrapStatus                      string        `json:"bootstrapStatus,omitempty"`
 	OperationMode                        string        `json:"operationMode,omitempty"`
 	OperationStatus                      string        `json:"operationStatus,omitempty"`
+	CreationDate                         string        `json:"creationDate,omitempty"`
 	ProductName                          string        `json:"productName,omitempty"`
 	AssociatedGatewaySecurityID          string        `json:"associatedGatewaySecurityID,omitempty"`
 	AssociatedGatewaySecurityProfileID   string        `json:"associatedGatewaySecurityProfileID,omitempty"`
@@ -122,6 +124,7 @@ type NSGateway struct {
 	Functions                            []interface{} `json:"functions,omitempty"`
 	TunnelShaping                        string        `json:"tunnelShaping,omitempty"`
 	AutoDiscGatewayID                    string        `json:"autoDiscGatewayID,omitempty"`
+	Owner                                string        `json:"owner,omitempty"`
 	ExternalID                           string        `json:"externalID,omitempty"`
 	SyslogLevel                          string        `json:"syslogLevel,omitempty"`
 	SystemID                             string        `json:"systemID,omitempty"`
@@ -270,6 +273,14 @@ func (o *NSGateway) WirelessPorts(info *bambou.FetchingInfo) (WirelessPortsList,
 func (o *NSGateway) CreateWirelessPort(child *WirelessPort) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// VirtualUplinks retrieves the list of child VirtualUplinks of the NSGateway
+func (o *NSGateway) VirtualUplinks(info *bambou.FetchingInfo) (VirtualUplinksList, *bambou.Error) {
+
+	var list VirtualUplinksList
+	err := bambou.CurrentSession().FetchChildren(o, VirtualUplinkIdentity, &list, info)
+	return list, err
 }
 
 // Alarms retrieves the list of child Alarms of the NSGateway
@@ -447,6 +458,14 @@ func (o *NSGateway) Subnets(info *bambou.FetchingInfo) (SubnetsList, *bambou.Err
 
 	var list SubnetsList
 	err := bambou.CurrentSession().FetchChildren(o, SubnetIdentity, &list, info)
+	return list, err
+}
+
+// SupplementalInfraConfigs retrieves the list of child SupplementalInfraConfigs of the NSGateway
+func (o *NSGateway) SupplementalInfraConfigs(info *bambou.FetchingInfo) (SupplementalInfraConfigsList, *bambou.Error) {
+
+	var list SupplementalInfraConfigsList
+	err := bambou.CurrentSession().FetchChildren(o, SupplementalInfraConfigIdentity, &list, info)
 	return list, err
 }
 

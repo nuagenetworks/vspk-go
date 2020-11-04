@@ -61,6 +61,7 @@ type License struct {
 	Owner                       string        `json:"owner,omitempty"`
 	MajorRelease                int           `json:"majorRelease,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	AdditionalSupportedVersions string        `json:"additionalSupportedVersions,omitempty"`
 	RequestID                   string        `json:"requestID,omitempty"`
 	Phone                       string        `json:"phone,omitempty"`
@@ -89,6 +90,7 @@ type License struct {
 	EntityScope                 string        `json:"entityScope,omitempty"`
 	Company                     string        `json:"company,omitempty"`
 	Country                     string        `json:"country,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	ProductVersion              string        `json:"productVersion,omitempty"`
 	Provider                    string        `json:"provider,omitempty"`
 	IsClusterLicense            bool          `json:"isClusterLicense"`
@@ -96,6 +98,7 @@ type License struct {
 	State                       string        `json:"state,omitempty"`
 	Street                      string        `json:"street,omitempty"`
 	CustomerKey                 string        `json:"customerKey,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExpirationDate              float64       `json:"expirationDate,omitempty"`
 	ExpiryTimestamp             int           `json:"expiryTimestamp,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`

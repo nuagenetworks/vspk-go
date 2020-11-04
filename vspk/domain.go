@@ -78,8 +78,10 @@ type Domain struct {
 	MaintenanceMode                 string        `json:"maintenanceMode,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	AdvertiseCriteria               string        `json:"advertiseCriteria,omitempty"`
 	LeakingEnabled                  bool          `json:"leakingEnabled"`
+	FecEnabled                      bool          `json:"fecEnabled"`
 	SecondaryDHCPServerAddress      string        `json:"secondaryDHCPServerAddress,omitempty"`
 	SecondaryRouteTarget            string        `json:"secondaryRouteTarget,omitempty"`
 	TemplateID                      string        `json:"templateID,omitempty"`
@@ -92,6 +94,8 @@ type Domain struct {
 	ThreatIntelligenceEnabled       string        `json:"threatIntelligenceEnabled,omitempty"`
 	GlobalRoutingEnabled            bool          `json:"globalRoutingEnabled"`
 	FlowCollectionEnabled           string        `json:"flowCollectionEnabled,omitempty"`
+	FlowCount                       int           `json:"flowCount,omitempty"`
+	FlowLimitEnabled                string        `json:"flowLimitEnabled,omitempty"`
 	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
 	ImportRouteTarget               string        `json:"importRouteTarget,omitempty"`
 	Encryption                      string        `json:"encryption,omitempty"`
@@ -108,6 +112,7 @@ type Domain struct {
 	RouteTarget                     string        `json:"routeTarget,omitempty"`
 	UplinkPreference                string        `json:"uplinkPreference,omitempty"`
 	CreateBackHaulSubnet            bool          `json:"createBackHaulSubnet"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	AssociatedBGPProfileID          string        `json:"associatedBGPProfileID,omitempty"`
 	AssociatedIDPProfileID          string        `json:"associatedIDPProfileID,omitempty"`
 	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
@@ -118,6 +123,7 @@ type Domain struct {
 	Multicast                       string        `json:"multicast,omitempty"`
 	TunnelType                      string        `json:"tunnelType,omitempty"`
 	CustomerID                      int           `json:"customerID,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExportRouteTarget               string        `json:"exportRouteTarget,omitempty"`
 	ExternalID                      string        `json:"externalID,omitempty"`
 	ExternalLabel                   string        `json:"externalLabel,omitempty"`
@@ -136,9 +142,11 @@ func NewDomain() *Domain {
 		EVPNRT5Type:               "IP",
 		VXLANECMPEnabled:          false,
 		MaintenanceMode:           "DISABLED",
+		FecEnabled:                false,
 		AggregateFlowsEnabled:     false,
 		ThreatIntelligenceEnabled: "INHERITED",
 		FlowCollectionEnabled:     "INHERITED",
+		FlowLimitEnabled:          "DISABLED",
 		Encryption:                "DISABLED",
 		UnderlayEnabled:           "DISABLED",
 		Color:                     0,
@@ -377,6 +385,20 @@ func (o *Domain) CreateEgressAdvFwdTemplate(child *EgressAdvFwdTemplate) *bambou
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// EgressAuditACLTemplates retrieves the list of child EgressAuditACLTemplates of the Domain
+func (o *Domain) EgressAuditACLTemplates(info *bambou.FetchingInfo) (EgressAuditACLTemplatesList, *bambou.Error) {
+
+	var list EgressAuditACLTemplatesList
+	err := bambou.CurrentSession().FetchChildren(o, EgressAuditACLTemplateIdentity, &list, info)
+	return list, err
+}
+
+// CreateEgressAuditACLTemplate creates a new child EgressAuditACLTemplate under the Domain
+func (o *Domain) CreateEgressAuditACLTemplate(child *EgressAuditACLTemplate) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // DomainFIPAclTemplates retrieves the list of child DomainFIPAclTemplates of the Domain
 func (o *Domain) DomainFIPAclTemplates(info *bambou.FetchingInfo) (DomainFIPAclTemplatesList, *bambou.Error) {
 
@@ -551,6 +573,12 @@ func (o *Domain) IngressACLEntryTemplates(info *bambou.FetchingInfo) (IngressACL
 	return list, err
 }
 
+// CreateIngressACLEntryTemplate creates a new child IngressACLEntryTemplate under the Domain
+func (o *Domain) CreateIngressACLEntryTemplate(child *IngressACLEntryTemplate) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // IngressACLTemplates retrieves the list of child IngressACLTemplates of the Domain
 func (o *Domain) IngressACLTemplates(info *bambou.FetchingInfo) (IngressACLTemplatesList, *bambou.Error) {
 
@@ -575,6 +603,28 @@ func (o *Domain) IngressAdvFwdTemplates(info *bambou.FetchingInfo) (IngressAdvFw
 
 // CreateIngressAdvFwdTemplate creates a new child IngressAdvFwdTemplate under the Domain
 func (o *Domain) CreateIngressAdvFwdTemplate(child *IngressAdvFwdTemplate) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// IngressAuditACLEntryTemplates retrieves the list of child IngressAuditACLEntryTemplates of the Domain
+func (o *Domain) IngressAuditACLEntryTemplates(info *bambou.FetchingInfo) (IngressAuditACLEntryTemplatesList, *bambou.Error) {
+
+	var list IngressAuditACLEntryTemplatesList
+	err := bambou.CurrentSession().FetchChildren(o, IngressAuditACLEntryTemplateIdentity, &list, info)
+	return list, err
+}
+
+// IngressAuditACLTemplates retrieves the list of child IngressAuditACLTemplates of the Domain
+func (o *Domain) IngressAuditACLTemplates(info *bambou.FetchingInfo) (IngressAuditACLTemplatesList, *bambou.Error) {
+
+	var list IngressAuditACLTemplatesList
+	err := bambou.CurrentSession().FetchChildren(o, IngressAuditACLTemplateIdentity, &list, info)
+	return list, err
+}
+
+// CreateIngressAuditACLTemplate creates a new child IngressAuditACLTemplate under the Domain
+func (o *Domain) CreateIngressAuditACLTemplate(child *IngressAuditACLTemplate) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

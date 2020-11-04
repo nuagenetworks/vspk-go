@@ -66,6 +66,7 @@ type Enterprise struct {
 	VNFManagementEnabled                   bool          `json:"VNFManagementEnabled"`
 	Name                                   string        `json:"name,omitempty"`
 	LastUpdatedBy                          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                        string        `json:"lastUpdatedDate,omitempty"`
 	WebFilterEnabled                       bool          `json:"webFilterEnabled"`
 	ReceiveMultiCastListID                 string        `json:"receiveMultiCastListID,omitempty"`
 	SendMultiCastListID                    string        `json:"sendMultiCastListID,omitempty"`
@@ -82,14 +83,17 @@ type Enterprise struct {
 	AllowedForwardingMode                  string        `json:"allowedForwardingMode,omitempty"`
 	FloatingIPsQuota                       int           `json:"floatingIPsQuota,omitempty"`
 	FloatingIPsUsed                        int           `json:"floatingIPsUsed,omitempty"`
+	BlockedPageText                        string        `json:"blockedPageText,omitempty"`
 	FlowCollectionEnabled                  string        `json:"flowCollectionEnabled,omitempty"`
 	EmbeddedMetadata                       []interface{} `json:"embeddedMetadata,omitempty"`
 	EnableApplicationPerformanceManagement bool          `json:"enableApplicationPerformanceManagement"`
 	EncryptionManagementMode               string        `json:"encryptionManagementMode,omitempty"`
 	EnterpriseProfileID                    string        `json:"enterpriseProfileID,omitempty"`
+	EnterpriseType                         string        `json:"enterpriseType,omitempty"`
 	EntityScope                            string        `json:"entityScope,omitempty"`
 	LocalAS                                int           `json:"localAS,omitempty"`
 	ForwardingClass                        []interface{} `json:"forwardingClass,omitempty"`
+	CreationDate                           string        `json:"creationDate,omitempty"`
 	UseGlobalMAC                           bool          `json:"useGlobalMAC"`
 	AssociatedEnterpriseSecurityID         string        `json:"associatedEnterpriseSecurityID,omitempty"`
 	AssociatedGroupKeyEncryptionProfileID  string        `json:"associatedGroupKeyEncryptionProfileID,omitempty"`
@@ -97,6 +101,7 @@ type Enterprise struct {
 	CustomerID                             int           `json:"customerID,omitempty"`
 	AvatarData                             string        `json:"avatarData,omitempty"`
 	AvatarType                             string        `json:"avatarType,omitempty"`
+	Owner                                  string        `json:"owner,omitempty"`
 	ExternalID                             string        `json:"externalID,omitempty"`
 }
 
@@ -112,6 +117,7 @@ func NewEnterprise() *Enterprise {
 		VirtualFirewallRulesEnabled:            false,
 		FlowCollectionEnabled:                  "DISABLED",
 		EnableApplicationPerformanceManagement: false,
+		EnterpriseType:                         "NORMAL",
 		UseGlobalMAC:                           false,
 	}
 }
@@ -240,6 +246,34 @@ func (o *Enterprise) SaaSApplicationTypes(info *bambou.FetchingInfo) (SaaSApplic
 
 // CreateSaaSApplicationType creates a new child SaaSApplicationType under the Enterprise
 func (o *Enterprise) CreateSaaSApplicationType(child *SaaSApplicationType) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// SAPEgressQoSProfiles retrieves the list of child SAPEgressQoSProfiles of the Enterprise
+func (o *Enterprise) SAPEgressQoSProfiles(info *bambou.FetchingInfo) (SAPEgressQoSProfilesList, *bambou.Error) {
+
+	var list SAPEgressQoSProfilesList
+	err := bambou.CurrentSession().FetchChildren(o, SAPEgressQoSProfileIdentity, &list, info)
+	return list, err
+}
+
+// CreateSAPEgressQoSProfile creates a new child SAPEgressQoSProfile under the Enterprise
+func (o *Enterprise) CreateSAPEgressQoSProfile(child *SAPEgressQoSProfile) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// SAPIngressQoSProfiles retrieves the list of child SAPIngressQoSProfiles of the Enterprise
+func (o *Enterprise) SAPIngressQoSProfiles(info *bambou.FetchingInfo) (SAPIngressQoSProfilesList, *bambou.Error) {
+
+	var list SAPIngressQoSProfilesList
+	err := bambou.CurrentSession().FetchChildren(o, SAPIngressQoSProfileIdentity, &list, info)
+	return list, err
+}
+
+// CreateSAPIngressQoSProfile creates a new child SAPIngressQoSProfile under the Enterprise
+func (o *Enterprise) CreateSAPIngressQoSProfile(child *SAPIngressQoSProfile) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }
@@ -536,6 +570,20 @@ func (o *Enterprise) CreateBGPProfile(child *BGPProfile) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// EgressProfiles retrieves the list of child EgressProfiles of the Enterprise
+func (o *Enterprise) EgressProfiles(info *bambou.FetchingInfo) (EgressProfilesList, *bambou.Error) {
+
+	var list EgressProfilesList
+	err := bambou.CurrentSession().FetchChildren(o, EgressProfileIdentity, &list, info)
+	return list, err
+}
+
+// CreateEgressProfile creates a new child EgressProfile under the Enterprise
+func (o *Enterprise) CreateEgressProfile(child *EgressProfile) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // EgressQOSPolicies retrieves the list of child EgressQOSPolicies of the Enterprise
 func (o *Enterprise) EgressQOSPolicies(info *bambou.FetchingInfo) (EgressQOSPoliciesList, *bambou.Error) {
 
@@ -736,6 +784,20 @@ func (o *Enterprise) CreateVNFThresholdPolicy(child *VNFThresholdPolicy) *bambou
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// IngressProfiles retrieves the list of child IngressProfiles of the Enterprise
+func (o *Enterprise) IngressProfiles(info *bambou.FetchingInfo) (IngressProfilesList, *bambou.Error) {
+
+	var list IngressProfilesList
+	err := bambou.CurrentSession().FetchChildren(o, IngressProfileIdentity, &list, info)
+	return list, err
+}
+
+// CreateIngressProfile creates a new child IngressProfile under the Enterprise
+func (o *Enterprise) CreateIngressProfile(child *IngressProfile) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // IngressQOSPolicies retrieves the list of child IngressQOSPolicies of the Enterprise
 func (o *Enterprise) IngressQOSPolicies(info *bambou.FetchingInfo) (IngressQOSPoliciesList, *bambou.Error) {
 
@@ -746,6 +808,20 @@ func (o *Enterprise) IngressQOSPolicies(info *bambou.FetchingInfo) (IngressQOSPo
 
 // CreateIngressQOSPolicy creates a new child IngressQOSPolicy under the Enterprise
 func (o *Enterprise) CreateIngressQOSPolicy(child *IngressQOSPolicy) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// GNMIProfiles retrieves the list of child GNMIProfiles of the Enterprise
+func (o *Enterprise) GNMIProfiles(info *bambou.FetchingInfo) (GNMIProfilesList, *bambou.Error) {
+
+	var list GNMIProfilesList
+	err := bambou.CurrentSession().FetchChildren(o, GNMIProfileIdentity, &list, info)
+	return list, err
+}
+
+// CreateGNMIProfile creates a new child GNMIProfile under the Enterprise
+func (o *Enterprise) CreateGNMIProfile(child *GNMIProfile) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }
@@ -894,6 +970,20 @@ func (o *Enterprise) CreateRoutingPolicy(child *RoutingPolicy) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// IPFilterProfiles retrieves the list of child IPFilterProfiles of the Enterprise
+func (o *Enterprise) IPFilterProfiles(info *bambou.FetchingInfo) (IPFilterProfilesList, *bambou.Error) {
+
+	var list IPFilterProfilesList
+	err := bambou.CurrentSession().FetchChildren(o, IPFilterProfileIdentity, &list, info)
+	return list, err
+}
+
+// CreateIPFilterProfile creates a new child IPFilterProfile under the Enterprise
+func (o *Enterprise) CreateIPFilterProfile(child *IPFilterProfile) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Applications retrieves the list of child Applications of the Enterprise
 func (o *Enterprise) Applications(info *bambou.FetchingInfo) (ApplicationsList, *bambou.Error) {
 
@@ -918,6 +1008,20 @@ func (o *Enterprise) Applicationperformancemanagements(info *bambou.FetchingInfo
 
 // CreateApplicationperformancemanagement creates a new child Applicationperformancemanagement under the Enterprise
 func (o *Enterprise) CreateApplicationperformancemanagement(child *Applicationperformancemanagement) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// IPv6FilterProfiles retrieves the list of child IPv6FilterProfiles of the Enterprise
+func (o *Enterprise) IPv6FilterProfiles(info *bambou.FetchingInfo) (IPv6FilterProfilesList, *bambou.Error) {
+
+	var list IPv6FilterProfilesList
+	err := bambou.CurrentSession().FetchChildren(o, IPv6FilterProfileIdentity, &list, info)
+	return list, err
+}
+
+// CreateIPv6FilterProfile creates a new child IPv6FilterProfile under the Enterprise
+func (o *Enterprise) CreateIPv6FilterProfile(child *IPv6FilterProfile) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

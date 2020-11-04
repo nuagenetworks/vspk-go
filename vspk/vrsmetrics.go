@@ -64,6 +64,7 @@ type VRSMetrics struct {
 	VRSProcess                    bool    `json:"VRSProcess"`
 	VRSVSCStatus                  bool    `json:"VRSVSCStatus"`
 	LastUpdatedBy                 string  `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate               string  `json:"lastUpdatedDate,omitempty"`
 	ReDeploy                      bool    `json:"reDeploy"`
 	ReceivingMetrics              bool    `json:"receivingMetrics"`
 	MemoryUtilization             float64 `json:"memoryUtilization,omitempty"`
@@ -72,8 +73,10 @@ type VRSMetrics struct {
 	LogDiskPartitionUtilization   float64 `json:"logDiskPartitionUtilization,omitempty"`
 	RootDiskPartitionUtilization  float64 `json:"rootDiskPartitionUtilization,omitempty"`
 	AppliedMetricsPushInterval    int     `json:"appliedMetricsPushInterval,omitempty"`
+	CreationDate                  string  `json:"creationDate,omitempty"`
 	AssociatedVCenterHypervisorID string  `json:"associatedVCenterHypervisorID,omitempty"`
 	CurrentVersion                string  `json:"currentVersion,omitempty"`
+	Owner                         string  `json:"owner,omitempty"`
 	ExternalID                    string  `json:"externalID,omitempty"`
 }
 

@@ -61,6 +61,7 @@ type Permission struct {
 	Owner                          string        `json:"owner,omitempty"`
 	Name                           string        `json:"name,omitempty"`
 	LastUpdatedBy                  string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                string        `json:"lastUpdatedDate,omitempty"`
 	PermittedAction                string        `json:"permittedAction,omitempty"`
 	PermittedEnterpriseDescription string        `json:"permittedEnterpriseDescription,omitempty"`
 	PermittedEnterpriseName        string        `json:"permittedEnterpriseName,omitempty"`
@@ -69,12 +70,14 @@ type Permission struct {
 	PermittedEntityType            string        `json:"permittedEntityType,omitempty"`
 	EmbeddedMetadata               []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                    string        `json:"entityScope,omitempty"`
+	CreationDate                   string        `json:"creationDate,omitempty"`
 	AssociatedGroupDescription     string        `json:"associatedGroupDescription,omitempty"`
 	AssociatedGroupID              string        `json:"associatedGroupID,omitempty"`
 	AssociatedGroupName            string        `json:"associatedGroupName,omitempty"`
 	AssociatedRoleDescription      string        `json:"associatedRoleDescription,omitempty"`
 	AssociatedRoleID               string        `json:"associatedRoleID,omitempty"`
 	AssociatedRoleName             string        `json:"associatedRoleName,omitempty"`
+	Owner                          string        `json:"owner,omitempty"`
 	ExternalID                     string        `json:"externalID,omitempty"`
 }
 

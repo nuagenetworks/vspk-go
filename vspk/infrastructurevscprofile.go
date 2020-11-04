@@ -61,6 +61,7 @@ type InfrastructureVscProfile struct {
 	Owner              string        `json:"owner,omitempty"`
 	Name               string        `json:"name,omitempty"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	AddressFamily      string        `json:"addressFamily,omitempty"`
 	SecondController   string        `json:"secondController,omitempty"`
 	SecondControllerV6 string        `json:"secondControllerV6,omitempty"`
@@ -70,7 +71,9 @@ type InfrastructureVscProfile struct {
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseID       string        `json:"enterpriseID,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
 	ProbeInterval      int           `json:"probeInterval,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 }
 

@@ -63,6 +63,7 @@ type Application struct {
 	Name                               string        `json:"name,omitempty"`
 	Bandwidth                          int           `json:"bandwidth,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                    string        `json:"lastUpdatedDate,omitempty"`
 	ReadOnly                           bool          `json:"readOnly"`
 	PerformanceMonitorType             string        `json:"performanceMonitorType,omitempty"`
 	CertificateCommonName              string        `json:"certificateCommonName,omitempty"`
@@ -82,9 +83,11 @@ type Application struct {
 	AppId                              int           `json:"appId,omitempty"`
 	OptimizePathSelection              string        `json:"optimizePathSelection,omitempty"`
 	PreClassificationPath              string        `json:"preClassificationPath,omitempty"`
+	CreationDate                       string        `json:"creationDate,omitempty"`
 	Protocol                           string        `json:"protocol,omitempty"`
 	AssociatedL7ApplicationSignatureID string        `json:"associatedL7ApplicationSignatureID,omitempty"`
 	EtherType                          string        `json:"etherType,omitempty"`
+	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 	Symmetry                           bool          `json:"symmetry"`
 }

@@ -63,12 +63,15 @@ type Bootstrap struct {
 	ZFBMatchAttribute    string        `json:"ZFBMatchAttribute,omitempty"`
 	ZFBMatchValue        string        `json:"ZFBMatchValue,omitempty"`
 	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate      string        `json:"lastUpdatedDate,omitempty"`
 	ActivationURL        string        `json:"activationURL,omitempty"`
 	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
 	InstallerID          string        `json:"installerID,omitempty"`
 	EntityScope          string        `json:"entityScope,omitempty"`
+	CreationDate         string        `json:"creationDate,omitempty"`
 	AssociatedEntityType string        `json:"associatedEntityType,omitempty"`
 	Status               string        `json:"status,omitempty"`
+	Owner                string        `json:"owner,omitempty"`
 	ExternalID           string        `json:"externalID,omitempty"`
 }
 

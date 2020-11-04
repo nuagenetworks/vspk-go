@@ -62,6 +62,7 @@ type BRConnection struct {
 	DNSAddress            string        `json:"DNSAddress,omitempty"`
 	DNSAddressV6          string        `json:"DNSAddressV6,omitempty"`
 	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
 	Gateway               string        `json:"gateway,omitempty"`
 	GatewayV6             string        `json:"gatewayV6,omitempty"`
 	Address               string        `json:"address,omitempty"`
@@ -74,6 +75,8 @@ type BRConnection struct {
 	EntityScope           string        `json:"entityScope,omitempty"`
 	Mode                  string        `json:"mode,omitempty"`
 	UplinkID              int           `json:"uplinkID,omitempty"`
+	CreationDate          string        `json:"creationDate,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
 	ExternalID            string        `json:"externalID,omitempty"`
 }
 

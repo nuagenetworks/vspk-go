@@ -62,6 +62,7 @@ type TestSuiteRun struct {
 	VPortName                string        `json:"VPortName,omitempty"`
 	NSGatewayName            string        `json:"NSGatewayName,omitempty"`
 	LastUpdatedBy            string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate          string        `json:"lastUpdatedDate,omitempty"`
 	DatapathID               string        `json:"datapathID,omitempty"`
 	Destination              string        `json:"destination,omitempty"`
 	BirthCertificate         bool          `json:"birthCertificate"`
@@ -70,12 +71,15 @@ type TestSuiteRun struct {
 	DomainName               string        `json:"domainName,omitempty"`
 	ZoneName                 string        `json:"zoneName,omitempty"`
 	OperationStatus          string        `json:"operationStatus,omitempty"`
+	CreationDate             string        `json:"creationDate,omitempty"`
 	AssociatedEntityType     string        `json:"associatedEntityType,omitempty"`
 	AssociatedTestSuiteID    string        `json:"associatedTestSuiteID,omitempty"`
 	AssociatedTestSuiteName  string        `json:"associatedTestSuiteName,omitempty"`
 	AssociatedUnderlayTestID string        `json:"associatedUnderlayTestID,omitempty"`
 	SubnetName               string        `json:"subnetName,omitempty"`
+	Owner                    string        `json:"owner,omitempty"`
 	ExternalID               string        `json:"externalID,omitempty"`
+	SystemID                 string        `json:"systemID,omitempty"`
 }
 
 // NewTestSuiteRun returns a new *TestSuiteRun

@@ -60,10 +60,13 @@ type VrsInfo struct {
 	ParentType       string        `json:"parentType,omitempty"`
 	Owner            string        `json:"owner,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	NodeSegmentID    int           `json:"nodeSegmentID,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	VrsIP            string        `json:"vrsIP,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

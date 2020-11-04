@@ -61,9 +61,12 @@ type AutoDiscoverHypervisorFromCluster struct {
 	Owner           string        `json:"owner,omitempty"`
 	ManagedObjectID string        `json:"managedObjectID,omitempty"`
 	LastUpdatedBy   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate string        `json:"lastUpdatedDate,omitempty"`
 	NetworkList     []interface{} `json:"networkList,omitempty"`
 	EntityScope     string        `json:"entityScope,omitempty"`
+	CreationDate    string        `json:"creationDate,omitempty"`
 	AssocEntityID   string        `json:"assocEntityID,omitempty"`
+	Owner           string        `json:"owner,omitempty"`
 	ExternalID      string        `json:"externalID,omitempty"`
 	HypervisorIP    string        `json:"hypervisorIP,omitempty"`
 }

@@ -62,6 +62,7 @@ type VNFThresholdPolicy struct {
 	CPUThreshold     int           `json:"CPUThreshold,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	Action           string        `json:"action,omitempty"`
 	MemoryThreshold  int           `json:"memoryThreshold,omitempty"`
 	Description      string        `json:"description,omitempty"`
@@ -69,8 +70,10 @@ type VNFThresholdPolicy struct {
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	MonitInterval    int           `json:"monitInterval,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	AssocEntityType  string        `json:"assocEntityType,omitempty"`
 	StorageThreshold int           `json:"storageThreshold,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

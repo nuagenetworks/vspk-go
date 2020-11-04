@@ -66,6 +66,7 @@ type VCenterDataCenter struct {
 	ManageVRSAvailability                  bool          `json:"manageVRSAvailability"`
 	ManagedObjectID                        string        `json:"managedObjectID,omitempty"`
 	LastUpdatedBy                          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                        string        `json:"lastUpdatedDate,omitempty"`
 	DataDNS1                               string        `json:"dataDNS1,omitempty"`
 	DataDNS2                               string        `json:"dataDNS2,omitempty"`
 	DataGateway                            string        `json:"dataGateway,omitempty"`
@@ -138,6 +139,7 @@ type VCenterDataCenter struct {
 	UpgradePackageUsername                 string        `json:"upgradePackageUsername,omitempty"`
 	UpgradeScriptTimeLimit                 int           `json:"upgradeScriptTimeLimit,omitempty"`
 	CpuCount                               string        `json:"cpuCount,omitempty"`
+	CreationDate                           string        `json:"creationDate,omitempty"`
 	PrimaryDataUplinkUnderlayID            int           `json:"primaryDataUplinkUnderlayID,omitempty"`
 	PrimaryDataUplinkVDFControlVLAN        int           `json:"primaryDataUplinkVDFControlVLAN,omitempty"`
 	PrimaryNuageController                 string        `json:"primaryNuageController,omitempty"`
@@ -163,6 +165,7 @@ type VCenterDataCenter struct {
 	OvfURL                                 string        `json:"ovfURL,omitempty"`
 	AvrsEnabled                            bool          `json:"avrsEnabled"`
 	AvrsProfile                            string        `json:"avrsProfile,omitempty"`
+	Owner                                  string        `json:"owner,omitempty"`
 	ExternalID                             string        `json:"externalID,omitempty"`
 }
 

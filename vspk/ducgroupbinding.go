@@ -60,13 +60,16 @@ type DUCGroupBinding struct {
 	ParentType                 string        `json:"parentType,omitempty"`
 	Owner                      string        `json:"owner,omitempty"`
 	LastUpdatedBy              string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate            string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata           []interface{} `json:"embeddedMetadata,omitempty"`
 	OneWayDelay                int           `json:"oneWayDelay,omitempty"`
 	EntityScope                string        `json:"entityScope,omitempty"`
+	CreationDate               string        `json:"creationDate,omitempty"`
 	Priority                   int           `json:"priority,omitempty"`
 	AssociatedDUCGroupID       string        `json:"associatedDUCGroupID,omitempty"`
 	AssociatedUBRGroupFunction string        `json:"associatedUBRGroupFunction,omitempty"`
 	AssociatedUBRGroupName     string        `json:"associatedUBRGroupName,omitempty"`
+	Owner                      string        `json:"owner,omitempty"`
 	ExternalID                 string        `json:"externalID,omitempty"`
 }
 

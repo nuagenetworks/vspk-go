@@ -61,12 +61,16 @@ type GatewayTemplate struct {
 	Owner                   string        `json:"owner,omitempty"`
 	Name                    string        `json:"name,omitempty"`
 	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
+	NativeVLAN              string        `json:"nativeVLAN,omitempty"`
 	Personality             string        `json:"personality,omitempty"`
 	Description             string        `json:"description,omitempty"`
 	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
 	InfrastructureProfileID string        `json:"infrastructureProfileID,omitempty"`
 	EnterpriseID            string        `json:"enterpriseID,omitempty"`
 	EntityScope             string        `json:"entityScope,omitempty"`
+	CreationDate            string        `json:"creationDate,omitempty"`
+	Owner                   string        `json:"owner,omitempty"`
 	ExternalID              string        `json:"externalID,omitempty"`
 }
 
@@ -74,6 +78,7 @@ type GatewayTemplate struct {
 func NewGatewayTemplate() *GatewayTemplate {
 
 	return &GatewayTemplate{
+		NativeVLAN:  "1",
 		Personality: "VRSG",
 	}
 }

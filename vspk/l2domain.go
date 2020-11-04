@@ -69,6 +69,7 @@ type L2Domain struct {
 	MaintenanceMode                   string        `json:"maintenanceMode,omitempty"`
 	Name                              string        `json:"name,omitempty"`
 	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                   string        `json:"lastUpdatedDate,omitempty"`
 	Gateway                           string        `json:"gateway,omitempty"`
 	GatewayMACAddress                 string        `json:"gatewayMACAddress,omitempty"`
 	Address                           string        `json:"address,omitempty"`
@@ -78,12 +79,15 @@ type L2Domain struct {
 	Netmask                           string        `json:"netmask,omitempty"`
 	ThreatIntelligenceEnabled         string        `json:"threatIntelligenceEnabled,omitempty"`
 	FlowCollectionEnabled             string        `json:"flowCollectionEnabled,omitempty"`
+	FlowCount                         int           `json:"flowCount,omitempty"`
+	FlowLimitEnabled                  string        `json:"flowLimitEnabled,omitempty"`
 	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
 	VnId                              int           `json:"vnId,omitempty"`
 	EnableDHCPv4                      bool          `json:"enableDHCPv4"`
 	EnableDHCPv6                      bool          `json:"enableDHCPv6"`
 	Encryption                        string        `json:"encryption,omitempty"`
 	IngressReplicationEnabled         bool          `json:"ingressReplicationEnabled"`
+	InterfaceID                       int           `json:"interfaceID,omitempty"`
 	EntityScope                       string        `json:"entityScope,omitempty"`
 	EntityState                       string        `json:"entityState,omitempty"`
 	PolicyChangeStatus                string        `json:"policyChangeStatus,omitempty"`
@@ -92,6 +96,7 @@ type L2Domain struct {
 	RouteTarget                       string        `json:"routeTarget,omitempty"`
 	RoutedVPLSEnabled                 bool          `json:"routedVPLSEnabled"`
 	UplinkPreference                  string        `json:"uplinkPreference,omitempty"`
+	CreationDate                      string        `json:"creationDate,omitempty"`
 	UseGlobalMAC                      string        `json:"useGlobalMAC,omitempty"`
 	AssociatedMulticastChannelMapID   string        `json:"associatedMulticastChannelMapID,omitempty"`
 	AssociatedSharedNetworkResourceID string        `json:"associatedSharedNetworkResourceID,omitempty"`
@@ -100,6 +105,7 @@ type L2Domain struct {
 	DualStackDynamicIPAllocation      bool          `json:"dualStackDynamicIPAllocation"`
 	Multicast                         string        `json:"multicast,omitempty"`
 	CustomerID                        int           `json:"customerID,omitempty"`
+	Owner                             string        `json:"owner,omitempty"`
 	ExternalID                        string        `json:"externalID,omitempty"`
 }
 
@@ -113,6 +119,7 @@ func NewL2Domain() *L2Domain {
 		MaintenanceMode:           "DISABLED",
 		ThreatIntelligenceEnabled: "INHERITED",
 		FlowCollectionEnabled:     "INHERITED",
+		FlowLimitEnabled:          "DISABLED",
 		IngressReplicationEnabled: false,
 		Color:                     0,
 		RoutedVPLSEnabled:         false,
@@ -314,6 +321,20 @@ func (o *L2Domain) CreateEgressAdvFwdTemplate(child *EgressAdvFwdTemplate) *bamb
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// EgressAuditACLTemplates retrieves the list of child EgressAuditACLTemplates of the L2Domain
+func (o *L2Domain) EgressAuditACLTemplates(info *bambou.FetchingInfo) (EgressAuditACLTemplatesList, *bambou.Error) {
+
+	var list EgressAuditACLTemplatesList
+	err := bambou.CurrentSession().FetchChildren(o, EgressAuditACLTemplateIdentity, &list, info)
+	return list, err
+}
+
+// CreateEgressAuditACLTemplate creates a new child EgressAuditACLTemplate under the L2Domain
+func (o *L2Domain) CreateEgressAuditACLTemplate(child *EgressAuditACLTemplate) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // DHCPOptions retrieves the list of child DHCPOptions of the L2Domain
 func (o *L2Domain) DHCPOptions(info *bambou.FetchingInfo) (DHCPOptionsList, *bambou.Error) {
 
@@ -438,6 +459,12 @@ func (o *L2Domain) IngressACLEntryTemplates(info *bambou.FetchingInfo) (IngressA
 	return list, err
 }
 
+// CreateIngressACLEntryTemplate creates a new child IngressACLEntryTemplate under the L2Domain
+func (o *L2Domain) CreateIngressACLEntryTemplate(child *IngressACLEntryTemplate) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // IngressACLTemplates retrieves the list of child IngressACLTemplates of the L2Domain
 func (o *L2Domain) IngressACLTemplates(info *bambou.FetchingInfo) (IngressACLTemplatesList, *bambou.Error) {
 
@@ -462,6 +489,28 @@ func (o *L2Domain) IngressAdvFwdTemplates(info *bambou.FetchingInfo) (IngressAdv
 
 // CreateIngressAdvFwdTemplate creates a new child IngressAdvFwdTemplate under the L2Domain
 func (o *L2Domain) CreateIngressAdvFwdTemplate(child *IngressAdvFwdTemplate) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// IngressAuditACLEntryTemplates retrieves the list of child IngressAuditACLEntryTemplates of the L2Domain
+func (o *L2Domain) IngressAuditACLEntryTemplates(info *bambou.FetchingInfo) (IngressAuditACLEntryTemplatesList, *bambou.Error) {
+
+	var list IngressAuditACLEntryTemplatesList
+	err := bambou.CurrentSession().FetchChildren(o, IngressAuditACLEntryTemplateIdentity, &list, info)
+	return list, err
+}
+
+// IngressAuditACLTemplates retrieves the list of child IngressAuditACLTemplates of the L2Domain
+func (o *L2Domain) IngressAuditACLTemplates(info *bambou.FetchingInfo) (IngressAuditACLTemplatesList, *bambou.Error) {
+
+	var list IngressAuditACLTemplatesList
+	err := bambou.CurrentSession().FetchChildren(o, IngressAuditACLTemplateIdentity, &list, info)
+	return list, err
+}
+
+// CreateIngressAuditACLTemplate creates a new child IngressAuditACLTemplate under the L2Domain
+func (o *L2Domain) CreateIngressAuditACLTemplate(child *IngressAuditACLTemplate) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

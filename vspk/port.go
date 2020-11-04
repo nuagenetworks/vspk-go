@@ -62,6 +62,8 @@ type Port struct {
 	VLANRange                          string        `json:"VLANRange,omitempty"`
 	Name                               string        `json:"name,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                    string        `json:"lastUpdatedDate,omitempty"`
+	NativeVLAN                         string        `json:"nativeVLAN,omitempty"`
 	TemplateID                         string        `json:"templateID,omitempty"`
 	PermittedAction                    string        `json:"permittedAction,omitempty"`
 	Description                        string        `json:"description,omitempty"`
@@ -69,6 +71,8 @@ type Port struct {
 	EmbeddedMetadata                   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                        string        `json:"entityScope,omitempty"`
 	PortType                           string        `json:"portType,omitempty"`
+	OperationalState                   string        `json:"operationalState,omitempty"`
+	CreationDate                       string        `json:"creationDate,omitempty"`
 	IsResilient                        bool          `json:"isResilient"`
 	UseUserMnemonic                    bool          `json:"useUserMnemonic"`
 	UserMnemonic                       string        `json:"userMnemonic,omitempty"`
@@ -79,6 +83,7 @@ type Port struct {
 	AssociatedEthernetSegmentVirtual   bool          `json:"associatedEthernetSegmentVirtual"`
 	AssociatedRedundantPortID          string        `json:"associatedRedundantPortID,omitempty"`
 	Status                             string        `json:"status,omitempty"`
+	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 }
 

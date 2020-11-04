@@ -70,6 +70,7 @@ type Subnet struct {
 	MaintenanceMode                   string        `json:"maintenanceMode,omitempty"`
 	Name                              string        `json:"name,omitempty"`
 	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                   string        `json:"lastUpdatedDate,omitempty"`
 	Gateway                           string        `json:"gateway,omitempty"`
 	GatewayMACAddress                 string        `json:"gatewayMACAddress,omitempty"`
 	AccessRestrictionEnabled          bool          `json:"accessRestrictionEnabled"`
@@ -89,6 +90,7 @@ type Subnet struct {
 	Underlay                          bool          `json:"underlay"`
 	UnderlayEnabled                   string        `json:"underlayEnabled,omitempty"`
 	IngressReplicationEnabled         bool          `json:"ingressReplicationEnabled"`
+	InterfaceID                       int           `json:"interfaceID,omitempty"`
 	EntityScope                       string        `json:"entityScope,omitempty"`
 	EntityState                       string        `json:"entityState,omitempty"`
 	PolicyGroupID                     int           `json:"policyGroupID,omitempty"`
@@ -97,6 +99,8 @@ type Subnet struct {
 	RouteDistinguisher                string        `json:"routeDistinguisher,omitempty"`
 	RouteTarget                       string        `json:"routeTarget,omitempty"`
 	SplitSubnet                       bool          `json:"splitSubnet"`
+	IrbSubInterfaceID                 int           `json:"irbSubInterfaceID,omitempty"`
+	CreationDate                      string        `json:"creationDate,omitempty"`
 	ProxyARP                          bool          `json:"proxyARP"`
 	VrrpIPv6BackupAddress             string        `json:"vrrpIPv6BackupAddress,omitempty"`
 	UseGlobalMAC                      string        `json:"useGlobalMAC,omitempty"`
@@ -108,6 +112,7 @@ type Subnet struct {
 	MultiHomeEnabled                  bool          `json:"multiHomeEnabled"`
 	Multicast                         string        `json:"multicast,omitempty"`
 	CustomerID                        int           `json:"customerID,omitempty"`
+	Owner                             string        `json:"owner,omitempty"`
 	ExternalID                        string        `json:"externalID,omitempty"`
 }
 

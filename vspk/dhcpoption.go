@@ -61,11 +61,14 @@ type DHCPOption struct {
 	Owner            string        `json:"owner,omitempty"`
 	Value            string        `json:"value,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	ActualType       int           `json:"actualType,omitempty"`
 	ActualValues     []interface{} `json:"actualValues,omitempty"`
 	Length           string        `json:"length,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 	Type             string        `json:"type,omitempty"`
 }

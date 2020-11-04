@@ -61,12 +61,15 @@ type NSGRoutingPolicyBinding struct {
 	Owner                           string        `json:"owner,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	Description                     string        `json:"description,omitempty"`
 	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                     string        `json:"entityScope,omitempty"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	AssociatedExportRoutingPolicyID string        `json:"associatedExportRoutingPolicyID,omitempty"`
 	AssociatedImportRoutingPolicyID string        `json:"associatedImportRoutingPolicyID,omitempty"`
 	AssociatedPolicyObjectGroupID   string        `json:"associatedPolicyObjectGroupID,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExportToOverlay                 string        `json:"exportToOverlay,omitempty"`
 	ExternalID                      string        `json:"externalID,omitempty"`
 }

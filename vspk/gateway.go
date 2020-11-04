@@ -70,6 +70,7 @@ type Gateway struct {
 	Family                             string        `json:"family,omitempty"`
 	ManagementID                       string        `json:"managementID,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                    string        `json:"lastUpdatedDate,omitempty"`
 	DatapathID                         string        `json:"datapathID,omitempty"`
 	Patches                            string        `json:"patches,omitempty"`
 	GatewayConfigRawVersion            string        `json:"gatewayConfigRawVersion,omitempty"`
@@ -77,6 +78,7 @@ type Gateway struct {
 	GatewayConnected                   bool          `json:"gatewayConnected"`
 	GatewayModel                       string        `json:"gatewayModel,omitempty"`
 	GatewayVersion                     string        `json:"gatewayVersion,omitempty"`
+	NativeVLAN                         string        `json:"nativeVLAN,omitempty"`
 	RedundancyGroupID                  string        `json:"redundancyGroupID,omitempty"`
 	Peer                               string        `json:"peer,omitempty"`
 	TemplateID                         string        `json:"templateID,omitempty"`
@@ -93,14 +95,17 @@ type Gateway struct {
 	LocationID                         string        `json:"locationID,omitempty"`
 	BootstrapID                        string        `json:"bootstrapID,omitempty"`
 	BootstrapStatus                    string        `json:"bootstrapStatus,omitempty"`
+	CreationDate                       string        `json:"creationDate,omitempty"`
 	ProductName                        string        `json:"productName,omitempty"`
 	UseGatewayVLANVNID                 bool          `json:"useGatewayVLANVNID"`
+	AssociatedGNMIProfileID            string        `json:"associatedGNMIProfileID,omitempty"`
 	AssociatedGatewaySecurityID        string        `json:"associatedGatewaySecurityID,omitempty"`
 	AssociatedGatewaySecurityProfileID string        `json:"associatedGatewaySecurityProfileID,omitempty"`
 	AssociatedNSGInfoID                string        `json:"associatedNSGInfoID,omitempty"`
 	AssociatedNetconfProfileID         string        `json:"associatedNetconfProfileID,omitempty"`
 	Vtep                               string        `json:"vtep,omitempty"`
 	AutoDiscGatewayID                  string        `json:"autoDiscGatewayID,omitempty"`
+	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 	SystemID                           string        `json:"systemID,omitempty"`
 }
@@ -388,6 +393,14 @@ func (o *Gateway) Ports(info *bambou.FetchingInfo) (PortsList, *bambou.Error) {
 func (o *Gateway) CreatePort(child *Port) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// RoutingPolicies retrieves the list of child RoutingPolicies of the Gateway
+func (o *Gateway) RoutingPolicies(info *bambou.FetchingInfo) (RoutingPoliciesList, *bambou.Error) {
+
+	var list RoutingPoliciesList
+	err := bambou.CurrentSession().FetchChildren(o, RoutingPolicyIdentity, &list, info)
+	return list, err
 }
 
 // IPFilterProfiles retrieves the list of child IPFilterProfiles of the Gateway

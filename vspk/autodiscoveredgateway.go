@@ -61,6 +61,7 @@ type AutoDiscoveredGateway struct {
 	Owner            string        `json:"owner,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	GatewayID        string        `json:"gatewayID,omitempty"`
 	Peer             string        `json:"peer,omitempty"`
 	Personality      string        `json:"personality,omitempty"`
@@ -68,7 +69,9 @@ type AutoDiscoveredGateway struct {
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	Controllers      []interface{} `json:"controllers,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	Vtep             string        `json:"vtep,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 	SystemID         string        `json:"systemID,omitempty"`
 }

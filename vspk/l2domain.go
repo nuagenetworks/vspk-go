@@ -321,6 +321,14 @@ func (o *L2Domain) CreateEgressAdvFwdTemplate(child *EgressAdvFwdTemplate) *bamb
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// EgressAuditACLEntryTemplates retrieves the list of child EgressAuditACLEntryTemplates of the L2Domain
+func (o *L2Domain) EgressAuditACLEntryTemplates(info *bambou.FetchingInfo) (EgressAuditACLEntryTemplatesList, *bambou.Error) {
+
+	var list EgressAuditACLEntryTemplatesList
+	err := bambou.CurrentSession().FetchChildren(o, EgressAuditACLEntryTemplateIdentity, &list, info)
+	return list, err
+}
+
 // EgressAuditACLTemplates retrieves the list of child EgressAuditACLTemplates of the L2Domain
 func (o *L2Domain) EgressAuditACLTemplates(info *bambou.FetchingInfo) (EgressAuditACLTemplatesList, *bambou.Error) {
 

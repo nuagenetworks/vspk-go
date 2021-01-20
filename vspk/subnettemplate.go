@@ -70,8 +70,6 @@ type SubnetTemplate struct {
 	Description                     string        `json:"description,omitempty"`
 	Netmask                         string        `json:"netmask,omitempty"`
 	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
-	EnableDHCPv4                    bool          `json:"enableDHCPv4"`
-	EnableDHCPv6                    bool          `json:"enableDHCPv6"`
 	Encryption                      string        `json:"encryption,omitempty"`
 	EntityScope                     string        `json:"entityScope,omitempty"`
 	SplitSubnet                     bool          `json:"splitSubnet"`
@@ -89,8 +87,6 @@ func NewSubnetTemplate() *SubnetTemplate {
 	return &SubnetTemplate{
 		DPI:                          "INHERITED",
 		IPType:                       "IPV4",
-		EnableDHCPv4:                 true,
-		EnableDHCPv6:                 false,
 		UseGlobalMAC:                 "ENTERPRISE_DEFAULT",
 		DualStackDynamicIPAllocation: false,
 		Multicast:                    "INHERITED",

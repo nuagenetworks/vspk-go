@@ -32,7 +32,7 @@ import "github.com/nuagenetworks/go-bambou/bambou"
 // SupplementalInfraConfigIdentity represents the Identity of the object
 var SupplementalInfraConfigIdentity = bambou.Identity{
 	Name:     "supplementalinfraconfig",
-	Category: "supplementalinfraconfigs",
+	Category: "supplementalinfraconfig",
 }
 
 // SupplementalInfraConfigsList represents a list of SupplementalInfraConfigs

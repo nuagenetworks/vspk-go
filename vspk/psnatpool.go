@@ -62,11 +62,14 @@ type PSNATPool struct {
 	IPType           string        `json:"IPType,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	Description      string        `json:"description,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EndAddress       string        `json:"endAddress,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	StartAddress     string        `json:"startAddress,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

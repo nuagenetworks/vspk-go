@@ -65,13 +65,16 @@ type UserContext struct {
 	VSSStatsInterval       int           `json:"VSSStatsInterval,omitempty"`
 	PageSize               int           `json:"pageSize,omitempty"`
 	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
 	FlowCollectionEnabled  bool          `json:"flowCollectionEnabled"`
 	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope            string        `json:"entityScope,omitempty"`
 	GoogleMapsAPIKey       string        `json:"googleMapsAPIKey,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
 	StatisticsEnabled      bool          `json:"statisticsEnabled"`
 	StatsDatabaseProxy     string        `json:"statsDatabaseProxy,omitempty"`
 	StatsTSDBServerAddress string        `json:"statsTSDBServerAddress,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
 	ExternalID             string        `json:"externalID,omitempty"`
 }
 

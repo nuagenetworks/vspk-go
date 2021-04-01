@@ -61,6 +61,7 @@ type IKEPSK struct {
 	Owner                             string        `json:"owner,omitempty"`
 	Name                              string        `json:"name,omitempty"`
 	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                   string        `json:"lastUpdatedDate,omitempty"`
 	Description                       string        `json:"description,omitempty"`
 	Signature                         string        `json:"signature,omitempty"`
 	SigningCertificateSerialNumber    int           `json:"signingCertificateSerialNumber,omitempty"`
@@ -69,8 +70,10 @@ type IKEPSK struct {
 	EncryptingCertificateSerialNumber int           `json:"encryptingCertificateSerialNumber,omitempty"`
 	UnencryptedPSK                    string        `json:"unencryptedPSK,omitempty"`
 	EntityScope                       string        `json:"entityScope,omitempty"`
+	CreationDate                      string        `json:"creationDate,omitempty"`
 	AssociatedEnterpriseID            string        `json:"associatedEnterpriseID,omitempty"`
 	AutoCreated                       bool          `json:"autoCreated"`
+	Owner                             string        `json:"owner,omitempty"`
 	ExternalID                        string        `json:"externalID,omitempty"`
 }
 

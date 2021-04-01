@@ -63,16 +63,19 @@ type InfrastructureEVDFProfile struct {
 	NTPServerKeyID    int           `json:"NTPServerKeyID,omitempty"`
 	Name              string        `json:"name,omitempty"`
 	LastUpdatedBy     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate   string        `json:"lastUpdatedDate,omitempty"`
 	ActiveController  string        `json:"activeController,omitempty"`
 	ServiceIPv4Subnet string        `json:"serviceIPv4Subnet,omitempty"`
 	Description       string        `json:"description,omitempty"`
 	EmbeddedMetadata  []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseID      string        `json:"enterpriseID,omitempty"`
 	EntityScope       string        `json:"entityScope,omitempty"`
+	CreationDate      string        `json:"creationDate,omitempty"`
 	ProxyDNSName      string        `json:"proxyDNSName,omitempty"`
 	UseTwoFactor      bool          `json:"useTwoFactor"`
 	StandbyController string        `json:"standbyController,omitempty"`
 	NuagePlatform     string        `json:"nuagePlatform,omitempty"`
+	Owner             string        `json:"owner,omitempty"`
 	ExternalID        string        `json:"externalID,omitempty"`
 }
 

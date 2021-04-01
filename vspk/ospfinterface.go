@@ -62,6 +62,7 @@ type OSPFInterface struct {
 	Name               string        `json:"name,omitempty"`
 	PassiveEnabled     bool          `json:"passiveEnabled"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	AdminState         string        `json:"adminState,omitempty"`
 	DeadInterval       int           `json:"deadInterval,omitempty"`
 	HelloInterval      int           `json:"helloInterval,omitempty"`
@@ -71,11 +72,13 @@ type OSPFInterface struct {
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	InterfaceType      string        `json:"interfaceType,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
 	Priority           int           `json:"priority,omitempty"`
 	AssociatedSubnetID string        `json:"associatedSubnetID,omitempty"`
 	Mtu                int           `json:"mtu,omitempty"`
 	AuthenticationKey  string        `json:"authenticationKey,omitempty"`
 	AuthenticationType string        `json:"authenticationType,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 }
 

@@ -62,11 +62,14 @@ type PTranslationMap struct {
 	SPATSourceList     []interface{} `json:"SPATSourceList,omitempty"`
 	MappingType        string        `json:"mappingType,omitempty"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
 	ProviderAliasIP    string        `json:"providerAliasIP,omitempty"`
 	ProviderIP         string        `json:"providerIP,omitempty"`
 	AssociatedDomainID string        `json:"associatedDomainID,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 }
 

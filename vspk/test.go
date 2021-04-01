@@ -61,6 +61,7 @@ type Test struct {
 	Owner                      string        `json:"owner,omitempty"`
 	Name                       string        `json:"name,omitempty"`
 	LastUpdatedBy              string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate            string        `json:"lastUpdatedDate,omitempty"`
 	Description                string        `json:"description,omitempty"`
 	Destination                string        `json:"destination,omitempty"`
 	Timeout                    int           `json:"timeout,omitempty"`
@@ -68,8 +69,10 @@ type Test struct {
 	EntityScope                string        `json:"entityScope,omitempty"`
 	Command                    string        `json:"command,omitempty"`
 	Order                      int           `json:"order,omitempty"`
+	CreationDate               string        `json:"creationDate,omitempty"`
 	AssociatedTestDefinitionID string        `json:"associatedTestDefinitionID,omitempty"`
 	AssociatedTestSuiteID      string        `json:"associatedTestSuiteID,omitempty"`
+	Owner                      string        `json:"owner,omitempty"`
 	ExternalID                 string        `json:"externalID,omitempty"`
 }
 

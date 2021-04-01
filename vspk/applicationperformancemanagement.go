@@ -61,12 +61,15 @@ type Applicationperformancemanagement struct {
 	Owner                          string        `json:"owner,omitempty"`
 	Name                           string        `json:"name,omitempty"`
 	LastUpdatedBy                  string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                string        `json:"lastUpdatedDate,omitempty"`
 	ReadOnly                       bool          `json:"readOnly"`
 	Description                    string        `json:"description,omitempty"`
 	EmbeddedMetadata               []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                    string        `json:"entityScope,omitempty"`
 	AppGroupUniqueId               int           `json:"appGroupUniqueId,omitempty"`
+	CreationDate                   string        `json:"creationDate,omitempty"`
 	AssociatedPerformanceMonitorID string        `json:"associatedPerformanceMonitorID,omitempty"`
+	Owner                          string        `json:"owner,omitempty"`
 	ExternalID                     string        `json:"externalID,omitempty"`
 }
 

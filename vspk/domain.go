@@ -78,6 +78,7 @@ type Domain struct {
 	MaintenanceMode                 string        `json:"maintenanceMode,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	AdvertiseCriteria               string        `json:"advertiseCriteria,omitempty"`
 	LeakingEnabled                  bool          `json:"leakingEnabled"`
 	SecondaryDHCPServerAddress      string        `json:"secondaryDHCPServerAddress,omitempty"`
@@ -107,6 +108,7 @@ type Domain struct {
 	RouteTarget                     string        `json:"routeTarget,omitempty"`
 	UplinkPreference                string        `json:"uplinkPreference,omitempty"`
 	CreateBackHaulSubnet            bool          `json:"createBackHaulSubnet"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	AssociatedBGPProfileID          string        `json:"associatedBGPProfileID,omitempty"`
 	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
 	AssociatedPATMapperID           string        `json:"associatedPATMapperID,omitempty"`
@@ -116,6 +118,7 @@ type Domain struct {
 	Multicast                       string        `json:"multicast,omitempty"`
 	TunnelType                      string        `json:"tunnelType,omitempty"`
 	CustomerID                      int           `json:"customerID,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExportRouteTarget               string        `json:"exportRouteTarget,omitempty"`
 	ExternalID                      string        `json:"externalID,omitempty"`
 	ExternalLabel                   string        `json:"externalLabel,omitempty"`

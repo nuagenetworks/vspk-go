@@ -61,10 +61,13 @@ type MultiCastRange struct {
 	Owner            string        `json:"owner,omitempty"`
 	IPType           string        `json:"IPType,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	MaxAddress       string        `json:"maxAddress,omitempty"`
 	MinAddress       string        `json:"minAddress,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

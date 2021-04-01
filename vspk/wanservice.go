@@ -63,6 +63,7 @@ type WANService struct {
 	IRBEnabled             bool          `json:"IRBEnabled"`
 	Name                   string        `json:"name,omitempty"`
 	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
 	PermittedAction        string        `json:"permittedAction,omitempty"`
 	ServicePolicy          string        `json:"servicePolicy,omitempty"`
 	ServiceType            string        `json:"serviceType,omitempty"`
@@ -73,12 +74,14 @@ type WANService struct {
 	EntityScope            string        `json:"entityScope,omitempty"`
 	DomainName             string        `json:"domainName,omitempty"`
 	ConfigType             string        `json:"configType,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
 	Orphan                 bool          `json:"orphan"`
 	UseUserMnemonic        bool          `json:"useUserMnemonic"`
 	UserMnemonic           string        `json:"userMnemonic,omitempty"`
 	AssociatedDomainID     string        `json:"associatedDomainID,omitempty"`
 	AssociatedVPNConnectID string        `json:"associatedVPNConnectID,omitempty"`
 	TunnelType             string        `json:"tunnelType,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
 	ExternalID             string        `json:"externalID,omitempty"`
 	ExternalRouteTarget    string        `json:"externalRouteTarget,omitempty"`
 }

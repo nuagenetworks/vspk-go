@@ -62,9 +62,12 @@ type PolicyGroupTemplate struct {
 	EVPNCommunityTag string        `json:"EVPNCommunityTag,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	Description      string        `json:"description,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	External         bool          `json:"external"`
 	ExternalID       string        `json:"externalID,omitempty"`
 	Type             string        `json:"type,omitempty"`

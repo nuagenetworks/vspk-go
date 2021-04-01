@@ -70,6 +70,7 @@ type Gateway struct {
 	Family                             string        `json:"family,omitempty"`
 	ManagementID                       string        `json:"managementID,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                    string        `json:"lastUpdatedDate,omitempty"`
 	DatapathID                         string        `json:"datapathID,omitempty"`
 	Patches                            string        `json:"patches,omitempty"`
 	GatewayConfigRawVersion            string        `json:"gatewayConfigRawVersion,omitempty"`
@@ -93,6 +94,7 @@ type Gateway struct {
 	LocationID                         string        `json:"locationID,omitempty"`
 	BootstrapID                        string        `json:"bootstrapID,omitempty"`
 	BootstrapStatus                    string        `json:"bootstrapStatus,omitempty"`
+	CreationDate                       string        `json:"creationDate,omitempty"`
 	ProductName                        string        `json:"productName,omitempty"`
 	UseGatewayVLANVNID                 bool          `json:"useGatewayVLANVNID"`
 	AssociatedGatewaySecurityID        string        `json:"associatedGatewaySecurityID,omitempty"`
@@ -101,6 +103,7 @@ type Gateway struct {
 	AssociatedNetconfProfileID         string        `json:"associatedNetconfProfileID,omitempty"`
 	Vtep                               string        `json:"vtep,omitempty"`
 	AutoDiscGatewayID                  string        `json:"autoDiscGatewayID,omitempty"`
+	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 	SystemID                           string        `json:"systemID,omitempty"`
 }

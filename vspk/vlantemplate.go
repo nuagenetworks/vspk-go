@@ -61,9 +61,11 @@ type VLANTemplate struct {
 	Owner                                 string        `json:"owner,omitempty"`
 	Value                                 int           `json:"value,omitempty"`
 	LastUpdatedBy                         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                       string        `json:"lastUpdatedDate,omitempty"`
 	Description                           string        `json:"description,omitempty"`
 	EmbeddedMetadata                      []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                           string        `json:"entityScope,omitempty"`
+	CreationDate                          string        `json:"creationDate,omitempty"`
 	IsUplink                              bool          `json:"isUplink"`
 	AssociatedConnectionType              string        `json:"associatedConnectionType,omitempty"`
 	AssociatedEgressQOSPolicyID           string        `json:"associatedEgressQOSPolicyID,omitempty"`
@@ -73,6 +75,7 @@ type VLANTemplate struct {
 	AssociatedUplinkConnectionID          string        `json:"associatedUplinkConnectionID,omitempty"`
 	AssociatedVSCProfileID                string        `json:"associatedVSCProfileID,omitempty"`
 	DucVlan                               bool          `json:"ducVlan"`
+	Owner                                 string        `json:"owner,omitempty"`
 	ExternalID                            string        `json:"externalID,omitempty"`
 	Type                                  string        `json:"type,omitempty"`
 }

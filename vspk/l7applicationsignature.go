@@ -61,6 +61,7 @@ type L7applicationsignature struct {
 	Owner             string        `json:"owner,omitempty"`
 	Name              string        `json:"name,omitempty"`
 	LastUpdatedBy     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate   string        `json:"lastUpdatedDate,omitempty"`
 	Category          string        `json:"category,omitempty"`
 	Readonly          bool          `json:"readonly"`
 	Reference         string        `json:"reference,omitempty"`
@@ -75,8 +76,10 @@ type L7applicationsignature struct {
 	EmbeddedMetadata  []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope       string        `json:"entityScope,omitempty"`
 	SoftwareFlags     string        `json:"softwareFlags,omitempty"`
+	CreationDate      string        `json:"creationDate,omitempty"`
 	Productivity      int           `json:"productivity,omitempty"`
 	Guidstring        string        `json:"guidstring,omitempty"`
+	Owner             string        `json:"owner,omitempty"`
 	ExternalID        string        `json:"externalID,omitempty"`
 }
 

@@ -61,14 +61,17 @@ type FirewallAcl struct {
 	Owner                string        `json:"owner,omitempty"`
 	Name                 string        `json:"name,omitempty"`
 	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate      string        `json:"lastUpdatedDate,omitempty"`
 	Active               bool          `json:"active"`
 	DefaultAllowIP       bool          `json:"defaultAllowIP"`
 	DefaultAllowNonIP    bool          `json:"defaultAllowNonIP"`
 	Description          string        `json:"description,omitempty"`
 	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope          string        `json:"entityScope,omitempty"`
+	CreationDate         string        `json:"creationDate,omitempty"`
 	RuleIds              []interface{} `json:"ruleIds,omitempty"`
 	AutoGeneratePriority bool          `json:"autoGeneratePriority"`
+	Owner                string        `json:"owner,omitempty"`
 	ExternalID           string        `json:"externalID,omitempty"`
 }
 

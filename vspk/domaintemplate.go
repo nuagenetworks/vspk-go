@@ -62,15 +62,18 @@ type DomainTemplate struct {
 	DPI                             string        `json:"DPI,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	Description                     string        `json:"description,omitempty"`
 	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
 	Encryption                      string        `json:"encryption,omitempty"`
 	EntityScope                     string        `json:"entityScope,omitempty"`
 	PolicyChangeStatus              string        `json:"policyChangeStatus,omitempty"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	AssociatedBGPProfileID          string        `json:"associatedBGPProfileID,omitempty"`
 	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
 	AssociatedPATMapperID           string        `json:"associatedPATMapperID,omitempty"`
 	Multicast                       string        `json:"multicast,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExternalID                      string        `json:"externalID,omitempty"`
 }
 

@@ -81,6 +81,7 @@ type NSGateway struct {
 	Family                               string        `json:"family,omitempty"`
 	LastConfigurationReloadTimestamp     int           `json:"lastConfigurationReloadTimestamp,omitempty"`
 	LastUpdatedBy                        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                      string        `json:"lastUpdatedDate,omitempty"`
 	DatapathID                           string        `json:"datapathID,omitempty"`
 	GatewayConfigRawVersion              string        `json:"gatewayConfigRawVersion,omitempty"`
 	GatewayConfigVersion                 string        `json:"gatewayConfigVersion,omitempty"`
@@ -109,6 +110,7 @@ type NSGateway struct {
 	BootstrapStatus                      string        `json:"bootstrapStatus,omitempty"`
 	OperationMode                        string        `json:"operationMode,omitempty"`
 	OperationStatus                      string        `json:"operationStatus,omitempty"`
+	CreationDate                         string        `json:"creationDate,omitempty"`
 	ProductName                          string        `json:"productName,omitempty"`
 	AssociatedGatewaySecurityID          string        `json:"associatedGatewaySecurityID,omitempty"`
 	AssociatedGatewaySecurityProfileID   string        `json:"associatedGatewaySecurityProfileID,omitempty"`
@@ -118,6 +120,7 @@ type NSGateway struct {
 	Functions                            []interface{} `json:"functions,omitempty"`
 	TunnelShaping                        string        `json:"tunnelShaping,omitempty"`
 	AutoDiscGatewayID                    string        `json:"autoDiscGatewayID,omitempty"`
+	Owner                                string        `json:"owner,omitempty"`
 	ExternalID                           string        `json:"externalID,omitempty"`
 	SyslogLevel                          string        `json:"syslogLevel,omitempty"`
 	SystemID                             string        `json:"systemID,omitempty"`

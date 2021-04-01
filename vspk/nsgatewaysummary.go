@@ -62,6 +62,7 @@ type NSGatewaySummary struct {
 	NSGVersion          string        `json:"NSGVersion,omitempty"`
 	MajorAlarmsCount    int           `json:"majorAlarmsCount,omitempty"`
 	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
 	GatewayID           string        `json:"gatewayID,omitempty"`
 	GatewayName         string        `json:"gatewayName,omitempty"`
 	GatewayType         string        `json:"gatewayType,omitempty"`
@@ -80,8 +81,10 @@ type NSGatewaySummary struct {
 	Longitude           float64       `json:"longitude,omitempty"`
 	BootstrapStatus     string        `json:"bootstrapStatus,omitempty"`
 	Country             string        `json:"country,omitempty"`
+	CreationDate        string        `json:"creationDate,omitempty"`
 	CriticalAlarmsCount int           `json:"criticalAlarmsCount,omitempty"`
 	State               string        `json:"state,omitempty"`
+	Owner               string        `json:"owner,omitempty"`
 	ExternalID          string        `json:"externalID,omitempty"`
 	SystemID            string        `json:"systemID,omitempty"`
 }

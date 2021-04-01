@@ -62,11 +62,13 @@ type DeploymentFailure struct {
 	LastFailureReason           string        `json:"lastFailureReason,omitempty"`
 	LastKnownError              string        `json:"lastKnownError,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	AffectedEntityID            string        `json:"affectedEntityID,omitempty"`
 	AffectedEntityType          string        `json:"affectedEntityType,omitempty"`
 	DiffMap                     string        `json:"diffMap,omitempty"`
 	EmbeddedMetadata            []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                 string        `json:"entityScope,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	ErrorCondition              int           `json:"errorCondition,omitempty"`
 	AssocEntityId               string        `json:"assocEntityId,omitempty"`
 	AssocEntityType             string        `json:"assocEntityType,omitempty"`
@@ -76,6 +78,7 @@ type DeploymentFailure struct {
 	AssociatedNetworkEntityType string        `json:"associatedNetworkEntityType,omitempty"`
 	NumberOfOccurences          int           `json:"numberOfOccurences,omitempty"`
 	EventType                   string        `json:"eventType,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 }
 

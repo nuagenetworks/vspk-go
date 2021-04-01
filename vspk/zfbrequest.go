@@ -72,12 +72,14 @@ type ZFBRequest struct {
 	Family                       string        `json:"family,omitempty"`
 	LastConnectedTime            float64       `json:"lastConnectedTime,omitempty"`
 	LastUpdatedBy                string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate              string        `json:"lastUpdatedDate,omitempty"`
 	RegistrationURL              string        `json:"registrationURL,omitempty"`
 	RequestType                  string        `json:"requestType,omitempty"`
 	SerialNumber                 string        `json:"serialNumber,omitempty"`
 	EmbeddedMetadata             []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                  string        `json:"entityScope,omitempty"`
 	Hostname                     string        `json:"hostname,omitempty"`
+	CreationDate                 string        `json:"creationDate,omitempty"`
 	OriginalEnterpriseName       string        `json:"originalEnterpriseName,omitempty"`
 	OriginalGatewayDatapathID    string        `json:"originalGatewayDatapathID,omitempty"`
 	OriginalGatewayName          string        `json:"originalGatewayName,omitempty"`
@@ -90,6 +92,7 @@ type ZFBRequest struct {
 	AssociatedNSGatewayID        string        `json:"associatedNSGatewayID,omitempty"`
 	AssociatedNSGatewayName      string        `json:"associatedNSGatewayName,omitempty"`
 	StatusString                 string        `json:"statusString,omitempty"`
+	Owner                        string        `json:"owner,omitempty"`
 	ExternalID                   string        `json:"externalID,omitempty"`
 }
 

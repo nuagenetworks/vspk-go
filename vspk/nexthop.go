@@ -61,10 +61,13 @@ type NextHop struct {
 	Owner              string        `json:"owner,omitempty"`
 	IPType             string        `json:"IPType,omitempty"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
 	RouteDistinguisher string        `json:"routeDistinguisher,omitempty"`
 	Ip                 string        `json:"ip,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 	Type               string        `json:"type,omitempty"`
 }

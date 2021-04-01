@@ -62,9 +62,11 @@ type IngressQOSPolicy struct {
 	Name                               string        `json:"name,omitempty"`
 	ParentQueueAssociatedRateLimiterID string        `json:"parentQueueAssociatedRateLimiterID,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                    string        `json:"lastUpdatedDate,omitempty"`
 	Description                        string        `json:"description,omitempty"`
 	EmbeddedMetadata                   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                        string        `json:"entityScope,omitempty"`
+	CreationDate                       string        `json:"creationDate,omitempty"`
 	AssocEgressQosId                   string        `json:"assocEgressQosId,omitempty"`
 	Queue1AssociatedRateLimiterID      string        `json:"queue1AssociatedRateLimiterID,omitempty"`
 	Queue1ForwardingClasses            []interface{} `json:"queue1ForwardingClasses,omitempty"`
@@ -74,6 +76,7 @@ type IngressQOSPolicy struct {
 	Queue3ForwardingClasses            []interface{} `json:"queue3ForwardingClasses,omitempty"`
 	Queue4AssociatedRateLimiterID      string        `json:"queue4AssociatedRateLimiterID,omitempty"`
 	Queue4ForwardingClasses            []interface{} `json:"queue4ForwardingClasses,omitempty"`
+	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 }
 

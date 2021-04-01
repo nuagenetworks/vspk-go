@@ -63,6 +63,7 @@ type InfrastructureGatewayProfile struct {
 	NTPServerKeyID               int           `json:"NTPServerKeyID,omitempty"`
 	Name                         string        `json:"name,omitempty"`
 	LastUpdatedBy                string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate              string        `json:"lastUpdatedDate,omitempty"`
 	DatapathSyncTimeout          int           `json:"datapathSyncTimeout,omitempty"`
 	DeadTimer                    string        `json:"deadTimer,omitempty"`
 	DeadTimerEnabled             bool          `json:"deadTimerEnabled"`
@@ -84,9 +85,11 @@ type InfrastructureGatewayProfile struct {
 	ForceImmediateSystemSync     bool          `json:"forceImmediateSystemSync"`
 	OpenFlowAuditTimer           int           `json:"openFlowAuditTimer,omitempty"`
 	UpgradeAction                string        `json:"upgradeAction,omitempty"`
+	CreationDate                 string        `json:"creationDate,omitempty"`
 	ProxyDNSName                 string        `json:"proxyDNSName,omitempty"`
 	UseTwoFactor                 bool          `json:"useTwoFactor"`
 	StatsCollectorPort           int           `json:"statsCollectorPort,omitempty"`
+	Owner                        string        `json:"owner,omitempty"`
 	ExternalID                   string        `json:"externalID,omitempty"`
 	SystemSyncScheduler          string        `json:"systemSyncScheduler,omitempty"`
 }

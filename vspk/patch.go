@@ -61,6 +61,7 @@ type Patch struct {
 	Owner                       string        `json:"owner,omitempty"`
 	Name                        string        `json:"name,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	PatchBuildNumber            int           `json:"patchBuildNumber,omitempty"`
 	PatchSummary                string        `json:"patchSummary,omitempty"`
 	PatchTag                    string        `json:"patchTag,omitempty"`
@@ -68,8 +69,10 @@ type Patch struct {
 	Description                 string        `json:"description,omitempty"`
 	EmbeddedMetadata            []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                 string        `json:"entityScope,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	SupportsDeletion            bool          `json:"supportsDeletion"`
 	SupportsNetworkAcceleration bool          `json:"supportsNetworkAcceleration"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 }
 

@@ -60,16 +60,19 @@ type Link struct {
 	ParentType                string        `json:"parentType,omitempty"`
 	Owner                     string        `json:"owner,omitempty"`
 	LastUpdatedBy             string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate           string        `json:"lastUpdatedDate,omitempty"`
 	AcceptanceCriteria        string        `json:"acceptanceCriteria,omitempty"`
 	ReadOnly                  bool          `json:"readOnly"`
 	EmbeddedMetadata          []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope               string        `json:"entityScope,omitempty"`
+	CreationDate              string        `json:"creationDate,omitempty"`
 	AssociatedDestinationID   string        `json:"associatedDestinationID,omitempty"`
 	AssociatedDestinationName string        `json:"associatedDestinationName,omitempty"`
 	AssociatedDestinationType string        `json:"associatedDestinationType,omitempty"`
 	AssociatedSourceID        string        `json:"associatedSourceID,omitempty"`
 	AssociatedSourceName      string        `json:"associatedSourceName,omitempty"`
 	AssociatedSourceType      string        `json:"associatedSourceType,omitempty"`
+	Owner                     string        `json:"owner,omitempty"`
 	ExternalID                string        `json:"externalID,omitempty"`
 	Type                      string        `json:"type,omitempty"`
 }

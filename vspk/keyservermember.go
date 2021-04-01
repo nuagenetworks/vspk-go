@@ -60,14 +60,17 @@ type KeyServerMember struct {
 	ParentType              string        `json:"parentType,omitempty"`
 	Owner                   string        `json:"owner,omitempty"`
 	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
 	PemEncoded              string        `json:"pemEncoded,omitempty"`
 	CertificateSerialNumber int           `json:"certificateSerialNumber,omitempty"`
 	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope             string        `json:"entityScope,omitempty"`
 	Fqdn                    string        `json:"fqdn,omitempty"`
+	CreationDate            string        `json:"creationDate,omitempty"`
 	IssuerDN                string        `json:"issuerDN,omitempty"`
 	SubjectDN               string        `json:"subjectDN,omitempty"`
 	PublicKey               string        `json:"publicKey,omitempty"`
+	Owner                   string        `json:"owner,omitempty"`
 	ExternalID              string        `json:"externalID,omitempty"`
 }
 

@@ -61,6 +61,7 @@ type VLAN struct {
 	Owner                                 string        `json:"owner,omitempty"`
 	Value                                 int           `json:"value,omitempty"`
 	LastUpdatedBy                         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                       string        `json:"lastUpdatedDate,omitempty"`
 	GatewayID                             string        `json:"gatewayID,omitempty"`
 	Readonly                              bool          `json:"readonly"`
 	TemplateID                            string        `json:"templateID,omitempty"`
@@ -71,6 +72,7 @@ type VLAN struct {
 	EmbeddedMetadata                      []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                           string        `json:"entityScope,omitempty"`
 	VportID                               string        `json:"vportID,omitempty"`
+	CreationDate                          string        `json:"creationDate,omitempty"`
 	IsUplink                              bool          `json:"isUplink"`
 	UseUserMnemonic                       bool          `json:"useUserMnemonic"`
 	UserMnemonic                          string        `json:"userMnemonic,omitempty"`
@@ -84,6 +86,7 @@ type VLAN struct {
 	AssociatedVSCProfileID                string        `json:"associatedVSCProfileID,omitempty"`
 	Status                                string        `json:"status,omitempty"`
 	DucVlan                               bool          `json:"ducVlan"`
+	Owner                                 string        `json:"owner,omitempty"`
 	ExternalID                            string        `json:"externalID,omitempty"`
 	Type                                  string        `json:"type,omitempty"`
 }

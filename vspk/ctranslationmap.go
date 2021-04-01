@@ -61,11 +61,14 @@ type CTranslationMap struct {
 	Owner              string        `json:"owner,omitempty"`
 	MappingType        string        `json:"mappingType,omitempty"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
 	AssociatedDomainID string        `json:"associatedDomainID,omitempty"`
 	CustomerAliasIP    string        `json:"customerAliasIP,omitempty"`
 	CustomerIP         string        `json:"customerIP,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 }
 

@@ -62,6 +62,7 @@ type TestSuiteRun struct {
 	VPortName               string        `json:"VPortName,omitempty"`
 	NSGatewayName           string        `json:"NSGatewayName,omitempty"`
 	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
 	DatapathID              string        `json:"datapathID,omitempty"`
 	Destination             string        `json:"destination,omitempty"`
 	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
@@ -69,10 +70,12 @@ type TestSuiteRun struct {
 	DomainName              string        `json:"domainName,omitempty"`
 	ZoneName                string        `json:"zoneName,omitempty"`
 	OperationStatus         string        `json:"operationStatus,omitempty"`
+	CreationDate            string        `json:"creationDate,omitempty"`
 	AssociatedEntityType    string        `json:"associatedEntityType,omitempty"`
 	AssociatedTestSuiteID   string        `json:"associatedTestSuiteID,omitempty"`
 	AssociatedTestSuiteName string        `json:"associatedTestSuiteName,omitempty"`
 	SubnetName              string        `json:"subnetName,omitempty"`
+	Owner                   string        `json:"owner,omitempty"`
 	ExternalID              string        `json:"externalID,omitempty"`
 }
 

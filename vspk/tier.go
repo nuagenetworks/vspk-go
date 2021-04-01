@@ -61,13 +61,16 @@ type Tier struct {
 	Owner              string        `json:"owner,omitempty"`
 	PacketCount        int           `json:"packetCount,omitempty"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	Description        string        `json:"description,omitempty"`
 	TierType           string        `json:"tierType,omitempty"`
 	Timeout            int           `json:"timeout,omitempty"`
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
 	DownThresholdCount int           `json:"downThresholdCount,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
 	ProbeInterval      int           `json:"probeInterval,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 }
 

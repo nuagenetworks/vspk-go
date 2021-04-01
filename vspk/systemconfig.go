@@ -114,6 +114,7 @@ type SystemConfig struct {
 	PageSize                                          int           `json:"pageSize,omitempty"`
 	LastExecutedMigrationPhase                        string        `json:"lastExecutedMigrationPhase,omitempty"`
 	LastUpdatedBy                                     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                                   string        `json:"lastUpdatedDate,omitempty"`
 	GatewayProbeInterval                              int           `json:"gatewayProbeInterval,omitempty"`
 	GatewayProbeWindow                                int           `json:"gatewayProbeWindow,omitempty"`
 	GatewayRebalancingInterval                        int           `json:"gatewayRebalancingInterval,omitempty"`
@@ -150,6 +151,7 @@ type SystemConfig struct {
 	DomainTunnelType                                  string        `json:"domainTunnelType,omitempty"`
 	GoogleMapsAPIKey                                  string        `json:"googleMapsAPIKey,omitempty"`
 	PostProcessorThreadsCount                         int           `json:"postProcessorThreadsCount,omitempty"`
+	CreationDate                                      string        `json:"creationDate,omitempty"`
 	GroupKeyDefaultSEKGenerationInterval              int           `json:"groupKeyDefaultSEKGenerationInterval,omitempty"`
 	GroupKeyDefaultSEKLifetime                        int           `json:"groupKeyDefaultSEKLifetime,omitempty"`
 	GroupKeyDefaultSEKPayloadEncryptionAlgorithm      string        `json:"groupKeyDefaultSEKPayloadEncryptionAlgorithm,omitempty"`
@@ -201,6 +203,7 @@ type SystemConfig struct {
 	EventProcessorInterval                            int           `json:"eventProcessorInterval,omitempty"`
 	EventProcessorMaxEventsCount                      int           `json:"eventProcessorMaxEventsCount,omitempty"`
 	EventProcessorTimeout                             int           `json:"eventProcessorTimeout,omitempty"`
+	Owner                                             string        `json:"owner,omitempty"`
 	TwoFactorCodeExpiry                               int           `json:"twoFactorCodeExpiry,omitempty"`
 	TwoFactorCodeLength                               int           `json:"twoFactorCodeLength,omitempty"`
 	TwoFactorCodeSeedLength                           int           `json:"twoFactorCodeSeedLength,omitempty"`

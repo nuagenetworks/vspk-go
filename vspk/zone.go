@@ -65,6 +65,7 @@ type Zone struct {
 	MaintenanceMode                 string        `json:"maintenanceMode,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	Address                         string        `json:"address,omitempty"`
 	TemplateID                      string        `json:"templateID,omitempty"`
 	Description                     string        `json:"description,omitempty"`
@@ -73,10 +74,12 @@ type Zone struct {
 	Encryption                      string        `json:"encryption,omitempty"`
 	EntityScope                     string        `json:"entityScope,omitempty"`
 	PolicyGroupID                   int           `json:"policyGroupID,omitempty"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
 	PublicZone                      bool          `json:"publicZone"`
 	Multicast                       string        `json:"multicast,omitempty"`
 	NumberOfHostsInSubnets          int           `json:"numberOfHostsInSubnets,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExternalID                      string        `json:"externalID,omitempty"`
 	DynamicIpv6Address              bool          `json:"dynamicIpv6Address"`
 }

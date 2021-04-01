@@ -62,11 +62,14 @@ type VirtualIP struct {
 	MAC                    string        `json:"MAC,omitempty"`
 	IPType                 string        `json:"IPType,omitempty"`
 	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
 	VirtualIP              string        `json:"virtualIP,omitempty"`
 	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope            string        `json:"entityScope,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
 	AssociatedFloatingIPID string        `json:"associatedFloatingIPID,omitempty"`
 	SubnetID               string        `json:"subnetID,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
 	ExternalID             string        `json:"externalID,omitempty"`
 }
 

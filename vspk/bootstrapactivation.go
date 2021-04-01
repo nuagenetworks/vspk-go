@@ -62,6 +62,7 @@ type BootstrapActivation struct {
 	Cacert               string        `json:"cacert,omitempty"`
 	Hash                 string        `json:"hash,omitempty"`
 	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate      string        `json:"lastUpdatedDate,omitempty"`
 	Action               string        `json:"action,omitempty"`
 	Seed                 string        `json:"seed,omitempty"`
 	Cert                 string        `json:"cert,omitempty"`
@@ -70,12 +71,14 @@ type BootstrapActivation struct {
 	ConfigURL            string        `json:"configURL,omitempty"`
 	TpmOwnerPassword     string        `json:"tpmOwnerPassword,omitempty"`
 	TpmState             int           `json:"tpmState,omitempty"`
+	CreationDate         string        `json:"creationDate,omitempty"`
 	SrkPassword          string        `json:"srkPassword,omitempty"`
 	VsdTime              int           `json:"vsdTime,omitempty"`
 	Csr                  string        `json:"csr,omitempty"`
 	AssociatedEntityType string        `json:"associatedEntityType,omitempty"`
 	Status               string        `json:"status,omitempty"`
 	AutoBootstrap        bool          `json:"autoBootstrap"`
+	Owner                string        `json:"owner,omitempty"`
 	ExternalID           string        `json:"externalID,omitempty"`
 }
 

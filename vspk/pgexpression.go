@@ -55,17 +55,20 @@ type PGExpressionsParent interface {
 
 // PGExpression represents the model of a pgexpression
 type PGExpression struct {
-	ID            string `json:"ID,omitempty"`
-	ParentID      string `json:"parentID,omitempty"`
-	ParentType    string `json:"parentType,omitempty"`
-	Owner         string `json:"owner,omitempty"`
-	Name          string `json:"name,omitempty"`
-	LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-	TemplateID    string `json:"templateID,omitempty"`
-	Description   string `json:"description,omitempty"`
-	EntityScope   string `json:"entityScope,omitempty"`
-	Expression    string `json:"expression,omitempty"`
-	ExternalID    string `json:"externalID,omitempty"`
+	ID              string `json:"ID,omitempty"`
+	ParentID        string `json:"parentID,omitempty"`
+	ParentType      string `json:"parentType,omitempty"`
+	Owner           string `json:"owner,omitempty"`
+	Name            string `json:"name,omitempty"`
+	LastUpdatedBy   string `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+	TemplateID      string `json:"templateID,omitempty"`
+	Description     string `json:"description,omitempty"`
+	EntityScope     string `json:"entityScope,omitempty"`
+	CreationDate    string `json:"creationDate,omitempty"`
+	Owner           string `json:"owner,omitempty"`
+	Expression      string `json:"expression,omitempty"`
+	ExternalID      string `json:"externalID,omitempty"`
 }
 
 // NewPGExpression returns a new *PGExpression

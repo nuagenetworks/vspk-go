@@ -63,6 +63,7 @@ type HSC struct {
 	ManagementIP                string        `json:"managementIP,omitempty"`
 	LastStateChange             int           `json:"lastStateChange,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	Address                     string        `json:"address,omitempty"`
 	Addresses                   []interface{} `json:"addresses,omitempty"`
 	PeakCPUUsage                float64       `json:"peakCPUUsage,omitempty"`
@@ -76,6 +77,7 @@ type HSC struct {
 	EntityScope                 string        `json:"entityScope,omitempty"`
 	Location                    string        `json:"location,omitempty"`
 	Model                       string        `json:"model,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	ProductVersion              string        `json:"productVersion,omitempty"`
 	Vsds                        []interface{} `json:"vsds,omitempty"`
 	Status                      string        `json:"status,omitempty"`
@@ -83,6 +85,7 @@ type HSC struct {
 	CurrentMemoryUsage          float64       `json:"currentMemoryUsage,omitempty"`
 	AverageCPUUsage             float64       `json:"averageCPUUsage,omitempty"`
 	AverageMemoryUsage          float64       `json:"averageMemoryUsage,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 	Type                        string        `json:"type,omitempty"`
 }

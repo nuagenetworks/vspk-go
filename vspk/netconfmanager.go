@@ -61,11 +61,14 @@ type NetconfManager struct {
 	Owner            string        `json:"owner,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	Release          string        `json:"release,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	AssocEntityType  string        `json:"assocEntityType,omitempty"`
 	Status           string        `json:"status,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

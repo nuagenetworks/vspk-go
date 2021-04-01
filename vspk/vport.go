@@ -67,6 +67,7 @@ type VPort struct {
 	Name                                string        `json:"name,omitempty"`
 	HasAttachedInterfaces               bool          `json:"hasAttachedInterfaces"`
 	LastUpdatedBy                       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                     string        `json:"lastUpdatedDate,omitempty"`
 	GatewayMACMoveRole                  string        `json:"gatewayMACMoveRole,omitempty"`
 	GatewayPortName                     string        `json:"gatewayPortName,omitempty"`
 	AccessRestrictionEnabled            bool          `json:"accessRestrictionEnabled"`
@@ -86,6 +87,7 @@ type VPort struct {
 	DomainVLANID                        int           `json:"domainVLANID,omitempty"`
 	ZoneID                              string        `json:"zoneID,omitempty"`
 	OperationalState                    string        `json:"operationalState,omitempty"`
+	CreationDate                        string        `json:"creationDate,omitempty"`
 	TrunkRole                           string        `json:"trunkRole,omitempty"`
 	AssocEntityID                       string        `json:"assocEntityID,omitempty"`
 	AssociatedEgressProfileID           string        `json:"associatedEgressProfileID,omitempty"`
@@ -103,6 +105,7 @@ type VPort struct {
 	MultiNICVPortID                     string        `json:"multiNICVPortID,omitempty"`
 	Multicast                           string        `json:"multicast,omitempty"`
 	GwEligible                          bool          `json:"gwEligible"`
+	Owner                               string        `json:"owner,omitempty"`
 	ExternalID                          string        `json:"externalID,omitempty"`
 	Type                                string        `json:"type,omitempty"`
 	SystemType                          string        `json:"systemType,omitempty"`

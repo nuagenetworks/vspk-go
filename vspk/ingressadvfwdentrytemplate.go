@@ -68,6 +68,7 @@ type IngressAdvFwdEntryTemplate struct {
 	DSCPRemarking                  string        `json:"DSCPRemarking,omitempty"`
 	FailsafeDatapath               string        `json:"failsafeDatapath,omitempty"`
 	LastUpdatedBy                  string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                string        `json:"lastUpdatedDate,omitempty"`
 	Action                         string        `json:"action,omitempty"`
 	AddressOverride                string        `json:"addressOverride,omitempty"`
 	AddressOverrideType            string        `json:"addressOverrideType,omitempty"`
@@ -96,6 +97,7 @@ type IngressAdvFwdEntryTemplate struct {
 	SourcePort                     string        `json:"sourcePort,omitempty"`
 	UplinkPreference               string        `json:"uplinkPreference,omitempty"`
 	AppType                        string        `json:"appType,omitempty"`
+	CreationDate                   string        `json:"creationDate,omitempty"`
 	Priority                       int           `json:"priority,omitempty"`
 	Protocol                       string        `json:"protocol,omitempty"`
 	IsSLAAware                     bool          `json:"isSLAAware"`
@@ -108,6 +110,7 @@ type IngressAdvFwdEntryTemplate struct {
 	StatsID                        string        `json:"statsID,omitempty"`
 	StatsLoggingEnabled            bool          `json:"statsLoggingEnabled"`
 	EtherType                      string        `json:"etherType,omitempty"`
+	Owner                          string        `json:"owner,omitempty"`
 	ExternalID                     string        `json:"externalID,omitempty"`
 }
 

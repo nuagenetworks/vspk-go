@@ -62,6 +62,7 @@ type SSIDConnection struct {
 	Name                             string        `json:"name,omitempty"`
 	Passphrase                       string        `json:"passphrase,omitempty"`
 	LastUpdatedBy                    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                  string        `json:"lastUpdatedDate,omitempty"`
 	GatewayID                        string        `json:"gatewayID,omitempty"`
 	Readonly                         bool          `json:"readonly"`
 	RedirectOption                   string        `json:"redirectOption,omitempty"`
@@ -77,11 +78,13 @@ type SSIDConnection struct {
 	InterfaceName                    string        `json:"interfaceName,omitempty"`
 	EntityScope                      string        `json:"entityScope,omitempty"`
 	VportID                          string        `json:"vportID,omitempty"`
+	CreationDate                     string        `json:"creationDate,omitempty"`
 	BroadcastSSID                    bool          `json:"broadcastSSID"`
 	AssociatedCaptivePortalProfileID string        `json:"associatedCaptivePortalProfileID,omitempty"`
 	AssociatedEgressQOSPolicyID      string        `json:"associatedEgressQOSPolicyID,omitempty"`
 	Status                           string        `json:"status,omitempty"`
 	AuthenticationMode               string        `json:"authenticationMode,omitempty"`
+	Owner                            string        `json:"owner,omitempty"`
 	ExternalID                       string        `json:"externalID,omitempty"`
 }
 

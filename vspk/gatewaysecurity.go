@@ -60,11 +60,14 @@ type GatewaySecurity struct {
 	ParentType           string        `json:"parentType,omitempty"`
 	Owner                string        `json:"owner,omitempty"`
 	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate      string        `json:"lastUpdatedDate,omitempty"`
 	GatewayID            string        `json:"gatewayID,omitempty"`
 	Revision             int           `json:"revision,omitempty"`
 	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope          string        `json:"entityScope,omitempty"`
+	CreationDate         string        `json:"creationDate,omitempty"`
 	AssociatedEntityType string        `json:"associatedEntityType,omitempty"`
+	Owner                string        `json:"owner,omitempty"`
 	ExternalID           string        `json:"externalID,omitempty"`
 }
 

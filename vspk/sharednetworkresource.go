@@ -66,6 +66,7 @@ type SharedNetworkResource struct {
 	BackHaulVNID                int           `json:"backHaulVNID,omitempty"`
 	Name                        string        `json:"name,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	Gateway                     string        `json:"gateway,omitempty"`
 	GatewayMACAddress           string        `json:"gatewayMACAddress,omitempty"`
 	AccessRestrictionEnabled    bool          `json:"accessRestrictionEnabled"`
@@ -85,10 +86,12 @@ type SharedNetworkResource struct {
 	UplinkInterfaceIP           string        `json:"uplinkInterfaceIP,omitempty"`
 	UplinkInterfaceMAC          string        `json:"uplinkInterfaceMAC,omitempty"`
 	UplinkVPortName             string        `json:"uplinkVPortName,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	UseGlobalMAC                string        `json:"useGlobalMAC,omitempty"`
 	AssociatedPATMapperID       string        `json:"associatedPATMapperID,omitempty"`
 	SubnetRouteDistinguisher    string        `json:"subnetRouteDistinguisher,omitempty"`
 	SubnetRouteTarget           string        `json:"subnetRouteTarget,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 	DynamicPATAllocationEnabled bool          `json:"dynamicPATAllocationEnabled"`
 	Type                        string        `json:"type,omitempty"`

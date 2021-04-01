@@ -69,6 +69,7 @@ type L2Domain struct {
 	MaintenanceMode                   string        `json:"maintenanceMode,omitempty"`
 	Name                              string        `json:"name,omitempty"`
 	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                   string        `json:"lastUpdatedDate,omitempty"`
 	Gateway                           string        `json:"gateway,omitempty"`
 	GatewayMACAddress                 string        `json:"gatewayMACAddress,omitempty"`
 	Address                           string        `json:"address,omitempty"`
@@ -91,6 +92,7 @@ type L2Domain struct {
 	RouteTarget                       string        `json:"routeTarget,omitempty"`
 	RoutedVPLSEnabled                 bool          `json:"routedVPLSEnabled"`
 	UplinkPreference                  string        `json:"uplinkPreference,omitempty"`
+	CreationDate                      string        `json:"creationDate,omitempty"`
 	UseGlobalMAC                      string        `json:"useGlobalMAC,omitempty"`
 	AssociatedMulticastChannelMapID   string        `json:"associatedMulticastChannelMapID,omitempty"`
 	AssociatedSharedNetworkResourceID string        `json:"associatedSharedNetworkResourceID,omitempty"`
@@ -99,6 +101,7 @@ type L2Domain struct {
 	DualStackDynamicIPAllocation      bool          `json:"dualStackDynamicIPAllocation"`
 	Multicast                         string        `json:"multicast,omitempty"`
 	CustomerID                        int           `json:"customerID,omitempty"`
+	Owner                             string        `json:"owner,omitempty"`
 	ExternalID                        string        `json:"externalID,omitempty"`
 }
 

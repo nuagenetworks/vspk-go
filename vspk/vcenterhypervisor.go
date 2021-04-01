@@ -74,6 +74,7 @@ type VCenterHypervisor struct {
 	ManageVRSAvailability                     bool          `json:"manageVRSAvailability"`
 	ManagedObjectID                           string        `json:"managedObjectID,omitempty"`
 	LastUpdatedBy                             string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                           string        `json:"lastUpdatedDate,omitempty"`
 	LastVRSDeployedDate                       float64       `json:"lastVRSDeployedDate,omitempty"`
 	DataDNS1                                  string        `json:"dataDNS1,omitempty"`
 	DataDNS2                                  string        `json:"dataDNS2,omitempty"`
@@ -163,6 +164,7 @@ type VCenterHypervisor struct {
 	UpgradeStatus                             string        `json:"upgradeStatus,omitempty"`
 	UpgradeTimedout                           bool          `json:"upgradeTimedout"`
 	CpuCount                                  string        `json:"cpuCount,omitempty"`
+	CreationDate                              string        `json:"creationDate,omitempty"`
 	PrimaryDataUplinkUnderlayID               int           `json:"primaryDataUplinkUnderlayID,omitempty"`
 	PrimaryDataUplinkVDFControlVLAN           int           `json:"primaryDataUplinkVDFControlVLAN,omitempty"`
 	PrimaryNuageController                    string        `json:"primaryNuageController,omitempty"`
@@ -194,6 +196,7 @@ type VCenterHypervisor struct {
 	OvfURL                                    string        `json:"ovfURL,omitempty"`
 	AvrsEnabled                               bool          `json:"avrsEnabled"`
 	AvrsProfile                               string        `json:"avrsProfile,omitempty"`
+	Owner                                     string        `json:"owner,omitempty"`
 	ExternalID                                string        `json:"externalID,omitempty"`
 	HypervisorIP                              string        `json:"hypervisorIP,omitempty"`
 	HypervisorPassword                        string        `json:"hypervisorPassword,omitempty"`

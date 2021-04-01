@@ -65,6 +65,7 @@ type FirewallRule struct {
 	IPv6AddressOverride          string        `json:"IPv6AddressOverride,omitempty"`
 	DSCP                         string        `json:"DSCP,omitempty"`
 	LastUpdatedBy                string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate              string        `json:"lastUpdatedDate,omitempty"`
 	Action                       string        `json:"action,omitempty"`
 	AddressOverride              string        `json:"addressOverride,omitempty"`
 	WebFilterID                  string        `json:"webFilterID,omitempty"`
@@ -84,6 +85,7 @@ type FirewallRule struct {
 	LocationType                 string        `json:"locationType,omitempty"`
 	DomainName                   string        `json:"domainName,omitempty"`
 	SourcePort                   string        `json:"sourcePort,omitempty"`
+	CreationDate                 string        `json:"creationDate,omitempty"`
 	Priority                     int           `json:"priority,omitempty"`
 	Protocol                     string        `json:"protocol,omitempty"`
 	AssociatedLiveTemplateID     string        `json:"associatedLiveTemplateID,omitempty"`
@@ -94,6 +96,7 @@ type FirewallRule struct {
 	StatsID                      string        `json:"statsID,omitempty"`
 	StatsLoggingEnabled          bool          `json:"statsLoggingEnabled"`
 	EtherType                    string        `json:"etherType,omitempty"`
+	Owner                        string        `json:"owner,omitempty"`
 	ExternalID                   string        `json:"externalID,omitempty"`
 }
 

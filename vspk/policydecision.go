@@ -60,6 +60,7 @@ type PolicyDecision struct {
 	ParentType       string        `json:"parentType,omitempty"`
 	Owner            string        `json:"owner,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	EgressACLs       []interface{} `json:"egressACLs,omitempty"`
 	EgressQos        interface{}   `json:"egressQos,omitempty"`
 	FipACLs          []interface{} `json:"fipACLs,omitempty"`
@@ -68,7 +69,9 @@ type PolicyDecision struct {
 	IngressAdvFwd    []interface{} `json:"ingressAdvFwd,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	Qos              interface{}   `json:"qos,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	Stats            interface{}   `json:"stats,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

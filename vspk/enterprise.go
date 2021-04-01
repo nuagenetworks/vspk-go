@@ -66,6 +66,7 @@ type Enterprise struct {
 	VNFManagementEnabled                   bool          `json:"VNFManagementEnabled"`
 	Name                                   string        `json:"name,omitempty"`
 	LastUpdatedBy                          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                        string        `json:"lastUpdatedDate,omitempty"`
 	WebFilterEnabled                       bool          `json:"webFilterEnabled"`
 	ReceiveMultiCastListID                 string        `json:"receiveMultiCastListID,omitempty"`
 	SendMultiCastListID                    string        `json:"sendMultiCastListID,omitempty"`
@@ -88,6 +89,7 @@ type Enterprise struct {
 	EntityScope                            string        `json:"entityScope,omitempty"`
 	LocalAS                                int           `json:"localAS,omitempty"`
 	ForwardingClass                        []interface{} `json:"forwardingClass,omitempty"`
+	CreationDate                           string        `json:"creationDate,omitempty"`
 	UseGlobalMAC                           bool          `json:"useGlobalMAC"`
 	AssociatedEnterpriseSecurityID         string        `json:"associatedEnterpriseSecurityID,omitempty"`
 	AssociatedGroupKeyEncryptionProfileID  string        `json:"associatedGroupKeyEncryptionProfileID,omitempty"`
@@ -95,6 +97,7 @@ type Enterprise struct {
 	CustomerID                             int           `json:"customerID,omitempty"`
 	AvatarData                             string        `json:"avatarData,omitempty"`
 	AvatarType                             string        `json:"avatarType,omitempty"`
+	Owner                                  string        `json:"owner,omitempty"`
 	ExternalID                             string        `json:"externalID,omitempty"`
 }
 

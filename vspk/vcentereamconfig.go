@@ -63,10 +63,13 @@ type VCenterEAMConfig struct {
 	EamServerPortNumber int           `json:"eamServerPortNumber,omitempty"`
 	EamServerPortType   string        `json:"eamServerPortType,omitempty"`
 	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
 	VibURL              string        `json:"vibURL,omitempty"`
 	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope         string        `json:"entityScope,omitempty"`
+	CreationDate        string        `json:"creationDate,omitempty"`
 	OvfURL              string        `json:"ovfURL,omitempty"`
+	Owner               string        `json:"owner,omitempty"`
 	ExtensionKey        string        `json:"extensionKey,omitempty"`
 	ExternalID          string        `json:"externalID,omitempty"`
 }

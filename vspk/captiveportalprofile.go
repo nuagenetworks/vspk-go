@@ -55,17 +55,20 @@ type CaptivePortalProfilesParent interface {
 
 // CaptivePortalProfile represents the model of a captiveportalprofile
 type CaptivePortalProfile struct {
-	ID            string `json:"ID,omitempty"`
-	ParentID      string `json:"parentID,omitempty"`
-	ParentType    string `json:"parentType,omitempty"`
-	Owner         string `json:"owner,omitempty"`
-	Name          string `json:"name,omitempty"`
-	CaptivePage   string `json:"captivePage,omitempty"`
-	LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-	Description   string `json:"description,omitempty"`
-	EntityScope   string `json:"entityScope,omitempty"`
-	PortalType    string `json:"portalType,omitempty"`
-	ExternalID    string `json:"externalID,omitempty"`
+	ID              string `json:"ID,omitempty"`
+	ParentID        string `json:"parentID,omitempty"`
+	ParentType      string `json:"parentType,omitempty"`
+	Owner           string `json:"owner,omitempty"`
+	Name            string `json:"name,omitempty"`
+	CaptivePage     string `json:"captivePage,omitempty"`
+	LastUpdatedBy   string `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+	Description     string `json:"description,omitempty"`
+	EntityScope     string `json:"entityScope,omitempty"`
+	PortalType      string `json:"portalType,omitempty"`
+	CreationDate    string `json:"creationDate,omitempty"`
+	Owner           string `json:"owner,omitempty"`
+	ExternalID      string `json:"externalID,omitempty"`
 }
 
 // NewCaptivePortalProfile returns a new *CaptivePortalProfile

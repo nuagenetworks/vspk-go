@@ -63,10 +63,13 @@ type PublicNetworkMacro struct {
 	IPv6Address      string        `json:"IPv6Address,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	Address          string        `json:"address,omitempty"`
 	Netmask          string        `json:"netmask,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

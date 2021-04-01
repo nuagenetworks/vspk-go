@@ -62,6 +62,7 @@ type GatewayRedundantPort struct {
 	VLANRange                   string        `json:"VLANRange,omitempty"`
 	Name                        string        `json:"name,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	PermittedAction             string        `json:"permittedAction,omitempty"`
 	Description                 string        `json:"description,omitempty"`
 	PhysicalName                string        `json:"physicalName,omitempty"`
@@ -70,10 +71,12 @@ type GatewayRedundantPort struct {
 	PortPeer1ID                 string        `json:"portPeer1ID,omitempty"`
 	PortPeer2ID                 string        `json:"portPeer2ID,omitempty"`
 	PortType                    string        `json:"portType,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	UseUserMnemonic             bool          `json:"useUserMnemonic"`
 	UserMnemonic                string        `json:"userMnemonic,omitempty"`
 	AssociatedEgressQOSPolicyID string        `json:"associatedEgressQOSPolicyID,omitempty"`
 	Status                      string        `json:"status,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 }
 

@@ -47,6 +47,7 @@ type Me struct {
 	Password              string        `json:"password,omitempty"`
 	LastName              string        `json:"lastName,omitempty"`
 	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
 	FirstName             string        `json:"firstName,omitempty"`
 	Disabled              bool          `json:"disabled"`
 	ElasticSearchAddress  string        `json:"elasticSearchAddress,omitempty"`
@@ -58,10 +59,12 @@ type Me struct {
 	EntityScope           string        `json:"entityScope,omitempty"`
 	MobileNumber          string        `json:"mobileNumber,omitempty"`
 	Role                  string        `json:"role,omitempty"`
+	CreationDate          string        `json:"creationDate,omitempty"`
 	UserName              string        `json:"userName,omitempty"`
 	StatisticsEnabled     bool          `json:"statisticsEnabled"`
 	AvatarData            string        `json:"avatarData,omitempty"`
 	AvatarType            string        `json:"avatarType,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
 	ExternalID            string        `json:"externalID,omitempty"`
 
 	Token        string `json:"APIKey,omitempty"`
@@ -989,10 +992,10 @@ func (o *Me) VCenterVRSConfigs(info *bambou.FetchingInfo) (VCenterVRSConfigsList
 }
 
 // vrsInfos retrieves the list of child vrsInfos of the Me
-func (o *Me) VrsInfos(info *bambou.FetchingInfo) (VrsInfosList, *bambou.Error) {
+func (o *Me) vrsInfos(info *bambou.FetchingInfo) (vrsInfosList, *bambou.Error) {
 
-	var list VrsInfosList
-	err := bambou.CurrentSession().FetchChildren(o, VrsInfoIdentity, &list, info)
+	var list vrsInfosList
+	err := bambou.CurrentSession().FetchChildren(o, vrsInfoIdentity, &list, info)
 	return list, err
 }
 

@@ -67,6 +67,7 @@ type EgressAdvFwdEntryTemplate struct {
 	DSCP                         string        `json:"DSCP,omitempty"`
 	FailsafeDatapath             string        `json:"failsafeDatapath,omitempty"`
 	LastUpdatedBy                string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate              string        `json:"lastUpdatedDate,omitempty"`
 	Action                       string        `json:"action,omitempty"`
 	AddressOverride              string        `json:"addressOverride,omitempty"`
 	WebFilterID                  string        `json:"webFilterID,omitempty"`
@@ -89,6 +90,7 @@ type EgressAdvFwdEntryTemplate struct {
 	DomainName                   string        `json:"domainName,omitempty"`
 	SourcePort                   string        `json:"sourcePort,omitempty"`
 	UplinkPreference             string        `json:"uplinkPreference,omitempty"`
+	CreationDate                 string        `json:"creationDate,omitempty"`
 	Priority                     int           `json:"priority,omitempty"`
 	Protocol                     string        `json:"protocol,omitempty"`
 	AssociatedLiveEntityID       string        `json:"associatedLiveEntityID,omitempty"`
@@ -98,6 +100,7 @@ type EgressAdvFwdEntryTemplate struct {
 	StatsID                      string        `json:"statsID,omitempty"`
 	StatsLoggingEnabled          bool          `json:"statsLoggingEnabled"`
 	EtherType                    string        `json:"etherType,omitempty"`
+	Owner                        string        `json:"owner,omitempty"`
 	ExternalID                   string        `json:"externalID,omitempty"`
 }
 

@@ -60,12 +60,15 @@ type StatsCollectorInfo struct {
 	ParentType       string        `json:"parentType,omitempty"`
 	Owner            string        `json:"owner,omitempty"`
 	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
 	AddressType      string        `json:"addressType,omitempty"`
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	Port             string        `json:"port,omitempty"`
 	IpAddress        string        `json:"ipAddress,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
 	ProtoBufPort     string        `json:"protoBufPort,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
 

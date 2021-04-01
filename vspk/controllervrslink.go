@@ -66,6 +66,7 @@ type ControllerVRSLink struct {
 	JSONRPCConnectionState string        `json:"JSONRPCConnectionState,omitempty"`
 	Name                   string        `json:"name,omitempty"`
 	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
 	Peer                   string        `json:"peer,omitempty"`
 	ClusterNodeRole        string        `json:"clusterNodeRole,omitempty"`
 	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
@@ -74,7 +75,9 @@ type ControllerVRSLink struct {
 	Connections            []interface{} `json:"connections,omitempty"`
 	ControllerID           string        `json:"controllerID,omitempty"`
 	ControllerType         string        `json:"controllerType,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
 	Status                 string        `json:"status,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
 	ExternalID             string        `json:"externalID,omitempty"`
 	Dynamic                bool          `json:"dynamic"`
 }

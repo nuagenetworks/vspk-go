@@ -63,11 +63,14 @@ type ZFBAutoAssignment struct {
 	ZFBMatchAttributeValues  []interface{} `json:"ZFBMatchAttributeValues,omitempty"`
 	Name                     string        `json:"name,omitempty"`
 	LastUpdatedBy            string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate          string        `json:"lastUpdatedDate,omitempty"`
 	Description              string        `json:"description,omitempty"`
 	EntityScope              string        `json:"entityScope,omitempty"`
+	CreationDate             string        `json:"creationDate,omitempty"`
 	Priority                 int           `json:"priority,omitempty"`
 	AssociatedEnterpriseID   string        `json:"associatedEnterpriseID,omitempty"`
 	AssociatedEnterpriseName string        `json:"associatedEnterpriseName,omitempty"`
+	Owner                    string        `json:"owner,omitempty"`
 	ExternalID               string        `json:"externalID,omitempty"`
 }
 

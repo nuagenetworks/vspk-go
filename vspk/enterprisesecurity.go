@@ -60,11 +60,14 @@ type EnterpriseSecurity struct {
 	ParentType              string        `json:"parentType,omitempty"`
 	Owner                   string        `json:"owner,omitempty"`
 	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
 	GatewaySecurityRevision int           `json:"gatewaySecurityRevision,omitempty"`
 	Revision                int           `json:"revision,omitempty"`
 	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseID            string        `json:"enterpriseID,omitempty"`
 	EntityScope             string        `json:"entityScope,omitempty"`
+	CreationDate            string        `json:"creationDate,omitempty"`
+	Owner                   string        `json:"owner,omitempty"`
 	ExternalID              string        `json:"externalID,omitempty"`
 }
 

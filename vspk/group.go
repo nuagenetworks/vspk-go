@@ -63,13 +63,16 @@ type Group struct {
 	Name                string        `json:"name,omitempty"`
 	ManagementMode      string        `json:"managementMode,omitempty"`
 	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
 	AccountRestrictions bool          `json:"accountRestrictions"`
 	Description         string        `json:"description,omitempty"`
 	RestrictionDate     float64       `json:"restrictionDate,omitempty"`
 	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope         string        `json:"entityScope,omitempty"`
 	Role                string        `json:"role,omitempty"`
+	CreationDate        string        `json:"creationDate,omitempty"`
 	Private             bool          `json:"private"`
+	Owner               string        `json:"owner,omitempty"`
 	ExternalID          string        `json:"externalID,omitempty"`
 }
 

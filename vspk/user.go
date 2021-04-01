@@ -64,6 +64,7 @@ type User struct {
 	Password               string        `json:"password,omitempty"`
 	LastName               string        `json:"lastName,omitempty"`
 	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
 	FirstName              string        `json:"firstName,omitempty"`
 	DisableCertificateAuth bool          `json:"disableCertificateAuth"`
 	DisablePasswordAuth    bool          `json:"disablePasswordAuth"`
@@ -72,9 +73,11 @@ type User struct {
 	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope            string        `json:"entityScope,omitempty"`
 	MobileNumber           string        `json:"mobileNumber,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
 	UserName               string        `json:"userName,omitempty"`
 	AvatarData             string        `json:"avatarData,omitempty"`
 	AvatarType             string        `json:"avatarType,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
 	ExternalID             string        `json:"externalID,omitempty"`
 }
 

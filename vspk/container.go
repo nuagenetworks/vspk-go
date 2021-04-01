@@ -64,6 +64,7 @@ type Container struct {
 	UUID               string        `json:"UUID,omitempty"`
 	Name               string        `json:"name,omitempty"`
 	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
 	ReasonType         string        `json:"reasonType,omitempty"`
 	DeleteExpiry       int           `json:"deleteExpiry,omitempty"`
 	DeleteMode         string        `json:"deleteMode,omitempty"`
@@ -80,12 +81,14 @@ type Container struct {
 	ComputeProvisioned bool          `json:"computeProvisioned"`
 	ZoneIDs            []interface{} `json:"zoneIDs,omitempty"`
 	OrchestrationID    string        `json:"orchestrationID,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
 	VrsRawVersion      string        `json:"vrsRawVersion,omitempty"`
 	VrsVersion         string        `json:"vrsVersion,omitempty"`
 	UserID             string        `json:"userID,omitempty"`
 	UserName           string        `json:"userName,omitempty"`
 	Status             string        `json:"status,omitempty"`
 	SubnetIDs          []interface{} `json:"subnetIDs,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
 	ExternalID         string        `json:"externalID,omitempty"`
 	HypervisorIP       string        `json:"hypervisorIP,omitempty"`
 }

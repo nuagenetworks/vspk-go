@@ -67,6 +67,7 @@ type VRS struct {
 	LastEventTimestamp        int           `json:"lastEventTimestamp,omitempty"`
 	LastStateChange           int           `json:"lastStateChange,omitempty"`
 	LastUpdatedBy             string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate           string        `json:"lastUpdatedDate,omitempty"`
 	GatewayUUID               string        `json:"gatewayUUID,omitempty"`
 	DbSynced                  bool          `json:"dbSynced"`
 	Address                   string        `json:"address,omitempty"`
@@ -86,6 +87,7 @@ type VRS struct {
 	Location                  string        `json:"location,omitempty"`
 	Role                      string        `json:"role,omitempty"`
 	Uptime                    int           `json:"uptime,omitempty"`
+	CreationDate              string        `json:"creationDate,omitempty"`
 	PrimaryVSCConnectionLost  bool          `json:"primaryVSCConnectionLost"`
 	ProductVersion            string        `json:"productVersion,omitempty"`
 	IsResilient               bool          `json:"isResilient"`
@@ -99,6 +101,7 @@ type VRS struct {
 	CurrentMemoryUsage        float64       `json:"currentMemoryUsage,omitempty"`
 	AverageCPUUsage           float64       `json:"averageCPUUsage,omitempty"`
 	AverageMemoryUsage        float64       `json:"averageMemoryUsage,omitempty"`
+	Owner                     string        `json:"owner,omitempty"`
 	ExternalID                string        `json:"externalID,omitempty"`
 	HypervisorConnectionState string        `json:"hypervisorConnectionState,omitempty"`
 	HypervisorIdentifier      string        `json:"hypervisorIdentifier,omitempty"`

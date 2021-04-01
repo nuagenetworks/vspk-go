@@ -65,6 +65,7 @@ type IngressACLEntryTemplate struct {
 	IPv6AddressOverride                string        `json:"IPv6AddressOverride,omitempty"`
 	DSCP                               string        `json:"DSCP,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                    string        `json:"lastUpdatedDate,omitempty"`
 	Action                             string        `json:"action,omitempty"`
 	AddressOverride                    string        `json:"addressOverride,omitempty"`
 	WebFilterID                        string        `json:"webFilterID,omitempty"`
@@ -85,6 +86,7 @@ type IngressACLEntryTemplate struct {
 	PolicyState                        string        `json:"policyState,omitempty"`
 	DomainName                         string        `json:"domainName,omitempty"`
 	SourcePort                         string        `json:"sourcePort,omitempty"`
+	CreationDate                       string        `json:"creationDate,omitempty"`
 	Priority                           int           `json:"priority,omitempty"`
 	Protocol                           string        `json:"protocol,omitempty"`
 	AssociatedL7ApplicationSignatureID string        `json:"associatedL7ApplicationSignatureID,omitempty"`
@@ -98,6 +100,7 @@ type IngressACLEntryTemplate struct {
 	StatsLoggingEnabled                bool          `json:"statsLoggingEnabled"`
 	EtherType                          string        `json:"etherType,omitempty"`
 	OverlayMirrorDestinationID         string        `json:"overlayMirrorDestinationID,omitempty"`
+	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 }
 

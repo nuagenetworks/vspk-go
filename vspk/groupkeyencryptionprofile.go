@@ -68,6 +68,7 @@ type GroupKeyEncryptionProfile struct {
 	DRSeedLifetime                       int           `json:"DRSeedLifetime,omitempty"`
 	Name                                 string        `json:"name,omitempty"`
 	LastUpdatedBy                        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                      string        `json:"lastUpdatedDate,omitempty"`
 	SeedGenerationInterval               int           `json:"seedGenerationInterval,omitempty"`
 	SeedLifetime                         int           `json:"seedLifetime,omitempty"`
 	SeedPayloadAuthenticationAlgorithm   string        `json:"seedPayloadAuthenticationAlgorithm,omitempty"`
@@ -83,7 +84,9 @@ type GroupKeyEncryptionProfile struct {
 	TrafficAuthenticationAlgorithm       string        `json:"trafficAuthenticationAlgorithm,omitempty"`
 	TrafficEncryptionAlgorithm           string        `json:"trafficEncryptionAlgorithm,omitempty"`
 	TrafficEncryptionKeyLifetime         int           `json:"trafficEncryptionKeyLifetime,omitempty"`
+	CreationDate                         string        `json:"creationDate,omitempty"`
 	AssociatedEnterpriseID               string        `json:"associatedEnterpriseID,omitempty"`
+	Owner                                string        `json:"owner,omitempty"`
 	ExternalID                           string        `json:"externalID,omitempty"`
 }
 

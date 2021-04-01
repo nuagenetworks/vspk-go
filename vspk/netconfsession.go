@@ -60,14 +60,17 @@ type NetconfSession struct {
 	ParentType            string        `json:"parentType,omitempty"`
 	Owner                 string        `json:"owner,omitempty"`
 	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
 	GatewayModel          string        `json:"gatewayModel,omitempty"`
 	GatewayVendor         string        `json:"gatewayVendor,omitempty"`
 	GatewayVersion        string        `json:"gatewayVersion,omitempty"`
 	EmbeddedMetadata      []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope           string        `json:"entityScope,omitempty"`
+	CreationDate          string        `json:"creationDate,omitempty"`
 	AssociatedGatewayID   string        `json:"associatedGatewayID,omitempty"`
 	AssociatedGatewayName string        `json:"associatedGatewayName,omitempty"`
 	Status                string        `json:"status,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
 	ExternalID            string        `json:"externalID,omitempty"`
 }
 

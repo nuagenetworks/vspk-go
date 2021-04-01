@@ -61,6 +61,7 @@ type KeyServerMonitor struct {
 	Owner                              string        `json:"owner,omitempty"`
 	LastUpdateTime                     int           `json:"lastUpdateTime,omitempty"`
 	LastUpdatedBy                      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                    string        `json:"lastUpdatedDate,omitempty"`
 	GatewaySecuredDataRecordCount      int           `json:"gatewaySecuredDataRecordCount,omitempty"`
 	KeyserverMonitorEncryptedSEKCount  int           `json:"keyserverMonitorEncryptedSEKCount,omitempty"`
 	KeyserverMonitorEncryptedSeedCount int           `json:"keyserverMonitorEncryptedSeedCount,omitempty"`
@@ -69,6 +70,8 @@ type KeyServerMonitor struct {
 	EmbeddedMetadata                   []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseSecuredDataRecordCount   int           `json:"enterpriseSecuredDataRecordCount,omitempty"`
 	EntityScope                        string        `json:"entityScope,omitempty"`
+	CreationDate                       string        `json:"creationDate,omitempty"`
+	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 }
 

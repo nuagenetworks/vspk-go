@@ -63,6 +63,7 @@ type StaticRoute struct {
 	IPType               string        `json:"IPType,omitempty"`
 	IPv6Address          string        `json:"IPv6Address,omitempty"`
 	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate      string        `json:"lastUpdatedDate,omitempty"`
 	Address              string        `json:"address,omitempty"`
 	Netmask              string        `json:"netmask,omitempty"`
 	NextHopIp            string        `json:"nextHopIp,omitempty"`
@@ -70,8 +71,10 @@ type StaticRoute struct {
 	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope          string        `json:"entityScope,omitempty"`
 	RouteDistinguisher   string        `json:"routeDistinguisher,omitempty"`
+	CreationDate         string        `json:"creationDate,omitempty"`
 	AssociatedGatewayIDs []interface{} `json:"associatedGatewayIDs,omitempty"`
 	AssociatedSubnetID   string        `json:"associatedSubnetID,omitempty"`
+	Owner                string        `json:"owner,omitempty"`
 	ExternalID           string        `json:"externalID,omitempty"`
 	Type                 string        `json:"type,omitempty"`
 }

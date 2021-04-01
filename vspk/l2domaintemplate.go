@@ -66,6 +66,7 @@ type L2DomainTemplate struct {
 	IPv6Gateway                     string        `json:"IPv6Gateway,omitempty"`
 	Name                            string        `json:"name,omitempty"`
 	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
 	Gateway                         string        `json:"gateway,omitempty"`
 	Address                         string        `json:"address,omitempty"`
 	Description                     string        `json:"description,omitempty"`
@@ -77,10 +78,12 @@ type L2DomainTemplate struct {
 	EntityScope                     string        `json:"entityScope,omitempty"`
 	EntityState                     string        `json:"entityState,omitempty"`
 	PolicyChangeStatus              string        `json:"policyChangeStatus,omitempty"`
+	CreationDate                    string        `json:"creationDate,omitempty"`
 	UseGlobalMAC                    string        `json:"useGlobalMAC,omitempty"`
 	AssociatedMulticastChannelMapID string        `json:"associatedMulticastChannelMapID,omitempty"`
 	DualStackDynamicIPAllocation    bool          `json:"dualStackDynamicIPAllocation"`
 	Multicast                       string        `json:"multicast,omitempty"`
+	Owner                           string        `json:"owner,omitempty"`
 	ExternalID                      string        `json:"externalID,omitempty"`
 }
 

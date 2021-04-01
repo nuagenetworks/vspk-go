@@ -64,6 +64,7 @@ type UplinkConnection struct {
 	DNSAddressV6            string        `json:"DNSAddressV6,omitempty"`
 	Password                string        `json:"password,omitempty"`
 	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
 	Gateway                 string        `json:"gateway,omitempty"`
 	GatewayV6               string        `json:"gatewayV6,omitempty"`
 	Address                 string        `json:"address,omitempty"`
@@ -86,6 +87,7 @@ type UplinkConnection struct {
 	PortName                string        `json:"portName,omitempty"`
 	DownloadRateLimit       float64       `json:"downloadRateLimit,omitempty"`
 	UplinkID                int           `json:"uplinkID,omitempty"`
+	CreationDate            string        `json:"creationDate,omitempty"`
 	PrimaryDataPathID       string        `json:"primaryDataPathID,omitempty"`
 	Username                string        `json:"username,omitempty"`
 	AssocUnderlayID         string        `json:"assocUnderlayID,omitempty"`
@@ -93,6 +95,7 @@ type UplinkConnection struct {
 	AssociatedUnderlayName  string        `json:"associatedUnderlayName,omitempty"`
 	AuxMode                 string        `json:"auxMode,omitempty"`
 	AuxiliaryLink           bool          `json:"auxiliaryLink"`
+	Owner                   string        `json:"owner,omitempty"`
 	ExternalID              string        `json:"externalID,omitempty"`
 }
 

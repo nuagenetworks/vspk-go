@@ -63,6 +63,7 @@ type RedundantPort struct {
 	MTU                         int           `json:"MTU,omitempty"`
 	Name                        string        `json:"name,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	PermittedAction             string        `json:"permittedAction,omitempty"`
 	Description                 string        `json:"description,omitempty"`
 	PhysicalName                string        `json:"physicalName,omitempty"`
@@ -73,11 +74,13 @@ type RedundantPort struct {
 	PortPeer2ID                 string        `json:"portPeer2ID,omitempty"`
 	PortType                    string        `json:"portType,omitempty"`
 	Speed                       string        `json:"speed,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	UseUntaggedHeartbeatVlan    bool          `json:"useUntaggedHeartbeatVlan"`
 	UseUserMnemonic             bool          `json:"useUserMnemonic"`
 	UserMnemonic                string        `json:"userMnemonic,omitempty"`
 	AssociatedEgressQOSPolicyID string        `json:"associatedEgressQOSPolicyID,omitempty"`
 	Status                      string        `json:"status,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 }
 

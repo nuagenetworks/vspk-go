@@ -64,6 +64,7 @@ type BridgeInterface struct {
 	IPv6Gateway                 string        `json:"IPv6Gateway,omitempty"`
 	Name                        string        `json:"name,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	Gateway                     string        `json:"gateway,omitempty"`
 	Netmask                     string        `json:"netmask,omitempty"`
 	NetworkName                 string        `json:"networkName,omitempty"`
@@ -75,9 +76,11 @@ type BridgeInterface struct {
 	DomainName                  string        `json:"domainName,omitempty"`
 	ZoneID                      string        `json:"zoneID,omitempty"`
 	ZoneName                    string        `json:"zoneName,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	AssociatedFloatingIPAddress string        `json:"associatedFloatingIPAddress,omitempty"`
 	AttachedNetworkID           string        `json:"attachedNetworkID,omitempty"`
 	AttachedNetworkType         string        `json:"attachedNetworkType,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 }
 

@@ -60,12 +60,14 @@ type Command struct {
 	ParentType          string `json:"parentType,omitempty"`
 	Owner               string `json:"owner,omitempty"`
 	LastUpdatedBy       string `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate     string `json:"lastUpdatedDate,omitempty"`
 	Detail              string `json:"detail,omitempty"`
 	DetailedStatus      string `json:"detailedStatus,omitempty"`
 	DetailedStatusCode  int    `json:"detailedStatusCode,omitempty"`
 	EntityScope         string `json:"entityScope,omitempty"`
 	Command             string `json:"command,omitempty"`
 	CommandInformation  string `json:"commandInformation,omitempty"`
+	CreationDate        string `json:"creationDate,omitempty"`
 	Progress            string `json:"progress,omitempty"`
 	AssocEntityType     string `json:"assocEntityType,omitempty"`
 	AssociatedParam     string `json:"associatedParam,omitempty"`
@@ -74,6 +76,7 @@ type Command struct {
 	FullCommand         string `json:"fullCommand,omitempty"`
 	Summary             string `json:"summary,omitempty"`
 	Override            string `json:"override,omitempty"`
+	Owner               string `json:"owner,omitempty"`
 	ExternalID          string `json:"externalID,omitempty"`
 }
 

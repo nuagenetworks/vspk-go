@@ -62,12 +62,15 @@ type PortTemplate struct {
 	VLANRange                   string        `json:"VLANRange,omitempty"`
 	Name                        string        `json:"name,omitempty"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	Description                 string        `json:"description,omitempty"`
 	PhysicalName                string        `json:"physicalName,omitempty"`
 	EmbeddedMetadata            []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                 string        `json:"entityScope,omitempty"`
 	PortType                    string        `json:"portType,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
 	AssociatedEgressQOSPolicyID string        `json:"associatedEgressQOSPolicyID,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
 	ExternalID                  string        `json:"externalID,omitempty"`
 }
 

@@ -77,6 +77,7 @@ type NSRedundantGatewayGroup struct {
 	PermittedAction                     string        `json:"permittedAction,omitempty"`
 	Personality                         string        `json:"personality,omitempty"`
 	Description                         string        `json:"description,omitempty"`
+	ThreatPreventionEnabled             bool          `json:"threatPreventionEnabled"`
 	EmbeddedMetadata                    []interface{} `json:"embeddedMetadata,omitempty"`
 	EnterpriseID                        string        `json:"enterpriseID,omitempty"`
 	EntityScope                         string        `json:"entityScope,omitempty"`
@@ -94,6 +95,7 @@ func NewNSRedundantGatewayGroup() *NSRedundantGatewayGroup {
 		GatewayPeer2Connected:    false,
 		HeartbeatInterval:        500,
 		HeartbeatVLANID:          4094,
+		ThreatPreventionEnabled:  false,
 		ConsecutiveFailuresCount: 3,
 	}
 }

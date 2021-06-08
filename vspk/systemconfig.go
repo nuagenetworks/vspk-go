@@ -113,6 +113,7 @@ type SystemConfig struct {
 	SaaSApplicationsPublishDate                       string        `json:"SaaSApplicationsPublishDate,omitempty"`
 	PageMaxSize                                       int           `json:"pageMaxSize,omitempty"`
 	PageSize                                          int           `json:"pageSize,omitempty"`
+	MaintenanceModeEnabled                            bool          `json:"maintenanceModeEnabled"`
 	LastExecutedMigrationPhase                        string        `json:"lastExecutedMigrationPhase,omitempty"`
 	LastUpdatedBy                                     string        `json:"lastUpdatedBy,omitempty"`
 	LastUpdatedDate                                   string        `json:"lastUpdatedDate,omitempty"`
@@ -124,6 +125,8 @@ type SystemConfig struct {
 	RbacEnabled                                       bool          `json:"rbacEnabled"`
 	AccumulateLicensesEnabled                         bool          `json:"accumulateLicensesEnabled"`
 	VcinLoadBalancerIP                                string        `json:"vcinLoadBalancerIP,omitempty"`
+	WebCatSrvUrl                                      string        `json:"webCatSrvUrl,omitempty"`
+	WebFilteringType                                  string        `json:"webFilteringType,omitempty"`
 	FecFeedbackTimer                                  int           `json:"fecFeedbackTimer,omitempty"`
 	SecondaryASNumber                                 int           `json:"secondaryASNumber,omitempty"`
 	SecondaryRTLowerLimit                             int           `json:"secondaryRTLowerLimit,omitempty"`
@@ -290,6 +293,7 @@ func NewSystemConfig() *SystemConfig {
 		EVPNBGPCommunityTagUpperLimit:                     65535,
 		PageMaxSize:                                       500,
 		PageSize:                                          50,
+		MaintenanceModeEnabled:                            false,
 		LastExecutedMigrationPhase:                        "REDUCE",
 		GatewayProbeInterval:                              5,
 		GatewayProbeWindow:                                120,
@@ -298,6 +302,8 @@ func NewSystemConfig() *SystemConfig {
 		MaxResponse:                                       500,
 		RbacEnabled:                                       false,
 		AccumulateLicensesEnabled:                         false,
+		WebCatSrvUrl:                                      "incompasshybridpc.netstar-inc.com",
+		WebFilteringType:                                  "VM",
 		FecFeedbackTimer:                                  1,
 		SecondaryASNumber:                                 65533,
 		SecondaryRTLowerLimit:                             0,

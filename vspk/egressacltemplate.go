@@ -83,7 +83,9 @@ type EgressACLTemplate struct {
 // NewEgressACLTemplate returns a new *EgressACLTemplate
 func NewEgressACLTemplate() *EgressACLTemplate {
 
-	return &EgressACLTemplate{}
+	return &EgressACLTemplate{
+		DefaultAllowNonIP: true,
+	}
 }
 
 // Identity returns the Identity of the object.

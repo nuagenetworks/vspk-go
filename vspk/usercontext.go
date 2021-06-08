@@ -64,6 +64,7 @@ type UserContext struct {
 	VSSFeatureEnabled           bool          `json:"VSSFeatureEnabled"`
 	VSSStatsInterval            int           `json:"VSSStatsInterval,omitempty"`
 	PageSize                    int           `json:"pageSize,omitempty"`
+	MaintenanceModeEnabled      bool          `json:"maintenanceModeEnabled"`
 	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
 	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
 	RbacEnabled                 bool          `json:"rbacEnabled"`
@@ -93,6 +94,7 @@ func NewUserContext() *UserContext {
 		AARProbeStatsInterval:       30,
 		VSSFeatureEnabled:           false,
 		VSSStatsInterval:            30,
+		MaintenanceModeEnabled:      false,
 		RbacEnabled:                 false,
 		DeniedFlowCollectionEnabled: false,
 		ThreatIntelligenceEnabled:   false,

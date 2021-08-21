@@ -72,6 +72,7 @@ type VirtualFirewallRule struct {
 	WebFilterID                        string        `json:"webFilterID,omitempty"`
 	WebFilterStatsLoggingEnabled       bool          `json:"webFilterStatsLoggingEnabled"`
 	WebFilterType                      string        `json:"webFilterType,omitempty"`
+	ReputationScore                    string        `json:"reputationScore,omitempty"`
 	Description                        string        `json:"description,omitempty"`
 	DestinationPort                    string        `json:"destinationPort,omitempty"`
 	NetworkEntityType                  string        `json:"networkEntityType,omitempty"`

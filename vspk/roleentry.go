@@ -60,6 +60,7 @@ type Roleentry struct {
 	ParentType         string        `json:"parentType,omitempty"`
 	Owner              string        `json:"owner,omitempty"`
 	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
+	EndPointRestName   string        `json:"endPointRestName,omitempty"`
 	EndPointType       string        `json:"endPointType,omitempty"`
 	EntityScope        string        `json:"entityScope,omitempty"`
 	RoleAccessTypeList []interface{} `json:"roleAccessTypeList,omitempty"`

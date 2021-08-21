@@ -81,6 +81,7 @@ type EgressQOSPolicy struct {
 	Queue3ForwardingClasses                 []interface{} `json:"queue3ForwardingClasses,omitempty"`
 	Queue4AssociatedRateLimiterID           string        `json:"queue4AssociatedRateLimiterID,omitempty"`
 	Queue4ForwardingClasses                 []interface{} `json:"queue4ForwardingClasses,omitempty"`
+	CustomSpqDepth                          int           `json:"customSpqDepth,omitempty"`
 	Owner                                   string        `json:"owner,omitempty"`
 	ExternalID                              string        `json:"externalID,omitempty"`
 }
@@ -88,7 +89,9 @@ type EgressQOSPolicy struct {
 // NewEgressQOSPolicy returns a new *EgressQOSPolicy
 func NewEgressQOSPolicy() *EgressQOSPolicy {
 
-	return &EgressQOSPolicy{}
+	return &EgressQOSPolicy{
+		CustomSpqDepth: 0,
+	}
 }
 
 // Identity returns the Identity of the object.

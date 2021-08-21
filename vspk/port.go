@@ -71,6 +71,7 @@ type Port struct {
 	EmbeddedMetadata                   []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                        string        `json:"entityScope,omitempty"`
 	PortType                           string        `json:"portType,omitempty"`
+	Routed                             bool          `json:"routed"`
 	OperationalState                   string        `json:"operationalState,omitempty"`
 	CreationDate                       string        `json:"creationDate,omitempty"`
 	IsResilient                        bool          `json:"isResilient"`
@@ -91,6 +92,7 @@ type Port struct {
 func NewPort() *Port {
 
 	return &Port{
+		Routed:                           false,
 		AssociatedEthernetSegmentVirtual: false,
 	}
 }

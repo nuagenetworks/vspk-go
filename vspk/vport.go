@@ -88,6 +88,7 @@ type VPort struct {
 	DomainServiceLabel                  string        `json:"domainServiceLabel,omitempty"`
 	DomainVLANID                        int           `json:"domainVLANID,omitempty"`
 	ZoneID                              string        `json:"zoneID,omitempty"`
+	Routed                              bool          `json:"routed"`
 	OperationalState                    string        `json:"operationalState,omitempty"`
 	CreationDate                        string        `json:"creationDate,omitempty"`
 	TrunkRole                           string        `json:"trunkRole,omitempty"`
@@ -124,6 +125,7 @@ func NewVPort() *VPort {
 		AddressSpoofing:          "INHERITED",
 		FlowLimitEnabled:         "INHERITED",
 		Color:                    0,
+		Routed:                   false,
 		OperationalState:         "INIT",
 		SubType:                  "NONE",
 		Multicast:                "INHERITED",

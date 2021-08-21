@@ -76,6 +76,7 @@ type IngressQOSPolicy struct {
 	Queue3ForwardingClasses            []interface{} `json:"queue3ForwardingClasses,omitempty"`
 	Queue4AssociatedRateLimiterID      string        `json:"queue4AssociatedRateLimiterID,omitempty"`
 	Queue4ForwardingClasses            []interface{} `json:"queue4ForwardingClasses,omitempty"`
+	CustomSpqDepth                     int           `json:"customSpqDepth,omitempty"`
 	Owner                              string        `json:"owner,omitempty"`
 	ExternalID                         string        `json:"externalID,omitempty"`
 }
@@ -83,7 +84,9 @@ type IngressQOSPolicy struct {
 // NewIngressQOSPolicy returns a new *IngressQOSPolicy
 func NewIngressQOSPolicy() *IngressQOSPolicy {
 
-	return &IngressQOSPolicy{}
+	return &IngressQOSPolicy{
+		CustomSpqDepth: 0,
+	}
 }
 
 // Identity returns the Identity of the object.

@@ -64,6 +64,7 @@ type Permission struct {
 	LastUpdatedDate                string        `json:"lastUpdatedDate,omitempty"`
 	PermittedAction                string        `json:"permittedAction,omitempty"`
 	PermittedEnterpriseDescription string        `json:"permittedEnterpriseDescription,omitempty"`
+	PermittedEnterpriseID          string        `json:"permittedEnterpriseID,omitempty"`
 	PermittedEnterpriseName        string        `json:"permittedEnterpriseName,omitempty"`
 	PermittedEntityID              string        `json:"permittedEntityID,omitempty"`
 	PermittedEntityName            string        `json:"permittedEntityName,omitempty"`

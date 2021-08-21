@@ -66,7 +66,6 @@ type Role struct {
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	CreationDate     string        `json:"creationDate,omitempty"`
-	CspOnly          bool          `json:"cspOnly"`
 	Owner            string        `json:"owner,omitempty"`
 	ExternalID       string        `json:"externalID,omitempty"`
 }
@@ -74,9 +73,7 @@ type Role struct {
 // NewRole returns a new *Role
 func NewRole() *Role {
 
-	return &Role{
-		CspOnly: false,
-	}
+	return &Role{}
 }
 
 // Identity returns the Identity of the object.

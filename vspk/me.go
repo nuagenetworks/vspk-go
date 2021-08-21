@@ -1013,7 +1013,7 @@ func (o *Me) VCenterVRSConfigs(info *bambou.FetchingInfo) (VCenterVRSConfigsList
 	return list, err
 }
 
-// vrsInfos retrieves the list of child vrsInfos of the Me
+// VrsInfos retrieves the list of child VrsInfos of the Me
 func (o *Me) VrsInfos(info *bambou.FetchingInfo) (VrsInfosList, *bambou.Error) {
 
 	var list VrsInfosList

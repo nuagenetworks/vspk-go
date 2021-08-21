@@ -59,6 +59,7 @@ type VirtualUplink struct {
 	ParentID                              string `json:"parentID,omitempty"`
 	ParentType                            string `json:"parentType,omitempty"`
 	Owner                                 string `json:"owner,omitempty"`
+	FecEnabled                            string `json:"fecEnabled,omitempty"`
 	PeerEndpoint                          string `json:"peerEndpoint,omitempty"`
 	PeerGatewayID                         string `json:"peerGatewayID,omitempty"`
 	PeerGatewayName                       string `json:"peerGatewayName,omitempty"`
@@ -91,6 +92,7 @@ type VirtualUplink struct {
 func NewVirtualUplink() *VirtualUplink {
 
 	return &VirtualUplink{
+		FecEnabled:            "DISABLED",
 		EnableNATProbes:       false,
 		UnderlayNAT:           true,
 		UnderlayRouting:       true,

@@ -96,6 +96,8 @@ type Domain struct {
 	FlowCollectionEnabled           string        `json:"flowCollectionEnabled,omitempty"`
 	FlowCount                       int           `json:"flowCount,omitempty"`
 	FlowLimitEnabled                string        `json:"flowLimitEnabled,omitempty"`
+	FlowSetupRate                   int           `json:"flowSetupRate,omitempty"`
+	FlowSetupRateLimitEnabled       string        `json:"flowSetupRateLimitEnabled,omitempty"`
 	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
 	ImportRouteTarget               string        `json:"importRouteTarget,omitempty"`
 	Encryption                      string        `json:"encryption,omitempty"`
@@ -147,6 +149,8 @@ func NewDomain() *Domain {
 		ThreatIntelligenceEnabled: "INHERITED",
 		FlowCollectionEnabled:     "INHERITED",
 		FlowLimitEnabled:          "DISABLED",
+		FlowSetupRate:             1000,
+		FlowSetupRateLimitEnabled: "DISABLED",
 		Encryption:                "DISABLED",
 		UnderlayEnabled:           "DISABLED",
 		Color:                     0,

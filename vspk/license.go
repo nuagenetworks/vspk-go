@@ -78,6 +78,7 @@ type License struct {
 	AllowedAVRSsCount           int           `json:"allowedAVRSsCount,omitempty"`
 	AllowedCPEsCount            int           `json:"allowedCPEsCount,omitempty"`
 	AllowedNICsCount            int           `json:"allowedNICsCount,omitempty"`
+	AllowedOVRSsCount           int           `json:"allowedOVRSsCount,omitempty"`
 	AllowedVDFGsCount           int           `json:"allowedVDFGsCount,omitempty"`
 	AllowedVDFsCount            int           `json:"allowedVDFsCount,omitempty"`
 	AllowedVMsCount             int           `json:"allowedVMsCount,omitempty"`
@@ -108,7 +109,9 @@ type License struct {
 // NewLicense returns a new *License
 func NewLicense() *License {
 
-	return &License{}
+	return &License{
+		AllowedOVRSsCount: 0,
+	}
 }
 
 // Identity returns the Identity of the object.

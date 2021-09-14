@@ -67,10 +67,12 @@ type LicenseStatus struct {
 	TotalLicensedGatewaysCount   int           `json:"totalLicensedGatewaysCount,omitempty"`
 	TotalLicensedNICsCount       int           `json:"totalLicensedNICsCount,omitempty"`
 	TotalLicensedNSGsCount       int           `json:"totalLicensedNSGsCount,omitempty"`
+	TotalLicensedOVRSsCount      int           `json:"totalLicensedOVRSsCount,omitempty"`
 	TotalLicensedUsedAVRSGsCount int           `json:"totalLicensedUsedAVRSGsCount,omitempty"`
 	TotalLicensedUsedAVRSsCount  int           `json:"totalLicensedUsedAVRSsCount,omitempty"`
 	TotalLicensedUsedNICsCount   int           `json:"totalLicensedUsedNICsCount,omitempty"`
 	TotalLicensedUsedNSGsCount   int           `json:"totalLicensedUsedNSGsCount,omitempty"`
+	TotalLicensedUsedOVRSsCount  int           `json:"totalLicensedUsedOVRSsCount,omitempty"`
 	TotalLicensedUsedVDFGsCount  int           `json:"totalLicensedUsedVDFGsCount,omitempty"`
 	TotalLicensedUsedVDFsCount   int           `json:"totalLicensedUsedVDFsCount,omitempty"`
 	TotalLicensedUsedVMsCount    int           `json:"totalLicensedUsedVMsCount,omitempty"`
@@ -89,7 +91,9 @@ type LicenseStatus struct {
 func NewLicenseStatus() *LicenseStatus {
 
 	return &LicenseStatus{
-		AccumulateLicensesEnabled: false,
+		AccumulateLicensesEnabled:   false,
+		TotalLicensedOVRSsCount:     0,
+		TotalLicensedUsedOVRSsCount: 0,
 	}
 }
 

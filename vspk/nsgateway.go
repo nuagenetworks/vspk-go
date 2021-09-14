@@ -118,6 +118,7 @@ type NSGateway struct {
 	AssociatedGatewaySecurityID          string        `json:"associatedGatewaySecurityID,omitempty"`
 	AssociatedGatewaySecurityProfileID   string        `json:"associatedGatewaySecurityProfileID,omitempty"`
 	AssociatedNSGInfoID                  string        `json:"associatedNSGInfoID,omitempty"`
+	AssociatedNSGMigrationProfileID      string        `json:"associatedNSGMigrationProfileID,omitempty"`
 	AssociatedNSGUpgradeProfileID        string        `json:"associatedNSGUpgradeProfileID,omitempty"`
 	AssociatedOverlayManagementProfileID string        `json:"associatedOverlayManagementProfileID,omitempty"`
 	HugePageSetting                      string        `json:"hugePageSetting,omitempty"`

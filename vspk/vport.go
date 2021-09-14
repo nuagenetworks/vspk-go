@@ -80,6 +80,8 @@ type VPort struct {
 	Description                         string        `json:"description,omitempty"`
 	FlowCount                           int           `json:"flowCount,omitempty"`
 	FlowLimitEnabled                    string        `json:"flowLimitEnabled,omitempty"`
+	FlowSetupRate                       int           `json:"flowSetupRate,omitempty"`
+	FlowSetupRateLimitEnabled           string        `json:"flowSetupRateLimitEnabled,omitempty"`
 	EmbeddedMetadata                    []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope                         string        `json:"entityScope,omitempty"`
 	Color                               int           `json:"color,omitempty"`
@@ -120,18 +122,20 @@ type VPort struct {
 func NewVPort() *VPort {
 
 	return &VPort{
-		DPI:                      "INHERITED",
-		AccessRestrictionEnabled: false,
-		AddressSpoofing:          "INHERITED",
-		FlowLimitEnabled:         "INHERITED",
-		Color:                    0,
-		Routed:                   false,
-		OperationalState:         "INIT",
-		SubType:                  "NONE",
-		Multicast:                "INHERITED",
-		AutoCreated:              false,
-		GwEligible:               false,
-		Type:                     "VM",
+		DPI:                       "INHERITED",
+		AccessRestrictionEnabled:  false,
+		AddressSpoofing:           "INHERITED",
+		FlowLimitEnabled:          "INHERITED",
+		FlowSetupRate:             1000,
+		FlowSetupRateLimitEnabled: "INHERITED",
+		Color:                     0,
+		Routed:                    false,
+		OperationalState:          "INIT",
+		SubType:                   "NONE",
+		Multicast:                 "INHERITED",
+		AutoCreated:               false,
+		GwEligible:                false,
+		Type:                      "VM",
 	}
 }
 

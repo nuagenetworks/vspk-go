@@ -67,7 +67,6 @@ type VSC struct {
 	Addresses                   []interface{} `json:"addresses,omitempty"`
 	PeakCPUUsage                float64       `json:"peakCPUUsage,omitempty"`
 	PeakMemoryUsage             float64       `json:"peakMemoryUsage,omitempty"`
-	SecondaryRoleCount          int           `json:"secondaryRoleCount,omitempty"`
 	Description                 string        `json:"description,omitempty"`
 	Messages                    []interface{} `json:"messages,omitempty"`
 	Disks                       []interface{} `json:"disks,omitempty"`
@@ -78,11 +77,10 @@ type VSC struct {
 	Location                    string        `json:"location,omitempty"`
 	CommunicationId             string        `json:"communicationId,omitempty"`
 	CreationDate                string        `json:"creationDate,omitempty"`
-	PrimaryRoleCount            int           `json:"primaryRoleCount,omitempty"`
 	ProductVersion              string        `json:"productVersion,omitempty"`
 	Vsds                        []interface{} `json:"vsds,omitempty"`
 	Status                      string        `json:"status,omitempty"`
-	NumberOfInactiveGateways    int           `json:"numberOfInactiveGateways,omitempty"`
+	NumberOfConnections         int           `json:"numberOfConnections,omitempty"`
 	CurrentCPUUsage             float64       `json:"currentCPUUsage,omitempty"`
 	CurrentMemoryUsage          float64       `json:"currentMemoryUsage,omitempty"`
 	AverageCPUUsage             float64       `json:"averageCPUUsage,omitempty"`

@@ -43,6 +43,7 @@ type Me struct {
 	Owner                 string        `json:"owner,omitempty"`
 	AARFlowStatsInterval  int           `json:"AARFlowStatsInterval,omitempty"`
 	AARProbeStatsInterval int           `json:"AARProbeStatsInterval,omitempty"`
+	APIKeyExpiry          int           `json:"APIKeyExpiry,omitempty"`
 	VSSStatsInterval      int           `json:"VSSStatsInterval,omitempty"`
 	Password              string        `json:"password,omitempty"`
 	LastName              string        `json:"lastName,omitempty"`
@@ -1113,6 +1114,20 @@ func (o *Me) NSGInfos(info *bambou.FetchingInfo) (NSGInfosList, *bambou.Error) {
 	var list NSGInfosList
 	err := bambou.CurrentSession().FetchChildren(o, NSGInfoIdentity, &list, info)
 	return list, err
+}
+
+// NSGMigrationProfiles retrieves the list of child NSGMigrationProfiles of the Me
+func (o *Me) NSGMigrationProfiles(info *bambou.FetchingInfo) (NSGMigrationProfilesList, *bambou.Error) {
+
+	var list NSGMigrationProfilesList
+	err := bambou.CurrentSession().FetchChildren(o, NSGMigrationProfileIdentity, &list, info)
+	return list, err
+}
+
+// CreateNSGMigrationProfile creates a new child NSGMigrationProfile under the Me
+func (o *Me) CreateNSGMigrationProfile(child *NSGMigrationProfile) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
 }
 
 // NSGPatchProfiles retrieves the list of child NSGPatchProfiles of the Me

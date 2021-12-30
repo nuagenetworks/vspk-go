@@ -72,6 +72,7 @@ type VirtualFirewallRule struct {
 	WebFilterID                        string        `json:"webFilterID,omitempty"`
 	WebFilterStatsLoggingEnabled       bool          `json:"webFilterStatsLoggingEnabled"`
 	WebFilterType                      string        `json:"webFilterType,omitempty"`
+	RemoteUplinkPreference             string        `json:"remoteUplinkPreference,omitempty"`
 	ReputationScore                    string        `json:"reputationScore,omitempty"`
 	Description                        string        `json:"description,omitempty"`
 	DestinationPort                    string        `json:"destinationPort,omitempty"`
@@ -90,9 +91,13 @@ type VirtualFirewallRule struct {
 	PolicyState                        string        `json:"policyState,omitempty"`
 	DomainName                         string        `json:"domainName,omitempty"`
 	SourcePort                         string        `json:"sourcePort,omitempty"`
+	UplinkPreference                   string        `json:"uplinkPreference,omitempty"`
+	AppType                            string        `json:"appType,omitempty"`
 	CreationDate                       string        `json:"creationDate,omitempty"`
 	Priority                           int           `json:"priority,omitempty"`
 	Protocol                           string        `json:"protocol,omitempty"`
+	IsSLAAware                         bool          `json:"isSLAAware"`
+	AssociatedApplicationID            string        `json:"associatedApplicationID,omitempty"`
 	AssociatedEgressEntryID            string        `json:"associatedEgressEntryID,omitempty"`
 	AssociatedIngressEntryID           string        `json:"associatedIngressEntryID,omitempty"`
 	AssociatedL7ApplicationSignatureID string        `json:"associatedL7ApplicationSignatureID,omitempty"`
@@ -116,8 +121,12 @@ func NewVirtualFirewallRule() *VirtualFirewallRule {
 	return &VirtualFirewallRule{
 		Action:                       "FORWARD",
 		WebFilterStatsLoggingEnabled: false,
+		RemoteUplinkPreference:       "DEFAULT",
 		NetworkType:                  "ANY",
 		FlowLoggingEnabled:           false,
+		UplinkPreference:             "DEFAULT",
+		AppType:                      "NONE",
+		IsSLAAware:                   false,
 		Stateful:                     false,
 		StatsLoggingEnabled:          false,
 		Type:                         "L4",

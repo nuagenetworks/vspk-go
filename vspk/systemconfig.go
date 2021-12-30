@@ -110,6 +110,7 @@ type SystemConfig struct {
 	EVPNBGPCommunityTagASNumber                       int           `json:"EVPNBGPCommunityTagASNumber,omitempty"`
 	EVPNBGPCommunityTagLowerLimit                     int           `json:"EVPNBGPCommunityTagLowerLimit,omitempty"`
 	EVPNBGPCommunityTagUpperLimit                     int           `json:"EVPNBGPCommunityTagUpperLimit,omitempty"`
+	CaCertificatesExpiryTime                          int           `json:"caCertificatesExpiryTime,omitempty"`
 	SaaSApplicationsPublishDate                       string        `json:"SaaSApplicationsPublishDate,omitempty"`
 	PageMaxSize                                       int           `json:"pageMaxSize,omitempty"`
 	PageSize                                          int           `json:"pageSize,omitempty"`
@@ -134,6 +135,7 @@ type SystemConfig struct {
 	DeniedFlowCollectionEnabled                       bool          `json:"deniedFlowCollectionEnabled"`
 	PerDomainVlanIdEnabled                            bool          `json:"perDomainVlanIdEnabled"`
 	ServiceIDUpperLimit                               int           `json:"serviceIDUpperLimit,omitempty"`
+	Netconf7x50RoutingPolicyValidationEnabled         bool          `json:"netconf7x50RoutingPolicyValidationEnabled"`
 	KeyServerMonitorEnabled                           bool          `json:"keyServerMonitorEnabled"`
 	KeyServerVSDDataSynchronizationInterval           int           `json:"keyServerVSDDataSynchronizationInterval,omitempty"`
 	OffsetCustomerID                                  int           `json:"offsetCustomerID,omitempty"`
@@ -145,7 +147,9 @@ type SystemConfig struct {
 	ThreatPreventionServerProxyPort                   int           `json:"threatPreventionServerProxyPort,omitempty"`
 	ThreatPreventionServerUsername                    string        `json:"threatPreventionServerUsername,omitempty"`
 	ThreatPreventionSyslogProxyPort                   int           `json:"threatPreventionSyslogProxyPort,omitempty"`
+	SignatureUpdateThroughCloudEnabled                bool          `json:"signatureUpdateThroughCloudEnabled"`
 	VirtualFirewallRulesEnabled                       bool          `json:"virtualFirewallRulesEnabled"`
+	EjabberdLicenseExpiryTime                         int           `json:"ejabberdLicenseExpiryTime,omitempty"`
 	EjbcaNSGCertificateProfile                        string        `json:"ejbcaNSGCertificateProfile,omitempty"`
 	EjbcaNSGEndEntityProfile                          string        `json:"ejbcaNSGEndEntityProfile,omitempty"`
 	EjbcaOCSPResponderCN                              string        `json:"ejbcaOCSPResponderCN,omitempty"`
@@ -153,6 +157,7 @@ type SystemConfig struct {
 	EjbcaVspRootCa                                    string        `json:"ejbcaVspRootCa,omitempty"`
 	AlarmsMaxPerObject                                int           `json:"alarmsMaxPerObject,omitempty"`
 	ElasticClusterName                                string        `json:"elasticClusterName,omitempty"`
+	ElasticSearchLicenseExpiryTime                    int           `json:"elasticSearchLicenseExpiryTime,omitempty"`
 	AllowEnterpriseAvatarOnNSG                        bool          `json:"allowEnterpriseAvatarOnNSG"`
 	GlobalMACAddress                                  string        `json:"globalMACAddress,omitempty"`
 	FlowCollectionEnabled                             bool          `json:"flowCollectionEnabled"`
@@ -194,6 +199,7 @@ type SystemConfig struct {
 	EsiID                                             int           `json:"esiID,omitempty"`
 	CsprootAuthenticationMethod                       string        `json:"csprootAuthenticationMethod,omitempty"`
 	StackTraceEnabled                                 bool          `json:"stackTraceEnabled"`
+	StatefulACLICMPTimeout                            int           `json:"statefulACLICMPTimeout,omitempty"`
 	StatefulACLNonTCPTimeout                          int           `json:"statefulACLNonTCPTimeout,omitempty"`
 	StatefulACLTCPTimeout                             int           `json:"statefulACLTCPTimeout,omitempty"`
 	StaticWANServicePurgeTime                         int           `json:"staticWANServicePurgeTime,omitempty"`
@@ -311,6 +317,7 @@ func NewSystemConfig() *SystemConfig {
 		DeniedFlowCollectionEnabled:                       false,
 		PerDomainVlanIdEnabled:                            false,
 		ServiceIDUpperLimit:                               2147483648,
+		Netconf7x50RoutingPolicyValidationEnabled:         false,
 		KeyServerMonitorEnabled:                           true,
 		KeyServerVSDDataSynchronizationInterval:           3600,
 		OffsetCustomerID:                                  10000,
@@ -319,6 +326,7 @@ func NewSystemConfig() *SystemConfig {
 		ThreatPreventionFeedServerProxyPort:               13080,
 		ThreatPreventionServerProxyPort:                   13022,
 		ThreatPreventionSyslogProxyPort:                   13514,
+		SignatureUpdateThroughCloudEnabled:                false,
 		VirtualFirewallRulesEnabled:                       false,
 		EjbcaNSGCertificateProfile:                        "VSPClient",
 		EjbcaNSGEndEntityProfile:                          "NSG",
@@ -364,6 +372,7 @@ func NewSystemConfig() *SystemConfig {
 		EsiID:                                             10000,
 		CsprootAuthenticationMethod:                       "LOCAL",
 		StackTraceEnabled:                                 false,
+		StatefulACLICMPTimeout:                            180,
 		StatefulACLNonTCPTimeout:                          180,
 		StatefulACLTCPTimeout:                             3600,
 		StaticWANServicePurgeTime:                         3600,

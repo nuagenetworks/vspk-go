@@ -55,25 +55,26 @@ type TestsParent interface {
 
 // Test represents the model of a test
 type Test struct {
-	ID                         string        `json:"ID,omitempty"`
-	ParentID                   string        `json:"parentID,omitempty"`
-	ParentType                 string        `json:"parentType,omitempty"`
-	Owner                      string        `json:"owner,omitempty"`
-	Name                       string        `json:"name,omitempty"`
-	LastUpdatedBy              string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate            string        `json:"lastUpdatedDate,omitempty"`
-	Description                string        `json:"description,omitempty"`
-	Destination                string        `json:"destination,omitempty"`
-	Timeout                    int           `json:"timeout,omitempty"`
-	EmbeddedMetadata           []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope                string        `json:"entityScope,omitempty"`
-	Command                    string        `json:"command,omitempty"`
-	Order                      int           `json:"order,omitempty"`
-	CreationDate               string        `json:"creationDate,omitempty"`
-	AssociatedTestDefinitionID string        `json:"associatedTestDefinitionID,omitempty"`
-	AssociatedTestSuiteID      string        `json:"associatedTestSuiteID,omitempty"`
-	Owner                      string        `json:"owner,omitempty"`
-	ExternalID                 string        `json:"externalID,omitempty"`
+	ID                           string        `json:"ID,omitempty"`
+	ParentID                     string        `json:"parentID,omitempty"`
+	ParentType                   string        `json:"parentType,omitempty"`
+	Owner                        string        `json:"owner,omitempty"`
+	Name                         string        `json:"name,omitempty"`
+	LastUpdatedBy                string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate              string        `json:"lastUpdatedDate,omitempty"`
+	Description                  string        `json:"description,omitempty"`
+	Destination                  string        `json:"destination,omitempty"`
+	Timeout                      int           `json:"timeout,omitempty"`
+	EmbeddedMetadata             []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope                  string        `json:"entityScope,omitempty"`
+	Command                      string        `json:"command,omitempty"`
+	Order                        int           `json:"order,omitempty"`
+	CreationDate                 string        `json:"creationDate,omitempty"`
+	AssociatedTestDefinitionID   string        `json:"associatedTestDefinitionID,omitempty"`
+	AssociatedTestDefinitionType string        `json:"associatedTestDefinitionType,omitempty"`
+	AssociatedTestSuiteID        string        `json:"associatedTestSuiteID,omitempty"`
+	Owner                        string        `json:"owner,omitempty"`
+	ExternalID                   string        `json:"externalID,omitempty"`
 }
 
 // NewTest returns a new *Test

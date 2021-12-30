@@ -55,46 +55,48 @@ type EnterpriseProfilesParent interface {
 
 // EnterpriseProfile represents the model of a enterpriseprofile
 type EnterpriseProfile struct {
-	ID                                     string        `json:"ID,omitempty"`
-	ParentID                               string        `json:"parentID,omitempty"`
-	ParentType                             string        `json:"parentType,omitempty"`
-	Owner                                  string        `json:"owner,omitempty"`
-	BGPEnabled                             bool          `json:"BGPEnabled"`
-	DHCPLeaseInterval                      int           `json:"DHCPLeaseInterval,omitempty"`
-	VNFManagementEnabled                   bool          `json:"VNFManagementEnabled"`
-	Name                                   string        `json:"name,omitempty"`
-	LastUpdatedBy                          string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate                        string        `json:"lastUpdatedDate,omitempty"`
-	WebFilterEnabled                       bool          `json:"webFilterEnabled"`
-	ReceiveMultiCastListID                 string        `json:"receiveMultiCastListID,omitempty"`
-	SendMultiCastListID                    string        `json:"sendMultiCastListID,omitempty"`
-	Description                            string        `json:"description,omitempty"`
-	ThreatPreventionManagementEnabled      bool          `json:"threatPreventionManagementEnabled"`
-	AllowAdvancedQOSConfiguration          bool          `json:"allowAdvancedQOSConfiguration"`
-	AllowGatewayManagement                 bool          `json:"allowGatewayManagement"`
-	AllowTrustedForwardingClass            bool          `json:"allowTrustedForwardingClass"`
-	AllowedForwardingClasses               []interface{} `json:"allowedForwardingClasses,omitempty"`
-	FloatingIPsQuota                       int           `json:"floatingIPsQuota,omitempty"`
-	EmbeddedMetadata                       []interface{} `json:"embeddedMetadata,omitempty"`
-	EnableApplicationPerformanceManagement bool          `json:"enableApplicationPerformanceManagement"`
-	EncryptionManagementMode               string        `json:"encryptionManagementMode,omitempty"`
-	EntityScope                            string        `json:"entityScope,omitempty"`
-	ForwardingClass                        []interface{} `json:"forwardingClass,omitempty"`
-	CreationDate                           string        `json:"creationDate,omitempty"`
-	Owner                                  string        `json:"owner,omitempty"`
-	ExternalID                             string        `json:"externalID,omitempty"`
+	ID                                        string        `json:"ID,omitempty"`
+	ParentID                                  string        `json:"parentID,omitempty"`
+	ParentType                                string        `json:"parentType,omitempty"`
+	Owner                                     string        `json:"owner,omitempty"`
+	BGPEnabled                                bool          `json:"BGPEnabled"`
+	DHCPLeaseInterval                         int           `json:"DHCPLeaseInterval,omitempty"`
+	VNFManagementEnabled                      bool          `json:"VNFManagementEnabled"`
+	Name                                      string        `json:"name,omitempty"`
+	LastUpdatedBy                             string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                           string        `json:"lastUpdatedDate,omitempty"`
+	WebFilterEnabled                          bool          `json:"webFilterEnabled"`
+	ReceiveMultiCastListID                    string        `json:"receiveMultiCastListID,omitempty"`
+	SendMultiCastListID                       string        `json:"sendMultiCastListID,omitempty"`
+	Description                               string        `json:"description,omitempty"`
+	ThreatPreventionManagementEnabled         bool          `json:"threatPreventionManagementEnabled"`
+	AllowAdvancedQOSConfiguration             bool          `json:"allowAdvancedQOSConfiguration"`
+	AllowGatewayManagement                    bool          `json:"allowGatewayManagement"`
+	AllowTrustedForwardingClass               bool          `json:"allowTrustedForwardingClass"`
+	AllowedForwardingClasses                  []interface{} `json:"allowedForwardingClasses,omitempty"`
+	FloatingIPsQuota                          int           `json:"floatingIPsQuota,omitempty"`
+	EmbeddedMetadata                          []interface{} `json:"embeddedMetadata,omitempty"`
+	EnableApplicationPerformanceManagement    bool          `json:"enableApplicationPerformanceManagement"`
+	EnableOAMConnectivityStatisticsCollection bool          `json:"enableOAMConnectivityStatisticsCollection"`
+	EncryptionManagementMode                  string        `json:"encryptionManagementMode,omitempty"`
+	EntityScope                               string        `json:"entityScope,omitempty"`
+	ForwardingClass                           []interface{} `json:"forwardingClass,omitempty"`
+	CreationDate                              string        `json:"creationDate,omitempty"`
+	Owner                                     string        `json:"owner,omitempty"`
+	ExternalID                                string        `json:"externalID,omitempty"`
 }
 
 // NewEnterpriseProfile returns a new *EnterpriseProfile
 func NewEnterpriseProfile() *EnterpriseProfile {
 
 	return &EnterpriseProfile{
-		DHCPLeaseInterval:                      24,
-		VNFManagementEnabled:                   false,
-		WebFilterEnabled:                       false,
-		ThreatPreventionManagementEnabled:      false,
-		FloatingIPsQuota:                       100,
-		EnableApplicationPerformanceManagement: false,
+		DHCPLeaseInterval:                         24,
+		VNFManagementEnabled:                      false,
+		WebFilterEnabled:                          false,
+		ThreatPreventionManagementEnabled:         false,
+		FloatingIPsQuota:                          100,
+		EnableApplicationPerformanceManagement:    false,
+		EnableOAMConnectivityStatisticsCollection: false,
 	}
 }
 

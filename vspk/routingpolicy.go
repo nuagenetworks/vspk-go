@@ -65,6 +65,7 @@ type RoutingPolicy struct {
 	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
 	EntityScope      string        `json:"entityScope,omitempty"`
 	PolicyDefinition string        `json:"policyDefinition,omitempty"`
+	PolicyUniqueID   int           `json:"policyUniqueID,omitempty"`
 	ContentType      string        `json:"contentType,omitempty"`
 	RoutingProtocol  string        `json:"routingProtocol,omitempty"`
 	CustomerID       int           `json:"CustomerID,omitempty"`

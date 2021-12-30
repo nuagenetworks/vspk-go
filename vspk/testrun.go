@@ -61,6 +61,7 @@ type TestRun struct {
 	Owner                             string        `json:"owner,omitempty"`
 	LastUpdatedBy                     string        `json:"lastUpdatedBy,omitempty"`
 	LastUpdatedDate                   string        `json:"lastUpdatedDate,omitempty"`
+	AdditionalTestRunDetails          interface{}   `json:"additionalTestRunDetails,omitempty"`
 	TestResult                        string        `json:"testResult,omitempty"`
 	TestResultData                    interface{}   `json:"testResultData,omitempty"`
 	TestResultDataType                string        `json:"testResultDataType,omitempty"`
@@ -78,6 +79,7 @@ type TestRun struct {
 	CreationDate                      string        `json:"creationDate,omitempty"`
 	AssociatedTestID                  string        `json:"associatedTestID,omitempty"`
 	AssociatedTestSuiteRunID          string        `json:"associatedTestSuiteRunID,omitempty"`
+	AssociatedTestSuiteRunType        string        `json:"associatedTestSuiteRunType,omitempty"`
 	StartDateTime                     int           `json:"startDateTime,omitempty"`
 	StopDateTime                      int           `json:"stopDateTime,omitempty"`
 	Duration                          int           `json:"duration,omitempty"`

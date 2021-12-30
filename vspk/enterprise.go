@@ -350,6 +350,34 @@ func (o *Enterprise) PATNATPools(info *bambou.FetchingInfo) (PATNATPoolsList, *b
 	return list, err
 }
 
+// ScheduledTestSuites retrieves the list of child ScheduledTestSuites of the Enterprise
+func (o *Enterprise) ScheduledTestSuites(info *bambou.FetchingInfo) (ScheduledTestSuitesList, *bambou.Error) {
+
+	var list ScheduledTestSuitesList
+	err := bambou.CurrentSession().FetchChildren(o, ScheduledTestSuiteIdentity, &list, info)
+	return list, err
+}
+
+// CreateScheduledTestSuite creates a new child ScheduledTestSuite under the Enterprise
+func (o *Enterprise) CreateScheduledTestSuite(child *ScheduledTestSuite) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// ICMPEchoTestDefinitions retrieves the list of child ICMPEchoTestDefinitions of the Enterprise
+func (o *Enterprise) ICMPEchoTestDefinitions(info *bambou.FetchingInfo) (ICMPEchoTestDefinitionsList, *bambou.Error) {
+
+	var list ICMPEchoTestDefinitionsList
+	err := bambou.CurrentSession().FetchChildren(o, ICMPEchoTestDefinitionIdentity, &list, info)
+	return list, err
+}
+
+// CreateICMPEchoTestDefinition creates a new child ICMPEchoTestDefinition under the Enterprise
+func (o *Enterprise) CreateICMPEchoTestDefinition(child *ICMPEchoTestDefinition) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // LDAPConfigurations retrieves the list of child LDAPConfigurations of the Enterprise
 func (o *Enterprise) LDAPConfigurations(info *bambou.FetchingInfo) (LDAPConfigurationsList, *bambou.Error) {
 

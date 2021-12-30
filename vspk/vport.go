@@ -189,6 +189,20 @@ func (o *VPort) CreateTCA(child *TCA) *bambou.Error {
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// Scheduledtestsuiteruns retrieves the list of child Scheduledtestsuiteruns of the VPort
+func (o *VPort) Scheduledtestsuiteruns(info *bambou.FetchingInfo) (ScheduledtestsuiterunsList, *bambou.Error) {
+
+	var list ScheduledtestsuiterunsList
+	err := bambou.CurrentSession().FetchChildren(o, ScheduledtestsuiterunIdentity, &list, info)
+	return list, err
+}
+
+// CreateScheduledtestsuiterun creates a new child Scheduledtestsuiterun under the VPort
+func (o *VPort) CreateScheduledtestsuiterun(child *Scheduledtestsuiterun) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // RedirectionTargets retrieves the list of child RedirectionTargets of the VPort
 func (o *VPort) RedirectionTargets(info *bambou.FetchingInfo) (RedirectionTargetsList, *bambou.Error) {
 

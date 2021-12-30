@@ -68,6 +68,7 @@ type TCA struct {
 	Action              string        `json:"action,omitempty"`
 	Period              int           `json:"period,omitempty"`
 	Description         string        `json:"description,omitempty"`
+	DestinationPort     int           `json:"destinationPort,omitempty"`
 	Metric              string        `json:"metric,omitempty"`
 	Threshold           int           `json:"threshold,omitempty"`
 	ThrottleTime        int           `json:"throttleTime,omitempty"`
@@ -78,6 +79,7 @@ type TCA struct {
 	Count               int           `json:"count,omitempty"`
 	CreationDate        string        `json:"creationDate,omitempty"`
 	TriggerInterval     int           `json:"triggerInterval,omitempty"`
+	Protocol            string        `json:"protocol,omitempty"`
 	Status              bool          `json:"status"`
 	Owner               string        `json:"owner,omitempty"`
 	ExternalID          string        `json:"externalID,omitempty"`
@@ -92,6 +94,7 @@ func NewTCA() *TCA {
 		Metric:          "BYTES_IN",
 		ThrottleTime:    10,
 		TriggerInterval: 30,
+		Protocol:        "NONE",
 		Type:            "ROLLING_AVERAGE",
 	}
 }

@@ -59,6 +59,7 @@ type Domain struct {
 	ParentID                        string        `json:"parentID,omitempty"`
 	ParentType                      string        `json:"parentType,omitempty"`
 	Owner                           string        `json:"owner,omitempty"`
+	L2DomainAggregationEnabled      bool          `json:"l2DomainAggregationEnabled"`
 	PATEnabled                      string        `json:"PATEnabled,omitempty"`
 	ECMPCount                       int           `json:"ECMPCount,omitempty"`
 	BGPEnabled                      bool          `json:"BGPEnabled"`
@@ -67,6 +68,8 @@ type Domain struct {
 	FIPIgnoreDefaultRoute           string        `json:"FIPIgnoreDefaultRoute,omitempty"`
 	FIPUnderlay                     bool          `json:"FIPUnderlay"`
 	DPI                             string        `json:"DPI,omitempty"`
+	IPv4IBGPMaxPaths                int           `json:"IPv4IBGPMaxPaths,omitempty"`
+	IPv6IBGPMaxPaths                int           `json:"IPv6IBGPMaxPaths,omitempty"`
 	GRTEnabled                      bool          `json:"GRTEnabled"`
 	EVPNRT5Type                     string        `json:"EVPNRT5Type,omitempty"`
 	VXLANECMPEnabled                bool          `json:"VXLANECMPEnabled"`
@@ -110,6 +113,11 @@ type Domain struct {
 	DomainAggregationEnabled        bool          `json:"domainAggregationEnabled"`
 	DomainID                        int           `json:"domainID,omitempty"`
 	DomainVLANID                    int           `json:"domainVLANID,omitempty"`
+	LoopbackIntfDescription         string        `json:"loopbackIntfDescription,omitempty"`
+	LoopbackIntfEnabled             bool          `json:"loopbackIntfEnabled"`
+	LoopbackIntfIPv4Address         string        `json:"loopbackIntfIPv4Address,omitempty"`
+	LoopbackIntfIPv6Address         string        `json:"loopbackIntfIPv6Address,omitempty"`
+	LoopbackIntfId                  int           `json:"loopbackIntfId,omitempty"`
 	RouteDistinguisher              string        `json:"routeDistinguisher,omitempty"`
 	RouteTarget                     string        `json:"routeTarget,omitempty"`
 	UplinkPreference                string        `json:"uplinkPreference,omitempty"`
@@ -135,28 +143,32 @@ type Domain struct {
 func NewDomain() *Domain {
 
 	return &Domain{
-		PATEnabled:                "DISABLED",
-		DHCPBehavior:              "CONSUME",
-		FIPIgnoreDefaultRoute:     "DISABLED",
-		FIPUnderlay:               false,
-		DPI:                       "DISABLED",
-		GRTEnabled:                false,
-		EVPNRT5Type:               "IP",
-		VXLANECMPEnabled:          false,
-		MaintenanceMode:           "DISABLED",
-		FecEnabled:                false,
-		AggregateFlowsEnabled:     false,
-		ThreatIntelligenceEnabled: "INHERITED",
-		FlowCollectionEnabled:     "INHERITED",
-		FlowLimitEnabled:          "DISABLED",
-		FlowSetupRate:             1000,
-		FlowSetupRateLimitEnabled: "DISABLED",
-		Encryption:                "DISABLED",
-		UnderlayEnabled:           "DISABLED",
-		Color:                     0,
-		DomainAggregationEnabled:  false,
-		CreateBackHaulSubnet:      true,
-		TunnelType:                "DC_DEFAULT",
+		L2DomainAggregationEnabled: false,
+		PATEnabled:                 "DISABLED",
+		DHCPBehavior:               "CONSUME",
+		FIPIgnoreDefaultRoute:      "DISABLED",
+		FIPUnderlay:                false,
+		DPI:                        "DISABLED",
+		IPv4IBGPMaxPaths:           1,
+		IPv6IBGPMaxPaths:           1,
+		GRTEnabled:                 false,
+		EVPNRT5Type:                "IP",
+		VXLANECMPEnabled:           false,
+		MaintenanceMode:            "DISABLED",
+		FecEnabled:                 false,
+		AggregateFlowsEnabled:      false,
+		ThreatIntelligenceEnabled:  "INHERITED",
+		FlowCollectionEnabled:      "INHERITED",
+		FlowLimitEnabled:           "DISABLED",
+		FlowSetupRate:              1000,
+		FlowSetupRateLimitEnabled:  "DISABLED",
+		Encryption:                 "DISABLED",
+		UnderlayEnabled:            "DISABLED",
+		Color:                      0,
+		DomainAggregationEnabled:   false,
+		LoopbackIntfEnabled:        false,
+		CreateBackHaulSubnet:       true,
+		TunnelType:                 "DC_DEFAULT",
 	}
 }
 
@@ -764,6 +776,20 @@ func (o *Domain) RoutingPolicies(info *bambou.FetchingInfo) (RoutingPoliciesList
 
 // CreateRoutingPolicy creates a new child RoutingPolicy under the Domain
 func (o *Domain) CreateRoutingPolicy(child *RoutingPolicy) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// RoutingPolicyAssociations retrieves the list of child RoutingPolicyAssociations of the Domain
+func (o *Domain) RoutingPolicyAssociations(info *bambou.FetchingInfo) (RoutingPolicyAssociationsList, *bambou.Error) {
+
+	var list RoutingPolicyAssociationsList
+	err := bambou.CurrentSession().FetchChildren(o, RoutingPolicyAssociationIdentity, &list, info)
+	return list, err
+}
+
+// CreateRoutingPolicyAssociation creates a new child RoutingPolicyAssociation under the Domain
+func (o *Domain) CreateRoutingPolicyAssociation(child *RoutingPolicyAssociation) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

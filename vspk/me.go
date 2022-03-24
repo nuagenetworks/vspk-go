@@ -354,6 +354,20 @@ func (o *Me) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error)
 	return list, err
 }
 
+// NetconfGlobalConfigurations retrieves the list of child NetconfGlobalConfigurations of the Me
+func (o *Me) NetconfGlobalConfigurations(info *bambou.FetchingInfo) (NetconfGlobalConfigurationsList, *bambou.Error) {
+
+	var list NetconfGlobalConfigurationsList
+	err := bambou.CurrentSession().FetchChildren(o, NetconfGlobalConfigurationIdentity, &list, info)
+	return list, err
+}
+
+// CreateNetconfGlobalConfiguration creates a new child NetconfGlobalConfiguration under the Me
+func (o *Me) CreateNetconfGlobalConfiguration(child *NetconfGlobalConfiguration) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // NetconfProfiles retrieves the list of child NetconfProfiles of the Me
 func (o *Me) NetconfProfiles(info *bambou.FetchingInfo) (NetconfProfilesList, *bambou.Error) {
 

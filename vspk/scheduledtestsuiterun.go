@@ -70,6 +70,7 @@ type Scheduledtestsuiterun struct {
 	VlanID                           int    `json:"vlanID,omitempty"`
 	DomainName                       string `json:"domainName,omitempty"`
 	ZoneName                         string `json:"zoneName,omitempty"`
+	SourceIP                         string `json:"sourceIP,omitempty"`
 	OperationStatus                  string `json:"operationStatus,omitempty"`
 	VportPortName                    string `json:"vportPortName,omitempty"`
 	VportVlanID                      int    `json:"vportVlanID,omitempty"`

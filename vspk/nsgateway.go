@@ -67,6 +67,7 @@ type NSGateway struct {
 	TCPMaximumSegmentSize                int           `json:"TCPMaximumSegmentSize,omitempty"`
 	ZFBMatchAttribute                    string        `json:"ZFBMatchAttribute,omitempty"`
 	ZFBMatchValue                        string        `json:"ZFBMatchValue,omitempty"`
+	SGTPropagationEnabled                bool          `json:"SGTPropagationEnabled"`
 	BIOSReleaseDate                      string        `json:"BIOSReleaseDate,omitempty"`
 	BIOSVersion                          string        `json:"BIOSVersion,omitempty"`
 	SKU                                  string        `json:"SKU,omitempty"`
@@ -138,6 +139,7 @@ func NewNSGateway() *NSGateway {
 		TCPMSSEnabled:                    false,
 		TCPMaximumSegmentSize:            1330,
 		ZFBMatchAttribute:                "NONE",
+		SGTPropagationEnabled:            false,
 		TPMStatus:                        "UNKNOWN",
 		SSHService:                       "INHERITED",
 		LastConfigurationReloadTimestamp: -1,

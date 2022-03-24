@@ -1198,6 +1198,20 @@ func (o *Enterprise) CreateNSRedundantGatewayGroup(child *NSRedundantGatewayGrou
 	return bambou.CurrentSession().CreateChild(o, child)
 }
 
+// EthernetSegmentGWGroups retrieves the list of child EthernetSegmentGWGroups of the Enterprise
+func (o *Enterprise) EthernetSegmentGWGroups(info *bambou.FetchingInfo) (EthernetSegmentGWGroupsList, *bambou.Error) {
+
+	var list EthernetSegmentGWGroupsList
+	err := bambou.CurrentSession().FetchChildren(o, EthernetSegmentGWGroupIdentity, &list, info)
+	return list, err
+}
+
+// CreateEthernetSegmentGWGroup creates a new child EthernetSegmentGWGroup under the Enterprise
+func (o *Enterprise) CreateEthernetSegmentGWGroup(child *EthernetSegmentGWGroup) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // PublicNetworkMacros retrieves the list of child PublicNetworkMacros of the Enterprise
 func (o *Enterprise) PublicNetworkMacros(info *bambou.FetchingInfo) (PublicNetworkMacrosList, *bambou.Error) {
 

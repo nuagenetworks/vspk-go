@@ -72,6 +72,7 @@ type PATNATPool struct {
 	EndSourceAddress      string        `json:"endSourceAddress,omitempty"`
 	EntityScope           string        `json:"entityScope,omitempty"`
 	CreationDate          string        `json:"creationDate,omitempty"`
+	UseUplinkIP           bool          `json:"useUplinkIP"`
 	AssociatedGatewayId   string        `json:"associatedGatewayId,omitempty"`
 	AssociatedGatewayType string        `json:"associatedGatewayType,omitempty"`
 	AssociatedSubnetId    string        `json:"associatedSubnetId,omitempty"`
@@ -86,7 +87,9 @@ type PATNATPool struct {
 // NewPATNATPool returns a new *PATNATPool
 func NewPATNATPool() *PATNATPool {
 
-	return &PATNATPool{}
+	return &PATNATPool{
+		UseUplinkIP: false,
+	}
 }
 
 // Identity returns the Identity of the object.

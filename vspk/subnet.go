@@ -76,11 +76,16 @@ type Subnet struct {
 	AccessRestrictionEnabled          bool          `json:"accessRestrictionEnabled"`
 	Address                           string        `json:"address,omitempty"`
 	Advertise                         bool          `json:"advertise"`
+	SecondaryDHCPServerAddress        string        `json:"secondaryDHCPServerAddress,omitempty"`
 	TemplateID                        string        `json:"templateID,omitempty"`
 	ServiceID                         int           `json:"serviceID,omitempty"`
 	Description                       string        `json:"description,omitempty"`
 	ResourceType                      string        `json:"resourceType,omitempty"`
 	Netmask                           string        `json:"netmask,omitempty"`
+	AggregatedL2DomainID              string        `json:"aggregatedL2DomainID,omitempty"`
+	AggregatedL2DomainName            string        `json:"aggregatedL2DomainName,omitempty"`
+	AggregatedL2DomainRT              string        `json:"aggregatedL2DomainRT,omitempty"`
+	AggregatedL2DomainVNID            int           `json:"aggregatedL2DomainVNID,omitempty"`
 	LinkLocalAddress                  string        `json:"linkLocalAddress,omitempty"`
 	EmbeddedMetadata                  []interface{} `json:"embeddedMetadata,omitempty"`
 	VnId                              int           `json:"vnId,omitempty"`
@@ -101,9 +106,12 @@ type Subnet struct {
 	SplitSubnet                       bool          `json:"splitSubnet"`
 	IrbSubInterfaceID                 int           `json:"irbSubInterfaceID,omitempty"`
 	CreationDate                      string        `json:"creationDate,omitempty"`
+	PrimaryDHCPServerAddress          string        `json:"primaryDHCPServerAddress,omitempty"`
 	ProxyARP                          bool          `json:"proxyARP"`
 	VrrpIPv6BackupAddress             string        `json:"vrrpIPv6BackupAddress,omitempty"`
+	VrrpPriority                      int           `json:"vrrpPriority,omitempty"`
 	UseGlobalMAC                      string        `json:"useGlobalMAC,omitempty"`
+	AssociatedMasterNetconfGatewayId  string        `json:"associatedMasterNetconfGatewayId,omitempty"`
 	AssociatedMulticastChannelMapID   string        `json:"associatedMulticastChannelMapID,omitempty"`
 	AssociatedSharedNetworkResourceID string        `json:"associatedSharedNetworkResourceID,omitempty"`
 	DualStackDynamicIPAllocation      bool          `json:"dualStackDynamicIPAllocation"`
@@ -178,6 +186,14 @@ func (o *Subnet) Save() *bambou.Error {
 func (o *Subnet) Delete() *bambou.Error {
 
 	return bambou.CurrentSession().DeleteEntity(o)
+}
+
+// Gateways retrieves the list of child Gateways of the Subnet
+func (o *Subnet) Gateways(info *bambou.FetchingInfo) (GatewaysList, *bambou.Error) {
+
+	var list GatewaysList
+	err := bambou.CurrentSession().FetchChildren(o, GatewayIdentity, &list, info)
+	return list, err
 }
 
 // PATIPEntries retrieves the list of child PATIPEntries of the Subnet
@@ -278,6 +294,25 @@ func (o *Subnet) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Er
 func (o *Subnet) CreateMetadata(child *Metadata) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// NetconfGateways retrieves the list of child NetconfGateways of the Subnet
+func (o *Subnet) NetconfGateways(info *bambou.FetchingInfo) (NetconfGatewaysList, *bambou.Error) {
+
+	var list NetconfGatewaysList
+	err := bambou.CurrentSession().FetchChildren(o, NetconfGatewayIdentity, &list, info)
+	return list, err
+}
+
+// AssignNetconfGateways assigns the list of NetconfGateways to the Subnet
+func (o *Subnet) AssignNetconfGateways(children NetconfGatewaysList) *bambou.Error {
+
+	list := []bambou.Identifiable{}
+	for _, c := range children {
+		list = append(list, c)
+	}
+
+	return bambou.CurrentSession().AssignChildren(o, list, NetconfGatewayIdentity)
 }
 
 // BGPNeighbors retrieves the list of child BGPNeighbors of the Subnet
@@ -447,6 +482,20 @@ func (o *Subnet) QOSs(info *bambou.FetchingInfo) (QOSsList, *bambou.Error) {
 
 // CreateQOS creates a new child QOS under the Subnet
 func (o *Subnet) CreateQOS(child *QOS) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// RoutingPolicyAssociations retrieves the list of child RoutingPolicyAssociations of the Subnet
+func (o *Subnet) RoutingPolicyAssociations(info *bambou.FetchingInfo) (RoutingPolicyAssociationsList, *bambou.Error) {
+
+	var list RoutingPolicyAssociationsList
+	err := bambou.CurrentSession().FetchChildren(o, RoutingPolicyAssociationIdentity, &list, info)
+	return list, err
+}
+
+// CreateRoutingPolicyAssociation creates a new child RoutingPolicyAssociation under the Subnet
+func (o *Subnet) CreateRoutingPolicyAssociation(child *RoutingPolicyAssociation) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

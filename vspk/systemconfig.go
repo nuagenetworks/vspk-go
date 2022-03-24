@@ -138,6 +138,7 @@ type SystemConfig struct {
 	Netconf7x50RoutingPolicyValidationEnabled         bool          `json:"netconf7x50RoutingPolicyValidationEnabled"`
 	KeyServerMonitorEnabled                           bool          `json:"keyServerMonitorEnabled"`
 	KeyServerVSDDataSynchronizationInterval           int           `json:"keyServerVSDDataSynchronizationInterval,omitempty"`
+	KeystorePassword                                  string        `json:"keystorePassword,omitempty"`
 	OffsetCustomerID                                  int           `json:"offsetCustomerID,omitempty"`
 	OffsetServiceID                                   int           `json:"offsetServiceID,omitempty"`
 	ThreatIntelligenceEnabled                         bool          `json:"threatIntelligenceEnabled"`
@@ -172,6 +173,8 @@ type SystemConfig struct {
 	EntityScope                                       string        `json:"entityScope,omitempty"`
 	DomainTunnelType                                  string        `json:"domainTunnelType,omitempty"`
 	GoogleMapsAPIKey                                  string        `json:"googleMapsAPIKey,omitempty"`
+	LoopbackIntfLowerLimit                            int           `json:"loopbackIntfLowerLimit,omitempty"`
+	LoopbackIntfUpperLimit                            int           `json:"loopbackIntfUpperLimit,omitempty"`
 	PostProcessorThreadsCount                         int           `json:"postProcessorThreadsCount,omitempty"`
 	CreationDate                                      string        `json:"creationDate,omitempty"`
 	GroupKeyDefaultSEKGenerationInterval              int           `json:"groupKeyDefaultSEKGenerationInterval,omitempty"`
@@ -193,6 +196,7 @@ type SystemConfig struct {
 	GroupKeyMinimumSeedGenerationInterval             int           `json:"groupKeyMinimumSeedGenerationInterval,omitempty"`
 	GroupKeyMinimumSeedLifetime                       int           `json:"groupKeyMinimumSeedLifetime,omitempty"`
 	GroupKeyMinimumTrafficEncryptionKeyLifetime       int           `json:"groupKeyMinimumTrafficEncryptionKeyLifetime,omitempty"`
+	EsSecurityEnabled                                 bool          `json:"esSecurityEnabled"`
 	NsgBootstrapEndpoint                              string        `json:"nsgBootstrapEndpoint,omitempty"`
 	NsgConfigEndpoint                                 string        `json:"nsgConfigEndpoint,omitempty"`
 	NsgLocalUiUrl                                     string        `json:"nsgLocalUiUrl,omitempty"`
@@ -346,6 +350,8 @@ func NewSystemConfig() *SystemConfig {
 		InterfaceIdLowerLimit:                             245,
 		InterfaceIdUpperLimit:                             255,
 		DomainTunnelType:                                  "VXLAN",
+		LoopbackIntfLowerLimit:                            600,
+		LoopbackIntfUpperLimit:                            1023,
 		PostProcessorThreadsCount:                         10,
 		GroupKeyDefaultSEKGenerationInterval:              1200,
 		GroupKeyDefaultSEKLifetime:                        86400,
@@ -366,6 +372,7 @@ func NewSystemConfig() *SystemConfig {
 		GroupKeyMinimumSeedGenerationInterval:             20,
 		GroupKeyMinimumSeedLifetime:                       60,
 		GroupKeyMinimumTrafficEncryptionKeyLifetime:       30,
+		EsSecurityEnabled:                                 false,
 		NsgBootstrapEndpoint:                              "https://proxy-bootstrap:12443/nuage/api",
 		NsgConfigEndpoint:                                 "https://{proxyDNSName}:11443/nuage/api",
 		NsgLocalUiUrl:                                     "http://registration.nsg",

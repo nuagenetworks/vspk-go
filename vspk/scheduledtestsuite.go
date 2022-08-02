@@ -55,16 +55,23 @@ type ScheduledTestSuitesParent interface {
 
 // ScheduledTestSuite represents the model of a scheduledtestsuite
 type ScheduledTestSuite struct {
-	ID                    string  `json:"ID,omitempty"`
-	ParentID              string  `json:"parentID,omitempty"`
-	ParentType            string  `json:"parentType,omitempty"`
-	Owner                 string  `json:"owner,omitempty"`
-	Name                  string  `json:"name,omitempty"`
-	ScheduleInterval      int     `json:"scheduleInterval,omitempty"`
-	ScheduleIntervalUnits string  `json:"scheduleIntervalUnits,omitempty"`
-	Description           string  `json:"description,omitempty"`
-	EndDateTime           float64 `json:"endDateTime,omitempty"`
-	StartDateTime         float64 `json:"startDateTime,omitempty"`
+	ID                    string        `json:"ID,omitempty"`
+	ParentID              string        `json:"parentID,omitempty"`
+	ParentType            string        `json:"parentType,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
+	Name                  string        `json:"name,omitempty"`
+	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
+	ScheduleInterval      int           `json:"scheduleInterval,omitempty"`
+	ScheduleIntervalUnits string        `json:"scheduleIntervalUnits,omitempty"`
+	Description           string        `json:"description,omitempty"`
+	EmbeddedMetadata      []interface{} `json:"embeddedMetadata,omitempty"`
+	EndDateTime           float64       `json:"endDateTime,omitempty"`
+	EntityScope           string        `json:"entityScope,omitempty"`
+	CreationDate          string        `json:"creationDate,omitempty"`
+	StartDateTime         float64       `json:"startDateTime,omitempty"`
+	Owner                 string        `json:"owner,omitempty"`
+	ExternalID            string        `json:"externalID,omitempty"`
 }
 
 // NewScheduledTestSuite returns a new *ScheduledTestSuite
@@ -130,6 +137,34 @@ func (o *ScheduledTestSuite) Tests(info *bambou.FetchingInfo) (TestsList, *bambo
 
 // CreateTest creates a new child Test under the ScheduledTestSuite
 func (o *ScheduledTestSuite) CreateTest(child *Test) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// Metadatas retrieves the list of child Metadatas of the ScheduledTestSuite
+func (o *ScheduledTestSuite) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
+
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
+}
+
+// CreateMetadata creates a new child Metadata under the ScheduledTestSuite
+func (o *ScheduledTestSuite) CreateMetadata(child *Metadata) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// GlobalMetadatas retrieves the list of child GlobalMetadatas of the ScheduledTestSuite
+func (o *ScheduledTestSuite) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
+
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
+}
+
+// CreateGlobalMetadata creates a new child GlobalMetadata under the ScheduledTestSuite
+func (o *ScheduledTestSuite) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

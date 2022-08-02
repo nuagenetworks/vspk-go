@@ -228,6 +228,20 @@ func (o *NSGateway) AssignPATNATPools(children PATNATPoolsList) *bambou.Error {
 	return bambou.CurrentSession().AssignChildren(o, list, PATNATPoolIdentity)
 }
 
+// Ddnsconfigs retrieves the list of child Ddnsconfigs of the NSGateway
+func (o *NSGateway) Ddnsconfigs(info *bambou.FetchingInfo) (DdnsconfigsList, *bambou.Error) {
+
+	var list DdnsconfigsList
+	err := bambou.CurrentSession().FetchChildren(o, DdnsconfigIdentity, &list, info)
+	return list, err
+}
+
+// CreateDdnsconfig creates a new child Ddnsconfig under the NSGateway
+func (o *NSGateway) CreateDdnsconfig(child *Ddnsconfig) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
 // Permissions retrieves the list of child Permissions of the NSGateway
 func (o *NSGateway) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 

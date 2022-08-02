@@ -55,29 +55,36 @@ type ScheduledtestsuiterunsParent interface {
 
 // Scheduledtestsuiterun represents the model of a scheduledtestsuiterun
 type Scheduledtestsuiterun struct {
-	ID                               string `json:"ID,omitempty"`
-	ParentID                         string `json:"parentID,omitempty"`
-	ParentType                       string `json:"parentType,omitempty"`
-	Owner                            string `json:"owner,omitempty"`
-	VPortName                        string `json:"VPortName,omitempty"`
-	NSGatewayName                    string `json:"NSGatewayName,omitempty"`
-	MacAddress                       string `json:"macAddress,omitempty"`
-	DatapathID                       string `json:"datapathID,omitempty"`
-	SecondaryDatapathID              string `json:"secondaryDatapathID,omitempty"`
-	SecondaryNSGatewayName           string `json:"secondaryNSGatewayName,omitempty"`
-	SecondarySystemID                string `json:"secondarySystemID,omitempty"`
-	Destination                      string `json:"destination,omitempty"`
-	VlanID                           int    `json:"vlanID,omitempty"`
-	DomainName                       string `json:"domainName,omitempty"`
-	ZoneName                         string `json:"zoneName,omitempty"`
-	SourceIP                         string `json:"sourceIP,omitempty"`
-	OperationStatus                  string `json:"operationStatus,omitempty"`
-	VportPortName                    string `json:"vportPortName,omitempty"`
-	VportVlanID                      int    `json:"vportVlanID,omitempty"`
-	AssociatedScheduledTestSuiteID   string `json:"associatedScheduledTestSuiteID,omitempty"`
-	AssociatedScheduledTestSuiteName string `json:"associatedScheduledTestSuiteName,omitempty"`
-	SubnetName                       string `json:"subnetName,omitempty"`
-	SystemID                         string `json:"systemID,omitempty"`
+	ID                               string        `json:"ID,omitempty"`
+	ParentID                         string        `json:"parentID,omitempty"`
+	ParentType                       string        `json:"parentType,omitempty"`
+	Owner                            string        `json:"owner,omitempty"`
+	VPortName                        string        `json:"VPortName,omitempty"`
+	NSGatewayName                    string        `json:"NSGatewayName,omitempty"`
+	MacAddress                       string        `json:"macAddress,omitempty"`
+	LastUpdatedBy                    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                  string        `json:"lastUpdatedDate,omitempty"`
+	DatapathID                       string        `json:"datapathID,omitempty"`
+	SecondaryDatapathID              string        `json:"secondaryDatapathID,omitempty"`
+	SecondaryNSGatewayName           string        `json:"secondaryNSGatewayName,omitempty"`
+	SecondarySystemID                string        `json:"secondarySystemID,omitempty"`
+	Destination                      string        `json:"destination,omitempty"`
+	VlanID                           int           `json:"vlanID,omitempty"`
+	EmbeddedMetadata                 []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope                      string        `json:"entityScope,omitempty"`
+	DomainName                       string        `json:"domainName,omitempty"`
+	ZoneName                         string        `json:"zoneName,omitempty"`
+	SourceIP                         string        `json:"sourceIP,omitempty"`
+	OperationStatus                  string        `json:"operationStatus,omitempty"`
+	VportPortName                    string        `json:"vportPortName,omitempty"`
+	VportVlanID                      int           `json:"vportVlanID,omitempty"`
+	CreationDate                     string        `json:"creationDate,omitempty"`
+	AssociatedScheduledTestSuiteID   string        `json:"associatedScheduledTestSuiteID,omitempty"`
+	AssociatedScheduledTestSuiteName string        `json:"associatedScheduledTestSuiteName,omitempty"`
+	SubnetName                       string        `json:"subnetName,omitempty"`
+	Owner                            string        `json:"owner,omitempty"`
+	ExternalID                       string        `json:"externalID,omitempty"`
+	SystemID                         string        `json:"systemID,omitempty"`
 }
 
 // NewScheduledtestsuiterun returns a new *Scheduledtestsuiterun
@@ -132,6 +139,34 @@ func (o *Scheduledtestsuiterun) TestRuns(info *bambou.FetchingInfo) (TestRunsLis
 
 // CreateTestRun creates a new child TestRun under the Scheduledtestsuiterun
 func (o *Scheduledtestsuiterun) CreateTestRun(child *TestRun) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// Metadatas retrieves the list of child Metadatas of the Scheduledtestsuiterun
+func (o *Scheduledtestsuiterun) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
+
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
+}
+
+// CreateMetadata creates a new child Metadata under the Scheduledtestsuiterun
+func (o *Scheduledtestsuiterun) CreateMetadata(child *Metadata) *bambou.Error {
+
+	return bambou.CurrentSession().CreateChild(o, child)
+}
+
+// GlobalMetadatas retrieves the list of child GlobalMetadatas of the Scheduledtestsuiterun
+func (o *Scheduledtestsuiterun) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
+
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
+}
+
+// CreateGlobalMetadata creates a new child GlobalMetadata under the Scheduledtestsuiterun
+func (o *Scheduledtestsuiterun) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
 	return bambou.CurrentSession().CreateChild(o, child)
 }

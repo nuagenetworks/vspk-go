@@ -126,6 +126,7 @@ type SystemConfig struct {
 	RbacEnabled                                       bool          `json:"rbacEnabled"`
 	AccumulateLicensesEnabled                         bool          `json:"accumulateLicensesEnabled"`
 	VcinLoadBalancerIP                                string        `json:"vcinLoadBalancerIP,omitempty"`
+	DdnsUserAgentEmail                                string        `json:"ddnsUserAgentEmail,omitempty"`
 	WebCatSrvUrl                                      string        `json:"webCatSrvUrl,omitempty"`
 	WebFilteringType                                  string        `json:"webFilteringType,omitempty"`
 	FecFeedbackTimer                                  int           `json:"fecFeedbackTimer,omitempty"`

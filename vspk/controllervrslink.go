@@ -60,6 +60,9 @@ type ControllerVRSLink struct {
 	ParentType             string        `json:"parentType,omitempty"`
 	Owner                  string        `json:"owner,omitempty"`
 	VRSID                  string        `json:"VRSID,omitempty"`
+	VRSISSUFailureReason   string        `json:"VRSISSUFailureReason,omitempty"`
+	VRSISSUState           string        `json:"VRSISSUState,omitempty"`
+	VRSLastISSUState       string        `json:"VRSLastISSUState,omitempty"`
 	VRSPersonality         string        `json:"VRSPersonality,omitempty"`
 	VRSSystemId            string        `json:"VRSSystemId,omitempty"`
 	VSCConfigState         string        `json:"VSCConfigState,omitempty"`

@@ -59,12 +59,15 @@ type VRS struct {
 	ParentID                  string        `json:"parentID,omitempty"`
 	ParentType                string        `json:"parentType,omitempty"`
 	Owner                     string        `json:"owner,omitempty"`
+	ISSUFailureReason         string        `json:"ISSUFailureReason,omitempty"`
+	ISSUState                 string        `json:"ISSUState,omitempty"`
 	Name                      string        `json:"name,omitempty"`
 	ManagementIP              string        `json:"managementIP,omitempty"`
 	ParentIDs                 []interface{} `json:"parentIDs,omitempty"`
 	LastEventName             string        `json:"lastEventName,omitempty"`
 	LastEventObject           string        `json:"lastEventObject,omitempty"`
 	LastEventTimestamp        int           `json:"lastEventTimestamp,omitempty"`
+	LastISSUState             string        `json:"lastISSUState,omitempty"`
 	LastStateChange           int           `json:"lastStateChange,omitempty"`
 	LastUpdatedBy             string        `json:"lastUpdatedBy,omitempty"`
 	LastUpdatedDate           string        `json:"lastUpdatedDate,omitempty"`

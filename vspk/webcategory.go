@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // WebCategoryIdentity represents the Identity of the object
-var WebCategoryIdentity = bambou.Identity{
-	Name:     "webcategory",
-	Category: "webcategories",
+var WebCategoryIdentity = bambou.Identity {
+    Name:     "webcategory",
+    Category: "webcategories",
 }
 
 // WebCategoriesList represents a list of WebCategories
@@ -42,139 +42,153 @@ type WebCategoriesList []*WebCategory
 // An Ancestor is defined as an entity that has WebCategory as a descendant.
 // An Ancestor can get a list of its child WebCategories, but not necessarily create one.
 type WebCategoriesAncestor interface {
-	WebCategories(*bambou.FetchingInfo) (WebCategoriesList, *bambou.Error)
+    WebCategories(*bambou.FetchingInfo) (WebCategoriesList, *bambou.Error)
 }
 
 // WebCategoriesParent is the interface that a parent of a WebCategory must implement.
 // A Parent is defined as an entity that has WebCategory as a child.
 // A Parent is an Ancestor which can create a WebCategory.
 type WebCategoriesParent interface {
-	WebCategoriesAncestor
-	CreateWebCategory(*WebCategory) *bambou.Error
+    WebCategoriesAncestor
+    CreateWebCategory(*WebCategory) (*bambou.Error)
 }
 
 // WebCategory represents the model of a webcategory
 type WebCategory struct {
-	ID                    string        `json:"ID,omitempty"`
-	ParentID              string        `json:"parentID,omitempty"`
-	ParentType            string        `json:"parentType,omitempty"`
-	Owner                 string        `json:"owner,omitempty"`
-	Name                  string        `json:"name,omitempty"`
-	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
-	WebCategoryIdentifier int           `json:"webCategoryIdentifier,omitempty"`
-	DefaultCategory       bool          `json:"defaultCategory"`
-	Description           string        `json:"description,omitempty"`
-	EmbeddedMetadata      []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope           string        `json:"entityScope,omitempty"`
-	CreationDate          string        `json:"creationDate,omitempty"`
-	Owner                 string        `json:"owner,omitempty"`
-	ExternalID            string        `json:"externalID,omitempty"`
-	Type                  string        `json:"type,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    WebCategoryIdentifier int `json:"webCategoryIdentifier,omitempty"`
+    DefaultCategory bool `json:"defaultCategory"`
+    Description string `json:"description,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    Type string `json:"type,omitempty"`
+    
 }
 
 // NewWebCategory returns a new *WebCategory
 func NewWebCategory() *WebCategory {
 
-	return &WebCategory{
-		DefaultCategory: false,
-		Type:            "WEB_DOMAIN_NAME",
-	}
+    return &WebCategory{
+        DefaultCategory: false,
+        Type: "WEB_DOMAIN_NAME",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *WebCategory) Identity() bambou.Identity {
 
-	return WebCategoryIdentity
+    return WebCategoryIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *WebCategory) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *WebCategory) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the WebCategory from the server
 func (o *WebCategory) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the WebCategory into the server
 func (o *WebCategory) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the WebCategory from the server
 func (o *WebCategory) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // WebDomainNames retrieves the list of child WebDomainNames of the WebCategory
 func (o *WebCategory) WebDomainNames(info *bambou.FetchingInfo) (WebDomainNamesList, *bambou.Error) {
 
-	var list WebDomainNamesList
-	err := bambou.CurrentSession().FetchChildren(o, WebDomainNameIdentity, &list, info)
-	return list, err
+    var list WebDomainNamesList
+    err := bambou.CurrentSession().FetchChildren(o, WebDomainNameIdentity, &list, info)
+    return list, err
 }
+
+
 
 // AssignWebDomainNames assigns the list of WebDomainNames to the WebCategory
 func (o *WebCategory) AssignWebDomainNames(children WebDomainNamesList) *bambou.Error {
 
-	list := []bambou.Identifiable{}
-	for _, c := range children {
-		list = append(list, c)
-	}
+    list := []bambou.Identifiable{}
+    for _, c := range children {
+        list = append(list, c)
+    }
 
-	return bambou.CurrentSession().AssignChildren(o, list, WebDomainNameIdentity)
+    return bambou.CurrentSession().AssignChildren(o, list, WebDomainNameIdentity)
 }
+
 
 // Permissions retrieves the list of child Permissions of the WebCategory
 func (o *WebCategory) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the WebCategory
 func (o *WebCategory) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the WebCategory
 func (o *WebCategory) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the WebCategory
 func (o *WebCategory) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the WebCategory
 func (o *WebCategory) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the WebCategory
 func (o *WebCategory) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

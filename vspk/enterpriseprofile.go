@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // EnterpriseProfileIdentity represents the Identity of the object
-var EnterpriseProfileIdentity = bambou.Identity{
-	Name:     "enterpriseprofile",
-	Category: "enterpriseprofiles",
+var EnterpriseProfileIdentity = bambou.Identity {
+    Name:     "enterpriseprofile",
+    Category: "enterpriseprofiles",
 }
 
 // EnterpriseProfilesList represents a list of EnterpriseProfiles
@@ -42,162 +42,182 @@ type EnterpriseProfilesList []*EnterpriseProfile
 // An Ancestor is defined as an entity that has EnterpriseProfile as a descendant.
 // An Ancestor can get a list of its child EnterpriseProfiles, but not necessarily create one.
 type EnterpriseProfilesAncestor interface {
-	EnterpriseProfiles(*bambou.FetchingInfo) (EnterpriseProfilesList, *bambou.Error)
+    EnterpriseProfiles(*bambou.FetchingInfo) (EnterpriseProfilesList, *bambou.Error)
 }
 
 // EnterpriseProfilesParent is the interface that a parent of a EnterpriseProfile must implement.
 // A Parent is defined as an entity that has EnterpriseProfile as a child.
 // A Parent is an Ancestor which can create a EnterpriseProfile.
 type EnterpriseProfilesParent interface {
-	EnterpriseProfilesAncestor
-	CreateEnterpriseProfile(*EnterpriseProfile) *bambou.Error
+    EnterpriseProfilesAncestor
+    CreateEnterpriseProfile(*EnterpriseProfile) (*bambou.Error)
 }
 
 // EnterpriseProfile represents the model of a enterpriseprofile
 type EnterpriseProfile struct {
-	ID                                        string        `json:"ID,omitempty"`
-	ParentID                                  string        `json:"parentID,omitempty"`
-	ParentType                                string        `json:"parentType,omitempty"`
-	Owner                                     string        `json:"owner,omitempty"`
-	BGPEnabled                                bool          `json:"BGPEnabled"`
-	DHCPLeaseInterval                         int           `json:"DHCPLeaseInterval,omitempty"`
-	VNFManagementEnabled                      bool          `json:"VNFManagementEnabled"`
-	Name                                      string        `json:"name,omitempty"`
-	LastUpdatedBy                             string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate                           string        `json:"lastUpdatedDate,omitempty"`
-	WebFilterEnabled                          bool          `json:"webFilterEnabled"`
-	ReceiveMultiCastListID                    string        `json:"receiveMultiCastListID,omitempty"`
-	SendMultiCastListID                       string        `json:"sendMultiCastListID,omitempty"`
-	Description                               string        `json:"description,omitempty"`
-	ThreatPreventionManagementEnabled         bool          `json:"threatPreventionManagementEnabled"`
-	AllowAdvancedQOSConfiguration             bool          `json:"allowAdvancedQOSConfiguration"`
-	AllowGatewayManagement                    bool          `json:"allowGatewayManagement"`
-	AllowTrustedForwardingClass               bool          `json:"allowTrustedForwardingClass"`
-	AllowedForwardingClasses                  []interface{} `json:"allowedForwardingClasses,omitempty"`
-	FloatingIPsQuota                          int           `json:"floatingIPsQuota,omitempty"`
-	EmbeddedMetadata                          []interface{} `json:"embeddedMetadata,omitempty"`
-	EnableApplicationPerformanceManagement    bool          `json:"enableApplicationPerformanceManagement"`
-	EnableOAMConnectivityStatisticsCollection bool          `json:"enableOAMConnectivityStatisticsCollection"`
-	EncryptionManagementMode                  string        `json:"encryptionManagementMode,omitempty"`
-	EntityScope                               string        `json:"entityScope,omitempty"`
-	ForwardingClass                           []interface{} `json:"forwardingClass,omitempty"`
-	CreationDate                              string        `json:"creationDate,omitempty"`
-	Owner                                     string        `json:"owner,omitempty"`
-	ExternalID                                string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    BGPEnabled bool `json:"BGPEnabled"`
+    DHCPLeaseInterval int `json:"DHCPLeaseInterval,omitempty"`
+    VNFManagementEnabled bool `json:"VNFManagementEnabled"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    WebFilterEnabled bool `json:"webFilterEnabled"`
+    ReceiveMultiCastListID string `json:"receiveMultiCastListID,omitempty"`
+    SendMultiCastListID string `json:"sendMultiCastListID,omitempty"`
+    Description string `json:"description,omitempty"`
+    ThreatPreventionManagementEnabled bool `json:"threatPreventionManagementEnabled"`
+    AllowAdvancedQOSConfiguration bool `json:"allowAdvancedQOSConfiguration"`
+    AllowGatewayManagement bool `json:"allowGatewayManagement"`
+    AllowTrustedForwardingClass bool `json:"allowTrustedForwardingClass"`
+    AllowedForwardingClasses []interface{} `json:"allowedForwardingClasses,omitempty"`
+    FloatingIPsQuota int `json:"floatingIPsQuota,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EnableApplicationPerformanceManagement bool `json:"enableApplicationPerformanceManagement"`
+    EnableOAMConnectivityStatisticsCollection bool `json:"enableOAMConnectivityStatisticsCollection"`
+    EncryptionManagementMode string `json:"encryptionManagementMode,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    ForwardingClass []interface{} `json:"forwardingClass,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewEnterpriseProfile returns a new *EnterpriseProfile
 func NewEnterpriseProfile() *EnterpriseProfile {
 
-	return &EnterpriseProfile{
-		DHCPLeaseInterval:                         24,
-		VNFManagementEnabled:                      false,
-		WebFilterEnabled:                          false,
-		ThreatPreventionManagementEnabled:         false,
-		FloatingIPsQuota:                          100,
-		EnableApplicationPerformanceManagement:    false,
-		EnableOAMConnectivityStatisticsCollection: false,
-	}
+    return &EnterpriseProfile{
+        DHCPLeaseInterval: 24, 
+        VNFManagementEnabled: false,
+        WebFilterEnabled: false,
+        ThreatPreventionManagementEnabled: false,
+        FloatingIPsQuota: 100, 
+        EnableApplicationPerformanceManagement: false,
+        EnableOAMConnectivityStatisticsCollection: false,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *EnterpriseProfile) Identity() bambou.Identity {
 
-	return EnterpriseProfileIdentity
+    return EnterpriseProfileIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *EnterpriseProfile) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *EnterpriseProfile) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the EnterpriseProfile from the server
 func (o *EnterpriseProfile) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the EnterpriseProfile into the server
 func (o *EnterpriseProfile) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the EnterpriseProfile from the server
 func (o *EnterpriseProfile) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the EnterpriseProfile
 func (o *EnterpriseProfile) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the EnterpriseProfile
 func (o *EnterpriseProfile) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the EnterpriseProfile
 func (o *EnterpriseProfile) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the EnterpriseProfile
 func (o *EnterpriseProfile) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the EnterpriseProfile
 func (o *EnterpriseProfile) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the EnterpriseProfile
 func (o *EnterpriseProfile) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Enterprises retrieves the list of child Enterprises of the EnterpriseProfile
 func (o *EnterpriseProfile) Enterprises(info *bambou.FetchingInfo) (EnterprisesList, *bambou.Error) {
 
-	var list EnterprisesList
-	err := bambou.CurrentSession().FetchChildren(o, EnterpriseIdentity, &list, info)
-	return list, err
+    var list EnterprisesList
+    err := bambou.CurrentSession().FetchChildren(o, EnterpriseIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // MultiCastLists retrieves the list of child MultiCastLists of the EnterpriseProfile
 func (o *EnterpriseProfile) MultiCastLists(info *bambou.FetchingInfo) (MultiCastListsList, *bambou.Error) {
 
-	var list MultiCastListsList
-	err := bambou.CurrentSession().FetchChildren(o, MultiCastListIdentity, &list, info)
-	return list, err
+    var list MultiCastListsList
+    err := bambou.CurrentSession().FetchChildren(o, MultiCastListIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // EventLogs retrieves the list of child EventLogs of the EnterpriseProfile
 func (o *EnterpriseProfile) EventLogs(info *bambou.FetchingInfo) (EventLogsList, *bambou.Error) {
 
-	var list EventLogsList
-	err := bambou.CurrentSession().FetchChildren(o, EventLogIdentity, &list, info)
-	return list, err
+    var list EventLogsList
+    err := bambou.CurrentSession().FetchChildren(o, EventLogIdentity, &list, info)
+    return list, err
 }
+
+
+

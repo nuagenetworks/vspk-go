@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // IDPSignatureIdentity represents the Identity of the object
-var IDPSignatureIdentity = bambou.Identity{
-	Name:     "idpsignature",
-	Category: "idpsignatures",
+var IDPSignatureIdentity = bambou.Identity {
+    Name:     "idpsignature",
+    Category: "idpsignatures",
 }
 
 // IDPSignaturesList represents a list of IDPSignatures
@@ -42,64 +42,67 @@ type IDPSignaturesList []*IDPSignature
 // An Ancestor is defined as an entity that has IDPSignature as a descendant.
 // An Ancestor can get a list of its child IDPSignatures, but not necessarily create one.
 type IDPSignaturesAncestor interface {
-	IDPSignatures(*bambou.FetchingInfo) (IDPSignaturesList, *bambou.Error)
+    IDPSignatures(*bambou.FetchingInfo) (IDPSignaturesList, *bambou.Error)
 }
 
 // IDPSignaturesParent is the interface that a parent of a IDPSignature must implement.
 // A Parent is defined as an entity that has IDPSignature as a child.
 // A Parent is an Ancestor which can create a IDPSignature.
 type IDPSignaturesParent interface {
-	IDPSignaturesAncestor
-	CreateIDPSignature(*IDPSignature) *bambou.Error
+    IDPSignaturesAncestor
+    CreateIDPSignature(*IDPSignature) (*bambou.Error)
 }
 
 // IDPSignature represents the model of a idpsignature
 type IDPSignature struct {
-	ID            string        `json:"ID,omitempty"`
-	ParentID      string        `json:"parentID,omitempty"`
-	ParentType    string        `json:"parentType,omitempty"`
-	Owner         string        `json:"owner,omitempty"`
-	IDPSignatures []interface{} `json:"IDPSignatures,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    IDPSignatures []interface{} `json:"IDPSignatures,omitempty"`
+    
 }
 
 // NewIDPSignature returns a new *IDPSignature
 func NewIDPSignature() *IDPSignature {
 
-	return &IDPSignature{}
+    return &IDPSignature{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *IDPSignature) Identity() bambou.Identity {
 
-	return IDPSignatureIdentity
+    return IDPSignatureIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *IDPSignature) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *IDPSignature) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the IDPSignature from the server
 func (o *IDPSignature) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the IDPSignature into the server
 func (o *IDPSignature) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the IDPSignature from the server
 func (o *IDPSignature) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

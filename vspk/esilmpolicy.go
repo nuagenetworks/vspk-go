@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // EsIlmPolicyIdentity represents the Identity of the object
-var EsIlmPolicyIdentity = bambou.Identity{
-	Name:     "esilmpolicy",
-	Category: "esilmpolicies",
+var EsIlmPolicyIdentity = bambou.Identity {
+    Name:     "esilmpolicy",
+    Category: "esilmpolicies",
 }
 
 // EsIlmPoliciesList represents a list of EsIlmPolicies
@@ -42,138 +42,149 @@ type EsIlmPoliciesList []*EsIlmPolicy
 // An Ancestor is defined as an entity that has EsIlmPolicy as a descendant.
 // An Ancestor can get a list of its child EsIlmPolicies, but not necessarily create one.
 type EsIlmPoliciesAncestor interface {
-	EsIlmPolicies(*bambou.FetchingInfo) (EsIlmPoliciesList, *bambou.Error)
+    EsIlmPolicies(*bambou.FetchingInfo) (EsIlmPoliciesList, *bambou.Error)
 }
 
 // EsIlmPoliciesParent is the interface that a parent of a EsIlmPolicy must implement.
 // A Parent is defined as an entity that has EsIlmPolicy as a child.
 // A Parent is an Ancestor which can create a EsIlmPolicy.
 type EsIlmPoliciesParent interface {
-	EsIlmPoliciesAncestor
-	CreateEsIlmPolicy(*EsIlmPolicy) *bambou.Error
+    EsIlmPoliciesAncestor
+    CreateEsIlmPolicy(*EsIlmPolicy) (*bambou.Error)
 }
 
 // EsIlmPolicy represents the model of a esilmpolicy
 type EsIlmPolicy struct {
-	ID                       string        `json:"ID,omitempty"`
-	ParentID                 string        `json:"parentID,omitempty"`
-	ParentType               string        `json:"parentType,omitempty"`
-	Owner                    string        `json:"owner,omitempty"`
-	Name                     string        `json:"name,omitempty"`
-	WarmPhaseEnabled         bool          `json:"warmPhaseEnabled"`
-	WarmTimer                int           `json:"warmTimer,omitempty"`
-	DeletePhaseEnabled       bool          `json:"deletePhaseEnabled"`
-	DeleteTimer              int           `json:"deleteTimer,omitempty"`
-	Description              string        `json:"description,omitempty"`
-	EmbeddedMetadata         []interface{} `json:"embeddedMetadata,omitempty"`
-	IndexFreeze              bool          `json:"indexFreeze"`
-	IndexReadOnly            bool          `json:"indexReadOnly"`
-	EntityScope              string        `json:"entityScope,omitempty"`
-	ColdPhaseEnabled         bool          `json:"coldPhaseEnabled"`
-	ColdTimer                int           `json:"coldTimer,omitempty"`
-	RolloverMaxAge           int           `json:"rolloverMaxAge,omitempty"`
-	RolloverMaxDocs          int           `json:"rolloverMaxDocs,omitempty"`
-	RolloverMaxSize          int           `json:"rolloverMaxSize,omitempty"`
-	ForceMergeEnabled        bool          `json:"forceMergeEnabled"`
-	ForceMergeMaxNumSegments int           `json:"forceMergeMaxNumSegments,omitempty"`
-	EsIlmPolicyType          string        `json:"esIlmPolicyType,omitempty"`
-	ExternalID               string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    WarmPhaseEnabled bool `json:"warmPhaseEnabled"`
+    WarmTimer int `json:"warmTimer,omitempty"`
+    DeletePhaseEnabled bool `json:"deletePhaseEnabled"`
+    DeleteTimer int `json:"deleteTimer,omitempty"`
+    Description string `json:"description,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    IndexFreeze bool `json:"indexFreeze"`
+    IndexReadOnly bool `json:"indexReadOnly"`
+    EntityScope string `json:"entityScope,omitempty"`
+    ColdPhaseEnabled bool `json:"coldPhaseEnabled"`
+    ColdTimer int `json:"coldTimer,omitempty"`
+    RolloverMaxAge int `json:"rolloverMaxAge,omitempty"`
+    RolloverMaxDocs int `json:"rolloverMaxDocs,omitempty"`
+    RolloverMaxSize int `json:"rolloverMaxSize,omitempty"`
+    ForceMergeEnabled bool `json:"forceMergeEnabled"`
+    ForceMergeMaxNumSegments int `json:"forceMergeMaxNumSegments,omitempty"`
+    EsIlmPolicyType string `json:"esIlmPolicyType,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewEsIlmPolicy returns a new *EsIlmPolicy
 func NewEsIlmPolicy() *EsIlmPolicy {
 
-	return &EsIlmPolicy{
-		WarmPhaseEnabled:         false,
-		WarmTimer:                0,
-		DeletePhaseEnabled:       false,
-		DeleteTimer:              168,
-		IndexFreeze:              false,
-		IndexReadOnly:            false,
-		ColdPhaseEnabled:         false,
-		ColdTimer:                0,
-		RolloverMaxAge:           0,
-		RolloverMaxDocs:          0,
-		RolloverMaxSize:          150,
-		ForceMergeEnabled:        false,
-		ForceMergeMaxNumSegments: 1,
-	}
+    return &EsIlmPolicy{
+        WarmPhaseEnabled: false,
+        WarmTimer: 0,
+        DeletePhaseEnabled: false,
+        DeleteTimer: 168,
+        IndexFreeze: false,
+        IndexReadOnly: false,
+        ColdPhaseEnabled: false,
+        ColdTimer: 0,
+        RolloverMaxAge: 0,
+        RolloverMaxDocs: 0,
+        RolloverMaxSize: 150,
+        ForceMergeEnabled: false,
+        ForceMergeMaxNumSegments: 1,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *EsIlmPolicy) Identity() bambou.Identity {
 
-	return EsIlmPolicyIdentity
+    return EsIlmPolicyIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *EsIlmPolicy) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *EsIlmPolicy) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the EsIlmPolicy from the server
 func (o *EsIlmPolicy) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the EsIlmPolicy into the server
 func (o *EsIlmPolicy) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the EsIlmPolicy from the server
 func (o *EsIlmPolicy) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the EsIlmPolicy
 func (o *EsIlmPolicy) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the EsIlmPolicy
 func (o *EsIlmPolicy) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the EsIlmPolicy
 func (o *EsIlmPolicy) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the EsIlmPolicy
 func (o *EsIlmPolicy) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the EsIlmPolicy
 func (o *EsIlmPolicy) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the EsIlmPolicy
 func (o *EsIlmPolicy) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

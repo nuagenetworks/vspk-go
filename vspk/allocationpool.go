@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // AllocationPoolIdentity represents the Identity of the object
-var AllocationPoolIdentity = bambou.Identity{
-	Name:     "None",
-	Category: "None",
+var AllocationPoolIdentity = bambou.Identity {
+    Name:     "None",
+    Category: "None",
 }
 
 // AllocationPoolsList represents a list of AllocationPools
@@ -42,65 +42,68 @@ type AllocationPoolsList []*AllocationPool
 // An Ancestor is defined as an entity that has AllocationPool as a descendant.
 // An Ancestor can get a list of its child AllocationPools, but not necessarily create one.
 type AllocationPoolsAncestor interface {
-	AllocationPools(*bambou.FetchingInfo) (AllocationPoolsList, *bambou.Error)
+    AllocationPools(*bambou.FetchingInfo) (AllocationPoolsList, *bambou.Error)
 }
 
 // AllocationPoolsParent is the interface that a parent of a AllocationPool must implement.
 // A Parent is defined as an entity that has AllocationPool as a child.
 // A Parent is an Ancestor which can create a AllocationPool.
 type AllocationPoolsParent interface {
-	AllocationPoolsAncestor
-	CreateAllocationPool(*AllocationPool) *bambou.Error
+    AllocationPoolsAncestor
+    CreateAllocationPool(*AllocationPool) (*bambou.Error)
 }
 
 // AllocationPool represents the model of a None
 type AllocationPool struct {
-	ID         string `json:"ID,omitempty"`
-	ParentID   string `json:"parentID,omitempty"`
-	ParentType string `json:"parentType,omitempty"`
-	Owner      string `json:"owner,omitempty"`
-	MaxAddress string `json:"maxAddress,omitempty"`
-	MinAddress string `json:"minAddress,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    MaxAddress string `json:"maxAddress,omitempty"`
+    MinAddress string `json:"minAddress,omitempty"`
+    
 }
 
 // NewAllocationPool returns a new *AllocationPool
 func NewAllocationPool() *AllocationPool {
 
-	return &AllocationPool{}
+    return &AllocationPool{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *AllocationPool) Identity() bambou.Identity {
 
-	return AllocationPoolIdentity
+    return AllocationPoolIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *AllocationPool) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *AllocationPool) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the AllocationPool from the server
 func (o *AllocationPool) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the AllocationPool into the server
 func (o *AllocationPool) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the AllocationPool from the server
 func (o *AllocationPool) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

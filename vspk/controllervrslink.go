@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ControllerVRSLinkIdentity represents the Identity of the object
-var ControllerVRSLinkIdentity = bambou.Identity{
-	Name:     "controllervrslink",
-	Category: "controllervrslinks",
+var ControllerVRSLinkIdentity = bambou.Identity {
+    Name:     "controllervrslink",
+    Category: "controllervrslinks",
 }
 
 // ControllerVRSLinksList represents a list of ControllerVRSLinks
@@ -42,154 +42,175 @@ type ControllerVRSLinksList []*ControllerVRSLink
 // An Ancestor is defined as an entity that has ControllerVRSLink as a descendant.
 // An Ancestor can get a list of its child ControllerVRSLinks, but not necessarily create one.
 type ControllerVRSLinksAncestor interface {
-	ControllerVRSLinks(*bambou.FetchingInfo) (ControllerVRSLinksList, *bambou.Error)
+    ControllerVRSLinks(*bambou.FetchingInfo) (ControllerVRSLinksList, *bambou.Error)
 }
 
 // ControllerVRSLinksParent is the interface that a parent of a ControllerVRSLink must implement.
 // A Parent is defined as an entity that has ControllerVRSLink as a child.
 // A Parent is an Ancestor which can create a ControllerVRSLink.
 type ControllerVRSLinksParent interface {
-	ControllerVRSLinksAncestor
-	CreateControllerVRSLink(*ControllerVRSLink) *bambou.Error
+    ControllerVRSLinksAncestor
+    CreateControllerVRSLink(*ControllerVRSLink) (*bambou.Error)
 }
 
 // ControllerVRSLink represents the model of a controllervrslink
 type ControllerVRSLink struct {
-	ID                     string        `json:"ID,omitempty"`
-	ParentID               string        `json:"parentID,omitempty"`
-	ParentType             string        `json:"parentType,omitempty"`
-	Owner                  string        `json:"owner,omitempty"`
-	VRSID                  string        `json:"VRSID,omitempty"`
-	VRSISSUFailureReason   string        `json:"VRSISSUFailureReason,omitempty"`
-	VRSISSUState           string        `json:"VRSISSUState,omitempty"`
-	VRSLastISSUState       string        `json:"VRSLastISSUState,omitempty"`
-	VRSPersonality         string        `json:"VRSPersonality,omitempty"`
-	VRSSystemId            string        `json:"VRSSystemId,omitempty"`
-	VSCConfigState         string        `json:"VSCConfigState,omitempty"`
-	VSCCurrentState        string        `json:"VSCCurrentState,omitempty"`
-	JSONRPCConnectionState string        `json:"JSONRPCConnectionState,omitempty"`
-	Name                   string        `json:"name,omitempty"`
-	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
-	Peer                   string        `json:"peer,omitempty"`
-	ClusterNodeRole        string        `json:"clusterNodeRole,omitempty"`
-	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope            string        `json:"entityScope,omitempty"`
-	Role                   string        `json:"role,omitempty"`
-	Connections            []interface{} `json:"connections,omitempty"`
-	ControllerID           string        `json:"controllerID,omitempty"`
-	ControllerType         string        `json:"controllerType,omitempty"`
-	CreationDate           string        `json:"creationDate,omitempty"`
-	Status                 string        `json:"status,omitempty"`
-	Owner                  string        `json:"owner,omitempty"`
-	ExternalID             string        `json:"externalID,omitempty"`
-	Dynamic                bool          `json:"dynamic"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    VRSID string `json:"VRSID,omitempty"`
+    VRSISSUFailureReason string `json:"VRSISSUFailureReason,omitempty"`
+    VRSISSUState string `json:"VRSISSUState,omitempty"`
+    VRSLastISSUState string `json:"VRSLastISSUState,omitempty"`
+    VRSPersonality string `json:"VRSPersonality,omitempty"`
+    VRSSystemId string `json:"VRSSystemId,omitempty"`
+    VSCConfigState string `json:"VSCConfigState,omitempty"`
+    VSCCurrentState string `json:"VSCCurrentState,omitempty"`
+    JSONRPCConnectionState string `json:"JSONRPCConnectionState,omitempty"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    Peer string `json:"peer,omitempty"`
+    ClusterNodeRole string `json:"clusterNodeRole,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    Role string `json:"role,omitempty"`
+    Connections []interface{} `json:"connections,omitempty"`
+    ControllerID string `json:"controllerID,omitempty"`
+    ControllerType string `json:"controllerType,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    Status string `json:"status,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    Dynamic bool `json:"dynamic"`
+    
 }
 
 // NewControllerVRSLink returns a new *ControllerVRSLink
 func NewControllerVRSLink() *ControllerVRSLink {
 
-	return &ControllerVRSLink{}
+    return &ControllerVRSLink{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *ControllerVRSLink) Identity() bambou.Identity {
 
-	return ControllerVRSLinkIdentity
+    return ControllerVRSLinkIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ControllerVRSLink) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ControllerVRSLink) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the ControllerVRSLink from the server
 func (o *ControllerVRSLink) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ControllerVRSLink into the server
 func (o *ControllerVRSLink) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ControllerVRSLink from the server
 func (o *ControllerVRSLink) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the ControllerVRSLink
 func (o *ControllerVRSLink) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the ControllerVRSLink
 func (o *ControllerVRSLink) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the ControllerVRSLink
 func (o *ControllerVRSLink) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the ControllerVRSLink
 func (o *ControllerVRSLink) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the ControllerVRSLink
 func (o *ControllerVRSLink) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the ControllerVRSLink
 func (o *ControllerVRSLink) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // VRSs retrieves the list of child VRSs of the ControllerVRSLink
 func (o *ControllerVRSLink) VRSs(info *bambou.FetchingInfo) (VRSsList, *bambou.Error) {
 
-	var list VRSsList
-	err := bambou.CurrentSession().FetchChildren(o, VRSIdentity, &list, info)
-	return list, err
+    var list VRSsList
+    err := bambou.CurrentSession().FetchChildren(o, VRSIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // HSCs retrieves the list of child HSCs of the ControllerVRSLink
 func (o *ControllerVRSLink) HSCs(info *bambou.FetchingInfo) (HSCsList, *bambou.Error) {
 
-	var list HSCsList
-	err := bambou.CurrentSession().FetchChildren(o, HSCIdentity, &list, info)
-	return list, err
+    var list HSCsList
+    err := bambou.CurrentSession().FetchChildren(o, HSCIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // VSCs retrieves the list of child VSCs of the ControllerVRSLink
 func (o *ControllerVRSLink) VSCs(info *bambou.FetchingInfo) (VSCsList, *bambou.Error) {
 
-	var list VSCsList
-	err := bambou.CurrentSession().FetchChildren(o, VSCIdentity, &list, info)
-	return list, err
+    var list VSCsList
+    err := bambou.CurrentSession().FetchChildren(o, VSCIdentity, &list, info)
+    return list, err
 }
+
+
+

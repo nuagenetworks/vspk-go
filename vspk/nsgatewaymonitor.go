@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // NSGatewayMonitorIdentity represents the Identity of the object
-var NSGatewayMonitorIdentity = bambou.Identity{
-	Name:     "nsgatewaysmonitor",
-	Category: "nsgatewaysmonitors",
+var NSGatewayMonitorIdentity = bambou.Identity {
+    Name:     "nsgatewaysmonitor",
+    Category: "nsgatewaysmonitors",
 }
 
 // NSGatewayMonitorsList represents a list of NSGatewayMonitors
@@ -42,69 +42,72 @@ type NSGatewayMonitorsList []*NSGatewayMonitor
 // An Ancestor is defined as an entity that has NSGatewayMonitor as a descendant.
 // An Ancestor can get a list of its child NSGatewayMonitors, but not necessarily create one.
 type NSGatewayMonitorsAncestor interface {
-	NSGatewayMonitors(*bambou.FetchingInfo) (NSGatewayMonitorsList, *bambou.Error)
+    NSGatewayMonitors(*bambou.FetchingInfo) (NSGatewayMonitorsList, *bambou.Error)
 }
 
 // NSGatewayMonitorsParent is the interface that a parent of a NSGatewayMonitor must implement.
 // A Parent is defined as an entity that has NSGatewayMonitor as a child.
 // A Parent is an Ancestor which can create a NSGatewayMonitor.
 type NSGatewayMonitorsParent interface {
-	NSGatewayMonitorsAncestor
-	CreateNSGatewayMonitor(*NSGatewayMonitor) *bambou.Error
+    NSGatewayMonitorsAncestor
+    CreateNSGatewayMonitor(*NSGatewayMonitor) (*bambou.Error)
 }
 
 // NSGatewayMonitor represents the model of a nsgatewaysmonitor
 type NSGatewayMonitor struct {
-	ID                 string        `json:"ID,omitempty"`
-	ParentID           string        `json:"parentID,omitempty"`
-	ParentType         string        `json:"parentType,omitempty"`
-	Owner              string        `json:"owner,omitempty"`
-	Controllervrslinks []interface{} `json:"controllervrslinks,omitempty"`
-	Vrsinfo            interface{}   `json:"vrsinfo,omitempty"`
-	Vscs               []interface{} `json:"vscs,omitempty"`
-	Nsginfo            interface{}   `json:"nsginfo,omitempty"`
-	Nsgstate           interface{}   `json:"nsgstate,omitempty"`
-	Nsgsummary         interface{}   `json:"nsgsummary,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Controllervrslinks []interface{} `json:"controllervrslinks,omitempty"`
+    Vrsinfo interface{} `json:"vrsinfo,omitempty"`
+    Vscs []interface{} `json:"vscs,omitempty"`
+    Nsginfo interface{} `json:"nsginfo,omitempty"`
+    Nsgstate interface{} `json:"nsgstate,omitempty"`
+    Nsgsummary interface{} `json:"nsgsummary,omitempty"`
+    
 }
 
 // NewNSGatewayMonitor returns a new *NSGatewayMonitor
 func NewNSGatewayMonitor() *NSGatewayMonitor {
 
-	return &NSGatewayMonitor{}
+    return &NSGatewayMonitor{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *NSGatewayMonitor) Identity() bambou.Identity {
 
-	return NSGatewayMonitorIdentity
+    return NSGatewayMonitorIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *NSGatewayMonitor) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *NSGatewayMonitor) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the NSGatewayMonitor from the server
 func (o *NSGatewayMonitor) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the NSGatewayMonitor into the server
 func (o *NSGatewayMonitor) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the NSGatewayMonitor from the server
 func (o *NSGatewayMonitor) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // RoutingPolicyIdentity represents the Identity of the object
-var RoutingPolicyIdentity = bambou.Identity{
-	Name:     "routingpolicy",
-	Category: "routingpolicies",
+var RoutingPolicyIdentity = bambou.Identity {
+    Name:     "routingpolicy",
+    Category: "routingpolicies",
 }
 
 // RoutingPoliciesList represents a list of RoutingPolicies
@@ -42,119 +42,130 @@ type RoutingPoliciesList []*RoutingPolicy
 // An Ancestor is defined as an entity that has RoutingPolicy as a descendant.
 // An Ancestor can get a list of its child RoutingPolicies, but not necessarily create one.
 type RoutingPoliciesAncestor interface {
-	RoutingPolicies(*bambou.FetchingInfo) (RoutingPoliciesList, *bambou.Error)
+    RoutingPolicies(*bambou.FetchingInfo) (RoutingPoliciesList, *bambou.Error)
 }
 
 // RoutingPoliciesParent is the interface that a parent of a RoutingPolicy must implement.
 // A Parent is defined as an entity that has RoutingPolicy as a child.
 // A Parent is an Ancestor which can create a RoutingPolicy.
 type RoutingPoliciesParent interface {
-	RoutingPoliciesAncestor
-	CreateRoutingPolicy(*RoutingPolicy) *bambou.Error
+    RoutingPoliciesAncestor
+    CreateRoutingPolicy(*RoutingPolicy) (*bambou.Error)
 }
 
 // RoutingPolicy represents the model of a routingpolicy
 type RoutingPolicy struct {
-	ID               string        `json:"ID,omitempty"`
-	ParentID         string        `json:"parentID,omitempty"`
-	ParentType       string        `json:"parentType,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	Name             string        `json:"name,omitempty"`
-	DefaultAction    string        `json:"defaultAction,omitempty"`
-	Description      string        `json:"description,omitempty"`
-	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope      string        `json:"entityScope,omitempty"`
-	PolicyDefinition string        `json:"policyDefinition,omitempty"`
-	PolicyUniqueID   int           `json:"policyUniqueID,omitempty"`
-	ContentType      string        `json:"contentType,omitempty"`
-	RoutingProtocol  string        `json:"routingProtocol,omitempty"`
-	CustomerID       int           `json:"CustomerID,omitempty"`
-	ExternalID       string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    DefaultAction string `json:"defaultAction,omitempty"`
+    Description string `json:"description,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    PolicyDefinition string `json:"policyDefinition,omitempty"`
+    PolicyUniqueID int `json:"policyUniqueID,omitempty"`
+    ContentType string `json:"contentType,omitempty"`
+    RoutingProtocol string `json:"routingProtocol,omitempty"`
+    CustomerID int `json:"CustomerID,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewRoutingPolicy returns a new *RoutingPolicy
 func NewRoutingPolicy() *RoutingPolicy {
 
-	return &RoutingPolicy{
-		ContentType:     "DEFAULT",
-		RoutingProtocol: "ROUTING",
-	}
+    return &RoutingPolicy{
+        ContentType: "DEFAULT",
+        RoutingProtocol: "ROUTING",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *RoutingPolicy) Identity() bambou.Identity {
 
-	return RoutingPolicyIdentity
+    return RoutingPolicyIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *RoutingPolicy) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *RoutingPolicy) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the RoutingPolicy from the server
 func (o *RoutingPolicy) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the RoutingPolicy into the server
 func (o *RoutingPolicy) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the RoutingPolicy from the server
 func (o *RoutingPolicy) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the RoutingPolicy
 func (o *RoutingPolicy) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the RoutingPolicy
 func (o *RoutingPolicy) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the RoutingPolicy
 func (o *RoutingPolicy) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the RoutingPolicy
 func (o *RoutingPolicy) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the RoutingPolicy
 func (o *RoutingPolicy) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the RoutingPolicy
 func (o *RoutingPolicy) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

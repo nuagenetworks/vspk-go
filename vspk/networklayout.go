@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // NetworkLayoutIdentity represents the Identity of the object
-var NetworkLayoutIdentity = bambou.Identity{
-	Name:     "networklayout",
-	Category: "networklayout",
+var NetworkLayoutIdentity = bambou.Identity {
+    Name:     "networklayout",
+    Category: "networklayout",
 }
 
 // NetworkLayoutsList represents a list of NetworkLayouts
@@ -42,115 +42,127 @@ type NetworkLayoutsList []*NetworkLayout
 // An Ancestor is defined as an entity that has NetworkLayout as a descendant.
 // An Ancestor can get a list of its child NetworkLayouts, but not necessarily create one.
 type NetworkLayoutsAncestor interface {
-	NetworkLayouts(*bambou.FetchingInfo) (NetworkLayoutsList, *bambou.Error)
+    NetworkLayouts(*bambou.FetchingInfo) (NetworkLayoutsList, *bambou.Error)
 }
 
 // NetworkLayoutsParent is the interface that a parent of a NetworkLayout must implement.
 // A Parent is defined as an entity that has NetworkLayout as a child.
 // A Parent is an Ancestor which can create a NetworkLayout.
 type NetworkLayoutsParent interface {
-	NetworkLayoutsAncestor
-	CreateNetworkLayout(*NetworkLayout) *bambou.Error
+    NetworkLayoutsAncestor
+    CreateNetworkLayout(*NetworkLayout) (*bambou.Error)
 }
 
 // NetworkLayout represents the model of a networklayout
 type NetworkLayout struct {
-	ID                  string        `json:"ID,omitempty"`
-	ParentID            string        `json:"parentID,omitempty"`
-	ParentType          string        `json:"parentType,omitempty"`
-	Owner               string        `json:"owner,omitempty"`
-	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
-	ServiceType         string        `json:"serviceType,omitempty"`
-	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope         string        `json:"entityScope,omitempty"`
-	RouteReflectorIP    string        `json:"routeReflectorIP,omitempty"`
-	CreationDate        string        `json:"creationDate,omitempty"`
-	AutonomousSystemNum int           `json:"autonomousSystemNum,omitempty"`
-	Owner               string        `json:"owner,omitempty"`
-	ExternalID          string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    ServiceType string `json:"serviceType,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    RouteReflectorIP string `json:"routeReflectorIP,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    AutonomousSystemNum int `json:"autonomousSystemNum,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewNetworkLayout returns a new *NetworkLayout
 func NewNetworkLayout() *NetworkLayout {
 
-	return &NetworkLayout{}
+    return &NetworkLayout{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *NetworkLayout) Identity() bambou.Identity {
 
-	return NetworkLayoutIdentity
+    return NetworkLayoutIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *NetworkLayout) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *NetworkLayout) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the NetworkLayout from the server
 func (o *NetworkLayout) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the NetworkLayout into the server
 func (o *NetworkLayout) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the NetworkLayout from the server
 func (o *NetworkLayout) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the NetworkLayout
 func (o *NetworkLayout) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the NetworkLayout
 func (o *NetworkLayout) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the NetworkLayout
 func (o *NetworkLayout) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the NetworkLayout
 func (o *NetworkLayout) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the NetworkLayout
 func (o *NetworkLayout) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the NetworkLayout
 func (o *NetworkLayout) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

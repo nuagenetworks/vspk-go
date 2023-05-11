@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ScheduledTestSuiteIdentity represents the Identity of the object
-var ScheduledTestSuiteIdentity = bambou.Identity{
-	Name:     "scheduledtestsuite",
-	Category: "scheduledtestsuites",
+var ScheduledTestSuiteIdentity = bambou.Identity {
+    Name:     "scheduledtestsuite",
+    Category: "scheduledtestsuites",
 }
 
 // ScheduledTestSuitesList represents a list of ScheduledTestSuites
@@ -42,129 +42,143 @@ type ScheduledTestSuitesList []*ScheduledTestSuite
 // An Ancestor is defined as an entity that has ScheduledTestSuite as a descendant.
 // An Ancestor can get a list of its child ScheduledTestSuites, but not necessarily create one.
 type ScheduledTestSuitesAncestor interface {
-	ScheduledTestSuites(*bambou.FetchingInfo) (ScheduledTestSuitesList, *bambou.Error)
+    ScheduledTestSuites(*bambou.FetchingInfo) (ScheduledTestSuitesList, *bambou.Error)
 }
 
 // ScheduledTestSuitesParent is the interface that a parent of a ScheduledTestSuite must implement.
 // A Parent is defined as an entity that has ScheduledTestSuite as a child.
 // A Parent is an Ancestor which can create a ScheduledTestSuite.
 type ScheduledTestSuitesParent interface {
-	ScheduledTestSuitesAncestor
-	CreateScheduledTestSuite(*ScheduledTestSuite) *bambou.Error
+    ScheduledTestSuitesAncestor
+    CreateScheduledTestSuite(*ScheduledTestSuite) (*bambou.Error)
 }
 
 // ScheduledTestSuite represents the model of a scheduledtestsuite
 type ScheduledTestSuite struct {
-	ID                    string        `json:"ID,omitempty"`
-	ParentID              string        `json:"parentID,omitempty"`
-	ParentType            string        `json:"parentType,omitempty"`
-	Owner                 string        `json:"owner,omitempty"`
-	Name                  string        `json:"name,omitempty"`
-	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
-	ScheduleInterval      int           `json:"scheduleInterval,omitempty"`
-	ScheduleIntervalUnits string        `json:"scheduleIntervalUnits,omitempty"`
-	Description           string        `json:"description,omitempty"`
-	EmbeddedMetadata      []interface{} `json:"embeddedMetadata,omitempty"`
-	EndDateTime           float64       `json:"endDateTime,omitempty"`
-	EntityScope           string        `json:"entityScope,omitempty"`
-	CreationDate          string        `json:"creationDate,omitempty"`
-	StartDateTime         float64       `json:"startDateTime,omitempty"`
-	Owner                 string        `json:"owner,omitempty"`
-	ExternalID            string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    ScheduleInterval int `json:"scheduleInterval,omitempty"`
+    ScheduleIntervalUnits string `json:"scheduleIntervalUnits,omitempty"`
+    Description string `json:"description,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EndDateTime float64 `json:"endDateTime,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    StartDateTime float64 `json:"startDateTime,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewScheduledTestSuite returns a new *ScheduledTestSuite
 func NewScheduledTestSuite() *ScheduledTestSuite {
 
-	return &ScheduledTestSuite{
-		ScheduleInterval:      1,
-		ScheduleIntervalUnits: "DAYS",
-	}
+    return &ScheduledTestSuite{
+        ScheduleInterval: 1,
+        ScheduleIntervalUnits: "DAYS",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *ScheduledTestSuite) Identity() bambou.Identity {
 
-	return ScheduledTestSuiteIdentity
+    return ScheduledTestSuiteIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ScheduledTestSuite) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ScheduledTestSuite) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the ScheduledTestSuite from the server
 func (o *ScheduledTestSuite) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ScheduledTestSuite into the server
 func (o *ScheduledTestSuite) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ScheduledTestSuite from the server
 func (o *ScheduledTestSuite) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Scheduledtestsuiteruns retrieves the list of child Scheduledtestsuiteruns of the ScheduledTestSuite
 func (o *ScheduledTestSuite) Scheduledtestsuiteruns(info *bambou.FetchingInfo) (ScheduledtestsuiterunsList, *bambou.Error) {
 
-	var list ScheduledtestsuiterunsList
-	err := bambou.CurrentSession().FetchChildren(o, ScheduledtestsuiterunIdentity, &list, info)
-	return list, err
+    var list ScheduledtestsuiterunsList
+    err := bambou.CurrentSession().FetchChildren(o, ScheduledtestsuiterunIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // Tests retrieves the list of child Tests of the ScheduledTestSuite
 func (o *ScheduledTestSuite) Tests(info *bambou.FetchingInfo) (TestsList, *bambou.Error) {
 
-	var list TestsList
-	err := bambou.CurrentSession().FetchChildren(o, TestIdentity, &list, info)
-	return list, err
+    var list TestsList
+    err := bambou.CurrentSession().FetchChildren(o, TestIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateTest creates a new child Test under the ScheduledTestSuite
 func (o *ScheduledTestSuite) CreateTest(child *Test) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the ScheduledTestSuite
 func (o *ScheduledTestSuite) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the ScheduledTestSuite
 func (o *ScheduledTestSuite) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the ScheduledTestSuite
 func (o *ScheduledTestSuite) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the ScheduledTestSuite
 func (o *ScheduledTestSuite) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

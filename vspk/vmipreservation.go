@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // VMIPReservationIdentity represents the Identity of the object
-var VMIPReservationIdentity = bambou.Identity{
-	Name:     "vmipreservation",
-	Category: "vmipreservations",
+var VMIPReservationIdentity = bambou.Identity {
+    Name:     "vmipreservation",
+    Category: "vmipreservations",
 }
 
 // VMIPReservationsList represents a list of VMIPReservations
@@ -42,120 +42,131 @@ type VMIPReservationsList []*VMIPReservation
 // An Ancestor is defined as an entity that has VMIPReservation as a descendant.
 // An Ancestor can get a list of its child VMIPReservations, but not necessarily create one.
 type VMIPReservationsAncestor interface {
-	VMIPReservations(*bambou.FetchingInfo) (VMIPReservationsList, *bambou.Error)
+    VMIPReservations(*bambou.FetchingInfo) (VMIPReservationsList, *bambou.Error)
 }
 
 // VMIPReservationsParent is the interface that a parent of a VMIPReservation must implement.
 // A Parent is defined as an entity that has VMIPReservation as a child.
 // A Parent is an Ancestor which can create a VMIPReservation.
 type VMIPReservationsParent interface {
-	VMIPReservationsAncestor
-	CreateVMIPReservation(*VMIPReservation) *bambou.Error
+    VMIPReservationsAncestor
+    CreateVMIPReservation(*VMIPReservation) (*bambou.Error)
 }
 
 // VMIPReservation represents the model of a vmipreservation
 type VMIPReservation struct {
-	ID                  string        `json:"ID,omitempty"`
-	ParentID            string        `json:"parentID,omitempty"`
-	ParentType          string        `json:"parentType,omitempty"`
-	Owner               string        `json:"owner,omitempty"`
-	IPType              string        `json:"IPType,omitempty"`
-	IPV4Address         string        `json:"IPV4Address,omitempty"`
-	IPV6Address         string        `json:"IPV6Address,omitempty"`
-	IPV6AllocationPools []interface{} `json:"IPV6AllocationPools,omitempty"`
-	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
-	AllocationPools     []interface{} `json:"allocationPools,omitempty"`
-	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope         string        `json:"entityScope,omitempty"`
-	CreationDate        string        `json:"creationDate,omitempty"`
-	State               string        `json:"state,omitempty"`
-	Owner               string        `json:"owner,omitempty"`
-	ExternalID          string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    IPType string `json:"IPType,omitempty"`
+    IPV4Address string `json:"IPV4Address,omitempty"`
+    IPV6Address string `json:"IPV6Address,omitempty"`
+    IPV6AllocationPools []interface{} `json:"IPV6AllocationPools,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    AllocationPools []interface{} `json:"allocationPools,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    State string `json:"state,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewVMIPReservation returns a new *VMIPReservation
 func NewVMIPReservation() *VMIPReservation {
 
-	return &VMIPReservation{
-		State: "UNASSIGNED",
-	}
+    return &VMIPReservation{
+        State: "UNASSIGNED",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *VMIPReservation) Identity() bambou.Identity {
 
-	return VMIPReservationIdentity
+    return VMIPReservationIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *VMIPReservation) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *VMIPReservation) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the VMIPReservation from the server
 func (o *VMIPReservation) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the VMIPReservation into the server
 func (o *VMIPReservation) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the VMIPReservation from the server
 func (o *VMIPReservation) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the VMIPReservation
 func (o *VMIPReservation) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the VMIPReservation
 func (o *VMIPReservation) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the VMIPReservation
 func (o *VMIPReservation) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the VMIPReservation
 func (o *VMIPReservation) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the VMIPReservation
 func (o *VMIPReservation) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the VMIPReservation
 func (o *VMIPReservation) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

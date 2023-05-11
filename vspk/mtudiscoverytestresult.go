@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // MTUDiscoveryTestResultIdentity represents the Identity of the object
-var MTUDiscoveryTestResultIdentity = bambou.Identity{
-	Name:     "None",
-	Category: "None",
+var MTUDiscoveryTestResultIdentity = bambou.Identity {
+    Name:     "None",
+    Category: "None",
 }
 
 // MTUDiscoveryTestResultsList represents a list of MTUDiscoveryTestResults
@@ -42,64 +42,67 @@ type MTUDiscoveryTestResultsList []*MTUDiscoveryTestResult
 // An Ancestor is defined as an entity that has MTUDiscoveryTestResult as a descendant.
 // An Ancestor can get a list of its child MTUDiscoveryTestResults, but not necessarily create one.
 type MTUDiscoveryTestResultsAncestor interface {
-	MTUDiscoveryTestResults(*bambou.FetchingInfo) (MTUDiscoveryTestResultsList, *bambou.Error)
+    MTUDiscoveryTestResults(*bambou.FetchingInfo) (MTUDiscoveryTestResultsList, *bambou.Error)
 }
 
 // MTUDiscoveryTestResultsParent is the interface that a parent of a MTUDiscoveryTestResult must implement.
 // A Parent is defined as an entity that has MTUDiscoveryTestResult as a child.
 // A Parent is an Ancestor which can create a MTUDiscoveryTestResult.
 type MTUDiscoveryTestResultsParent interface {
-	MTUDiscoveryTestResultsAncestor
-	CreateMTUDiscoveryTestResult(*MTUDiscoveryTestResult) *bambou.Error
+    MTUDiscoveryTestResultsAncestor
+    CreateMTUDiscoveryTestResult(*MTUDiscoveryTestResult) (*bambou.Error)
 }
 
 // MTUDiscoveryTestResult represents the model of a None
 type MTUDiscoveryTestResult struct {
-	ID            string `json:"ID,omitempty"`
-	ParentID      string `json:"parentID,omitempty"`
-	ParentType    string `json:"parentType,omitempty"`
-	Owner         string `json:"owner,omitempty"`
-	DiscoveredMTU int    `json:"discoveredMTU,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    DiscoveredMTU int `json:"discoveredMTU,omitempty"`
+    
 }
 
 // NewMTUDiscoveryTestResult returns a new *MTUDiscoveryTestResult
 func NewMTUDiscoveryTestResult() *MTUDiscoveryTestResult {
 
-	return &MTUDiscoveryTestResult{}
+    return &MTUDiscoveryTestResult{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *MTUDiscoveryTestResult) Identity() bambou.Identity {
 
-	return MTUDiscoveryTestResultIdentity
+    return MTUDiscoveryTestResultIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *MTUDiscoveryTestResult) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *MTUDiscoveryTestResult) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the MTUDiscoveryTestResult from the server
 func (o *MTUDiscoveryTestResult) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the MTUDiscoveryTestResult into the server
 func (o *MTUDiscoveryTestResult) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the MTUDiscoveryTestResult from the server
 func (o *MTUDiscoveryTestResult) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

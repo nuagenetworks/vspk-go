@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // BootstrapActivationIdentity represents the Identity of the object
-var BootstrapActivationIdentity = bambou.Identity{
-	Name:     "bootstrapactivation",
-	Category: "bootstrapactivations",
+var BootstrapActivationIdentity = bambou.Identity {
+    Name:     "bootstrapactivation",
+    Category: "bootstrapactivations",
 }
 
 // BootstrapActivationsList represents a list of BootstrapActivations
@@ -42,128 +42,139 @@ type BootstrapActivationsList []*BootstrapActivation
 // An Ancestor is defined as an entity that has BootstrapActivation as a descendant.
 // An Ancestor can get a list of its child BootstrapActivations, but not necessarily create one.
 type BootstrapActivationsAncestor interface {
-	BootstrapActivations(*bambou.FetchingInfo) (BootstrapActivationsList, *bambou.Error)
+    BootstrapActivations(*bambou.FetchingInfo) (BootstrapActivationsList, *bambou.Error)
 }
 
 // BootstrapActivationsParent is the interface that a parent of a BootstrapActivation must implement.
 // A Parent is defined as an entity that has BootstrapActivation as a child.
 // A Parent is an Ancestor which can create a BootstrapActivation.
 type BootstrapActivationsParent interface {
-	BootstrapActivationsAncestor
-	CreateBootstrapActivation(*BootstrapActivation) *bambou.Error
+    BootstrapActivationsAncestor
+    CreateBootstrapActivation(*BootstrapActivation) (*bambou.Error)
 }
 
 // BootstrapActivation represents the model of a bootstrapactivation
 type BootstrapActivation struct {
-	ID                   string        `json:"ID,omitempty"`
-	ParentID             string        `json:"parentID,omitempty"`
-	ParentType           string        `json:"parentType,omitempty"`
-	Owner                string        `json:"owner,omitempty"`
-	Cacert               string        `json:"cacert,omitempty"`
-	Hash                 string        `json:"hash,omitempty"`
-	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate      string        `json:"lastUpdatedDate,omitempty"`
-	Action               string        `json:"action,omitempty"`
-	Seed                 string        `json:"seed,omitempty"`
-	Cert                 string        `json:"cert,omitempty"`
-	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope          string        `json:"entityScope,omitempty"`
-	ConfigURL            string        `json:"configURL,omitempty"`
-	TpmOwnerPassword     string        `json:"tpmOwnerPassword,omitempty"`
-	TpmState             int           `json:"tpmState,omitempty"`
-	CreationDate         string        `json:"creationDate,omitempty"`
-	SrkPassword          string        `json:"srkPassword,omitempty"`
-	VsdTime              int           `json:"vsdTime,omitempty"`
-	Csr                  string        `json:"csr,omitempty"`
-	AssociatedEntityType string        `json:"associatedEntityType,omitempty"`
-	Status               string        `json:"status,omitempty"`
-	AutoBootstrap        bool          `json:"autoBootstrap"`
-	Owner                string        `json:"owner,omitempty"`
-	ExternalID           string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Cacert string `json:"cacert,omitempty"`
+    Hash string `json:"hash,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    Action string `json:"action,omitempty"`
+    Seed string `json:"seed,omitempty"`
+    Cert string `json:"cert,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    ConfigURL string `json:"configURL,omitempty"`
+    TpmOwnerPassword string `json:"tpmOwnerPassword,omitempty"`
+    TpmState int `json:"tpmState,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    SrkPassword string `json:"srkPassword,omitempty"`
+    VsdTime int `json:"vsdTime,omitempty"`
+    Csr string `json:"csr,omitempty"`
+    AssociatedEntityType string `json:"associatedEntityType,omitempty"`
+    Status string `json:"status,omitempty"`
+    AutoBootstrap bool `json:"autoBootstrap"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewBootstrapActivation returns a new *BootstrapActivation
 func NewBootstrapActivation() *BootstrapActivation {
 
-	return &BootstrapActivation{
-		TpmState: 0,
-	}
+    return &BootstrapActivation{
+        TpmState: 0,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *BootstrapActivation) Identity() bambou.Identity {
 
-	return BootstrapActivationIdentity
+    return BootstrapActivationIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *BootstrapActivation) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *BootstrapActivation) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the BootstrapActivation from the server
 func (o *BootstrapActivation) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the BootstrapActivation into the server
 func (o *BootstrapActivation) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the BootstrapActivation from the server
 func (o *BootstrapActivation) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the BootstrapActivation
 func (o *BootstrapActivation) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the BootstrapActivation
 func (o *BootstrapActivation) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the BootstrapActivation
 func (o *BootstrapActivation) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the BootstrapActivation
 func (o *BootstrapActivation) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the BootstrapActivation
 func (o *BootstrapActivation) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the BootstrapActivation
 func (o *BootstrapActivation) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

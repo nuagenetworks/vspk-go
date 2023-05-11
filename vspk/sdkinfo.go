@@ -28,10 +28,10 @@
 package vspk
 
 const (
-	SDKAPIPrefix       = "nuage/api"
-	SDKAPIVersion      = 6
-	SDKName            = "vspk"
-	SDKProductAccronym = "VSD"
-	SDKProductName     = "VSD"
-	SDKRootAPI         = "me"
+    SDKAPIPrefix       = "nuage/api"
+    SDKAPIVersion      = 6
+    SDKName            = "vspk"
+    SDKProductAccronym = "VSD"
+    SDKProductName     = "VSD"
+    SDKRootAPI         = "me"
 )

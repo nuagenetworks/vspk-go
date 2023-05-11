@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // VSDConfigIdentity represents the Identity of the object
-var VSDConfigIdentity = bambou.Identity{
-	Name:     "vsdconfig",
-	Category: "vsdconfigs",
+var VSDConfigIdentity = bambou.Identity {
+    Name:     "vsdconfig",
+    Category: "vsdconfigs",
 }
 
 // VSDConfigsList represents a list of VSDConfigs
@@ -42,65 +42,68 @@ type VSDConfigsList []*VSDConfig
 // An Ancestor is defined as an entity that has VSDConfig as a descendant.
 // An Ancestor can get a list of its child VSDConfigs, but not necessarily create one.
 type VSDConfigsAncestor interface {
-	VSDConfigs(*bambou.FetchingInfo) (VSDConfigsList, *bambou.Error)
+    VSDConfigs(*bambou.FetchingInfo) (VSDConfigsList, *bambou.Error)
 }
 
 // VSDConfigsParent is the interface that a parent of a VSDConfig must implement.
 // A Parent is defined as an entity that has VSDConfig as a child.
 // A Parent is an Ancestor which can create a VSDConfig.
 type VSDConfigsParent interface {
-	VSDConfigsAncestor
-	CreateVSDConfig(*VSDConfig) *bambou.Error
+    VSDConfigsAncestor
+    CreateVSDConfig(*VSDConfig) (*bambou.Error)
 }
 
 // VSDConfig represents the model of a vsdconfig
 type VSDConfig struct {
-	ID             string `json:"ID,omitempty"`
-	ParentID       string `json:"parentID,omitempty"`
-	ParentType     string `json:"parentType,omitempty"`
-	Owner          string `json:"owner,omitempty"`
-	Id             string `json:"id,omitempty"`
-	AttributeValue string `json:"attributeValue,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Id string `json:"id,omitempty"`
+    AttributeValue string `json:"attributeValue,omitempty"`
+    
 }
 
 // NewVSDConfig returns a new *VSDConfig
 func NewVSDConfig() *VSDConfig {
 
-	return &VSDConfig{}
+    return &VSDConfig{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *VSDConfig) Identity() bambou.Identity {
 
-	return VSDConfigIdentity
+    return VSDConfigIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *VSDConfig) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *VSDConfig) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the VSDConfig from the server
 func (o *VSDConfig) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the VSDConfig into the server
 func (o *VSDConfig) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the VSDConfig from the server
 func (o *VSDConfig) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

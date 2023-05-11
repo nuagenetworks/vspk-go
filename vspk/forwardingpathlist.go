@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ForwardingPathListIdentity represents the Identity of the object
-var ForwardingPathListIdentity = bambou.Identity{
-	Name:     "forwardingpathlist",
-	Category: "forwardingpathlists",
+var ForwardingPathListIdentity = bambou.Identity {
+    Name:     "forwardingpathlist",
+    Category: "forwardingpathlists",
 }
 
 // ForwardingPathListsList represents a list of ForwardingPathLists
@@ -42,129 +42,144 @@ type ForwardingPathListsList []*ForwardingPathList
 // An Ancestor is defined as an entity that has ForwardingPathList as a descendant.
 // An Ancestor can get a list of its child ForwardingPathLists, but not necessarily create one.
 type ForwardingPathListsAncestor interface {
-	ForwardingPathLists(*bambou.FetchingInfo) (ForwardingPathListsList, *bambou.Error)
+    ForwardingPathLists(*bambou.FetchingInfo) (ForwardingPathListsList, *bambou.Error)
 }
 
 // ForwardingPathListsParent is the interface that a parent of a ForwardingPathList must implement.
 // A Parent is defined as an entity that has ForwardingPathList as a child.
 // A Parent is an Ancestor which can create a ForwardingPathList.
 type ForwardingPathListsParent interface {
-	ForwardingPathListsAncestor
-	CreateForwardingPathList(*ForwardingPathList) *bambou.Error
+    ForwardingPathListsAncestor
+    CreateForwardingPathList(*ForwardingPathList) (*bambou.Error)
 }
 
 // ForwardingPathList represents the model of a forwardingpathlist
 type ForwardingPathList struct {
-	ID                   string        `json:"ID,omitempty"`
-	ParentID             string        `json:"parentID,omitempty"`
-	ParentType           string        `json:"parentType,omitempty"`
-	Owner                string        `json:"owner,omitempty"`
-	Name                 string        `json:"name,omitempty"`
-	LastUpdatedBy        string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate      string        `json:"lastUpdatedDate,omitempty"`
-	Description          string        `json:"description,omitempty"`
-	EmbeddedMetadata     []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope          string        `json:"entityScope,omitempty"`
-	ForwardingPathListID int           `json:"forwardingPathListID,omitempty"`
-	CreationDate         string        `json:"creationDate,omitempty"`
-	Owner                string        `json:"owner,omitempty"`
-	ExternalID           string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    Description string `json:"description,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    ForwardingPathListID int `json:"forwardingPathListID,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewForwardingPathList returns a new *ForwardingPathList
 func NewForwardingPathList() *ForwardingPathList {
 
-	return &ForwardingPathList{}
+    return &ForwardingPathList{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *ForwardingPathList) Identity() bambou.Identity {
 
-	return ForwardingPathListIdentity
+    return ForwardingPathListIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ForwardingPathList) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ForwardingPathList) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the ForwardingPathList from the server
 func (o *ForwardingPathList) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ForwardingPathList into the server
 func (o *ForwardingPathList) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ForwardingPathList from the server
 func (o *ForwardingPathList) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the ForwardingPathList
 func (o *ForwardingPathList) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the ForwardingPathList
 func (o *ForwardingPathList) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the ForwardingPathList
 func (o *ForwardingPathList) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the ForwardingPathList
 func (o *ForwardingPathList) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the ForwardingPathList
 func (o *ForwardingPathList) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the ForwardingPathList
 func (o *ForwardingPathList) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // ForwardingPathListEntries retrieves the list of child ForwardingPathListEntries of the ForwardingPathList
 func (o *ForwardingPathList) ForwardingPathListEntries(info *bambou.FetchingInfo) (ForwardingPathListEntriesList, *bambou.Error) {
 
-	var list ForwardingPathListEntriesList
-	err := bambou.CurrentSession().FetchChildren(o, ForwardingPathListEntryIdentity, &list, info)
-	return list, err
+    var list ForwardingPathListEntriesList
+    err := bambou.CurrentSession().FetchChildren(o, ForwardingPathListEntryIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateForwardingPathListEntry creates a new child ForwardingPathListEntry under the ForwardingPathList
 func (o *ForwardingPathList) CreateForwardingPathListEntry(child *ForwardingPathListEntry) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

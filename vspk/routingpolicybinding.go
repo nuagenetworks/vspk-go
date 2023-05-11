@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // RoutingPolicyBindingIdentity represents the Identity of the object
-var RoutingPolicyBindingIdentity = bambou.Identity{
-	Name:     "routingpolicybinding",
-	Category: "routingpolicybindings",
+var RoutingPolicyBindingIdentity = bambou.Identity {
+    Name:     "routingpolicybinding",
+    Category: "routingpolicybindings",
 }
 
 // RoutingPolicyBindingsList represents a list of RoutingPolicyBindings
@@ -42,122 +42,133 @@ type RoutingPolicyBindingsList []*RoutingPolicyBinding
 // An Ancestor is defined as an entity that has RoutingPolicyBinding as a descendant.
 // An Ancestor can get a list of its child RoutingPolicyBindings, but not necessarily create one.
 type RoutingPolicyBindingsAncestor interface {
-	RoutingPolicyBindings(*bambou.FetchingInfo) (RoutingPolicyBindingsList, *bambou.Error)
+    RoutingPolicyBindings(*bambou.FetchingInfo) (RoutingPolicyBindingsList, *bambou.Error)
 }
 
 // RoutingPolicyBindingsParent is the interface that a parent of a RoutingPolicyBinding must implement.
 // A Parent is defined as an entity that has RoutingPolicyBinding as a child.
 // A Parent is an Ancestor which can create a RoutingPolicyBinding.
 type RoutingPolicyBindingsParent interface {
-	RoutingPolicyBindingsAncestor
-	CreateRoutingPolicyBinding(*RoutingPolicyBinding) *bambou.Error
+    RoutingPolicyBindingsAncestor
+    CreateRoutingPolicyBinding(*RoutingPolicyBinding) (*bambou.Error)
 }
 
 // RoutingPolicyBinding represents the model of a routingpolicybinding
 type RoutingPolicyBinding struct {
-	ID                              string        `json:"ID,omitempty"`
-	ParentID                        string        `json:"parentID,omitempty"`
-	ParentType                      string        `json:"parentType,omitempty"`
-	Owner                           string        `json:"owner,omitempty"`
-	OSPFType                        string        `json:"OSPFType,omitempty"`
-	Name                            string        `json:"name,omitempty"`
-	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
-	Description                     string        `json:"description,omitempty"`
-	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope                     string        `json:"entityScope,omitempty"`
-	CreationDate                    string        `json:"creationDate,omitempty"`
-	AssociatedExportRoutingPolicyID string        `json:"associatedExportRoutingPolicyID,omitempty"`
-	AssociatedImportRoutingPolicyID string        `json:"associatedImportRoutingPolicyID,omitempty"`
-	AssociatedPolicyObjectGroupID   string        `json:"associatedPolicyObjectGroupID,omitempty"`
-	Owner                           string        `json:"owner,omitempty"`
-	ExportToOverlay                 string        `json:"exportToOverlay,omitempty"`
-	ExternalID                      string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    OSPFType string `json:"OSPFType,omitempty"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    Description string `json:"description,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    AssociatedExportRoutingPolicyID string `json:"associatedExportRoutingPolicyID,omitempty"`
+    AssociatedImportRoutingPolicyID string `json:"associatedImportRoutingPolicyID,omitempty"`
+    AssociatedPolicyObjectGroupID string `json:"associatedPolicyObjectGroupID,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExportToOverlay string `json:"exportToOverlay,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewRoutingPolicyBinding returns a new *RoutingPolicyBinding
 func NewRoutingPolicyBinding() *RoutingPolicyBinding {
 
-	return &RoutingPolicyBinding{
-		OSPFType:        "OSPFv2",
-		ExportToOverlay: "INHERITED",
-	}
+    return &RoutingPolicyBinding{
+        OSPFType: "OSPFv2",
+        ExportToOverlay: "INHERITED",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *RoutingPolicyBinding) Identity() bambou.Identity {
 
-	return RoutingPolicyBindingIdentity
+    return RoutingPolicyBindingIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *RoutingPolicyBinding) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *RoutingPolicyBinding) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the RoutingPolicyBinding from the server
 func (o *RoutingPolicyBinding) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the RoutingPolicyBinding into the server
 func (o *RoutingPolicyBinding) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the RoutingPolicyBinding from the server
 func (o *RoutingPolicyBinding) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the RoutingPolicyBinding
 func (o *RoutingPolicyBinding) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the RoutingPolicyBinding
 func (o *RoutingPolicyBinding) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the RoutingPolicyBinding
 func (o *RoutingPolicyBinding) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the RoutingPolicyBinding
 func (o *RoutingPolicyBinding) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the RoutingPolicyBinding
 func (o *RoutingPolicyBinding) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the RoutingPolicyBinding
 func (o *RoutingPolicyBinding) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // IDPProfileActionIdentity represents the Identity of the object
-var IDPProfileActionIdentity = bambou.Identity{
-	Name:     "idpprofileaction",
-	Category: "idpprofileactions",
+var IDPProfileActionIdentity = bambou.Identity {
+    Name:     "idpprofileaction",
+    Category: "idpprofileactions",
 }
 
 // IDPProfileActionsList represents a list of IDPProfileActions
@@ -42,69 +42,71 @@ type IDPProfileActionsList []*IDPProfileAction
 // An Ancestor is defined as an entity that has IDPProfileAction as a descendant.
 // An Ancestor can get a list of its child IDPProfileActions, but not necessarily create one.
 type IDPProfileActionsAncestor interface {
-	IDPProfileActions(*bambou.FetchingInfo) (IDPProfileActionsList, *bambou.Error)
+    IDPProfileActions(*bambou.FetchingInfo) (IDPProfileActionsList, *bambou.Error)
 }
 
 // IDPProfileActionsParent is the interface that a parent of a IDPProfileAction must implement.
 // A Parent is defined as an entity that has IDPProfileAction as a child.
 // A Parent is an Ancestor which can create a IDPProfileAction.
 type IDPProfileActionsParent interface {
-	IDPProfileActionsAncestor
-	CreateIDPProfileAction(*IDPProfileAction) *bambou.Error
+    IDPProfileActionsAncestor
+    CreateIDPProfileAction(*IDPProfileAction) (*bambou.Error)
 }
 
 // IDPProfileAction represents the model of a idpprofileaction
 type IDPProfileAction struct {
-	ID                     string        `json:"ID,omitempty"`
-	ParentID               string        `json:"parentID,omitempty"`
-	ParentType             string        `json:"parentType,omitempty"`
-	Owner                  string        `json:"owner,omitempty"`
-	IDPSignatures          []interface{} `json:"IDPSignatures,omitempty"`
-	Action                 string        `json:"action,omitempty"`
-	Priority               int           `json:"priority,omitempty"`
-	AssociatedIDPProfileID string        `json:"associatedIDPProfileID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    IDPSignatures []interface{} `json:"IDPSignatures,omitempty"`
+    Action string `json:"action,omitempty"`
+    Priority int `json:"priority,omitempty"`
+    AssociatedIDPProfileID string `json:"associatedIDPProfileID,omitempty"`
+    
 }
 
 // NewIDPProfileAction returns a new *IDPProfileAction
 func NewIDPProfileAction() *IDPProfileAction {
 
-	return &IDPProfileAction{
-		Action: "PROTECT",
-	}
+    return &IDPProfileAction{
+        Action: "PROTECT",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *IDPProfileAction) Identity() bambou.Identity {
 
-	return IDPProfileActionIdentity
+    return IDPProfileActionIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *IDPProfileAction) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *IDPProfileAction) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the IDPProfileAction from the server
 func (o *IDPProfileAction) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the IDPProfileAction into the server
 func (o *IDPProfileAction) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the IDPProfileAction from the server
 func (o *IDPProfileAction) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

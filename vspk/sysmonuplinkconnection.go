@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // SysmonUplinkConnectionIdentity represents the Identity of the object
-var SysmonUplinkConnectionIdentity = bambou.Identity{
-	Name:     "None",
-	Category: "None",
+var SysmonUplinkConnectionIdentity = bambou.Identity {
+    Name:     "None",
+    Category: "None",
 }
 
 // SysmonUplinkConnectionsList represents a list of SysmonUplinkConnections
@@ -42,70 +42,73 @@ type SysmonUplinkConnectionsList []*SysmonUplinkConnection
 // An Ancestor is defined as an entity that has SysmonUplinkConnection as a descendant.
 // An Ancestor can get a list of its child SysmonUplinkConnections, but not necessarily create one.
 type SysmonUplinkConnectionsAncestor interface {
-	SysmonUplinkConnections(*bambou.FetchingInfo) (SysmonUplinkConnectionsList, *bambou.Error)
+    SysmonUplinkConnections(*bambou.FetchingInfo) (SysmonUplinkConnectionsList, *bambou.Error)
 }
 
 // SysmonUplinkConnectionsParent is the interface that a parent of a SysmonUplinkConnection must implement.
 // A Parent is defined as an entity that has SysmonUplinkConnection as a child.
 // A Parent is an Ancestor which can create a SysmonUplinkConnection.
 type SysmonUplinkConnectionsParent interface {
-	SysmonUplinkConnectionsAncestor
-	CreateSysmonUplinkConnection(*SysmonUplinkConnection) *bambou.Error
+    SysmonUplinkConnectionsAncestor
+    CreateSysmonUplinkConnection(*SysmonUplinkConnection) (*bambou.Error)
 }
 
 // SysmonUplinkConnection represents the model of a None
 type SysmonUplinkConnection struct {
-	ID               string `json:"ID,omitempty"`
-	ParentID         string `json:"parentID,omitempty"`
-	ParentType       string `json:"parentType,omitempty"`
-	Owner            string `json:"owner,omitempty"`
-	DatapathUplinkId string `json:"datapathUplinkId,omitempty"`
-	OpenflowState    string `json:"openflowState,omitempty"`
-	IpsecDtlsState   string `json:"ipsecDtlsState,omitempty"`
-	PrivateIP        string `json:"privateIP,omitempty"`
-	JsonState        string `json:"jsonState,omitempty"`
-	PublicIP         string `json:"publicIP,omitempty"`
-	VxlanDtlsState   string `json:"vxlanDtlsState,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    DatapathUplinkId string `json:"datapathUplinkId,omitempty"`
+    OpenflowState string `json:"openflowState,omitempty"`
+    IpsecDtlsState string `json:"ipsecDtlsState,omitempty"`
+    PrivateIP string `json:"privateIP,omitempty"`
+    JsonState string `json:"jsonState,omitempty"`
+    PublicIP string `json:"publicIP,omitempty"`
+    VxlanDtlsState string `json:"vxlanDtlsState,omitempty"`
+    
 }
 
 // NewSysmonUplinkConnection returns a new *SysmonUplinkConnection
 func NewSysmonUplinkConnection() *SysmonUplinkConnection {
 
-	return &SysmonUplinkConnection{}
+    return &SysmonUplinkConnection{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *SysmonUplinkConnection) Identity() bambou.Identity {
 
-	return SysmonUplinkConnectionIdentity
+    return SysmonUplinkConnectionIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *SysmonUplinkConnection) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *SysmonUplinkConnection) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the SysmonUplinkConnection from the server
 func (o *SysmonUplinkConnection) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the SysmonUplinkConnection into the server
 func (o *SysmonUplinkConnection) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the SysmonUplinkConnection from the server
 func (o *SysmonUplinkConnection) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

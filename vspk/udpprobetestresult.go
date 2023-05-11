@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // UDPProbeTestResultIdentity represents the Identity of the object
-var UDPProbeTestResultIdentity = bambou.Identity{
-	Name:     "None",
-	Category: "None",
+var UDPProbeTestResultIdentity = bambou.Identity {
+    Name:     "None",
+    Category: "None",
 }
 
 // UDPProbeTestResultsList represents a list of UDPProbeTestResults
@@ -42,67 +42,70 @@ type UDPProbeTestResultsList []*UDPProbeTestResult
 // An Ancestor is defined as an entity that has UDPProbeTestResult as a descendant.
 // An Ancestor can get a list of its child UDPProbeTestResults, but not necessarily create one.
 type UDPProbeTestResultsAncestor interface {
-	UDPProbeTestResults(*bambou.FetchingInfo) (UDPProbeTestResultsList, *bambou.Error)
+    UDPProbeTestResults(*bambou.FetchingInfo) (UDPProbeTestResultsList, *bambou.Error)
 }
 
 // UDPProbeTestResultsParent is the interface that a parent of a UDPProbeTestResult must implement.
 // A Parent is defined as an entity that has UDPProbeTestResult as a child.
 // A Parent is an Ancestor which can create a UDPProbeTestResult.
 type UDPProbeTestResultsParent interface {
-	UDPProbeTestResultsAncestor
-	CreateUDPProbeTestResult(*UDPProbeTestResult) *bambou.Error
+    UDPProbeTestResultsAncestor
+    CreateUDPProbeTestResult(*UDPProbeTestResult) (*bambou.Error)
 }
 
 // UDPProbeTestResult represents the model of a None
 type UDPProbeTestResult struct {
-	ID                 string  `json:"ID,omitempty"`
-	ParentID           string  `json:"parentID,omitempty"`
-	ParentType         string  `json:"parentType,omitempty"`
-	Owner              string  `json:"owner,omitempty"`
-	PacketLossPercent  float64 `json:"packetLossPercent,omitempty"`
-	PacketsLost        int     `json:"packetsLost,omitempty"`
-	PacketsReceived    int     `json:"packetsReceived,omitempty"`
-	PacketsTransmitted int     `json:"packetsTransmitted,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    PacketLossPercent float64 `json:"packetLossPercent,omitempty"`
+    PacketsLost int `json:"packetsLost,omitempty"`
+    PacketsReceived int `json:"packetsReceived,omitempty"`
+    PacketsTransmitted int `json:"packetsTransmitted,omitempty"`
+    
 }
 
 // NewUDPProbeTestResult returns a new *UDPProbeTestResult
 func NewUDPProbeTestResult() *UDPProbeTestResult {
 
-	return &UDPProbeTestResult{}
+    return &UDPProbeTestResult{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *UDPProbeTestResult) Identity() bambou.Identity {
 
-	return UDPProbeTestResultIdentity
+    return UDPProbeTestResultIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *UDPProbeTestResult) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *UDPProbeTestResult) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the UDPProbeTestResult from the server
 func (o *UDPProbeTestResult) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the UDPProbeTestResult into the server
 func (o *UDPProbeTestResult) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the UDPProbeTestResult from the server
 func (o *UDPProbeTestResult) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

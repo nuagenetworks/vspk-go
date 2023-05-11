@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ProxyARPFilterIdentity represents the Identity of the object
-var ProxyARPFilterIdentity = bambou.Identity{
-	Name:     "proxyarpfilter",
-	Category: "proxyarpfilters",
+var ProxyARPFilterIdentity = bambou.Identity {
+    Name:     "proxyarpfilter",
+    Category: "proxyarpfilters",
 }
 
 // ProxyARPFiltersList represents a list of ProxyARPFilters
@@ -42,74 +42,76 @@ type ProxyARPFiltersList []*ProxyARPFilter
 // An Ancestor is defined as an entity that has ProxyARPFilter as a descendant.
 // An Ancestor can get a list of its child ProxyARPFilters, but not necessarily create one.
 type ProxyARPFiltersAncestor interface {
-	ProxyARPFilters(*bambou.FetchingInfo) (ProxyARPFiltersList, *bambou.Error)
+    ProxyARPFilters(*bambou.FetchingInfo) (ProxyARPFiltersList, *bambou.Error)
 }
 
 // ProxyARPFiltersParent is the interface that a parent of a ProxyARPFilter must implement.
 // A Parent is defined as an entity that has ProxyARPFilter as a child.
 // A Parent is an Ancestor which can create a ProxyARPFilter.
 type ProxyARPFiltersParent interface {
-	ProxyARPFiltersAncestor
-	CreateProxyARPFilter(*ProxyARPFilter) *bambou.Error
+    ProxyARPFiltersAncestor
+    CreateProxyARPFilter(*ProxyARPFilter) (*bambou.Error)
 }
 
 // ProxyARPFilter represents the model of a proxyarpfilter
 type ProxyARPFilter struct {
-	ID              string `json:"ID,omitempty"`
-	ParentID        string `json:"parentID,omitempty"`
-	ParentType      string `json:"parentType,omitempty"`
-	Owner           string `json:"owner,omitempty"`
-	IPType          string `json:"IPType,omitempty"`
-	LastUpdatedBy   string `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-	MaxAddress      string `json:"maxAddress,omitempty"`
-	MinAddress      string `json:"minAddress,omitempty"`
-	EntityScope     string `json:"entityScope,omitempty"`
-	CreationDate    string `json:"creationDate,omitempty"`
-	Owner           string `json:"owner,omitempty"`
-	ExternalID      string `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    IPType string `json:"IPType,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    MaxAddress string `json:"maxAddress,omitempty"`
+    MinAddress string `json:"minAddress,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewProxyARPFilter returns a new *ProxyARPFilter
 func NewProxyARPFilter() *ProxyARPFilter {
 
-	return &ProxyARPFilter{
-		IPType: "IPV4",
-	}
+    return &ProxyARPFilter{
+        IPType: "IPV4",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *ProxyARPFilter) Identity() bambou.Identity {
 
-	return ProxyARPFilterIdentity
+    return ProxyARPFilterIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ProxyARPFilter) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ProxyARPFilter) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the ProxyARPFilter from the server
 func (o *ProxyARPFilter) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ProxyARPFilter into the server
 func (o *ProxyARPFilter) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ProxyARPFilter from the server
 func (o *ProxyARPFilter) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

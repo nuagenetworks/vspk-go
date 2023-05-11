@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // VPortInfoIdentity represents the Identity of the object
-var VPortInfoIdentity = bambou.Identity{
-	Name:     "None",
-	Category: "None",
+var VPortInfoIdentity = bambou.Identity {
+    Name:     "None",
+    Category: "None",
 }
 
 // VPortInfosList represents a list of VPortInfos
@@ -42,66 +42,69 @@ type VPortInfosList []*VPortInfo
 // An Ancestor is defined as an entity that has VPortInfo as a descendant.
 // An Ancestor can get a list of its child VPortInfos, but not necessarily create one.
 type VPortInfosAncestor interface {
-	VPortInfos(*bambou.FetchingInfo) (VPortInfosList, *bambou.Error)
+    VPortInfos(*bambou.FetchingInfo) (VPortInfosList, *bambou.Error)
 }
 
 // VPortInfosParent is the interface that a parent of a VPortInfo must implement.
 // A Parent is defined as an entity that has VPortInfo as a child.
 // A Parent is an Ancestor which can create a VPortInfo.
 type VPortInfosParent interface {
-	VPortInfosAncestor
-	CreateVPortInfo(*VPortInfo) *bambou.Error
+    VPortInfosAncestor
+    CreateVPortInfo(*VPortInfo) (*bambou.Error)
 }
 
 // VPortInfo represents the model of a None
 type VPortInfo struct {
-	ID                    string `json:"ID,omitempty"`
-	ParentID              string `json:"parentID,omitempty"`
-	ParentType            string `json:"parentType,omitempty"`
-	Owner                 string `json:"owner,omitempty"`
-	VPortOperationalState string `json:"vPortOperationalState,omitempty"`
-	GatewayID             string `json:"gatewayID,omitempty"`
-	GatewayName           string `json:"gatewayName,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    VPortOperationalState string `json:"vPortOperationalState,omitempty"`
+    GatewayID string `json:"gatewayID,omitempty"`
+    GatewayName string `json:"gatewayName,omitempty"`
+    
 }
 
 // NewVPortInfo returns a new *VPortInfo
 func NewVPortInfo() *VPortInfo {
 
-	return &VPortInfo{}
+    return &VPortInfo{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *VPortInfo) Identity() bambou.Identity {
 
-	return VPortInfoIdentity
+    return VPortInfoIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *VPortInfo) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *VPortInfo) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the VPortInfo from the server
 func (o *VPortInfo) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the VPortInfo into the server
 func (o *VPortInfo) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the VPortInfo from the server
 func (o *VPortInfo) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

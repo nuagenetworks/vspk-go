@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // DdnsconfigbindingIdentity represents the Identity of the object
-var DdnsconfigbindingIdentity = bambou.Identity{
-	Name:     "ddnsconfigbinding",
-	Category: "ddnsconfigbindings",
+var DdnsconfigbindingIdentity = bambou.Identity {
+    Name:     "ddnsconfigbinding",
+    Category: "ddnsconfigbindings",
 }
 
 // DdnsconfigbindingsList represents a list of Ddnsconfigbindings
@@ -42,69 +42,71 @@ type DdnsconfigbindingsList []*Ddnsconfigbinding
 // An Ancestor is defined as an entity that has Ddnsconfigbinding as a descendant.
 // An Ancestor can get a list of its child Ddnsconfigbindings, but not necessarily create one.
 type DdnsconfigbindingsAncestor interface {
-	Ddnsconfigbindings(*bambou.FetchingInfo) (DdnsconfigbindingsList, *bambou.Error)
+    Ddnsconfigbindings(*bambou.FetchingInfo) (DdnsconfigbindingsList, *bambou.Error)
 }
 
 // DdnsconfigbindingsParent is the interface that a parent of a Ddnsconfigbinding must implement.
 // A Parent is defined as an entity that has Ddnsconfigbinding as a child.
 // A Parent is an Ancestor which can create a Ddnsconfigbinding.
 type DdnsconfigbindingsParent interface {
-	DdnsconfigbindingsAncestor
-	CreateDdnsconfigbinding(*Ddnsconfigbinding) *bambou.Error
+    DdnsconfigbindingsAncestor
+    CreateDdnsconfigbinding(*Ddnsconfigbinding) (*bambou.Error)
 }
 
 // Ddnsconfigbinding represents the model of a ddnsconfigbinding
 type Ddnsconfigbinding struct {
-	ID                 string `json:"ID,omitempty"`
-	ParentID           string `json:"parentID,omitempty"`
-	ParentType         string `json:"parentType,omitempty"`
-	Owner              string `json:"owner,omitempty"`
-	UplinkName         string `json:"uplinkName,omitempty"`
-	UplinkPriority     int    `json:"uplinkPriority,omitempty"`
-	AssocDDNSConfigId  string `json:"assocDDNSConfigId,omitempty"`
-	AssociatedUplinkID string `json:"associatedUplinkID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    UplinkName string `json:"uplinkName,omitempty"`
+    UplinkPriority int `json:"uplinkPriority,omitempty"`
+    AssocDDNSConfigId string `json:"assocDDNSConfigId,omitempty"`
+    AssociatedUplinkID string `json:"associatedUplinkID,omitempty"`
+    
 }
 
 // NewDdnsconfigbinding returns a new *Ddnsconfigbinding
 func NewDdnsconfigbinding() *Ddnsconfigbinding {
 
-	return &Ddnsconfigbinding{
-		UplinkPriority: 10,
-	}
+    return &Ddnsconfigbinding{
+        UplinkPriority: 10,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *Ddnsconfigbinding) Identity() bambou.Identity {
 
-	return DdnsconfigbindingIdentity
+    return DdnsconfigbindingIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *Ddnsconfigbinding) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *Ddnsconfigbinding) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the Ddnsconfigbinding from the server
 func (o *Ddnsconfigbinding) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the Ddnsconfigbinding into the server
 func (o *Ddnsconfigbinding) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the Ddnsconfigbinding from the server
 func (o *Ddnsconfigbinding) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

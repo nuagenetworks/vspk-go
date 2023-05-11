@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ThreatPreventionNodeInfoIdentity represents the Identity of the object
-var ThreatPreventionNodeInfoIdentity = bambou.Identity{
-	Name:     "None",
-	Category: "None",
+var ThreatPreventionNodeInfoIdentity = bambou.Identity {
+    Name:     "None",
+    Category: "None",
 }
 
 // ThreatPreventionNodeInfosList represents a list of ThreatPreventionNodeInfos
@@ -42,66 +42,69 @@ type ThreatPreventionNodeInfosList []*ThreatPreventionNodeInfo
 // An Ancestor is defined as an entity that has ThreatPreventionNodeInfo as a descendant.
 // An Ancestor can get a list of its child ThreatPreventionNodeInfos, but not necessarily create one.
 type ThreatPreventionNodeInfosAncestor interface {
-	ThreatPreventionNodeInfos(*bambou.FetchingInfo) (ThreatPreventionNodeInfosList, *bambou.Error)
+    ThreatPreventionNodeInfos(*bambou.FetchingInfo) (ThreatPreventionNodeInfosList, *bambou.Error)
 }
 
 // ThreatPreventionNodeInfosParent is the interface that a parent of a ThreatPreventionNodeInfo must implement.
 // A Parent is defined as an entity that has ThreatPreventionNodeInfo as a child.
 // A Parent is an Ancestor which can create a ThreatPreventionNodeInfo.
 type ThreatPreventionNodeInfosParent interface {
-	ThreatPreventionNodeInfosAncestor
-	CreateThreatPreventionNodeInfo(*ThreatPreventionNodeInfo) *bambou.Error
+    ThreatPreventionNodeInfosAncestor
+    CreateThreatPreventionNodeInfo(*ThreatPreventionNodeInfo) (*bambou.Error)
 }
 
 // ThreatPreventionNodeInfo represents the model of a None
 type ThreatPreventionNodeInfo struct {
-	ID             string        `json:"ID,omitempty"`
-	ParentID       string        `json:"parentID,omitempty"`
-	ParentType     string        `json:"parentType,omitempty"`
-	Owner          string        `json:"owner,omitempty"`
-	Name           string        `json:"name,omitempty"`
-	AdditionalInfo []interface{} `json:"additionalInfo,omitempty"`
-	Status         string        `json:"status,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    AdditionalInfo []interface{} `json:"additionalInfo,omitempty"`
+    Status string `json:"status,omitempty"`
+    
 }
 
 // NewThreatPreventionNodeInfo returns a new *ThreatPreventionNodeInfo
 func NewThreatPreventionNodeInfo() *ThreatPreventionNodeInfo {
 
-	return &ThreatPreventionNodeInfo{}
+    return &ThreatPreventionNodeInfo{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *ThreatPreventionNodeInfo) Identity() bambou.Identity {
 
-	return ThreatPreventionNodeInfoIdentity
+    return ThreatPreventionNodeInfoIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ThreatPreventionNodeInfo) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ThreatPreventionNodeInfo) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the ThreatPreventionNodeInfo from the server
 func (o *ThreatPreventionNodeInfo) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ThreatPreventionNodeInfo into the server
 func (o *ThreatPreventionNodeInfo) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ThreatPreventionNodeInfo from the server
 func (o *ThreatPreventionNodeInfo) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

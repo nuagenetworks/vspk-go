@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // SupplementalInfraConfigIdentity represents the Identity of the object
-var SupplementalInfraConfigIdentity = bambou.Identity{
-	Name:     "supplementalinfraconfig",
-	Category: "supplementalinfraconfig",
+var SupplementalInfraConfigIdentity = bambou.Identity {
+    Name:     "supplementalinfraconfig",
+    Category: "supplementalinfraconfig",
 }
 
 // SupplementalInfraConfigsList represents a list of SupplementalInfraConfigs
@@ -42,64 +42,67 @@ type SupplementalInfraConfigsList []*SupplementalInfraConfig
 // An Ancestor is defined as an entity that has SupplementalInfraConfig as a descendant.
 // An Ancestor can get a list of its child SupplementalInfraConfigs, but not necessarily create one.
 type SupplementalInfraConfigsAncestor interface {
-	SupplementalInfraConfigs(*bambou.FetchingInfo) (SupplementalInfraConfigsList, *bambou.Error)
+    SupplementalInfraConfigs(*bambou.FetchingInfo) (SupplementalInfraConfigsList, *bambou.Error)
 }
 
 // SupplementalInfraConfigsParent is the interface that a parent of a SupplementalInfraConfig must implement.
 // A Parent is defined as an entity that has SupplementalInfraConfig as a child.
 // A Parent is an Ancestor which can create a SupplementalInfraConfig.
 type SupplementalInfraConfigsParent interface {
-	SupplementalInfraConfigsAncestor
-	CreateSupplementalInfraConfig(*SupplementalInfraConfig) *bambou.Error
+    SupplementalInfraConfigsAncestor
+    CreateSupplementalInfraConfig(*SupplementalInfraConfig) (*bambou.Error)
 }
 
 // SupplementalInfraConfig represents the model of a supplementalinfraconfig
 type SupplementalInfraConfig struct {
-	ID                 string      `json:"ID,omitempty"`
-	ParentID           string      `json:"parentID,omitempty"`
-	ParentType         string      `json:"parentType,omitempty"`
-	Owner              string      `json:"owner,omitempty"`
-	SupplementalConfig interface{} `json:"supplementalConfig,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    SupplementalConfig interface{} `json:"supplementalConfig,omitempty"`
+    
 }
 
 // NewSupplementalInfraConfig returns a new *SupplementalInfraConfig
 func NewSupplementalInfraConfig() *SupplementalInfraConfig {
 
-	return &SupplementalInfraConfig{}
+    return &SupplementalInfraConfig{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *SupplementalInfraConfig) Identity() bambou.Identity {
 
-	return SupplementalInfraConfigIdentity
+    return SupplementalInfraConfigIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *SupplementalInfraConfig) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *SupplementalInfraConfig) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the SupplementalInfraConfig from the server
 func (o *SupplementalInfraConfig) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the SupplementalInfraConfig into the server
 func (o *SupplementalInfraConfig) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the SupplementalInfraConfig from the server
 func (o *SupplementalInfraConfig) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // VirtualUplinkIdentity represents the Identity of the object
-var VirtualUplinkIdentity = bambou.Identity{
-	Name:     "virtualuplink",
-	Category: "virtualuplinks",
+var VirtualUplinkIdentity = bambou.Identity {
+    Name:     "virtualuplink",
+    Category: "virtualuplinks",
 }
 
 // VirtualUplinksList represents a list of VirtualUplinks
@@ -42,106 +42,111 @@ type VirtualUplinksList []*VirtualUplink
 // An Ancestor is defined as an entity that has VirtualUplink as a descendant.
 // An Ancestor can get a list of its child VirtualUplinks, but not necessarily create one.
 type VirtualUplinksAncestor interface {
-	VirtualUplinks(*bambou.FetchingInfo) (VirtualUplinksList, *bambou.Error)
+    VirtualUplinks(*bambou.FetchingInfo) (VirtualUplinksList, *bambou.Error)
 }
 
 // VirtualUplinksParent is the interface that a parent of a VirtualUplink must implement.
 // A Parent is defined as an entity that has VirtualUplink as a child.
 // A Parent is an Ancestor which can create a VirtualUplink.
 type VirtualUplinksParent interface {
-	VirtualUplinksAncestor
-	CreateVirtualUplink(*VirtualUplink) *bambou.Error
+    VirtualUplinksAncestor
+    CreateVirtualUplink(*VirtualUplink) (*bambou.Error)
 }
 
 // VirtualUplink represents the model of a virtualuplink
 type VirtualUplink struct {
-	ID                                    string `json:"ID,omitempty"`
-	ParentID                              string `json:"parentID,omitempty"`
-	ParentType                            string `json:"parentType,omitempty"`
-	Owner                                 string `json:"owner,omitempty"`
-	FecEnabled                            string `json:"fecEnabled,omitempty"`
-	PeerEndpoint                          string `json:"peerEndpoint,omitempty"`
-	PeerGatewayID                         string `json:"peerGatewayID,omitempty"`
-	PeerGatewayName                       string `json:"peerGatewayName,omitempty"`
-	PeerGatewaySystemID                   string `json:"peerGatewaySystemID,omitempty"`
-	PeerPortID                            string `json:"peerPortID,omitempty"`
-	PeerUplinkID                          int    `json:"peerUplinkID,omitempty"`
-	PeerVLANID                            string `json:"peerVLANID,omitempty"`
-	ShuntEndpoint                         string `json:"shuntEndpoint,omitempty"`
-	ShuntPortID                           string `json:"shuntPortID,omitempty"`
-	ShuntVLANID                           string `json:"shuntVLANID,omitempty"`
-	VirtualUplinkDatapathID               string `json:"virtualUplinkDatapathID,omitempty"`
-	EnableNATProbes                       bool   `json:"enableNATProbes"`
-	UnderlayID                            int    `json:"underlayID,omitempty"`
-	UnderlayNAT                           bool   `json:"underlayNAT"`
-	UnderlayName                          string `json:"underlayName,omitempty"`
-	UnderlayRouting                       bool   `json:"underlayRouting"`
-	Role                                  string `json:"role,omitempty"`
-	RoleOrder                             int    `json:"roleOrder,omitempty"`
-	TrafficThroughUBROnly                 bool   `json:"trafficThroughUBROnly"`
-	AssociatedEgressQoSPolicyID           string `json:"associatedEgressQoSPolicyID,omitempty"`
-	AssociatedIngressOverlayQoSPolicerID  string `json:"associatedIngressOverlayQoSPolicerID,omitempty"`
-	AssociatedIngressQoSPolicyID          string `json:"associatedIngressQoSPolicyID,omitempty"`
-	AssociatedIngressUnderlayQoSPolicerID string `json:"associatedIngressUnderlayQoSPolicerID,omitempty"`
-	AssociatedUplinkConnectionID          string `json:"associatedUplinkConnectionID,omitempty"`
-	AssociatedVSCProfileID                string `json:"associatedVSCProfileID,omitempty"`
-	AuxMode                               string `json:"auxMode,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    FecEnabled string `json:"fecEnabled,omitempty"`
+    PeerEndpoint string `json:"peerEndpoint,omitempty"`
+    PeerGatewayID string `json:"peerGatewayID,omitempty"`
+    PeerGatewayName string `json:"peerGatewayName,omitempty"`
+    PeerGatewaySystemID string `json:"peerGatewaySystemID,omitempty"`
+    PeerPortID string `json:"peerPortID,omitempty"`
+    PeerUplinkID int `json:"peerUplinkID,omitempty"`
+    PeerVLANID string `json:"peerVLANID,omitempty"`
+    ShuntEndpoint string `json:"shuntEndpoint,omitempty"`
+    ShuntPortID string `json:"shuntPortID,omitempty"`
+    ShuntVLANID string `json:"shuntVLANID,omitempty"`
+    VirtualUplinkDatapathID string `json:"virtualUplinkDatapathID,omitempty"`
+    EnableNATProbes bool `json:"enableNATProbes"`
+    UnderlayID int `json:"underlayID,omitempty"`
+    UnderlayNAT bool `json:"underlayNAT"`
+    UnderlayName string `json:"underlayName,omitempty"`
+    UnderlayRouting bool `json:"underlayRouting"`
+    Role string `json:"role,omitempty"`
+    RoleOrder int `json:"roleOrder,omitempty"`
+    TrafficThroughUBROnly bool `json:"trafficThroughUBROnly"`
+    AssociatedEgressQoSPolicyID string `json:"associatedEgressQoSPolicyID,omitempty"`
+    AssociatedIngressOverlayQoSPolicerID string `json:"associatedIngressOverlayQoSPolicerID,omitempty"`
+    AssociatedIngressQoSPolicyID string `json:"associatedIngressQoSPolicyID,omitempty"`
+    AssociatedIngressUnderlayQoSPolicerID string `json:"associatedIngressUnderlayQoSPolicerID,omitempty"`
+    AssociatedUplinkConnectionID string `json:"associatedUplinkConnectionID,omitempty"`
+    AssociatedVSCProfileID string `json:"associatedVSCProfileID,omitempty"`
+    AuxMode string `json:"auxMode,omitempty"`
+    
 }
 
 // NewVirtualUplink returns a new *VirtualUplink
 func NewVirtualUplink() *VirtualUplink {
 
-	return &VirtualUplink{
-		FecEnabled:            "DISABLED",
-		EnableNATProbes:       false,
-		UnderlayNAT:           true,
-		UnderlayRouting:       true,
-		Role:                  "PRIMARY",
-		TrafficThroughUBROnly: false,
-		AuxMode:               "NONE",
-	}
+    return &VirtualUplink{
+        FecEnabled: "DISABLED",
+        EnableNATProbes: false,
+        UnderlayNAT: true,
+        UnderlayRouting: true,
+        Role: "PRIMARY",
+        TrafficThroughUBROnly: false,
+        AuxMode: "NONE",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *VirtualUplink) Identity() bambou.Identity {
 
-	return VirtualUplinkIdentity
+    return VirtualUplinkIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *VirtualUplink) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *VirtualUplink) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the VirtualUplink from the server
 func (o *VirtualUplink) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the VirtualUplink into the server
 func (o *VirtualUplink) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the VirtualUplink from the server
 func (o *VirtualUplink) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // IKEGatewayConnections retrieves the list of child IKEGatewayConnections of the VirtualUplink
 func (o *VirtualUplink) IKEGatewayConnections(info *bambou.FetchingInfo) (IKEGatewayConnectionsList, *bambou.Error) {
 
-	var list IKEGatewayConnectionsList
-	err := bambou.CurrentSession().FetchChildren(o, IKEGatewayConnectionIdentity, &list, info)
-	return list, err
+    var list IKEGatewayConnectionsList
+    err := bambou.CurrentSession().FetchChildren(o, IKEGatewayConnectionIdentity, &list, info)
+    return list, err
 }
+
+
+

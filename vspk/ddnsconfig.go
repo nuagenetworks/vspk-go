@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // DdnsconfigIdentity represents the Identity of the object
-var DdnsconfigIdentity = bambou.Identity{
-	Name:     "ddnsconfig",
-	Category: "ddnsconfigs",
+var DdnsconfigIdentity = bambou.Identity {
+    Name:     "ddnsconfig",
+    Category: "ddnsconfigs",
 }
 
 // DdnsconfigsList represents a list of Ddnsconfigs
@@ -42,88 +42,93 @@ type DdnsconfigsList []*Ddnsconfig
 // An Ancestor is defined as an entity that has Ddnsconfig as a descendant.
 // An Ancestor can get a list of its child Ddnsconfigs, but not necessarily create one.
 type DdnsconfigsAncestor interface {
-	Ddnsconfigs(*bambou.FetchingInfo) (DdnsconfigsList, *bambou.Error)
+    Ddnsconfigs(*bambou.FetchingInfo) (DdnsconfigsList, *bambou.Error)
 }
 
 // DdnsconfigsParent is the interface that a parent of a Ddnsconfig must implement.
 // A Parent is defined as an entity that has Ddnsconfig as a child.
 // A Parent is an Ancestor which can create a Ddnsconfig.
 type DdnsconfigsParent interface {
-	DdnsconfigsAncestor
-	CreateDdnsconfig(*Ddnsconfig) *bambou.Error
+    DdnsconfigsAncestor
+    CreateDdnsconfig(*Ddnsconfig) (*bambou.Error)
 }
 
 // Ddnsconfig represents the model of a ddnsconfig
 type Ddnsconfig struct {
-	ID               string `json:"ID,omitempty"`
-	ParentID         string `json:"parentID,omitempty"`
-	ParentType       string `json:"parentType,omitempty"`
-	Owner            string `json:"owner,omitempty"`
-	Password         string `json:"password,omitempty"`
-	EnableDDNSConfig bool   `json:"enableDDNSConfig"`
-	ConnectionStatus string `json:"connectionStatus,omitempty"`
-	Hostname         string `json:"hostname,omitempty"`
-	ProviderName     string `json:"providerName,omitempty"`
-	Username         string `json:"username,omitempty"`
-	AssocGatewayId   string `json:"assocGatewayId,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Password string `json:"password,omitempty"`
+    EnableDDNSConfig bool `json:"enableDDNSConfig"`
+    ConnectionStatus string `json:"connectionStatus,omitempty"`
+    Hostname string `json:"hostname,omitempty"`
+    ProviderName string `json:"providerName,omitempty"`
+    Username string `json:"username,omitempty"`
+    AssocGatewayId string `json:"assocGatewayId,omitempty"`
+    
 }
 
 // NewDdnsconfig returns a new *Ddnsconfig
 func NewDdnsconfig() *Ddnsconfig {
 
-	return &Ddnsconfig{
-		EnableDDNSConfig: true,
-		ConnectionStatus: "UNKNOWN",
-		ProviderName:     "DYN_DNS",
-	}
+    return &Ddnsconfig{
+        EnableDDNSConfig: true,
+        ConnectionStatus: "UNKNOWN",
+        ProviderName: "DYN_DNS",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *Ddnsconfig) Identity() bambou.Identity {
 
-	return DdnsconfigIdentity
+    return DdnsconfigIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *Ddnsconfig) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *Ddnsconfig) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the Ddnsconfig from the server
 func (o *Ddnsconfig) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the Ddnsconfig into the server
 func (o *Ddnsconfig) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the Ddnsconfig from the server
 func (o *Ddnsconfig) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Ddnsconfigbindings retrieves the list of child Ddnsconfigbindings of the Ddnsconfig
 func (o *Ddnsconfig) Ddnsconfigbindings(info *bambou.FetchingInfo) (DdnsconfigbindingsList, *bambou.Error) {
 
-	var list DdnsconfigbindingsList
-	err := bambou.CurrentSession().FetchChildren(o, DdnsconfigbindingIdentity, &list, info)
-	return list, err
+    var list DdnsconfigbindingsList
+    err := bambou.CurrentSession().FetchChildren(o, DdnsconfigbindingIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateDdnsconfigbinding creates a new child Ddnsconfigbinding under the Ddnsconfig
 func (o *Ddnsconfig) CreateDdnsconfigbinding(child *Ddnsconfigbinding) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

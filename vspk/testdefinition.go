@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // TestDefinitionIdentity represents the Identity of the object
-var TestDefinitionIdentity = bambou.Identity{
-	Name:     "testdefinition",
-	Category: "testdefinitions",
+var TestDefinitionIdentity = bambou.Identity {
+    Name:     "testdefinition",
+    Category: "testdefinitions",
 }
 
 // TestDefinitionsList represents a list of TestDefinitions
@@ -42,119 +42,130 @@ type TestDefinitionsList []*TestDefinition
 // An Ancestor is defined as an entity that has TestDefinition as a descendant.
 // An Ancestor can get a list of its child TestDefinitions, but not necessarily create one.
 type TestDefinitionsAncestor interface {
-	TestDefinitions(*bambou.FetchingInfo) (TestDefinitionsList, *bambou.Error)
+    TestDefinitions(*bambou.FetchingInfo) (TestDefinitionsList, *bambou.Error)
 }
 
 // TestDefinitionsParent is the interface that a parent of a TestDefinition must implement.
 // A Parent is defined as an entity that has TestDefinition as a child.
 // A Parent is an Ancestor which can create a TestDefinition.
 type TestDefinitionsParent interface {
-	TestDefinitionsAncestor
-	CreateTestDefinition(*TestDefinition) *bambou.Error
+    TestDefinitionsAncestor
+    CreateTestDefinition(*TestDefinition) (*bambou.Error)
 }
 
 // TestDefinition represents the model of a testdefinition
 type TestDefinition struct {
-	ID               string        `json:"ID,omitempty"`
-	ParentID         string        `json:"parentID,omitempty"`
-	ParentType       string        `json:"parentType,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	Name             string        `json:"name,omitempty"`
-	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
-	Description      string        `json:"description,omitempty"`
-	Timeout          int           `json:"timeout,omitempty"`
-	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope      string        `json:"entityScope,omitempty"`
-	Command          string        `json:"command,omitempty"`
-	CreationDate     string        `json:"creationDate,omitempty"`
-	Arguments        string        `json:"arguments,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	ExternalID       string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    Description string `json:"description,omitempty"`
+    Timeout int `json:"timeout,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    Command string `json:"command,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    Arguments string `json:"arguments,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewTestDefinition returns a new *TestDefinition
 func NewTestDefinition() *TestDefinition {
 
-	return &TestDefinition{
-		Timeout: 60,
-	}
+    return &TestDefinition{
+        Timeout: 60,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *TestDefinition) Identity() bambou.Identity {
 
-	return TestDefinitionIdentity
+    return TestDefinitionIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *TestDefinition) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *TestDefinition) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the TestDefinition from the server
 func (o *TestDefinition) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the TestDefinition into the server
 func (o *TestDefinition) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the TestDefinition from the server
 func (o *TestDefinition) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the TestDefinition
 func (o *TestDefinition) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the TestDefinition
 func (o *TestDefinition) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the TestDefinition
 func (o *TestDefinition) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the TestDefinition
 func (o *TestDefinition) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the TestDefinition
 func (o *TestDefinition) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the TestDefinition
 func (o *TestDefinition) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

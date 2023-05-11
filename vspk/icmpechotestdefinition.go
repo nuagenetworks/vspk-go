@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ICMPEchoTestDefinitionIdentity represents the Identity of the object
-var ICMPEchoTestDefinitionIdentity = bambou.Identity{
-	Name:     "icmpechotestdefinition",
-	Category: "icmpechotestdefinitions",
+var ICMPEchoTestDefinitionIdentity = bambou.Identity {
+    Name:     "icmpechotestdefinition",
+    Category: "icmpechotestdefinitions",
 }
 
 // ICMPEchoTestDefinitionsList represents a list of ICMPEchoTestDefinitions
@@ -42,81 +42,83 @@ type ICMPEchoTestDefinitionsList []*ICMPEchoTestDefinition
 // An Ancestor is defined as an entity that has ICMPEchoTestDefinition as a descendant.
 // An Ancestor can get a list of its child ICMPEchoTestDefinitions, but not necessarily create one.
 type ICMPEchoTestDefinitionsAncestor interface {
-	ICMPEchoTestDefinitions(*bambou.FetchingInfo) (ICMPEchoTestDefinitionsList, *bambou.Error)
+    ICMPEchoTestDefinitions(*bambou.FetchingInfo) (ICMPEchoTestDefinitionsList, *bambou.Error)
 }
 
 // ICMPEchoTestDefinitionsParent is the interface that a parent of a ICMPEchoTestDefinition must implement.
 // A Parent is defined as an entity that has ICMPEchoTestDefinition as a child.
 // A Parent is an Ancestor which can create a ICMPEchoTestDefinition.
 type ICMPEchoTestDefinitionsParent interface {
-	ICMPEchoTestDefinitionsAncestor
-	CreateICMPEchoTestDefinition(*ICMPEchoTestDefinition) *bambou.Error
+    ICMPEchoTestDefinitionsAncestor
+    CreateICMPEchoTestDefinition(*ICMPEchoTestDefinition) (*bambou.Error)
 }
 
 // ICMPEchoTestDefinition represents the model of a icmpechotestdefinition
 type ICMPEchoTestDefinition struct {
-	ID                            string  `json:"ID,omitempty"`
-	ParentID                      string  `json:"parentID,omitempty"`
-	ParentType                    string  `json:"parentType,omitempty"`
-	Owner                         string  `json:"owner,omitempty"`
-	PacketCount                   int     `json:"packetCount,omitempty"`
-	PacketInterval                int     `json:"packetInterval,omitempty"`
-	PacketSize                    int     `json:"packetSize,omitempty"`
-	Name                          string  `json:"name,omitempty"`
-	Description                   string  `json:"description,omitempty"`
-	ThresholdAverageRoundTripTime float64 `json:"thresholdAverageRoundTripTime,omitempty"`
-	ThresholdPacketLoss           float64 `json:"thresholdPacketLoss,omitempty"`
-	Timeout                       int     `json:"timeout,omitempty"`
-	SlaMonitoring                 bool    `json:"slaMonitoring"`
-	DonotFragment                 bool    `json:"donotFragment"`
-	Tos                           int     `json:"tos,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    PacketCount int `json:"packetCount,omitempty"`
+    PacketInterval int `json:"packetInterval,omitempty"`
+    PacketSize int `json:"packetSize,omitempty"`
+    Name string `json:"name,omitempty"`
+    Description string `json:"description,omitempty"`
+    ThresholdAverageRoundTripTime float64 `json:"thresholdAverageRoundTripTime,omitempty"`
+    ThresholdPacketLoss float64 `json:"thresholdPacketLoss,omitempty"`
+    Timeout int `json:"timeout,omitempty"`
+    SlaMonitoring bool `json:"slaMonitoring"`
+    DonotFragment bool `json:"donotFragment"`
+    Tos int `json:"tos,omitempty"`
+    
 }
 
 // NewICMPEchoTestDefinition returns a new *ICMPEchoTestDefinition
 func NewICMPEchoTestDefinition() *ICMPEchoTestDefinition {
 
-	return &ICMPEchoTestDefinition{
-		PacketCount:    5,
-		PacketInterval: 1000,
-		PacketSize:     64,
-		Timeout:        60,
-		SlaMonitoring:  false,
-		DonotFragment:  false,
-	}
+    return &ICMPEchoTestDefinition{
+        PacketCount: 5,
+        PacketInterval: 1000,
+        PacketSize: 64,
+        Timeout: 60,
+        SlaMonitoring: false,
+        DonotFragment: false,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *ICMPEchoTestDefinition) Identity() bambou.Identity {
 
-	return ICMPEchoTestDefinitionIdentity
+    return ICMPEchoTestDefinitionIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ICMPEchoTestDefinition) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ICMPEchoTestDefinition) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the ICMPEchoTestDefinition from the server
 func (o *ICMPEchoTestDefinition) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ICMPEchoTestDefinition into the server
 func (o *ICMPEchoTestDefinition) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ICMPEchoTestDefinition from the server
 func (o *ICMPEchoTestDefinition) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+

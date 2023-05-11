@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // EgressAdvFwdEntryTemplateIdentity represents the Identity of the object
-var EgressAdvFwdEntryTemplateIdentity = bambou.Identity{
-	Name:     "egressadvfwdentrytemplate",
-	Category: "egressadvfwdentrytemplates",
+var EgressAdvFwdEntryTemplateIdentity = bambou.Identity {
+    Name:     "egressadvfwdentrytemplate",
+    Category: "egressadvfwdentrytemplates",
 }
 
 // EgressAdvFwdEntryTemplatesList represents a list of EgressAdvFwdEntryTemplates
@@ -42,155 +42,166 @@ type EgressAdvFwdEntryTemplatesList []*EgressAdvFwdEntryTemplate
 // An Ancestor is defined as an entity that has EgressAdvFwdEntryTemplate as a descendant.
 // An Ancestor can get a list of its child EgressAdvFwdEntryTemplates, but not necessarily create one.
 type EgressAdvFwdEntryTemplatesAncestor interface {
-	EgressAdvFwdEntryTemplates(*bambou.FetchingInfo) (EgressAdvFwdEntryTemplatesList, *bambou.Error)
+    EgressAdvFwdEntryTemplates(*bambou.FetchingInfo) (EgressAdvFwdEntryTemplatesList, *bambou.Error)
 }
 
 // EgressAdvFwdEntryTemplatesParent is the interface that a parent of a EgressAdvFwdEntryTemplate must implement.
 // A Parent is defined as an entity that has EgressAdvFwdEntryTemplate as a child.
 // A Parent is an Ancestor which can create a EgressAdvFwdEntryTemplate.
 type EgressAdvFwdEntryTemplatesParent interface {
-	EgressAdvFwdEntryTemplatesAncestor
-	CreateEgressAdvFwdEntryTemplate(*EgressAdvFwdEntryTemplate) *bambou.Error
+    EgressAdvFwdEntryTemplatesAncestor
+    CreateEgressAdvFwdEntryTemplate(*EgressAdvFwdEntryTemplate) (*bambou.Error)
 }
 
 // EgressAdvFwdEntryTemplate represents the model of a egressadvfwdentrytemplate
 type EgressAdvFwdEntryTemplate struct {
-	ID                              string        `json:"ID,omitempty"`
-	ParentID                        string        `json:"parentID,omitempty"`
-	ParentType                      string        `json:"parentType,omitempty"`
-	Owner                           string        `json:"owner,omitempty"`
-	ACLTemplateName                 string        `json:"ACLTemplateName,omitempty"`
-	ICMPCode                        string        `json:"ICMPCode,omitempty"`
-	ICMPType                        string        `json:"ICMPType,omitempty"`
-	FCOverride                      string        `json:"FCOverride,omitempty"`
-	IPv6AddressOverride             string        `json:"IPv6AddressOverride,omitempty"`
-	DSCP                            string        `json:"DSCP,omitempty"`
-	FailsafeDatapath                string        `json:"failsafeDatapath,omitempty"`
-	LastUpdatedBy                   string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate                 string        `json:"lastUpdatedDate,omitempty"`
-	Action                          string        `json:"action,omitempty"`
-	AddressOverride                 string        `json:"addressOverride,omitempty"`
-	WebFilterID                     string        `json:"webFilterID,omitempty"`
-	WebFilterStatsLoggingEnabled    bool          `json:"webFilterStatsLoggingEnabled"`
-	WebFilterType                   string        `json:"webFilterType,omitempty"`
-	RedirectVPortTagID              string        `json:"redirectVPortTagID,omitempty"`
-	RedirectionTargetEntityType     string        `json:"redirectionTargetEntityType,omitempty"`
-	Description                     string        `json:"description,omitempty"`
-	DestinationPort                 string        `json:"destinationPort,omitempty"`
-	NetworkEntityType               string        `json:"networkEntityType,omitempty"`
-	NetworkID                       string        `json:"networkID,omitempty"`
-	NetworkType                     string        `json:"networkType,omitempty"`
-	MirrorDestinationGroupID        string        `json:"mirrorDestinationGroupID,omitempty"`
-	MirrorDestinationID             string        `json:"mirrorDestinationID,omitempty"`
-	FlowLoggingEnabled              bool          `json:"flowLoggingEnabled"`
-	EmbeddedMetadata                []interface{} `json:"embeddedMetadata,omitempty"`
-	EnterpriseName                  string        `json:"enterpriseName,omitempty"`
-	EntityScope                     string        `json:"entityScope,omitempty"`
-	LocationEntityType              string        `json:"locationEntityType,omitempty"`
-	LocationID                      string        `json:"locationID,omitempty"`
-	LocationType                    string        `json:"locationType,omitempty"`
-	PolicyState                     string        `json:"policyState,omitempty"`
-	DomainName                      string        `json:"domainName,omitempty"`
-	SourcePort                      string        `json:"sourcePort,omitempty"`
-	UplinkPreference                string        `json:"uplinkPreference,omitempty"`
-	CreationDate                    string        `json:"creationDate,omitempty"`
-	Priority                        int           `json:"priority,omitempty"`
-	Protocol                        string        `json:"protocol,omitempty"`
-	AssociatedLiveEntityID          string        `json:"associatedLiveEntityID,omitempty"`
-	AssociatedLiveTemplateID        string        `json:"associatedLiveTemplateID,omitempty"`
-	AssociatedTrafficType           string        `json:"associatedTrafficType,omitempty"`
-	AssociatedTrafficTypeID         string        `json:"associatedTrafficTypeID,omitempty"`
-	AssociatedVirtualFirewallRuleID string        `json:"associatedVirtualFirewallRuleID,omitempty"`
-	StatsID                         string        `json:"statsID,omitempty"`
-	StatsLoggingEnabled             bool          `json:"statsLoggingEnabled"`
-	EtherType                       string        `json:"etherType,omitempty"`
-	Owner                           string        `json:"owner,omitempty"`
-	ExternalID                      string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    ACLTemplateName string `json:"ACLTemplateName,omitempty"`
+    ICMPCode string `json:"ICMPCode,omitempty"`
+    ICMPType string `json:"ICMPType,omitempty"`
+    FCOverride string `json:"FCOverride,omitempty"`
+    IPv6AddressOverride string `json:"IPv6AddressOverride,omitempty"`
+    DSCP string `json:"DSCP,omitempty"`
+    FailsafeDatapath string `json:"failsafeDatapath,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    Action string `json:"action,omitempty"`
+    AddressOverride string `json:"addressOverride,omitempty"`
+    WebFilterID string `json:"webFilterID,omitempty"`
+    WebFilterStatsLoggingEnabled bool `json:"webFilterStatsLoggingEnabled"`
+    WebFilterType string `json:"webFilterType,omitempty"`
+    RedirectVPortTagID string `json:"redirectVPortTagID,omitempty"`
+    RedirectionTargetEntityType string `json:"redirectionTargetEntityType,omitempty"`
+    Description string `json:"description,omitempty"`
+    DestinationPort string `json:"destinationPort,omitempty"`
+    NetworkEntityType string `json:"networkEntityType,omitempty"`
+    NetworkID string `json:"networkID,omitempty"`
+    NetworkType string `json:"networkType,omitempty"`
+    MirrorDestinationGroupID string `json:"mirrorDestinationGroupID,omitempty"`
+    MirrorDestinationID string `json:"mirrorDestinationID,omitempty"`
+    FlowLoggingEnabled bool `json:"flowLoggingEnabled"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EnterpriseName string `json:"enterpriseName,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    LocationEntityType string `json:"locationEntityType,omitempty"`
+    LocationID string `json:"locationID,omitempty"`
+    LocationType string `json:"locationType,omitempty"`
+    PolicyState string `json:"policyState,omitempty"`
+    DomainName string `json:"domainName,omitempty"`
+    SourcePort string `json:"sourcePort,omitempty"`
+    UplinkPreference string `json:"uplinkPreference,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    Priority int `json:"priority,omitempty"`
+    Protocol string `json:"protocol,omitempty"`
+    AssociatedLiveEntityID string `json:"associatedLiveEntityID,omitempty"`
+    AssociatedLiveTemplateID string `json:"associatedLiveTemplateID,omitempty"`
+    AssociatedTrafficType string `json:"associatedTrafficType,omitempty"`
+    AssociatedTrafficTypeID string `json:"associatedTrafficTypeID,omitempty"`
+    AssociatedVirtualFirewallRuleID string `json:"associatedVirtualFirewallRuleID,omitempty"`
+    StatsID string `json:"statsID,omitempty"`
+    StatsLoggingEnabled bool `json:"statsLoggingEnabled"`
+    EtherType string `json:"etherType,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewEgressAdvFwdEntryTemplate returns a new *EgressAdvFwdEntryTemplate
 func NewEgressAdvFwdEntryTemplate() *EgressAdvFwdEntryTemplate {
 
-	return &EgressAdvFwdEntryTemplate{
-		FailsafeDatapath:             "FAIL_TO_BLOCK",
-		WebFilterStatsLoggingEnabled: false,
-	}
+    return &EgressAdvFwdEntryTemplate{
+        FailsafeDatapath: "FAIL_TO_BLOCK",
+        WebFilterStatsLoggingEnabled: false,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *EgressAdvFwdEntryTemplate) Identity() bambou.Identity {
 
-	return EgressAdvFwdEntryTemplateIdentity
+    return EgressAdvFwdEntryTemplateIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *EgressAdvFwdEntryTemplate) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *EgressAdvFwdEntryTemplate) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the EgressAdvFwdEntryTemplate from the server
 func (o *EgressAdvFwdEntryTemplate) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the EgressAdvFwdEntryTemplate into the server
 func (o *EgressAdvFwdEntryTemplate) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the EgressAdvFwdEntryTemplate from the server
 func (o *EgressAdvFwdEntryTemplate) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the EgressAdvFwdEntryTemplate
 func (o *EgressAdvFwdEntryTemplate) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the EgressAdvFwdEntryTemplate
 func (o *EgressAdvFwdEntryTemplate) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the EgressAdvFwdEntryTemplate
 func (o *EgressAdvFwdEntryTemplate) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the EgressAdvFwdEntryTemplate
 func (o *EgressAdvFwdEntryTemplate) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the EgressAdvFwdEntryTemplate
 func (o *EgressAdvFwdEntryTemplate) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the EgressAdvFwdEntryTemplate
 func (o *EgressAdvFwdEntryTemplate) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

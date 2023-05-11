@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ContainerInterfaceIdentity represents the Identity of the object
-var ContainerInterfaceIdentity = bambou.Identity{
-	Name:     "containerinterface",
-	Category: "containerinterfaces",
+var ContainerInterfaceIdentity = bambou.Identity {
+    Name:     "containerinterface",
+    Category: "containerinterfaces",
 }
 
 // ContainerInterfacesList represents a list of ContainerInterfaces
@@ -42,214 +42,256 @@ type ContainerInterfacesList []*ContainerInterface
 // An Ancestor is defined as an entity that has ContainerInterface as a descendant.
 // An Ancestor can get a list of its child ContainerInterfaces, but not necessarily create one.
 type ContainerInterfacesAncestor interface {
-	ContainerInterfaces(*bambou.FetchingInfo) (ContainerInterfacesList, *bambou.Error)
+    ContainerInterfaces(*bambou.FetchingInfo) (ContainerInterfacesList, *bambou.Error)
 }
 
 // ContainerInterfacesParent is the interface that a parent of a ContainerInterface must implement.
 // A Parent is defined as an entity that has ContainerInterface as a child.
 // A Parent is an Ancestor which can create a ContainerInterface.
 type ContainerInterfacesParent interface {
-	ContainerInterfacesAncestor
-	CreateContainerInterface(*ContainerInterface) *bambou.Error
+    ContainerInterfacesAncestor
+    CreateContainerInterface(*ContainerInterface) (*bambou.Error)
 }
 
 // ContainerInterface represents the model of a containerinterface
 type ContainerInterface struct {
-	ID                  string        `json:"ID,omitempty"`
-	ParentID            string        `json:"parentID,omitempty"`
-	ParentType          string        `json:"parentType,omitempty"`
-	Owner               string        `json:"owner,omitempty"`
-	MAC                 string        `json:"MAC,omitempty"`
-	IPAddress           string        `json:"IPAddress,omitempty"`
-	VPortID             string        `json:"VPortID,omitempty"`
-	VPortName           string        `json:"VPortName,omitempty"`
-	IPv6Address         string        `json:"IPv6Address,omitempty"`
-	IPv6Gateway         string        `json:"IPv6Gateway,omitempty"`
-	Name                string        `json:"name,omitempty"`
-	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
-	Gateway             string        `json:"gateway,omitempty"`
-	Netmask             string        `json:"netmask,omitempty"`
-	NetworkID           string        `json:"networkID,omitempty"`
-	NetworkName         string        `json:"networkName,omitempty"`
-	TierID              string        `json:"tierID,omitempty"`
-	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
-	EndpointID          string        `json:"endpointID,omitempty"`
-	EntityScope         string        `json:"entityScope,omitempty"`
-	PolicyDecisionID    string        `json:"policyDecisionID,omitempty"`
-	DomainID            string        `json:"domainID,omitempty"`
-	DomainName          string        `json:"domainName,omitempty"`
-	ZoneID              string        `json:"zoneID,omitempty"`
-	ZoneName            string        `json:"zoneName,omitempty"`
-	ContainerUUID       string        `json:"containerUUID,omitempty"`
-	CreationDate        string        `json:"creationDate,omitempty"`
-	AttachedNetworkID   string        `json:"attachedNetworkID,omitempty"`
-	AttachedNetworkType string        `json:"attachedNetworkType,omitempty"`
-	MultiNICVPortName   string        `json:"multiNICVPortName,omitempty"`
-	Owner               string        `json:"owner,omitempty"`
-	ExternalID          string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    MAC string `json:"MAC,omitempty"`
+    IPAddress string `json:"IPAddress,omitempty"`
+    VPortID string `json:"VPortID,omitempty"`
+    VPortName string `json:"VPortName,omitempty"`
+    IPv6Address string `json:"IPv6Address,omitempty"`
+    IPv6Gateway string `json:"IPv6Gateway,omitempty"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    Gateway string `json:"gateway,omitempty"`
+    Netmask string `json:"netmask,omitempty"`
+    NetworkID string `json:"networkID,omitempty"`
+    NetworkName string `json:"networkName,omitempty"`
+    TierID string `json:"tierID,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EndpointID string `json:"endpointID,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    PolicyDecisionID string `json:"policyDecisionID,omitempty"`
+    DomainID string `json:"domainID,omitempty"`
+    DomainName string `json:"domainName,omitempty"`
+    ZoneID string `json:"zoneID,omitempty"`
+    ZoneName string `json:"zoneName,omitempty"`
+    ContainerUUID string `json:"containerUUID,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    AttachedNetworkID string `json:"attachedNetworkID,omitempty"`
+    AttachedNetworkType string `json:"attachedNetworkType,omitempty"`
+    MultiNICVPortName string `json:"multiNICVPortName,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewContainerInterface returns a new *ContainerInterface
 func NewContainerInterface() *ContainerInterface {
 
-	return &ContainerInterface{}
+    return &ContainerInterface{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *ContainerInterface) Identity() bambou.Identity {
 
-	return ContainerInterfaceIdentity
+    return ContainerInterfaceIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ContainerInterface) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ContainerInterface) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the ContainerInterface from the server
 func (o *ContainerInterface) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ContainerInterface into the server
 func (o *ContainerInterface) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ContainerInterface from the server
 func (o *ContainerInterface) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // TCAs retrieves the list of child TCAs of the ContainerInterface
 func (o *ContainerInterface) TCAs(info *bambou.FetchingInfo) (TCAsList, *bambou.Error) {
 
-	var list TCAsList
-	err := bambou.CurrentSession().FetchChildren(o, TCAIdentity, &list, info)
-	return list, err
+    var list TCAsList
+    err := bambou.CurrentSession().FetchChildren(o, TCAIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // RedirectionTargets retrieves the list of child RedirectionTargets of the ContainerInterface
 func (o *ContainerInterface) RedirectionTargets(info *bambou.FetchingInfo) (RedirectionTargetsList, *bambou.Error) {
 
-	var list RedirectionTargetsList
-	err := bambou.CurrentSession().FetchChildren(o, RedirectionTargetIdentity, &list, info)
-	return list, err
+    var list RedirectionTargetsList
+    err := bambou.CurrentSession().FetchChildren(o, RedirectionTargetIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // Permissions retrieves the list of child Permissions of the ContainerInterface
 func (o *ContainerInterface) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the ContainerInterface
 func (o *ContainerInterface) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the ContainerInterface
 func (o *ContainerInterface) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the ContainerInterface
 func (o *ContainerInterface) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // DHCPOptions retrieves the list of child DHCPOptions of the ContainerInterface
 func (o *ContainerInterface) DHCPOptions(info *bambou.FetchingInfo) (DHCPOptionsList, *bambou.Error) {
 
-	var list DHCPOptionsList
-	err := bambou.CurrentSession().FetchChildren(o, DHCPOptionIdentity, &list, info)
-	return list, err
+    var list DHCPOptionsList
+    err := bambou.CurrentSession().FetchChildren(o, DHCPOptionIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // DHCPv6Options retrieves the list of child DHCPv6Options of the ContainerInterface
 func (o *ContainerInterface) DHCPv6Options(info *bambou.FetchingInfo) (DHCPv6OptionsList, *bambou.Error) {
 
-	var list DHCPv6OptionsList
-	err := bambou.CurrentSession().FetchChildren(o, DHCPv6OptionIdentity, &list, info)
-	return list, err
+    var list DHCPv6OptionsList
+    err := bambou.CurrentSession().FetchChildren(o, DHCPv6OptionIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the ContainerInterface
 func (o *ContainerInterface) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the ContainerInterface
 func (o *ContainerInterface) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // PolicyDecisions retrieves the list of child PolicyDecisions of the ContainerInterface
 func (o *ContainerInterface) PolicyDecisions(info *bambou.FetchingInfo) (PolicyDecisionsList, *bambou.Error) {
 
-	var list PolicyDecisionsList
-	err := bambou.CurrentSession().FetchChildren(o, PolicyDecisionIdentity, &list, info)
-	return list, err
+    var list PolicyDecisionsList
+    err := bambou.CurrentSession().FetchChildren(o, PolicyDecisionIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // PolicyGroups retrieves the list of child PolicyGroups of the ContainerInterface
 func (o *ContainerInterface) PolicyGroups(info *bambou.FetchingInfo) (PolicyGroupsList, *bambou.Error) {
 
-	var list PolicyGroupsList
-	err := bambou.CurrentSession().FetchChildren(o, PolicyGroupIdentity, &list, info)
-	return list, err
+    var list PolicyGroupsList
+    err := bambou.CurrentSession().FetchChildren(o, PolicyGroupIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // StaticRoutes retrieves the list of child StaticRoutes of the ContainerInterface
 func (o *ContainerInterface) StaticRoutes(info *bambou.FetchingInfo) (StaticRoutesList, *bambou.Error) {
 
-	var list StaticRoutesList
-	err := bambou.CurrentSession().FetchChildren(o, StaticRouteIdentity, &list, info)
-	return list, err
+    var list StaticRoutesList
+    err := bambou.CurrentSession().FetchChildren(o, StaticRouteIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // Statistics retrieves the list of child Statistics of the ContainerInterface
 func (o *ContainerInterface) Statistics(info *bambou.FetchingInfo) (StatisticsList, *bambou.Error) {
 
-	var list StatisticsList
-	err := bambou.CurrentSession().FetchChildren(o, StatisticsIdentity, &list, info)
-	return list, err
+    var list StatisticsList
+    err := bambou.CurrentSession().FetchChildren(o, StatisticsIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // MultiCastChannelMaps retrieves the list of child MultiCastChannelMaps of the ContainerInterface
 func (o *ContainerInterface) MultiCastChannelMaps(info *bambou.FetchingInfo) (MultiCastChannelMapsList, *bambou.Error) {
 
-	var list MultiCastChannelMapsList
-	err := bambou.CurrentSession().FetchChildren(o, MultiCastChannelMapIdentity, &list, info)
-	return list, err
+    var list MultiCastChannelMapsList
+    err := bambou.CurrentSession().FetchChildren(o, MultiCastChannelMapIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // EventLogs retrieves the list of child EventLogs of the ContainerInterface
 func (o *ContainerInterface) EventLogs(info *bambou.FetchingInfo) (EventLogsList, *bambou.Error) {
 
-	var list EventLogsList
-	err := bambou.CurrentSession().FetchChildren(o, EventLogIdentity, &list, info)
-	return list, err
+    var list EventLogsList
+    err := bambou.CurrentSession().FetchChildren(o, EventLogIdentity, &list, info)
+    return list, err
 }
+
+
+

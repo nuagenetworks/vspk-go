@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // VPortMirrorIdentity represents the Identity of the object
-var VPortMirrorIdentity = bambou.Identity{
-	Name:     "vportmirror",
-	Category: "vportmirrors",
+var VPortMirrorIdentity = bambou.Identity {
+    Name:     "vportmirror",
+    Category: "vportmirrors",
 }
 
 // VPortMirrorsList represents a list of VPortMirrors
@@ -42,123 +42,134 @@ type VPortMirrorsList []*VPortMirror
 // An Ancestor is defined as an entity that has VPortMirror as a descendant.
 // An Ancestor can get a list of its child VPortMirrors, but not necessarily create one.
 type VPortMirrorsAncestor interface {
-	VPortMirrors(*bambou.FetchingInfo) (VPortMirrorsList, *bambou.Error)
+    VPortMirrors(*bambou.FetchingInfo) (VPortMirrorsList, *bambou.Error)
 }
 
 // VPortMirrorsParent is the interface that a parent of a VPortMirror must implement.
 // A Parent is defined as an entity that has VPortMirror as a child.
 // A Parent is an Ancestor which can create a VPortMirror.
 type VPortMirrorsParent interface {
-	VPortMirrorsAncestor
-	CreateVPortMirror(*VPortMirror) *bambou.Error
+    VPortMirrorsAncestor
+    CreateVPortMirror(*VPortMirror) (*bambou.Error)
 }
 
 // VPortMirror represents the model of a vportmirror
 type VPortMirror struct {
-	ID                    string        `json:"ID,omitempty"`
-	ParentID              string        `json:"parentID,omitempty"`
-	ParentType            string        `json:"parentType,omitempty"`
-	Owner                 string        `json:"owner,omitempty"`
-	LastUpdatedBy         string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate       string        `json:"lastUpdatedDate,omitempty"`
-	NetworkName           string        `json:"networkName,omitempty"`
-	MirrorDestinationID   string        `json:"mirrorDestinationID,omitempty"`
-	MirrorDestinationName string        `json:"mirrorDestinationName,omitempty"`
-	MirrorDirection       string        `json:"mirrorDirection,omitempty"`
-	EmbeddedMetadata      []interface{} `json:"embeddedMetadata,omitempty"`
-	EnterpiseName         string        `json:"enterpiseName,omitempty"`
-	EntityScope           string        `json:"entityScope,omitempty"`
-	DomainName            string        `json:"domainName,omitempty"`
-	VportId               string        `json:"vportId,omitempty"`
-	VportName             string        `json:"vportName,omitempty"`
-	CreationDate          string        `json:"creationDate,omitempty"`
-	AttachedNetworkType   string        `json:"attachedNetworkType,omitempty"`
-	Owner                 string        `json:"owner,omitempty"`
-	ExternalID            string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    NetworkName string `json:"networkName,omitempty"`
+    MirrorDestinationID string `json:"mirrorDestinationID,omitempty"`
+    MirrorDestinationName string `json:"mirrorDestinationName,omitempty"`
+    MirrorDirection string `json:"mirrorDirection,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EnterpiseName string `json:"enterpiseName,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    DomainName string `json:"domainName,omitempty"`
+    VportId string `json:"vportId,omitempty"`
+    VportName string `json:"vportName,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    AttachedNetworkType string `json:"attachedNetworkType,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewVPortMirror returns a new *VPortMirror
 func NewVPortMirror() *VPortMirror {
 
-	return &VPortMirror{
-		MirrorDirection: "BOTH",
-	}
+    return &VPortMirror{
+        MirrorDirection: "BOTH",
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *VPortMirror) Identity() bambou.Identity {
 
-	return VPortMirrorIdentity
+    return VPortMirrorIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *VPortMirror) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *VPortMirror) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the VPortMirror from the server
 func (o *VPortMirror) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the VPortMirror into the server
 func (o *VPortMirror) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the VPortMirror from the server
 func (o *VPortMirror) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the VPortMirror
 func (o *VPortMirror) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the VPortMirror
 func (o *VPortMirror) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the VPortMirror
 func (o *VPortMirror) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the VPortMirror
 func (o *VPortMirror) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the VPortMirror
 func (o *VPortMirror) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the VPortMirror
 func (o *VPortMirror) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

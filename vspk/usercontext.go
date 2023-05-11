@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // UserContextIdentity represents the Identity of the object
-var UserContextIdentity = bambou.Identity{
-	Name:     "usercontext",
-	Category: "usercontexts",
+var UserContextIdentity = bambou.Identity {
+    Name:     "usercontext",
+    Category: "usercontexts",
 }
 
 // UserContextsList represents a list of UserContexts
@@ -42,141 +42,155 @@ type UserContextsList []*UserContext
 // An Ancestor is defined as an entity that has UserContext as a descendant.
 // An Ancestor can get a list of its child UserContexts, but not necessarily create one.
 type UserContextsAncestor interface {
-	UserContexts(*bambou.FetchingInfo) (UserContextsList, *bambou.Error)
+    UserContexts(*bambou.FetchingInfo) (UserContextsList, *bambou.Error)
 }
 
 // UserContextsParent is the interface that a parent of a UserContext must implement.
 // A Parent is defined as an entity that has UserContext as a child.
 // A Parent is an Ancestor which can create a UserContext.
 type UserContextsParent interface {
-	UserContextsAncestor
-	CreateUserContext(*UserContext) *bambou.Error
+    UserContextsAncestor
+    CreateUserContext(*UserContext) (*bambou.Error)
 }
 
 // UserContext represents the model of a usercontext
 type UserContext struct {
-	ID                          string        `json:"ID,omitempty"`
-	ParentID                    string        `json:"parentID,omitempty"`
-	ParentType                  string        `json:"parentType,omitempty"`
-	Owner                       string        `json:"owner,omitempty"`
-	AARFlowStatsInterval        int           `json:"AARFlowStatsInterval,omitempty"`
-	AARProbeStatsInterval       int           `json:"AARProbeStatsInterval,omitempty"`
-	VSSFeatureEnabled           bool          `json:"VSSFeatureEnabled"`
-	VSSStatsInterval            int           `json:"VSSStatsInterval,omitempty"`
-	PageSize                    int           `json:"pageSize,omitempty"`
-	MaintenanceModeEnabled      bool          `json:"maintenanceModeEnabled"`
-	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
-	RbacEnabled                 bool          `json:"rbacEnabled"`
-	DeniedFlowCollectionEnabled bool          `json:"deniedFlowCollectionEnabled"`
-	ThreatIntelligenceEnabled   bool          `json:"threatIntelligenceEnabled"`
-	AllowEnterpriseAvatarOnNSG  bool          `json:"allowEnterpriseAvatarOnNSG"`
-	FlowCollectionEnabled       bool          `json:"flowCollectionEnabled"`
-	EmbeddedMetadata            []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope                 string        `json:"entityScope,omitempty"`
-	GoogleMapsAPIKey            string        `json:"googleMapsAPIKey,omitempty"`
-	CreationDate                string        `json:"creationDate,omitempty"`
-	StatisticsEnabled           bool          `json:"statisticsEnabled"`
-	StatsDatabaseProxy          string        `json:"statsDatabaseProxy,omitempty"`
-	StatsTSDBServerAddress      string        `json:"statsTSDBServerAddress,omitempty"`
-	Owner                       string        `json:"owner,omitempty"`
-	ExplicitACLMatchingEnabled  bool          `json:"explicitACLMatchingEnabled"`
-	ExternalID                  string        `json:"externalID,omitempty"`
-	SystemAvatarData            string        `json:"systemAvatarData,omitempty"`
-	SystemAvatarType            string        `json:"systemAvatarType,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    AARFlowStatsInterval int `json:"AARFlowStatsInterval,omitempty"`
+    AARProbeStatsInterval int `json:"AARProbeStatsInterval,omitempty"`
+    VSSFeatureEnabled bool `json:"VSSFeatureEnabled"`
+    VSSStatsInterval int `json:"VSSStatsInterval,omitempty"`
+    PageSize int `json:"pageSize,omitempty"`
+    MaintenanceModeEnabled bool `json:"maintenanceModeEnabled"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    RbacEnabled bool `json:"rbacEnabled"`
+    DeniedFlowCollectionEnabled bool `json:"deniedFlowCollectionEnabled"`
+    ThreatIntelligenceEnabled bool `json:"threatIntelligenceEnabled"`
+    AllowEnterpriseAvatarOnNSG bool `json:"allowEnterpriseAvatarOnNSG"`
+    GlobalNetworkMacroGroupsEnabled bool `json:"globalNetworkMacroGroupsEnabled"`
+    FlowCollectionEnabled bool `json:"flowCollectionEnabled"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EnhancedSecurityEnabled bool `json:"enhancedSecurityEnabled"`
+    EntityScope string `json:"entityScope,omitempty"`
+    GoogleMapsAPIKey string `json:"googleMapsAPIKey,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    StatisticsEnabled bool `json:"statisticsEnabled"`
+    StatsDatabaseProxy string `json:"statsDatabaseProxy,omitempty"`
+    StatsTSDBServerAddress string `json:"statsTSDBServerAddress,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExplicitACLMatchingEnabled bool `json:"explicitACLMatchingEnabled"`
+    ExternalID string `json:"externalID,omitempty"`
+    SystemAvatarData string `json:"systemAvatarData,omitempty"`
+    SystemAvatarType string `json:"systemAvatarType,omitempty"`
+    
 }
 
 // NewUserContext returns a new *UserContext
 func NewUserContext() *UserContext {
 
-	return &UserContext{
-		AARFlowStatsInterval:        30,
-		AARProbeStatsInterval:       30,
-		VSSFeatureEnabled:           false,
-		VSSStatsInterval:            30,
-		MaintenanceModeEnabled:      false,
-		RbacEnabled:                 false,
-		DeniedFlowCollectionEnabled: false,
-		ThreatIntelligenceEnabled:   false,
-		AllowEnterpriseAvatarOnNSG:  true,
-		ExplicitACLMatchingEnabled:  false,
-	}
+    return &UserContext{
+        AARFlowStatsInterval: 30,
+        AARProbeStatsInterval: 30,
+        VSSFeatureEnabled: false,
+        VSSStatsInterval: 30,
+        MaintenanceModeEnabled: false,
+        RbacEnabled: false,
+        DeniedFlowCollectionEnabled: false,
+        ThreatIntelligenceEnabled: false,
+        AllowEnterpriseAvatarOnNSG: true,
+        EnhancedSecurityEnabled: false,
+        ExplicitACLMatchingEnabled: false,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *UserContext) Identity() bambou.Identity {
 
-	return UserContextIdentity
+    return UserContextIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *UserContext) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *UserContext) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the UserContext from the server
 func (o *UserContext) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the UserContext into the server
 func (o *UserContext) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the UserContext from the server
 func (o *UserContext) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the UserContext
 func (o *UserContext) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the UserContext
 func (o *UserContext) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the UserContext
 func (o *UserContext) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the UserContext
 func (o *UserContext) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the UserContext
 func (o *UserContext) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the UserContext
 func (o *UserContext) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

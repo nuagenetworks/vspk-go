@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // VSPIdentity represents the Identity of the object
-var VSPIdentity = bambou.Identity{
-	Name:     "vsp",
-	Category: "vsps",
+var VSPIdentity = bambou.Identity {
+    Name:     "vsp",
+    Category: "vsps",
 }
 
 // VSPsList represents a list of VSPs
@@ -42,162 +42,189 @@ type VSPsList []*VSP
 // An Ancestor is defined as an entity that has VSP as a descendant.
 // An Ancestor can get a list of its child VSPs, but not necessarily create one.
 type VSPsAncestor interface {
-	VSPs(*bambou.FetchingInfo) (VSPsList, *bambou.Error)
+    VSPs(*bambou.FetchingInfo) (VSPsList, *bambou.Error)
 }
 
 // VSPsParent is the interface that a parent of a VSP must implement.
 // A Parent is defined as an entity that has VSP as a child.
 // A Parent is an Ancestor which can create a VSP.
 type VSPsParent interface {
-	VSPsAncestor
-	CreateVSP(*VSP) *bambou.Error
+    VSPsAncestor
+    CreateVSP(*VSP) (*bambou.Error)
 }
 
 // VSP represents the model of a vsp
 type VSP struct {
-	ID               string        `json:"ID,omitempty"`
-	ParentID         string        `json:"parentID,omitempty"`
-	ParentType       string        `json:"parentType,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	Name             string        `json:"name,omitempty"`
-	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
-	Description      string        `json:"description,omitempty"`
-	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope      string        `json:"entityScope,omitempty"`
-	Location         string        `json:"location,omitempty"`
-	CreationDate     string        `json:"creationDate,omitempty"`
-	ProductVersion   string        `json:"productVersion,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	ExternalID       string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    Description string `json:"description,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    Location string `json:"location,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    ProductVersion string `json:"productVersion,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewVSP returns a new *VSP
 func NewVSP() *VSP {
 
-	return &VSP{}
+    return &VSP{
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *VSP) Identity() bambou.Identity {
 
-	return VSPIdentity
+    return VSPIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *VSP) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *VSP) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the VSP from the server
 func (o *VSP) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the VSP into the server
 func (o *VSP) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the VSP from the server
 func (o *VSP) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the VSP
 func (o *VSP) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the VSP
 func (o *VSP) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the VSP
 func (o *VSP) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the VSP
 func (o *VSP) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // NetconfManagers retrieves the list of child NetconfManagers of the VSP
 func (o *VSP) NetconfManagers(info *bambou.FetchingInfo) (NetconfManagersList, *bambou.Error) {
 
-	var list NetconfManagersList
-	err := bambou.CurrentSession().FetchChildren(o, NetconfManagerIdentity, &list, info)
-	return list, err
+    var list NetconfManagersList
+    err := bambou.CurrentSession().FetchChildren(o, NetconfManagerIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateNetconfManager creates a new child NetconfManager under the VSP
 func (o *VSP) CreateNetconfManager(child *NetconfManager) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // ThreatPreventionServerConnections retrieves the list of child ThreatPreventionServerConnections of the VSP
 func (o *VSP) ThreatPreventionServerConnections(info *bambou.FetchingInfo) (ThreatPreventionServerConnectionsList, *bambou.Error) {
 
-	var list ThreatPreventionServerConnectionsList
-	err := bambou.CurrentSession().FetchChildren(o, ThreatPreventionServerConnectionIdentity, &list, info)
-	return list, err
+    var list ThreatPreventionServerConnectionsList
+    err := bambou.CurrentSession().FetchChildren(o, ThreatPreventionServerConnectionIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the VSP
 func (o *VSP) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the VSP
 func (o *VSP) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // HSCs retrieves the list of child HSCs of the VSP
 func (o *VSP) HSCs(info *bambou.FetchingInfo) (HSCsList, *bambou.Error) {
 
-	var list HSCsList
-	err := bambou.CurrentSession().FetchChildren(o, HSCIdentity, &list, info)
-	return list, err
+    var list HSCsList
+    err := bambou.CurrentSession().FetchChildren(o, HSCIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // VSCs retrieves the list of child VSCs of the VSP
 func (o *VSP) VSCs(info *bambou.FetchingInfo) (VSCsList, *bambou.Error) {
 
-	var list VSCsList
-	err := bambou.CurrentSession().FetchChildren(o, VSCIdentity, &list, info)
-	return list, err
+    var list VSCsList
+    err := bambou.CurrentSession().FetchChildren(o, VSCIdentity, &list, info)
+    return list, err
 }
+
+
+
 
 // EventLogs retrieves the list of child EventLogs of the VSP
 func (o *VSP) EventLogs(info *bambou.FetchingInfo) (EventLogsList, *bambou.Error) {
 
-	var list EventLogsList
-	err := bambou.CurrentSession().FetchChildren(o, EventLogIdentity, &list, info)
-	return list, err
+    var list EventLogsList
+    err := bambou.CurrentSession().FetchChildren(o, EventLogIdentity, &list, info)
+    return list, err
 }
+
+
+

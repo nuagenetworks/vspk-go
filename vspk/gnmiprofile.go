@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // GNMIProfileIdentity represents the Identity of the object
-var GNMIProfileIdentity = bambou.Identity{
-	Name:     "gnmiprofile",
-	Category: "gnmiprofiles",
+var GNMIProfileIdentity = bambou.Identity {
+    Name:     "gnmiprofile",
+    Category: "gnmiprofiles",
 }
 
 // GNMIProfilesList represents a list of GNMIProfiles
@@ -42,107 +42,115 @@ type GNMIProfilesList []*GNMIProfile
 // An Ancestor is defined as an entity that has GNMIProfile as a descendant.
 // An Ancestor can get a list of its child GNMIProfiles, but not necessarily create one.
 type GNMIProfilesAncestor interface {
-	GNMIProfiles(*bambou.FetchingInfo) (GNMIProfilesList, *bambou.Error)
+    GNMIProfiles(*bambou.FetchingInfo) (GNMIProfilesList, *bambou.Error)
 }
 
 // GNMIProfilesParent is the interface that a parent of a GNMIProfile must implement.
 // A Parent is defined as an entity that has GNMIProfile as a child.
 // A Parent is an Ancestor which can create a GNMIProfile.
 type GNMIProfilesParent interface {
-	GNMIProfilesAncestor
-	CreateGNMIProfile(*GNMIProfile) *bambou.Error
+    GNMIProfilesAncestor
+    CreateGNMIProfile(*GNMIProfile) (*bambou.Error)
 }
 
 // GNMIProfile represents the model of a gnmiprofile
 type GNMIProfile struct {
-	ID               string        `json:"ID,omitempty"`
-	ParentID         string        `json:"parentID,omitempty"`
-	ParentType       string        `json:"parentType,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	Name             string        `json:"name,omitempty"`
-	Password         string        `json:"password,omitempty"`
-	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
-	Description      string        `json:"description,omitempty"`
-	KeyAlias         string        `json:"keyAlias,omitempty"`
-	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope      string        `json:"entityScope,omitempty"`
-	Port             int           `json:"port,omitempty"`
-	CreationDate     string        `json:"creationDate,omitempty"`
-	UserName         string        `json:"userName,omitempty"`
-	AssocEntityType  string        `json:"assocEntityType,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	ExternalID       string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    Password string `json:"password,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    Description string `json:"description,omitempty"`
+    KeyAlias string `json:"keyAlias,omitempty"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    Port int `json:"port,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    UserName string `json:"userName,omitempty"`
+    AssocEntityType string `json:"assocEntityType,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewGNMIProfile returns a new *GNMIProfile
 func NewGNMIProfile() *GNMIProfile {
 
-	return &GNMIProfile{
-		Port: 57400,
-	}
+    return &GNMIProfile{
+        Port: 57400,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *GNMIProfile) Identity() bambou.Identity {
 
-	return GNMIProfileIdentity
+    return GNMIProfileIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *GNMIProfile) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *GNMIProfile) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the GNMIProfile from the server
 func (o *GNMIProfile) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the GNMIProfile into the server
 func (o *GNMIProfile) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the GNMIProfile from the server
 func (o *GNMIProfile) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the GNMIProfile
 func (o *GNMIProfile) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the GNMIProfile
 func (o *GNMIProfile) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the GNMIProfile
 func (o *GNMIProfile) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the GNMIProfile
 func (o *GNMIProfile) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

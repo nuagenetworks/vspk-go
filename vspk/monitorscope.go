@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // MonitorscopeIdentity represents the Identity of the object
-var MonitorscopeIdentity = bambou.Identity{
-	Name:     "monitorscope",
-	Category: "monitorscopes",
+var MonitorscopeIdentity = bambou.Identity {
+    Name:     "monitorscope",
+    Category: "monitorscopes",
 }
 
 // MonitorscopesList represents a list of Monitorscopes
@@ -42,120 +42,131 @@ type MonitorscopesList []*Monitorscope
 // An Ancestor is defined as an entity that has Monitorscope as a descendant.
 // An Ancestor can get a list of its child Monitorscopes, but not necessarily create one.
 type MonitorscopesAncestor interface {
-	Monitorscopes(*bambou.FetchingInfo) (MonitorscopesList, *bambou.Error)
+    Monitorscopes(*bambou.FetchingInfo) (MonitorscopesList, *bambou.Error)
 }
 
 // MonitorscopesParent is the interface that a parent of a Monitorscope must implement.
 // A Parent is defined as an entity that has Monitorscope as a child.
 // A Parent is an Ancestor which can create a Monitorscope.
 type MonitorscopesParent interface {
-	MonitorscopesAncestor
-	CreateMonitorscope(*Monitorscope) *bambou.Error
+    MonitorscopesAncestor
+    CreateMonitorscope(*Monitorscope) (*bambou.Error)
 }
 
 // Monitorscope represents the model of a monitorscope
 type Monitorscope struct {
-	ID                      string        `json:"ID,omitempty"`
-	ParentID                string        `json:"parentID,omitempty"`
-	ParentType              string        `json:"parentType,omitempty"`
-	Owner                   string        `json:"owner,omitempty"`
-	Name                    string        `json:"name,omitempty"`
-	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
-	ReadOnly                bool          `json:"readOnly"`
-	DestinationNSGs         []interface{} `json:"destinationNSGs,omitempty"`
-	AllowAllDestinationNSGs bool          `json:"allowAllDestinationNSGs"`
-	AllowAllSourceNSGs      bool          `json:"allowAllSourceNSGs"`
-	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope             string        `json:"entityScope,omitempty"`
-	SourceNSGs              []interface{} `json:"sourceNSGs,omitempty"`
-	CreationDate            string        `json:"creationDate,omitempty"`
-	Owner                   string        `json:"owner,omitempty"`
-	ExternalID              string        `json:"externalID,omitempty"`
+    ID         string `json:"ID,omitempty"`
+    ParentID   string `json:"parentID,omitempty"`
+    ParentType string `json:"parentType,omitempty"`
+    Owner      string `json:"owner,omitempty"`
+    Name string `json:"name,omitempty"`
+    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
+    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
+    ReadOnly bool `json:"readOnly"`
+    DestinationNSGs []interface{} `json:"destinationNSGs,omitempty"`
+    AllowAllDestinationNSGs bool `json:"allowAllDestinationNSGs"`
+    AllowAllSourceNSGs bool `json:"allowAllSourceNSGs"`
+    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+    EntityScope string `json:"entityScope,omitempty"`
+    SourceNSGs []interface{} `json:"sourceNSGs,omitempty"`
+    CreationDate string `json:"creationDate,omitempty"`
+    Owner string `json:"owner,omitempty"`
+    ExternalID string `json:"externalID,omitempty"`
+    
 }
 
 // NewMonitorscope returns a new *Monitorscope
 func NewMonitorscope() *Monitorscope {
 
-	return &Monitorscope{
-		ReadOnly: false,
-	}
+    return &Monitorscope{
+        ReadOnly: false,
+        }
 }
 
 // Identity returns the Identity of the object.
 func (o *Monitorscope) Identity() bambou.Identity {
 
-	return MonitorscopeIdentity
+    return MonitorscopeIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *Monitorscope) Identifier() string {
 
-	return o.ID
+    return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *Monitorscope) SetIdentifier(ID string) {
 
-	o.ID = ID
+    o.ID = ID
 }
 
 // Fetch retrieves the Monitorscope from the server
 func (o *Monitorscope) Fetch() *bambou.Error {
 
-	return bambou.CurrentSession().FetchEntity(o)
+    return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the Monitorscope into the server
 func (o *Monitorscope) Save() *bambou.Error {
 
-	return bambou.CurrentSession().SaveEntity(o)
+    return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the Monitorscope from the server
 func (o *Monitorscope) Delete() *bambou.Error {
 
-	return bambou.CurrentSession().DeleteEntity(o)
+    return bambou.CurrentSession().DeleteEntity(o)
 }
+
 
 // Permissions retrieves the list of child Permissions of the Monitorscope
 func (o *Monitorscope) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-	var list PermissionsList
-	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-	return list, err
+    var list PermissionsList
+    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreatePermission creates a new child Permission under the Monitorscope
 func (o *Monitorscope) CreatePermission(child *Permission) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // Metadatas retrieves the list of child Metadatas of the Monitorscope
 func (o *Monitorscope) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-	var list MetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-	return list, err
+    var list MetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateMetadata creates a new child Metadata under the Monitorscope
 func (o *Monitorscope) CreateMetadata(child *Metadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the Monitorscope
 func (o *Monitorscope) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-	var list GlobalMetadatasList
-	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-	return list, err
+    var list GlobalMetadatasList
+    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+    return list, err
 }
+
+
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the Monitorscope
 func (o *Monitorscope) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-	return bambou.CurrentSession().CreateChild(o, child)
+    return bambou.CurrentSession().CreateChild(o, child)
 }
+

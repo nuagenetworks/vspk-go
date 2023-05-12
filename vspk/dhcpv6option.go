@@ -68,6 +68,7 @@ type DHCPv6Option struct {
     EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
     EntityScope string `json:"entityScope,omitempty"`
     CreationDate string `json:"creationDate,omitempty"`
+    SubOptionType string `json:"subOptionType,omitempty"`
     Owner string `json:"owner,omitempty"`
     ExternalID string `json:"externalID,omitempty"`
     Type string `json:"type,omitempty"`

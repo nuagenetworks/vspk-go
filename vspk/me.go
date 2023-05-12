@@ -479,6 +479,23 @@ func (o *Me) NetworkLayouts(info *bambou.FetchingInfo) (NetworkLayoutsList, *bam
 
 
 
+// NetworkMacroGroups retrieves the list of child NetworkMacroGroups of the Me
+func (o *Me) NetworkMacroGroups(info *bambou.FetchingInfo) (NetworkMacroGroupsList, *bambou.Error) {
+
+    var list NetworkMacroGroupsList
+    err := bambou.CurrentSession().FetchChildren(o, NetworkMacroGroupIdentity, &list, info)
+    return list, err
+}
+
+
+
+// CreateNetworkMacroGroup creates a new child NetworkMacroGroup under the Me
+func (o *Me) CreateNetworkMacroGroup(child *NetworkMacroGroup) *bambou.Error {
+
+    return bambou.CurrentSession().CreateChild(o, child)
+}
+
+
 // NetworkPerformanceMeasurements retrieves the list of child NetworkPerformanceMeasurements of the Me
 func (o *Me) NetworkPerformanceMeasurements(info *bambou.FetchingInfo) (NetworkPerformanceMeasurementsList, *bambou.Error) {
 
@@ -1041,6 +1058,23 @@ func (o *Me) Enterprises(info *bambou.FetchingInfo) (EnterprisesList, *bambou.Er
 
 // CreateEnterprise creates a new child Enterprise under the Me
 func (o *Me) CreateEnterprise(child *Enterprise) *bambou.Error {
+
+    return bambou.CurrentSession().CreateChild(o, child)
+}
+
+
+// EnterpriseNetworks retrieves the list of child EnterpriseNetworks of the Me
+func (o *Me) EnterpriseNetworks(info *bambou.FetchingInfo) (EnterpriseNetworksList, *bambou.Error) {
+
+    var list EnterpriseNetworksList
+    err := bambou.CurrentSession().FetchChildren(o, EnterpriseNetworkIdentity, &list, info)
+    return list, err
+}
+
+
+
+// CreateEnterpriseNetwork creates a new child EnterpriseNetwork under the Me
+func (o *Me) CreateEnterpriseNetwork(child *EnterpriseNetwork) *bambou.Error {
 
     return bambou.CurrentSession().CreateChild(o, child)
 }

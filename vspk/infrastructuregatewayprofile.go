@@ -69,6 +69,8 @@ type InfrastructureGatewayProfile struct {
     DeadTimerEnabled bool `json:"deadTimerEnabled"`
     WebFilterDownloadPort int `json:"webFilterDownloadPort,omitempty"`
     WebFilterQueryPort int `json:"webFilterQueryPort,omitempty"`
+    SecondaryRemoteLogServerAddress string `json:"secondaryRemoteLogServerAddress,omitempty"`
+    SecondaryRemoteLogServerPort int `json:"secondaryRemoteLogServerPort,omitempty"`
     RemoteLogMode string `json:"remoteLogMode,omitempty"`
     RemoteLogServerAddress string `json:"remoteLogServerAddress,omitempty"`
     RemoteLogServerPort int `json:"remoteLogServerPort,omitempty"`
@@ -109,6 +111,7 @@ func NewInfrastructureGatewayProfile() *InfrastructureGatewayProfile {
         DeadTimerEnabled: false,
         WebFilterDownloadPort: 8080,
         WebFilterQueryPort: 9090,
+        SecondaryRemoteLogServerPort: 0,
         RemoteLogMode: "DISABLED",
         RemoteLogServerPort: 514,
         FlowEvictionThreshold: 2500,

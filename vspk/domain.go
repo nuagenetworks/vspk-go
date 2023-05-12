@@ -130,6 +130,7 @@ type Domain struct {
     AssociatedPATMapperID string `json:"associatedPATMapperID,omitempty"`
     AssociatedSharedPATMapperID string `json:"associatedSharedPATMapperID,omitempty"`
     AssociatedUnderlayID string `json:"associatedUnderlayID,omitempty"`
+    StatefulMode string `json:"statefulMode,omitempty"`
     Stretched bool `json:"stretched"`
     Multicast string `json:"multicast,omitempty"`
     TunnelType string `json:"tunnelType,omitempty"`
@@ -171,6 +172,7 @@ func NewDomain() *Domain {
         LoopbackIntfEnabled: false,
         CreateBackHaulSubnet: true,
         IsSecondaryFIPDomain: false,
+        StatefulMode: "STATEFUL",
         TunnelType: "DC_DEFAULT", 
         }
 }

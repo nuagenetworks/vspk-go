@@ -88,6 +88,7 @@ type NSGateway struct {
     GatewayConfigRawVersion string `json:"gatewayConfigRawVersion,omitempty"`
     GatewayConfigVersion string `json:"gatewayConfigVersion,omitempty"`
     GatewayConnected bool `json:"gatewayConnected"`
+    PathMTUDiscovery bool `json:"pathMTUDiscovery"`
     RedundancyGroupID string `json:"redundancyGroupID,omitempty"`
     TemplateID string `json:"templateID,omitempty"`
     Pending bool `json:"pending"`
@@ -146,6 +147,7 @@ func NewNSGateway() *NSGateway {
         SSHService: "INHERITED",
         LastConfigurationReloadTimestamp: -1,
         GatewayConnected: false,
+        PathMTUDiscovery: true,
         NetworkAcceleration: "NONE",
         ThreatPreventionEnabled: false,
         InheritedSSHServiceState: "ENABLED",

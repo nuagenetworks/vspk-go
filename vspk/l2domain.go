@@ -72,6 +72,7 @@ type L2Domain struct {
     LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
     Gateway string `json:"gateway,omitempty"`
     GatewayMACAddress string `json:"gatewayMACAddress,omitempty"`
+    WbxDisableMacMove bool `json:"wbxDisableMacMove"`
     Address string `json:"address,omitempty"`
     TemplateID string `json:"templateID,omitempty"`
     ServiceID int `json:"serviceID,omitempty"`
@@ -101,6 +102,7 @@ type L2Domain struct {
     AssociatedMulticastChannelMapID string `json:"associatedMulticastChannelMapID,omitempty"`
     AssociatedSharedNetworkResourceID string `json:"associatedSharedNetworkResourceID,omitempty"`
     AssociatedUnderlayID string `json:"associatedUnderlayID,omitempty"`
+    StatefulMode string `json:"statefulMode,omitempty"`
     Stretched bool `json:"stretched"`
     DualStackDynamicIPAllocation bool `json:"dualStackDynamicIPAllocation"`
     Multicast string `json:"multicast,omitempty"`
@@ -118,6 +120,7 @@ func NewL2Domain() *L2Domain {
         DPI: "DISABLED",
         VXLANECMPEnabled: false,
         MaintenanceMode: "DISABLED", 
+        WbxDisableMacMove: false,
         ThreatIntelligenceEnabled: "INHERITED",
         FlowCollectionEnabled: "INHERITED",
         FlowLimitEnabled: "DISABLED",
@@ -125,6 +128,7 @@ func NewL2Domain() *L2Domain {
         Color: 0,
         RoutedVPLSEnabled: false,
         UseGlobalMAC: "DISABLED",
+        StatefulMode: "STATEFUL",
         }
 }
 

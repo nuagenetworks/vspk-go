@@ -61,6 +61,7 @@ type Statisticsprofile struct {
     Owner      string `json:"owner,omitempty"`
     Name string `json:"name,omitempty"`
     Description string `json:"description,omitempty"`
+    CloneFrom string `json:"cloneFrom,omitempty"`
     FlowStatsAggregationEnabled bool `json:"flowStatsAggregationEnabled"`
     
 }

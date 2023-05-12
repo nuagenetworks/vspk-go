@@ -134,6 +134,9 @@ type SystemConfig struct {
     SecondaryASNumber int `json:"secondaryASNumber,omitempty"`
     SecondaryRTLowerLimit int `json:"secondaryRTLowerLimit,omitempty"`
     SecondaryRTUpperLimit int `json:"secondaryRTUpperLimit,omitempty"`
+    ReflexiveACLICMPTimeout int `json:"reflexiveACLICMPTimeout,omitempty"`
+    ReflexiveACLNonTCPTimeout int `json:"reflexiveACLNonTCPTimeout,omitempty"`
+    ReflexiveACLTCPTimeout int `json:"reflexiveACLTCPTimeout,omitempty"`
     DeniedFlowCollectionEnabled bool `json:"deniedFlowCollectionEnabled"`
     PerDomainVlanIdEnabled bool `json:"perDomainVlanIdEnabled"`
     ServiceIDUpperLimit int `json:"serviceIDUpperLimit,omitempty"`
@@ -181,6 +184,7 @@ type SystemConfig struct {
     LoopbackIntfUpperLimit int `json:"loopbackIntfUpperLimit,omitempty"`
     PostProcessorThreadsCount int `json:"postProcessorThreadsCount,omitempty"`
     CreationDate string `json:"creationDate,omitempty"`
+    SrlYangValidationEnabled bool `json:"srlYangValidationEnabled"`
     GroupKeyDefaultSEKGenerationInterval int `json:"groupKeyDefaultSEKGenerationInterval,omitempty"`
     GroupKeyDefaultSEKLifetime int `json:"groupKeyDefaultSEKLifetime,omitempty"`
     GroupKeyDefaultSEKPayloadEncryptionAlgorithm string `json:"groupKeyDefaultSEKPayloadEncryptionAlgorithm,omitempty"`
@@ -324,6 +328,9 @@ func NewSystemConfig() *SystemConfig {
         SecondaryASNumber: 65533,
         SecondaryRTLowerLimit: 0,
         SecondaryRTUpperLimit: 65533,
+        ReflexiveACLICMPTimeout: 10,
+        ReflexiveACLNonTCPTimeout: 10,
+        ReflexiveACLTCPTimeout: 10,
         DeniedFlowCollectionEnabled: false,
         PerDomainVlanIdEnabled: false,
         ServiceIDUpperLimit: 2147483648,
@@ -361,6 +368,7 @@ func NewSystemConfig() *SystemConfig {
         LoopbackIntfLowerLimit: 600,
         LoopbackIntfUpperLimit: 1023,
         PostProcessorThreadsCount: 10,
+        SrlYangValidationEnabled: true,
         GroupKeyDefaultSEKGenerationInterval: 1200,
         GroupKeyDefaultSEKLifetime: 86400,
         GroupKeyDefaultSEKPayloadEncryptionAlgorithm: "RSA_1024",

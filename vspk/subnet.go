@@ -73,6 +73,7 @@ type Subnet struct {
     LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
     Gateway string `json:"gateway,omitempty"`
     GatewayMACAddress string `json:"gatewayMACAddress,omitempty"`
+    WbxDisableMacMove bool `json:"wbxDisableMacMove"`
     AccessRestrictionEnabled bool `json:"accessRestrictionEnabled"`
     Address string `json:"address,omitempty"`
     Advertise bool `json:"advertise"`
@@ -135,6 +136,7 @@ func NewSubnet() *Subnet {
         IPType: "IPV4", 
         EVPNEnabled: true,
         MaintenanceMode: "DISABLED", 
+        WbxDisableMacMove: false,
         AccessRestrictionEnabled: false,
         Advertise: true,
         ResourceType: "STANDARD",

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // StatisticsIdentity represents the Identity of the object
-var StatisticsIdentity = bambou.Identity {
-    Name:     "statistics",
-    Category: "statistics",
+var StatisticsIdentity = bambou.Identity{
+	Name:     "statistics",
+	Category: "statistics",
 }
 
 // StatisticsList represents a list of Statistics
@@ -42,123 +42,111 @@ type StatisticsList []*Statistics
 // An Ancestor is defined as an entity that has Statistics as a descendant.
 // An Ancestor can get a list of its child Statistics, but not necessarily create one.
 type StatisticsAncestor interface {
-    Statistics(*bambou.FetchingInfo) (StatisticsList, *bambou.Error)
+	Statistics(*bambou.FetchingInfo) (StatisticsList, *bambou.Error)
 }
 
 // StatisticsParent is the interface that a parent of a Statistics must implement.
 // A Parent is defined as an entity that has Statistics as a child.
 // A Parent is an Ancestor which can create a Statistics.
 type StatisticsParent interface {
-    StatisticsAncestor
-    CreateStatistics(*Statistics) (*bambou.Error)
+	StatisticsAncestor
+	CreateStatistics(*Statistics) *bambou.Error
 }
 
 // Statistics represents the model of a statistics
 type Statistics struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Version int `json:"version,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EndTime int `json:"endTime,omitempty"`
-    StartTime int `json:"startTime,omitempty"`
-    StatsData interface{} `json:"statsData,omitempty"`
-    NumberOfDataPoints int `json:"numberOfDataPoints,omitempty"`
-    
+	ID                 string        `json:"ID,omitempty"`
+	ParentID           string        `json:"parentID,omitempty"`
+	ParentType         string        `json:"parentType,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
+	Version            int           `json:"version,omitempty"`
+	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
+	EndTime            int           `json:"endTime,omitempty"`
+	StartTime          int           `json:"startTime,omitempty"`
+	StatsData          interface{}   `json:"statsData,omitempty"`
+	NumberOfDataPoints int           `json:"numberOfDataPoints,omitempty"`
 }
 
 // NewStatistics returns a new *Statistics
 func NewStatistics() *Statistics {
 
-    return &Statistics{
-        }
+	return &Statistics{}
 }
 
 // Identity returns the Identity of the object.
 func (o *Statistics) Identity() bambou.Identity {
 
-    return StatisticsIdentity
+	return StatisticsIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *Statistics) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *Statistics) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the Statistics from the server
 func (o *Statistics) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the Statistics into the server
 func (o *Statistics) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the Statistics from the server
 func (o *Statistics) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the Statistics
 func (o *Statistics) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the Statistics
 func (o *Statistics) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the Statistics
 func (o *Statistics) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the Statistics
 func (o *Statistics) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the Statistics
 func (o *Statistics) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the Statistics
 func (o *Statistics) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // VNFCatalogIdentity represents the Identity of the object
-var VNFCatalogIdentity = bambou.Identity {
-    Name:     "vnfcatalog",
-    Category: "vnfcatalogs",
+var VNFCatalogIdentity = bambou.Identity{
+	Name:     "vnfcatalog",
+	Category: "vnfcatalogs",
 }
 
 // VNFCatalogsList represents a list of VNFCatalogs
@@ -42,143 +42,128 @@ type VNFCatalogsList []*VNFCatalog
 // An Ancestor is defined as an entity that has VNFCatalog as a descendant.
 // An Ancestor can get a list of its child VNFCatalogs, but not necessarily create one.
 type VNFCatalogsAncestor interface {
-    VNFCatalogs(*bambou.FetchingInfo) (VNFCatalogsList, *bambou.Error)
+	VNFCatalogs(*bambou.FetchingInfo) (VNFCatalogsList, *bambou.Error)
 }
 
 // VNFCatalogsParent is the interface that a parent of a VNFCatalog must implement.
 // A Parent is defined as an entity that has VNFCatalog as a child.
 // A Parent is an Ancestor which can create a VNFCatalog.
 type VNFCatalogsParent interface {
-    VNFCatalogsAncestor
-    CreateVNFCatalog(*VNFCatalog) (*bambou.Error)
+	VNFCatalogsAncestor
+	CreateVNFCatalog(*VNFCatalog) *bambou.Error
 }
 
 // VNFCatalog represents the model of a vnfcatalog
 type VNFCatalog struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    Description string `json:"description,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewVNFCatalog returns a new *VNFCatalog
 func NewVNFCatalog() *VNFCatalog {
 
-    return &VNFCatalog{
-        }
+	return &VNFCatalog{}
 }
 
 // Identity returns the Identity of the object.
 func (o *VNFCatalog) Identity() bambou.Identity {
 
-    return VNFCatalogIdentity
+	return VNFCatalogIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *VNFCatalog) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *VNFCatalog) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the VNFCatalog from the server
 func (o *VNFCatalog) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the VNFCatalog into the server
 func (o *VNFCatalog) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the VNFCatalog from the server
 func (o *VNFCatalog) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the VNFCatalog
 func (o *VNFCatalog) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the VNFCatalog
 func (o *VNFCatalog) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the VNFCatalog
 func (o *VNFCatalog) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the VNFCatalog
 func (o *VNFCatalog) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the VNFCatalog
 func (o *VNFCatalog) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the VNFCatalog
 func (o *VNFCatalog) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // VNFDescriptors retrieves the list of child VNFDescriptors of the VNFCatalog
 func (o *VNFCatalog) VNFDescriptors(info *bambou.FetchingInfo) (VNFDescriptorsList, *bambou.Error) {
 
-    var list VNFDescriptorsList
-    err := bambou.CurrentSession().FetchChildren(o, VNFDescriptorIdentity, &list, info)
-    return list, err
+	var list VNFDescriptorsList
+	err := bambou.CurrentSession().FetchChildren(o, VNFDescriptorIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateVNFDescriptor creates a new child VNFDescriptor under the VNFCatalog
 func (o *VNFCatalog) CreateVNFDescriptor(child *VNFDescriptor) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

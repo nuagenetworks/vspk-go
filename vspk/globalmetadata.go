@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // GlobalMetadataIdentity represents the Identity of the object
-var GlobalMetadataIdentity = bambou.Identity {
-    Name:     "globalmetadata",
-    Category: "globalmetadatas",
+var GlobalMetadataIdentity = bambou.Identity{
+	Name:     "globalmetadata",
+	Category: "globalmetadatas",
 }
 
 // GlobalMetadatasList represents a list of GlobalMetadatas
@@ -42,131 +42,119 @@ type GlobalMetadatasList []*GlobalMetadata
 // An Ancestor is defined as an entity that has GlobalMetadata as a descendant.
 // An Ancestor can get a list of its child GlobalMetadatas, but not necessarily create one.
 type GlobalMetadatasAncestor interface {
-    GlobalMetadatas(*bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error)
+	GlobalMetadatas(*bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error)
 }
 
 // GlobalMetadatasParent is the interface that a parent of a GlobalMetadata must implement.
 // A Parent is defined as an entity that has GlobalMetadata as a child.
 // A Parent is an Ancestor which can create a GlobalMetadata.
 type GlobalMetadatasParent interface {
-    GlobalMetadatasAncestor
-    CreateGlobalMetadata(*GlobalMetadata) (*bambou.Error)
+	GlobalMetadatasAncestor
+	CreateGlobalMetadata(*GlobalMetadata) *bambou.Error
 }
 
 // GlobalMetadata represents the model of a globalmetadata
 type GlobalMetadata struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    Description string `json:"description,omitempty"`
-    MetadataTagIDs []interface{} `json:"metadataTagIDs,omitempty"`
-    NetworkNotificationDisabled bool `json:"networkNotificationDisabled"`
-    Blob string `json:"blob,omitempty"`
-    GlobalMetadata bool `json:"globalMetadata"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    AssocEntityType string `json:"assocEntityType,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID                          string        `json:"ID,omitempty"`
+	ParentID                    string        `json:"parentID,omitempty"`
+	ParentType                  string        `json:"parentType,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
+	Name                        string        `json:"name,omitempty"`
+	LastUpdatedBy               string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate             string        `json:"lastUpdatedDate,omitempty"`
+	Description                 string        `json:"description,omitempty"`
+	MetadataTagIDs              []interface{} `json:"metadataTagIDs,omitempty"`
+	NetworkNotificationDisabled bool          `json:"networkNotificationDisabled"`
+	Blob                        string        `json:"blob,omitempty"`
+	GlobalMetadata              bool          `json:"globalMetadata"`
+	EmbeddedMetadata            []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope                 string        `json:"entityScope,omitempty"`
+	CreationDate                string        `json:"creationDate,omitempty"`
+	AssocEntityType             string        `json:"assocEntityType,omitempty"`
+	Owner                       string        `json:"owner,omitempty"`
+	ExternalID                  string        `json:"externalID,omitempty"`
 }
 
 // NewGlobalMetadata returns a new *GlobalMetadata
 func NewGlobalMetadata() *GlobalMetadata {
 
-    return &GlobalMetadata{
-        }
+	return &GlobalMetadata{}
 }
 
 // Identity returns the Identity of the object.
 func (o *GlobalMetadata) Identity() bambou.Identity {
 
-    return GlobalMetadataIdentity
+	return GlobalMetadataIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *GlobalMetadata) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *GlobalMetadata) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the GlobalMetadata from the server
 func (o *GlobalMetadata) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the GlobalMetadata into the server
 func (o *GlobalMetadata) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the GlobalMetadata from the server
 func (o *GlobalMetadata) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the GlobalMetadata
 func (o *GlobalMetadata) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the GlobalMetadata
 func (o *GlobalMetadata) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the GlobalMetadata
 func (o *GlobalMetadata) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the GlobalMetadata
 func (o *GlobalMetadata) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the GlobalMetadata
 func (o *GlobalMetadata) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the GlobalMetadata
 func (o *GlobalMetadata) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

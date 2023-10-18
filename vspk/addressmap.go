@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // AddressMapIdentity represents the Identity of the object
-var AddressMapIdentity = bambou.Identity {
-    Name:     "addressmap",
-    Category: "addressmaps",
+var AddressMapIdentity = bambou.Identity{
+	Name:     "addressmap",
+	Category: "addressmaps",
 }
 
 // AddressMapsList represents a list of AddressMaps
@@ -42,158 +42,140 @@ type AddressMapsList []*AddressMap
 // An Ancestor is defined as an entity that has AddressMap as a descendant.
 // An Ancestor can get a list of its child AddressMaps, but not necessarily create one.
 type AddressMapsAncestor interface {
-    AddressMaps(*bambou.FetchingInfo) (AddressMapsList, *bambou.Error)
+	AddressMaps(*bambou.FetchingInfo) (AddressMapsList, *bambou.Error)
 }
 
 // AddressMapsParent is the interface that a parent of a AddressMap must implement.
 // A Parent is defined as an entity that has AddressMap as a child.
 // A Parent is an Ancestor which can create a AddressMap.
 type AddressMapsParent interface {
-    AddressMapsAncestor
-    CreateAddressMap(*AddressMap) (*bambou.Error)
+	AddressMapsAncestor
+	CreateAddressMap(*AddressMap) *bambou.Error
 }
 
 // AddressMap represents the model of a addressmap
 type AddressMap struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    PrivateIP string `json:"privateIP,omitempty"`
-    PrivatePort int `json:"privatePort,omitempty"`
-    AssociatedPATNATPoolID string `json:"associatedPATNATPoolID,omitempty"`
-    PublicIP string `json:"publicIP,omitempty"`
-    PublicPort int `json:"publicPort,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    Type string `json:"type,omitempty"`
-    
+	ID                     string        `json:"ID,omitempty"`
+	ParentID               string        `json:"parentID,omitempty"`
+	ParentType             string        `json:"parentType,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
+	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
+	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope            string        `json:"entityScope,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
+	PrivateIP              string        `json:"privateIP,omitempty"`
+	PrivatePort            int           `json:"privatePort,omitempty"`
+	AssociatedPATNATPoolID string        `json:"associatedPATNATPoolID,omitempty"`
+	PublicIP               string        `json:"publicIP,omitempty"`
+	PublicPort             int           `json:"publicPort,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
+	ExternalID             string        `json:"externalID,omitempty"`
+	Type                   string        `json:"type,omitempty"`
 }
 
 // NewAddressMap returns a new *AddressMap
 func NewAddressMap() *AddressMap {
 
-    return &AddressMap{
-        }
+	return &AddressMap{}
 }
 
 // Identity returns the Identity of the object.
 func (o *AddressMap) Identity() bambou.Identity {
 
-    return AddressMapIdentity
+	return AddressMapIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *AddressMap) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *AddressMap) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the AddressMap from the server
 func (o *AddressMap) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the AddressMap into the server
 func (o *AddressMap) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the AddressMap from the server
 func (o *AddressMap) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the AddressMap
 func (o *AddressMap) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the AddressMap
 func (o *AddressMap) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the AddressMap
 func (o *AddressMap) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the AddressMap
 func (o *AddressMap) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the AddressMap
 func (o *AddressMap) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the AddressMap
 func (o *AddressMap) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Statistics retrieves the list of child Statistics of the AddressMap
 func (o *AddressMap) Statistics(info *bambou.FetchingInfo) (StatisticsList, *bambou.Error) {
 
-    var list StatisticsList
-    err := bambou.CurrentSession().FetchChildren(o, StatisticsIdentity, &list, info)
-    return list, err
+	var list StatisticsList
+	err := bambou.CurrentSession().FetchChildren(o, StatisticsIdentity, &list, info)
+	return list, err
 }
-
-
-
 
 // StatisticsPolicies retrieves the list of child StatisticsPolicies of the AddressMap
 func (o *AddressMap) StatisticsPolicies(info *bambou.FetchingInfo) (StatisticsPoliciesList, *bambou.Error) {
 
-    var list StatisticsPoliciesList
-    err := bambou.CurrentSession().FetchChildren(o, StatisticsPolicyIdentity, &list, info)
-    return list, err
+	var list StatisticsPoliciesList
+	err := bambou.CurrentSession().FetchChildren(o, StatisticsPolicyIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateStatisticsPolicy creates a new child StatisticsPolicy under the AddressMap
 func (o *AddressMap) CreateStatisticsPolicy(child *StatisticsPolicy) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

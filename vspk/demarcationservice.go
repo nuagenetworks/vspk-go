@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // DemarcationServiceIdentity represents the Identity of the object
-var DemarcationServiceIdentity = bambou.Identity {
-    Name:     "demarcationservice",
-    Category: "demarcationservices",
+var DemarcationServiceIdentity = bambou.Identity{
+	Name:     "demarcationservice",
+	Category: "demarcationservices",
 }
 
 // DemarcationServicesList represents a list of DemarcationServices
@@ -42,129 +42,117 @@ type DemarcationServicesList []*DemarcationService
 // An Ancestor is defined as an entity that has DemarcationService as a descendant.
 // An Ancestor can get a list of its child DemarcationServices, but not necessarily create one.
 type DemarcationServicesAncestor interface {
-    DemarcationServices(*bambou.FetchingInfo) (DemarcationServicesList, *bambou.Error)
+	DemarcationServices(*bambou.FetchingInfo) (DemarcationServicesList, *bambou.Error)
 }
 
 // DemarcationServicesParent is the interface that a parent of a DemarcationService must implement.
 // A Parent is defined as an entity that has DemarcationService as a child.
 // A Parent is an Ancestor which can create a DemarcationService.
 type DemarcationServicesParent interface {
-    DemarcationServicesAncestor
-    CreateDemarcationService(*DemarcationService) (*bambou.Error)
+	DemarcationServicesAncestor
+	CreateDemarcationService(*DemarcationService) *bambou.Error
 }
 
 // DemarcationService represents the model of a demarcationservice
 type DemarcationService struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    RouteDistinguisher string `json:"routeDistinguisher,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Priority int `json:"priority,omitempty"`
-    AssociatedGatewayID string `json:"associatedGatewayID,omitempty"`
-    AssociatedVLANID string `json:"associatedVLANID,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    Type string `json:"type,omitempty"`
-    
+	ID                  string        `json:"ID,omitempty"`
+	ParentID            string        `json:"parentID,omitempty"`
+	ParentType          string        `json:"parentType,omitempty"`
+	Owner               string        `json:"owner,omitempty"`
+	LastUpdatedBy       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate     string        `json:"lastUpdatedDate,omitempty"`
+	EmbeddedMetadata    []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope         string        `json:"entityScope,omitempty"`
+	RouteDistinguisher  string        `json:"routeDistinguisher,omitempty"`
+	CreationDate        string        `json:"creationDate,omitempty"`
+	Priority            int           `json:"priority,omitempty"`
+	AssociatedGatewayID string        `json:"associatedGatewayID,omitempty"`
+	AssociatedVLANID    string        `json:"associatedVLANID,omitempty"`
+	Owner               string        `json:"owner,omitempty"`
+	ExternalID          string        `json:"externalID,omitempty"`
+	Type                string        `json:"type,omitempty"`
 }
 
 // NewDemarcationService returns a new *DemarcationService
 func NewDemarcationService() *DemarcationService {
 
-    return &DemarcationService{
-        }
+	return &DemarcationService{}
 }
 
 // Identity returns the Identity of the object.
 func (o *DemarcationService) Identity() bambou.Identity {
 
-    return DemarcationServiceIdentity
+	return DemarcationServiceIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *DemarcationService) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *DemarcationService) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the DemarcationService from the server
 func (o *DemarcationService) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the DemarcationService into the server
 func (o *DemarcationService) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the DemarcationService from the server
 func (o *DemarcationService) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the DemarcationService
 func (o *DemarcationService) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the DemarcationService
 func (o *DemarcationService) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the DemarcationService
 func (o *DemarcationService) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the DemarcationService
 func (o *DemarcationService) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the DemarcationService
 func (o *DemarcationService) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the DemarcationService
 func (o *DemarcationService) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

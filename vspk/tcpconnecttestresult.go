@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // TCPConnectTestResultIdentity represents the Identity of the object
-var TCPConnectTestResultIdentity = bambou.Identity {
-    Name:     "None",
-    Category: "None",
+var TCPConnectTestResultIdentity = bambou.Identity{
+	Name:     "None",
+	Category: "None",
 }
 
 // TCPConnectTestResultsList represents a list of TCPConnectTestResults
@@ -42,73 +42,70 @@ type TCPConnectTestResultsList []*TCPConnectTestResult
 // An Ancestor is defined as an entity that has TCPConnectTestResult as a descendant.
 // An Ancestor can get a list of its child TCPConnectTestResults, but not necessarily create one.
 type TCPConnectTestResultsAncestor interface {
-    TCPConnectTestResults(*bambou.FetchingInfo) (TCPConnectTestResultsList, *bambou.Error)
+	TCPConnectTestResults(*bambou.FetchingInfo) (TCPConnectTestResultsList, *bambou.Error)
 }
 
 // TCPConnectTestResultsParent is the interface that a parent of a TCPConnectTestResult must implement.
 // A Parent is defined as an entity that has TCPConnectTestResult as a child.
 // A Parent is an Ancestor which can create a TCPConnectTestResult.
 type TCPConnectTestResultsParent interface {
-    TCPConnectTestResultsAncestor
-    CreateTCPConnectTestResult(*TCPConnectTestResult) (*bambou.Error)
+	TCPConnectTestResultsAncestor
+	CreateTCPConnectTestResult(*TCPConnectTestResult) *bambou.Error
 }
 
 // TCPConnectTestResult represents the model of a None
 type TCPConnectTestResult struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    FailedAttempts int `json:"failedAttempts,omitempty"`
-    FailedPercent float64 `json:"failedPercent,omitempty"`
-    MaximumRoundTripTime float64 `json:"maximumRoundTripTime,omitempty"`
-    MinimumRoundTripTime float64 `json:"minimumRoundTripTime,omitempty"`
-    ConnectionAttempts int `json:"connectionAttempts,omitempty"`
-    SuccessfulConnections int `json:"successfulConnections,omitempty"`
-    AverageRoundTripTime float64 `json:"averageRoundTripTime,omitempty"`
-    
+	ID                    string  `json:"ID,omitempty"`
+	ParentID              string  `json:"parentID,omitempty"`
+	ParentType            string  `json:"parentType,omitempty"`
+	Owner                 string  `json:"owner,omitempty"`
+	FailedAttempts        int     `json:"failedAttempts,omitempty"`
+	FailedPercent         float64 `json:"failedPercent,omitempty"`
+	MaximumRoundTripTime  float64 `json:"maximumRoundTripTime,omitempty"`
+	MinimumRoundTripTime  float64 `json:"minimumRoundTripTime,omitempty"`
+	ConnectionAttempts    int     `json:"connectionAttempts,omitempty"`
+	SuccessfulConnections int     `json:"successfulConnections,omitempty"`
+	AverageRoundTripTime  float64 `json:"averageRoundTripTime,omitempty"`
 }
 
 // NewTCPConnectTestResult returns a new *TCPConnectTestResult
 func NewTCPConnectTestResult() *TCPConnectTestResult {
 
-    return &TCPConnectTestResult{
-        }
+	return &TCPConnectTestResult{}
 }
 
 // Identity returns the Identity of the object.
 func (o *TCPConnectTestResult) Identity() bambou.Identity {
 
-    return TCPConnectTestResultIdentity
+	return TCPConnectTestResultIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *TCPConnectTestResult) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *TCPConnectTestResult) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the TCPConnectTestResult from the server
 func (o *TCPConnectTestResult) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the TCPConnectTestResult into the server
 func (o *TCPConnectTestResult) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the TCPConnectTestResult from the server
 func (o *TCPConnectTestResult) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-

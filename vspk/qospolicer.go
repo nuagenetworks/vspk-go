@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // QosPolicerIdentity represents the Identity of the object
-var QosPolicerIdentity = bambou.Identity {
-    Name:     "qospolicer",
-    Category: "qospolicers",
+var QosPolicerIdentity = bambou.Identity{
+	Name:     "qospolicer",
+	Category: "qospolicers",
 }
 
 // QosPolicersList represents a list of QosPolicers
@@ -42,130 +42,119 @@ type QosPolicersList []*QosPolicer
 // An Ancestor is defined as an entity that has QosPolicer as a descendant.
 // An Ancestor can get a list of its child QosPolicers, but not necessarily create one.
 type QosPolicersAncestor interface {
-    QosPolicers(*bambou.FetchingInfo) (QosPolicersList, *bambou.Error)
+	QosPolicers(*bambou.FetchingInfo) (QosPolicersList, *bambou.Error)
 }
 
 // QosPolicersParent is the interface that a parent of a QosPolicer must implement.
 // A Parent is defined as an entity that has QosPolicer as a child.
 // A Parent is an Ancestor which can create a QosPolicer.
 type QosPolicersParent interface {
-    QosPolicersAncestor
-    CreateQosPolicer(*QosPolicer) (*bambou.Error)
+	QosPolicersAncestor
+	CreateQosPolicer(*QosPolicer) *bambou.Error
 }
 
 // QosPolicer represents the model of a qospolicer
 type QosPolicer struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    Rate int `json:"rate,omitempty"`
-    Description string `json:"description,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Burst int `json:"burst,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
+	Rate             int           `json:"rate,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Burst            int           `json:"burst,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewQosPolicer returns a new *QosPolicer
 func NewQosPolicer() *QosPolicer {
 
-    return &QosPolicer{
-        Rate: 1,
-        Burst: 1,
-        }
+	return &QosPolicer{
+		Rate:  1,
+		Burst: 1,
+	}
 }
 
 // Identity returns the Identity of the object.
 func (o *QosPolicer) Identity() bambou.Identity {
 
-    return QosPolicerIdentity
+	return QosPolicerIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *QosPolicer) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *QosPolicer) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the QosPolicer from the server
 func (o *QosPolicer) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the QosPolicer into the server
 func (o *QosPolicer) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the QosPolicer from the server
 func (o *QosPolicer) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the QosPolicer
 func (o *QosPolicer) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the QosPolicer
 func (o *QosPolicer) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the QosPolicer
 func (o *QosPolicer) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the QosPolicer
 func (o *QosPolicer) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the QosPolicer
 func (o *QosPolicer) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the QosPolicer
 func (o *QosPolicer) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // NSGMigrationProfileIdentity represents the Identity of the object
-var NSGMigrationProfileIdentity = bambou.Identity {
-    Name:     "nsgmigrationprofile",
-    Category: "nsgmigrationprofiles",
+var NSGMigrationProfileIdentity = bambou.Identity{
+	Name:     "nsgmigrationprofile",
+	Category: "nsgmigrationprofiles",
 }
 
 // NSGMigrationProfilesList represents a list of NSGMigrationProfiles
@@ -42,92 +42,86 @@ type NSGMigrationProfilesList []*NSGMigrationProfile
 // An Ancestor is defined as an entity that has NSGMigrationProfile as a descendant.
 // An Ancestor can get a list of its child NSGMigrationProfiles, but not necessarily create one.
 type NSGMigrationProfilesAncestor interface {
-    NSGMigrationProfiles(*bambou.FetchingInfo) (NSGMigrationProfilesList, *bambou.Error)
+	NSGMigrationProfiles(*bambou.FetchingInfo) (NSGMigrationProfilesList, *bambou.Error)
 }
 
 // NSGMigrationProfilesParent is the interface that a parent of a NSGMigrationProfile must implement.
 // A Parent is defined as an entity that has NSGMigrationProfile as a child.
 // A Parent is an Ancestor which can create a NSGMigrationProfile.
 type NSGMigrationProfilesParent interface {
-    NSGMigrationProfilesAncestor
-    CreateNSGMigrationProfile(*NSGMigrationProfile) (*bambou.Error)
+	NSGMigrationProfilesAncestor
+	CreateNSGMigrationProfile(*NSGMigrationProfile) *bambou.Error
 }
 
 // NSGMigrationProfile represents the model of a nsgmigrationprofile
 type NSGMigrationProfile struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    Description string `json:"description,omitempty"`
-    DestinationProxyFQDN string `json:"destinationProxyFQDN,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID                   string `json:"ID,omitempty"`
+	ParentID             string `json:"parentID,omitempty"`
+	ParentType           string `json:"parentType,omitempty"`
+	Owner                string `json:"owner,omitempty"`
+	Name                 string `json:"name,omitempty"`
+	LastUpdatedBy        string `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate      string `json:"lastUpdatedDate,omitempty"`
+	Description          string `json:"description,omitempty"`
+	DestinationProxyFQDN string `json:"destinationProxyFQDN,omitempty"`
+	EntityScope          string `json:"entityScope,omitempty"`
+	CreationDate         string `json:"creationDate,omitempty"`
+	Owner                string `json:"owner,omitempty"`
+	ExternalID           string `json:"externalID,omitempty"`
 }
 
 // NewNSGMigrationProfile returns a new *NSGMigrationProfile
 func NewNSGMigrationProfile() *NSGMigrationProfile {
 
-    return &NSGMigrationProfile{
-        }
+	return &NSGMigrationProfile{}
 }
 
 // Identity returns the Identity of the object.
 func (o *NSGMigrationProfile) Identity() bambou.Identity {
 
-    return NSGMigrationProfileIdentity
+	return NSGMigrationProfileIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *NSGMigrationProfile) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *NSGMigrationProfile) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the NSGMigrationProfile from the server
 func (o *NSGMigrationProfile) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the NSGMigrationProfile into the server
 func (o *NSGMigrationProfile) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the NSGMigrationProfile from the server
 func (o *NSGMigrationProfile) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the NSGMigrationProfile
 func (o *NSGMigrationProfile) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the NSGMigrationProfile
 func (o *NSGMigrationProfile) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

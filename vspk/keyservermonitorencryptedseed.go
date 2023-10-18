@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // KeyServerMonitorEncryptedSeedIdentity represents the Identity of the object
-var KeyServerMonitorEncryptedSeedIdentity = bambou.Identity {
-    Name:     "keyservermonitorencryptedseed",
-    Category: "keyservermonitorencryptedseeds",
+var KeyServerMonitorEncryptedSeedIdentity = bambou.Identity{
+	Name:     "keyservermonitorencryptedseed",
+	Category: "keyservermonitorencryptedseeds",
 }
 
 // KeyServerMonitorEncryptedSeedsList represents a list of KeyServerMonitorEncryptedSeeds
@@ -42,132 +42,120 @@ type KeyServerMonitorEncryptedSeedsList []*KeyServerMonitorEncryptedSeed
 // An Ancestor is defined as an entity that has KeyServerMonitorEncryptedSeed as a descendant.
 // An Ancestor can get a list of its child KeyServerMonitorEncryptedSeeds, but not necessarily create one.
 type KeyServerMonitorEncryptedSeedsAncestor interface {
-    KeyServerMonitorEncryptedSeeds(*bambou.FetchingInfo) (KeyServerMonitorEncryptedSeedsList, *bambou.Error)
+	KeyServerMonitorEncryptedSeeds(*bambou.FetchingInfo) (KeyServerMonitorEncryptedSeedsList, *bambou.Error)
 }
 
 // KeyServerMonitorEncryptedSeedsParent is the interface that a parent of a KeyServerMonitorEncryptedSeed must implement.
 // A Parent is defined as an entity that has KeyServerMonitorEncryptedSeed as a child.
 // A Parent is an Ancestor which can create a KeyServerMonitorEncryptedSeed.
 type KeyServerMonitorEncryptedSeedsParent interface {
-    KeyServerMonitorEncryptedSeedsAncestor
-    CreateKeyServerMonitorEncryptedSeed(*KeyServerMonitorEncryptedSeed) (*bambou.Error)
+	KeyServerMonitorEncryptedSeedsAncestor
+	CreateKeyServerMonitorEncryptedSeed(*KeyServerMonitorEncryptedSeed) *bambou.Error
 }
 
 // KeyServerMonitorEncryptedSeed represents the model of a keyservermonitorencryptedseed
 type KeyServerMonitorEncryptedSeed struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    SEKCreationTime int `json:"SEKCreationTime,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    SeedType string `json:"seedType,omitempty"`
-    KeyServerCertificateSerialNumber int `json:"keyServerCertificateSerialNumber,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EnterpriseSecuredDataID string `json:"enterpriseSecuredDataID,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    AssociatedKeyServerMonitorSEKCreationTime int `json:"associatedKeyServerMonitorSEKCreationTime,omitempty"`
-    AssociatedKeyServerMonitorSEKID string `json:"associatedKeyServerMonitorSEKID,omitempty"`
-    AssociatedKeyServerMonitorSeedCreationTime int `json:"associatedKeyServerMonitorSeedCreationTime,omitempty"`
-    AssociatedKeyServerMonitorSeedID string `json:"associatedKeyServerMonitorSeedID,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID                                         string        `json:"ID,omitempty"`
+	ParentID                                   string        `json:"parentID,omitempty"`
+	ParentType                                 string        `json:"parentType,omitempty"`
+	Owner                                      string        `json:"owner,omitempty"`
+	SEKCreationTime                            int           `json:"SEKCreationTime,omitempty"`
+	LastUpdatedBy                              string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                            string        `json:"lastUpdatedDate,omitempty"`
+	SeedType                                   string        `json:"seedType,omitempty"`
+	KeyServerCertificateSerialNumber           int           `json:"keyServerCertificateSerialNumber,omitempty"`
+	EmbeddedMetadata                           []interface{} `json:"embeddedMetadata,omitempty"`
+	EnterpriseSecuredDataID                    string        `json:"enterpriseSecuredDataID,omitempty"`
+	EntityScope                                string        `json:"entityScope,omitempty"`
+	CreationDate                               string        `json:"creationDate,omitempty"`
+	AssociatedKeyServerMonitorSEKCreationTime  int           `json:"associatedKeyServerMonitorSEKCreationTime,omitempty"`
+	AssociatedKeyServerMonitorSEKID            string        `json:"associatedKeyServerMonitorSEKID,omitempty"`
+	AssociatedKeyServerMonitorSeedCreationTime int           `json:"associatedKeyServerMonitorSeedCreationTime,omitempty"`
+	AssociatedKeyServerMonitorSeedID           string        `json:"associatedKeyServerMonitorSeedID,omitempty"`
+	Owner                                      string        `json:"owner,omitempty"`
+	ExternalID                                 string        `json:"externalID,omitempty"`
 }
 
 // NewKeyServerMonitorEncryptedSeed returns a new *KeyServerMonitorEncryptedSeed
 func NewKeyServerMonitorEncryptedSeed() *KeyServerMonitorEncryptedSeed {
 
-    return &KeyServerMonitorEncryptedSeed{
-        }
+	return &KeyServerMonitorEncryptedSeed{}
 }
 
 // Identity returns the Identity of the object.
 func (o *KeyServerMonitorEncryptedSeed) Identity() bambou.Identity {
 
-    return KeyServerMonitorEncryptedSeedIdentity
+	return KeyServerMonitorEncryptedSeedIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *KeyServerMonitorEncryptedSeed) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *KeyServerMonitorEncryptedSeed) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the KeyServerMonitorEncryptedSeed from the server
 func (o *KeyServerMonitorEncryptedSeed) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the KeyServerMonitorEncryptedSeed into the server
 func (o *KeyServerMonitorEncryptedSeed) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the KeyServerMonitorEncryptedSeed from the server
 func (o *KeyServerMonitorEncryptedSeed) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the KeyServerMonitorEncryptedSeed
 func (o *KeyServerMonitorEncryptedSeed) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the KeyServerMonitorEncryptedSeed
 func (o *KeyServerMonitorEncryptedSeed) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the KeyServerMonitorEncryptedSeed
 func (o *KeyServerMonitorEncryptedSeed) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the KeyServerMonitorEncryptedSeed
 func (o *KeyServerMonitorEncryptedSeed) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the KeyServerMonitorEncryptedSeed
 func (o *KeyServerMonitorEncryptedSeed) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the KeyServerMonitorEncryptedSeed
 func (o *KeyServerMonitorEncryptedSeed) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

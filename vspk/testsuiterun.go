@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // TestSuiteRunIdentity represents the Identity of the object
-var TestSuiteRunIdentity = bambou.Identity {
-    Name:     "testsuiterun",
-    Category: "testsuiteruns",
+var TestSuiteRunIdentity = bambou.Identity{
+	Name:     "testsuiterun",
+	Category: "testsuiteruns",
 }
 
 // TestSuiteRunsList represents a list of TestSuiteRuns
@@ -42,150 +42,136 @@ type TestSuiteRunsList []*TestSuiteRun
 // An Ancestor is defined as an entity that has TestSuiteRun as a descendant.
 // An Ancestor can get a list of its child TestSuiteRuns, but not necessarily create one.
 type TestSuiteRunsAncestor interface {
-    TestSuiteRuns(*bambou.FetchingInfo) (TestSuiteRunsList, *bambou.Error)
+	TestSuiteRuns(*bambou.FetchingInfo) (TestSuiteRunsList, *bambou.Error)
 }
 
 // TestSuiteRunsParent is the interface that a parent of a TestSuiteRun must implement.
 // A Parent is defined as an entity that has TestSuiteRun as a child.
 // A Parent is an Ancestor which can create a TestSuiteRun.
 type TestSuiteRunsParent interface {
-    TestSuiteRunsAncestor
-    CreateTestSuiteRun(*TestSuiteRun) (*bambou.Error)
+	TestSuiteRunsAncestor
+	CreateTestSuiteRun(*TestSuiteRun) *bambou.Error
 }
 
 // TestSuiteRun represents the model of a testsuiterun
 type TestSuiteRun struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    VPortName string `json:"VPortName,omitempty"`
-    NSGatewayName string `json:"NSGatewayName,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    DatapathID string `json:"datapathID,omitempty"`
-    Destination string `json:"destination,omitempty"`
-    BirthCertificate bool `json:"birthCertificate"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    DomainName string `json:"domainName,omitempty"`
-    ZoneName string `json:"zoneName,omitempty"`
-    OperationStatus string `json:"operationStatus,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    AssociatedEntityType string `json:"associatedEntityType,omitempty"`
-    AssociatedTestSuiteID string `json:"associatedTestSuiteID,omitempty"`
-    AssociatedTestSuiteName string `json:"associatedTestSuiteName,omitempty"`
-    AssociatedUnderlayTestID string `json:"associatedUnderlayTestID,omitempty"`
-    SubnetName string `json:"subnetName,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    SystemID string `json:"systemID,omitempty"`
-    
+	ID                       string        `json:"ID,omitempty"`
+	ParentID                 string        `json:"parentID,omitempty"`
+	ParentType               string        `json:"parentType,omitempty"`
+	Owner                    string        `json:"owner,omitempty"`
+	VPortName                string        `json:"VPortName,omitempty"`
+	NSGatewayName            string        `json:"NSGatewayName,omitempty"`
+	LastUpdatedBy            string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate          string        `json:"lastUpdatedDate,omitempty"`
+	DatapathID               string        `json:"datapathID,omitempty"`
+	Destination              string        `json:"destination,omitempty"`
+	BirthCertificate         bool          `json:"birthCertificate"`
+	EmbeddedMetadata         []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope              string        `json:"entityScope,omitempty"`
+	DomainName               string        `json:"domainName,omitempty"`
+	ZoneName                 string        `json:"zoneName,omitempty"`
+	OperationStatus          string        `json:"operationStatus,omitempty"`
+	CreationDate             string        `json:"creationDate,omitempty"`
+	AssociatedEntityType     string        `json:"associatedEntityType,omitempty"`
+	AssociatedTestSuiteID    string        `json:"associatedTestSuiteID,omitempty"`
+	AssociatedTestSuiteName  string        `json:"associatedTestSuiteName,omitempty"`
+	AssociatedUnderlayTestID string        `json:"associatedUnderlayTestID,omitempty"`
+	SubnetName               string        `json:"subnetName,omitempty"`
+	Owner                    string        `json:"owner,omitempty"`
+	ExternalID               string        `json:"externalID,omitempty"`
+	SystemID                 string        `json:"systemID,omitempty"`
 }
 
 // NewTestSuiteRun returns a new *TestSuiteRun
 func NewTestSuiteRun() *TestSuiteRun {
 
-    return &TestSuiteRun{
-        BirthCertificate: false,
-        }
+	return &TestSuiteRun{
+		BirthCertificate: false,
+	}
 }
 
 // Identity returns the Identity of the object.
 func (o *TestSuiteRun) Identity() bambou.Identity {
 
-    return TestSuiteRunIdentity
+	return TestSuiteRunIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *TestSuiteRun) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *TestSuiteRun) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the TestSuiteRun from the server
 func (o *TestSuiteRun) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the TestSuiteRun into the server
 func (o *TestSuiteRun) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the TestSuiteRun from the server
 func (o *TestSuiteRun) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the TestSuiteRun
 func (o *TestSuiteRun) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the TestSuiteRun
 func (o *TestSuiteRun) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // TestRuns retrieves the list of child TestRuns of the TestSuiteRun
 func (o *TestSuiteRun) TestRuns(info *bambou.FetchingInfo) (TestRunsList, *bambou.Error) {
 
-    var list TestRunsList
-    err := bambou.CurrentSession().FetchChildren(o, TestRunIdentity, &list, info)
-    return list, err
+	var list TestRunsList
+	err := bambou.CurrentSession().FetchChildren(o, TestRunIdentity, &list, info)
+	return list, err
 }
-
-
-
 
 // Metadatas retrieves the list of child Metadatas of the TestSuiteRun
 func (o *TestSuiteRun) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the TestSuiteRun
 func (o *TestSuiteRun) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the TestSuiteRun
 func (o *TestSuiteRun) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the TestSuiteRun
 func (o *TestSuiteRun) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

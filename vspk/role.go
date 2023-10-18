@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // RoleIdentity represents the Identity of the object
-var RoleIdentity = bambou.Identity {
-    Name:     "role",
-    Category: "roles",
+var RoleIdentity = bambou.Identity{
+	Name:     "role",
+	Category: "roles",
 }
 
 // RolesList represents a list of Roles
@@ -42,137 +42,122 @@ type RolesList []*Role
 // An Ancestor is defined as an entity that has Role as a descendant.
 // An Ancestor can get a list of its child Roles, but not necessarily create one.
 type RolesAncestor interface {
-    Roles(*bambou.FetchingInfo) (RolesList, *bambou.Error)
+	Roles(*bambou.FetchingInfo) (RolesList, *bambou.Error)
 }
 
 // RolesParent is the interface that a parent of a Role must implement.
 // A Parent is defined as an entity that has Role as a child.
 // A Parent is an Ancestor which can create a Role.
 type RolesParent interface {
-    RolesAncestor
-    CreateRole(*Role) (*bambou.Error)
+	RolesAncestor
+	CreateRole(*Role) *bambou.Error
 }
 
 // Role represents the model of a role
 type Role struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    Description string `json:"description,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewRole returns a new *Role
 func NewRole() *Role {
 
-    return &Role{
-        }
+	return &Role{}
 }
 
 // Identity returns the Identity of the object.
 func (o *Role) Identity() bambou.Identity {
 
-    return RoleIdentity
+	return RoleIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *Role) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *Role) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the Role from the server
 func (o *Role) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the Role into the server
 func (o *Role) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the Role from the server
 func (o *Role) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the Role
 func (o *Role) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the Role
 func (o *Role) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the Role
 func (o *Role) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the Role
 func (o *Role) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the Role
 func (o *Role) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the Role
 func (o *Role) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Roleentries retrieves the list of child Roleentries of the Role
 func (o *Role) Roleentries(info *bambou.FetchingInfo) (RoleentriesList, *bambou.Error) {
 
-    var list RoleentriesList
-    err := bambou.CurrentSession().FetchChildren(o, RoleentryIdentity, &list, info)
-    return list, err
+	var list RoleentriesList
+	err := bambou.CurrentSession().FetchChildren(o, RoleentryIdentity, &list, info)
+	return list, err
 }
-
-
-

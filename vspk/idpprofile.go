@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // IDPProfileIdentity represents the Identity of the object
-var IDPProfileIdentity = bambou.Identity {
-    Name:     "idpprofile",
-    Category: "idpprofiles",
+var IDPProfileIdentity = bambou.Identity{
+	Name:     "idpprofile",
+	Category: "idpprofiles",
 }
 
 // IDPProfilesList represents a list of IDPProfiles
@@ -42,88 +42,83 @@ type IDPProfilesList []*IDPProfile
 // An Ancestor is defined as an entity that has IDPProfile as a descendant.
 // An Ancestor can get a list of its child IDPProfiles, but not necessarily create one.
 type IDPProfilesAncestor interface {
-    IDPProfiles(*bambou.FetchingInfo) (IDPProfilesList, *bambou.Error)
+	IDPProfiles(*bambou.FetchingInfo) (IDPProfilesList, *bambou.Error)
 }
 
 // IDPProfilesParent is the interface that a parent of a IDPProfile must implement.
 // A Parent is defined as an entity that has IDPProfile as a child.
 // A Parent is an Ancestor which can create a IDPProfile.
 type IDPProfilesParent interface {
-    IDPProfilesAncestor
-    CreateIDPProfile(*IDPProfile) (*bambou.Error)
+	IDPProfilesAncestor
+	CreateIDPProfile(*IDPProfile) *bambou.Error
 }
 
 // IDPProfile represents the model of a idpprofile
 type IDPProfile struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    Description string `json:"description,omitempty"`
-    ProtectAgainstInsertionEvasion bool `json:"protectAgainstInsertionEvasion"`
-    AssociatedEnterpriseID string `json:"associatedEnterpriseID,omitempty"`
-    
+	ID                             string `json:"ID,omitempty"`
+	ParentID                       string `json:"parentID,omitempty"`
+	ParentType                     string `json:"parentType,omitempty"`
+	Owner                          string `json:"owner,omitempty"`
+	Name                           string `json:"name,omitempty"`
+	Description                    string `json:"description,omitempty"`
+	ProtectAgainstInsertionEvasion bool   `json:"protectAgainstInsertionEvasion"`
+	AssociatedEnterpriseID         string `json:"associatedEnterpriseID,omitempty"`
 }
 
 // NewIDPProfile returns a new *IDPProfile
 func NewIDPProfile() *IDPProfile {
 
-    return &IDPProfile{
-        ProtectAgainstInsertionEvasion: true,
-        }
+	return &IDPProfile{
+		ProtectAgainstInsertionEvasion: true,
+	}
 }
 
 // Identity returns the Identity of the object.
 func (o *IDPProfile) Identity() bambou.Identity {
 
-    return IDPProfileIdentity
+	return IDPProfileIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *IDPProfile) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *IDPProfile) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the IDPProfile from the server
 func (o *IDPProfile) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the IDPProfile into the server
 func (o *IDPProfile) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the IDPProfile from the server
 func (o *IDPProfile) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // IDPProfileActions retrieves the list of child IDPProfileActions of the IDPProfile
 func (o *IDPProfile) IDPProfileActions(info *bambou.FetchingInfo) (IDPProfileActionsList, *bambou.Error) {
 
-    var list IDPProfileActionsList
-    err := bambou.CurrentSession().FetchChildren(o, IDPProfileActionIdentity, &list, info)
-    return list, err
+	var list IDPProfileActionsList
+	err := bambou.CurrentSession().FetchChildren(o, IDPProfileActionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateIDPProfileAction creates a new child IDPProfileAction under the IDPProfile
 func (o *IDPProfile) CreateIDPProfileAction(child *IDPProfileAction) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

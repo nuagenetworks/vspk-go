@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // PSNATPoolIdentity represents the Identity of the object
-var PSNATPoolIdentity = bambou.Identity {
-    Name:     "psnatpool",
-    Category: "psnatpools",
+var PSNATPoolIdentity = bambou.Identity{
+	Name:     "psnatpool",
+	Category: "psnatpools",
 }
 
 // PSNATPoolsList represents a list of PSNATPools
@@ -42,163 +42,145 @@ type PSNATPoolsList []*PSNATPool
 // An Ancestor is defined as an entity that has PSNATPool as a descendant.
 // An Ancestor can get a list of its child PSNATPools, but not necessarily create one.
 type PSNATPoolsAncestor interface {
-    PSNATPools(*bambou.FetchingInfo) (PSNATPoolsList, *bambou.Error)
+	PSNATPools(*bambou.FetchingInfo) (PSNATPoolsList, *bambou.Error)
 }
 
 // PSNATPoolsParent is the interface that a parent of a PSNATPool must implement.
 // A Parent is defined as an entity that has PSNATPool as a child.
 // A Parent is an Ancestor which can create a PSNATPool.
 type PSNATPoolsParent interface {
-    PSNATPoolsAncestor
-    CreatePSNATPool(*PSNATPool) (*bambou.Error)
+	PSNATPoolsAncestor
+	CreatePSNATPool(*PSNATPool) *bambou.Error
 }
 
 // PSNATPool represents the model of a psnatpool
 type PSNATPool struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    IPType string `json:"IPType,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    Description string `json:"description,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EndAddress string `json:"endAddress,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    StartAddress string `json:"startAddress,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	IPType           string        `json:"IPType,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EndAddress       string        `json:"endAddress,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	StartAddress     string        `json:"startAddress,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewPSNATPool returns a new *PSNATPool
 func NewPSNATPool() *PSNATPool {
 
-    return &PSNATPool{
-        }
+	return &PSNATPool{}
 }
 
 // Identity returns the Identity of the object.
 func (o *PSNATPool) Identity() bambou.Identity {
 
-    return PSNATPoolIdentity
+	return PSNATPoolIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *PSNATPool) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *PSNATPool) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the PSNATPool from the server
 func (o *PSNATPool) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the PSNATPool into the server
 func (o *PSNATPool) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the PSNATPool from the server
 func (o *PSNATPool) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the PSNATPool
 func (o *PSNATPool) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the PSNATPool
 func (o *PSNATPool) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the PSNATPool
 func (o *PSNATPool) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the PSNATPool
 func (o *PSNATPool) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the PSNATPool
 func (o *PSNATPool) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the PSNATPool
 func (o *PSNATPool) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // PSPATMaps retrieves the list of child PSPATMaps of the PSNATPool
 func (o *PSNATPool) PSPATMaps(info *bambou.FetchingInfo) (PSPATMapsList, *bambou.Error) {
 
-    var list PSPATMapsList
-    err := bambou.CurrentSession().FetchChildren(o, PSPATMapIdentity, &list, info)
-    return list, err
+	var list PSPATMapsList
+	err := bambou.CurrentSession().FetchChildren(o, PSPATMapIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePSPATMap creates a new child PSPATMap under the PSNATPool
 func (o *PSNATPool) CreatePSPATMap(child *PSPATMap) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // PTranslationMaps retrieves the list of child PTranslationMaps of the PSNATPool
 func (o *PSNATPool) PTranslationMaps(info *bambou.FetchingInfo) (PTranslationMapsList, *bambou.Error) {
 
-    var list PTranslationMapsList
-    err := bambou.CurrentSession().FetchChildren(o, PTranslationMapIdentity, &list, info)
-    return list, err
+	var list PTranslationMapsList
+	err := bambou.CurrentSession().FetchChildren(o, PTranslationMapIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePTranslationMap creates a new child PTranslationMap under the PSNATPool
 func (o *PSNATPool) CreatePTranslationMap(child *PTranslationMap) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

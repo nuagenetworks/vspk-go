@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // AutoDiscoverHypervisorFromClusterIdentity represents the Identity of the object
-var AutoDiscoverHypervisorFromClusterIdentity = bambou.Identity {
-    Name:     "autodiscoveredhypervisor",
-    Category: "autodiscoveredhypervisors",
+var AutoDiscoverHypervisorFromClusterIdentity = bambou.Identity{
+	Name:     "autodiscoveredhypervisor",
+	Category: "autodiscoveredhypervisors",
 }
 
 // AutoDiscoverHypervisorFromClustersList represents a list of AutoDiscoverHypervisorFromClusters
@@ -42,76 +42,73 @@ type AutoDiscoverHypervisorFromClustersList []*AutoDiscoverHypervisorFromCluster
 // An Ancestor is defined as an entity that has AutoDiscoverHypervisorFromCluster as a descendant.
 // An Ancestor can get a list of its child AutoDiscoverHypervisorFromClusters, but not necessarily create one.
 type AutoDiscoverHypervisorFromClustersAncestor interface {
-    AutoDiscoverHypervisorFromClusters(*bambou.FetchingInfo) (AutoDiscoverHypervisorFromClustersList, *bambou.Error)
+	AutoDiscoverHypervisorFromClusters(*bambou.FetchingInfo) (AutoDiscoverHypervisorFromClustersList, *bambou.Error)
 }
 
 // AutoDiscoverHypervisorFromClustersParent is the interface that a parent of a AutoDiscoverHypervisorFromCluster must implement.
 // A Parent is defined as an entity that has AutoDiscoverHypervisorFromCluster as a child.
 // A Parent is an Ancestor which can create a AutoDiscoverHypervisorFromCluster.
 type AutoDiscoverHypervisorFromClustersParent interface {
-    AutoDiscoverHypervisorFromClustersAncestor
-    CreateAutoDiscoverHypervisorFromCluster(*AutoDiscoverHypervisorFromCluster) (*bambou.Error)
+	AutoDiscoverHypervisorFromClustersAncestor
+	CreateAutoDiscoverHypervisorFromCluster(*AutoDiscoverHypervisorFromCluster) *bambou.Error
 }
 
 // AutoDiscoverHypervisorFromCluster represents the model of a autodiscoveredhypervisor
 type AutoDiscoverHypervisorFromCluster struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    ManagedObjectID string `json:"managedObjectID,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    NetworkList []interface{} `json:"networkList,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    AssocEntityID string `json:"assocEntityID,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    HypervisorIP string `json:"hypervisorIP,omitempty"`
-    
+	ID              string        `json:"ID,omitempty"`
+	ParentID        string        `json:"parentID,omitempty"`
+	ParentType      string        `json:"parentType,omitempty"`
+	Owner           string        `json:"owner,omitempty"`
+	ManagedObjectID string        `json:"managedObjectID,omitempty"`
+	LastUpdatedBy   string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate string        `json:"lastUpdatedDate,omitempty"`
+	NetworkList     []interface{} `json:"networkList,omitempty"`
+	EntityScope     string        `json:"entityScope,omitempty"`
+	CreationDate    string        `json:"creationDate,omitempty"`
+	AssocEntityID   string        `json:"assocEntityID,omitempty"`
+	Owner           string        `json:"owner,omitempty"`
+	ExternalID      string        `json:"externalID,omitempty"`
+	HypervisorIP    string        `json:"hypervisorIP,omitempty"`
 }
 
 // NewAutoDiscoverHypervisorFromCluster returns a new *AutoDiscoverHypervisorFromCluster
 func NewAutoDiscoverHypervisorFromCluster() *AutoDiscoverHypervisorFromCluster {
 
-    return &AutoDiscoverHypervisorFromCluster{
-        }
+	return &AutoDiscoverHypervisorFromCluster{}
 }
 
 // Identity returns the Identity of the object.
 func (o *AutoDiscoverHypervisorFromCluster) Identity() bambou.Identity {
 
-    return AutoDiscoverHypervisorFromClusterIdentity
+	return AutoDiscoverHypervisorFromClusterIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *AutoDiscoverHypervisorFromCluster) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *AutoDiscoverHypervisorFromCluster) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the AutoDiscoverHypervisorFromCluster from the server
 func (o *AutoDiscoverHypervisorFromCluster) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the AutoDiscoverHypervisorFromCluster into the server
 func (o *AutoDiscoverHypervisorFromCluster) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the AutoDiscoverHypervisorFromCluster from the server
 func (o *AutoDiscoverHypervisorFromCluster) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-

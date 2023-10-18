@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // AllRedundancyGroupIdentity represents the Identity of the object
-var AllRedundancyGroupIdentity = bambou.Identity {
-    Name:     "allredundancygroup",
-    Category: "allredundancygroups",
+var AllRedundancyGroupIdentity = bambou.Identity{
+	Name:     "allredundancygroup",
+	Category: "allredundancygroups",
 }
 
 // AllRedundancyGroupsList represents a list of AllRedundancyGroups
@@ -42,138 +42,126 @@ type AllRedundancyGroupsList []*AllRedundancyGroup
 // An Ancestor is defined as an entity that has AllRedundancyGroup as a descendant.
 // An Ancestor can get a list of its child AllRedundancyGroups, but not necessarily create one.
 type AllRedundancyGroupsAncestor interface {
-    AllRedundancyGroups(*bambou.FetchingInfo) (AllRedundancyGroupsList, *bambou.Error)
+	AllRedundancyGroups(*bambou.FetchingInfo) (AllRedundancyGroupsList, *bambou.Error)
 }
 
 // AllRedundancyGroupsParent is the interface that a parent of a AllRedundancyGroup must implement.
 // A Parent is defined as an entity that has AllRedundancyGroup as a child.
 // A Parent is an Ancestor which can create a AllRedundancyGroup.
 type AllRedundancyGroupsParent interface {
-    AllRedundancyGroupsAncestor
-    CreateAllRedundancyGroup(*AllRedundancyGroup) (*bambou.Error)
+	AllRedundancyGroupsAncestor
+	CreateAllRedundancyGroup(*AllRedundancyGroup) *bambou.Error
 }
 
 // AllRedundancyGroup represents the model of a allredundancygroup
 type AllRedundancyGroup struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    GatewayPeer1AutodiscoveredGatewayID string `json:"gatewayPeer1AutodiscoveredGatewayID,omitempty"`
-    GatewayPeer1Connected bool `json:"gatewayPeer1Connected"`
-    GatewayPeer1ID string `json:"gatewayPeer1ID,omitempty"`
-    GatewayPeer1Name string `json:"gatewayPeer1Name,omitempty"`
-    GatewayPeer2AutodiscoveredGatewayID string `json:"gatewayPeer2AutodiscoveredGatewayID,omitempty"`
-    GatewayPeer2Connected bool `json:"gatewayPeer2Connected"`
-    GatewayPeer2Name string `json:"gatewayPeer2Name,omitempty"`
-    RedundantGatewayStatus string `json:"redundantGatewayStatus,omitempty"`
-    PermittedAction string `json:"permittedAction,omitempty"`
-    Personality string `json:"personality,omitempty"`
-    Description string `json:"description,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EnterpriseID string `json:"enterpriseID,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Vtep string `json:"vtep,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID                                  string        `json:"ID,omitempty"`
+	ParentID                            string        `json:"parentID,omitempty"`
+	ParentType                          string        `json:"parentType,omitempty"`
+	Owner                               string        `json:"owner,omitempty"`
+	Name                                string        `json:"name,omitempty"`
+	LastUpdatedBy                       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                     string        `json:"lastUpdatedDate,omitempty"`
+	GatewayPeer1AutodiscoveredGatewayID string        `json:"gatewayPeer1AutodiscoveredGatewayID,omitempty"`
+	GatewayPeer1Connected               bool          `json:"gatewayPeer1Connected"`
+	GatewayPeer1ID                      string        `json:"gatewayPeer1ID,omitempty"`
+	GatewayPeer1Name                    string        `json:"gatewayPeer1Name,omitempty"`
+	GatewayPeer2AutodiscoveredGatewayID string        `json:"gatewayPeer2AutodiscoveredGatewayID,omitempty"`
+	GatewayPeer2Connected               bool          `json:"gatewayPeer2Connected"`
+	GatewayPeer2Name                    string        `json:"gatewayPeer2Name,omitempty"`
+	RedundantGatewayStatus              string        `json:"redundantGatewayStatus,omitempty"`
+	PermittedAction                     string        `json:"permittedAction,omitempty"`
+	Personality                         string        `json:"personality,omitempty"`
+	Description                         string        `json:"description,omitempty"`
+	EmbeddedMetadata                    []interface{} `json:"embeddedMetadata,omitempty"`
+	EnterpriseID                        string        `json:"enterpriseID,omitempty"`
+	EntityScope                         string        `json:"entityScope,omitempty"`
+	CreationDate                        string        `json:"creationDate,omitempty"`
+	Vtep                                string        `json:"vtep,omitempty"`
+	Owner                               string        `json:"owner,omitempty"`
+	ExternalID                          string        `json:"externalID,omitempty"`
 }
 
 // NewAllRedundancyGroup returns a new *AllRedundancyGroup
 func NewAllRedundancyGroup() *AllRedundancyGroup {
 
-    return &AllRedundancyGroup{
-        }
+	return &AllRedundancyGroup{}
 }
 
 // Identity returns the Identity of the object.
 func (o *AllRedundancyGroup) Identity() bambou.Identity {
 
-    return AllRedundancyGroupIdentity
+	return AllRedundancyGroupIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *AllRedundancyGroup) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *AllRedundancyGroup) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the AllRedundancyGroup from the server
 func (o *AllRedundancyGroup) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the AllRedundancyGroup into the server
 func (o *AllRedundancyGroup) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the AllRedundancyGroup from the server
 func (o *AllRedundancyGroup) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the AllRedundancyGroup
 func (o *AllRedundancyGroup) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the AllRedundancyGroup
 func (o *AllRedundancyGroup) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the AllRedundancyGroup
 func (o *AllRedundancyGroup) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the AllRedundancyGroup
 func (o *AllRedundancyGroup) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the AllRedundancyGroup
 func (o *AllRedundancyGroup) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the AllRedundancyGroup
 func (o *AllRedundancyGroup) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // InfrastructureGatewayProfileIdentity represents the Identity of the object
-var InfrastructureGatewayProfileIdentity = bambou.Identity {
-    Name:     "infrastructuregatewayprofile",
-    Category: "infrastructuregatewayprofiles",
+var InfrastructureGatewayProfileIdentity = bambou.Identity{
+	Name:     "infrastructuregatewayprofile",
+	Category: "infrastructuregatewayprofiles",
 }
 
 // InfrastructureGatewayProfilesList represents a list of InfrastructureGatewayProfiles
@@ -42,180 +42,169 @@ type InfrastructureGatewayProfilesList []*InfrastructureGatewayProfile
 // An Ancestor is defined as an entity that has InfrastructureGatewayProfile as a descendant.
 // An Ancestor can get a list of its child InfrastructureGatewayProfiles, but not necessarily create one.
 type InfrastructureGatewayProfilesAncestor interface {
-    InfrastructureGatewayProfiles(*bambou.FetchingInfo) (InfrastructureGatewayProfilesList, *bambou.Error)
+	InfrastructureGatewayProfiles(*bambou.FetchingInfo) (InfrastructureGatewayProfilesList, *bambou.Error)
 }
 
 // InfrastructureGatewayProfilesParent is the interface that a parent of a InfrastructureGatewayProfile must implement.
 // A Parent is defined as an entity that has InfrastructureGatewayProfile as a child.
 // A Parent is an Ancestor which can create a InfrastructureGatewayProfile.
 type InfrastructureGatewayProfilesParent interface {
-    InfrastructureGatewayProfilesAncestor
-    CreateInfrastructureGatewayProfile(*InfrastructureGatewayProfile) (*bambou.Error)
+	InfrastructureGatewayProfilesAncestor
+	CreateInfrastructureGatewayProfile(*InfrastructureGatewayProfile) *bambou.Error
 }
 
 // InfrastructureGatewayProfile represents the model of a infrastructuregatewayprofile
 type InfrastructureGatewayProfile struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    NTPServerKey string `json:"NTPServerKey,omitempty"`
-    NTPServerKeyID int `json:"NTPServerKeyID,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    DatapathSyncTimeout int `json:"datapathSyncTimeout,omitempty"`
-    DeadTimer string `json:"deadTimer,omitempty"`
-    DeadTimerEnabled bool `json:"deadTimerEnabled"`
-    WebFilterDownloadPort int `json:"webFilterDownloadPort,omitempty"`
-    WebFilterQueryPort int `json:"webFilterQueryPort,omitempty"`
-    SecondaryRemoteLogServerAddress string `json:"secondaryRemoteLogServerAddress,omitempty"`
-    SecondaryRemoteLogServerPort int `json:"secondaryRemoteLogServerPort,omitempty"`
-    RemoteLogMode string `json:"remoteLogMode,omitempty"`
-    RemoteLogServerAddress string `json:"remoteLogServerAddress,omitempty"`
-    RemoteLogServerPort int `json:"remoteLogServerPort,omitempty"`
-    Description string `json:"description,omitempty"`
-    MetadataUpgradePath string `json:"metadataUpgradePath,omitempty"`
-    FlowEvictionThreshold int `json:"flowEvictionThreshold,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EnableUnderlayTestsDuringActivation bool `json:"enableUnderlayTestsDuringActivation"`
-    UnderlayTestServer string `json:"underlayTestServer,omitempty"`
-    UnderlayTestUplinkMode string `json:"underlayTestUplinkMode,omitempty"`
-    EnterpriseID string `json:"enterpriseID,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    ControllerLessDuration string `json:"controllerLessDuration,omitempty"`
-    ControllerLessEnabled bool `json:"controllerLessEnabled"`
-    ControllerLessForwardingMode string `json:"controllerLessForwardingMode,omitempty"`
-    ControllerLessRemoteDuration string `json:"controllerLessRemoteDuration,omitempty"`
-    ForceImmediateSystemSync bool `json:"forceImmediateSystemSync"`
-    OpenFlowAuditTimer int `json:"openFlowAuditTimer,omitempty"`
-    UpgradeAction string `json:"upgradeAction,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    ProxyDNSName string `json:"proxyDNSName,omitempty"`
-    UseTwoFactor bool `json:"useTwoFactor"`
-    StatsCollectorPort int `json:"statsCollectorPort,omitempty"`
-    RunUnderlayBandwidthTest bool `json:"runUnderlayBandwidthTest"`
-    RunUnderlayConnectivityTest bool `json:"runUnderlayConnectivityTest"`
-    RunUnderlayMTUDiscoveryTest bool `json:"runUnderlayMTUDiscoveryTest"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    SystemSyncScheduler string `json:"systemSyncScheduler,omitempty"`
-    
+	ID                                  string        `json:"ID,omitempty"`
+	ParentID                            string        `json:"parentID,omitempty"`
+	ParentType                          string        `json:"parentType,omitempty"`
+	Owner                               string        `json:"owner,omitempty"`
+	NTPServerKey                        string        `json:"NTPServerKey,omitempty"`
+	NTPServerKeyID                      int           `json:"NTPServerKeyID,omitempty"`
+	Name                                string        `json:"name,omitempty"`
+	LastUpdatedBy                       string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate                     string        `json:"lastUpdatedDate,omitempty"`
+	DatapathSyncTimeout                 int           `json:"datapathSyncTimeout,omitempty"`
+	DeadTimer                           string        `json:"deadTimer,omitempty"`
+	DeadTimerEnabled                    bool          `json:"deadTimerEnabled"`
+	WebFilterDownloadPort               int           `json:"webFilterDownloadPort,omitempty"`
+	WebFilterQueryPort                  int           `json:"webFilterQueryPort,omitempty"`
+	SecondaryRemoteLogServerAddress     string        `json:"secondaryRemoteLogServerAddress,omitempty"`
+	SecondaryRemoteLogServerPort        int           `json:"secondaryRemoteLogServerPort,omitempty"`
+	RemoteLogMode                       string        `json:"remoteLogMode,omitempty"`
+	RemoteLogServerAddress              string        `json:"remoteLogServerAddress,omitempty"`
+	RemoteLogServerPort                 int           `json:"remoteLogServerPort,omitempty"`
+	Description                         string        `json:"description,omitempty"`
+	MetadataUpgradePath                 string        `json:"metadataUpgradePath,omitempty"`
+	FlowEvictionThreshold               int           `json:"flowEvictionThreshold,omitempty"`
+	EmbeddedMetadata                    []interface{} `json:"embeddedMetadata,omitempty"`
+	EnableUnderlayTestsDuringActivation bool          `json:"enableUnderlayTestsDuringActivation"`
+	UnderlayTestServer                  string        `json:"underlayTestServer,omitempty"`
+	UnderlayTestUplinkMode              string        `json:"underlayTestUplinkMode,omitempty"`
+	EnterpriseID                        string        `json:"enterpriseID,omitempty"`
+	EntityScope                         string        `json:"entityScope,omitempty"`
+	ControllerLessDuration              string        `json:"controllerLessDuration,omitempty"`
+	ControllerLessEnabled               bool          `json:"controllerLessEnabled"`
+	ControllerLessForwardingMode        string        `json:"controllerLessForwardingMode,omitempty"`
+	ControllerLessRemoteDuration        string        `json:"controllerLessRemoteDuration,omitempty"`
+	ForceImmediateSystemSync            bool          `json:"forceImmediateSystemSync"`
+	OpenFlowAuditTimer                  int           `json:"openFlowAuditTimer,omitempty"`
+	UpgradeAction                       string        `json:"upgradeAction,omitempty"`
+	CreationDate                        string        `json:"creationDate,omitempty"`
+	ProxyDNSName                        string        `json:"proxyDNSName,omitempty"`
+	UseTwoFactor                        bool          `json:"useTwoFactor"`
+	StatsCollectorPort                  int           `json:"statsCollectorPort,omitempty"`
+	RunUnderlayBandwidthTest            bool          `json:"runUnderlayBandwidthTest"`
+	RunUnderlayConnectivityTest         bool          `json:"runUnderlayConnectivityTest"`
+	RunUnderlayMTUDiscoveryTest         bool          `json:"runUnderlayMTUDiscoveryTest"`
+	Owner                               string        `json:"owner,omitempty"`
+	ExternalID                          string        `json:"externalID,omitempty"`
+	SystemSyncScheduler                 string        `json:"systemSyncScheduler,omitempty"`
 }
 
 // NewInfrastructureGatewayProfile returns a new *InfrastructureGatewayProfile
 func NewInfrastructureGatewayProfile() *InfrastructureGatewayProfile {
 
-    return &InfrastructureGatewayProfile{
-        DatapathSyncTimeout: 1000,
-        DeadTimerEnabled: false,
-        WebFilterDownloadPort: 8080,
-        WebFilterQueryPort: 9090,
-        SecondaryRemoteLogServerPort: 0,
-        RemoteLogMode: "DISABLED",
-        RemoteLogServerPort: 514,
-        FlowEvictionThreshold: 2500,
-        EnableUnderlayTestsDuringActivation: false,
-        UnderlayTestUplinkMode: "BOOTSTRAP_UPLINK",
-        ControllerLessDuration: "P7DT0H0M",
-        ControllerLessForwardingMode: "DISABLED",
-        ControllerLessRemoteDuration: "P3DT0H0M",
-        ForceImmediateSystemSync: false,
-        OpenFlowAuditTimer: 180,
-        UpgradeAction: "NONE",
-        UseTwoFactor: false,
-        StatsCollectorPort: 39090,
-        RunUnderlayBandwidthTest: true,
-        RunUnderlayConnectivityTest: true,
-        RunUnderlayMTUDiscoveryTest: true,
-        SystemSyncScheduler: "0 0 * * *",
-        }
+	return &InfrastructureGatewayProfile{
+		DatapathSyncTimeout:                 1000,
+		DeadTimerEnabled:                    false,
+		WebFilterDownloadPort:               8080,
+		WebFilterQueryPort:                  9090,
+		SecondaryRemoteLogServerPort:        0,
+		RemoteLogMode:                       "DISABLED",
+		RemoteLogServerPort:                 514,
+		FlowEvictionThreshold:               2500,
+		EnableUnderlayTestsDuringActivation: false,
+		UnderlayTestUplinkMode:              "BOOTSTRAP_UPLINK",
+		ControllerLessDuration:              "P7DT0H0M",
+		ControllerLessForwardingMode:        "DISABLED",
+		ControllerLessRemoteDuration:        "P3DT0H0M",
+		ForceImmediateSystemSync:            false,
+		OpenFlowAuditTimer:                  180,
+		UpgradeAction:                       "NONE",
+		UseTwoFactor:                        false,
+		StatsCollectorPort:                  39090,
+		RunUnderlayBandwidthTest:            true,
+		RunUnderlayConnectivityTest:         true,
+		RunUnderlayMTUDiscoveryTest:         true,
+		SystemSyncScheduler:                 "0 0 * * *",
+	}
 }
 
 // Identity returns the Identity of the object.
 func (o *InfrastructureGatewayProfile) Identity() bambou.Identity {
 
-    return InfrastructureGatewayProfileIdentity
+	return InfrastructureGatewayProfileIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *InfrastructureGatewayProfile) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *InfrastructureGatewayProfile) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the InfrastructureGatewayProfile from the server
 func (o *InfrastructureGatewayProfile) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the InfrastructureGatewayProfile into the server
 func (o *InfrastructureGatewayProfile) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the InfrastructureGatewayProfile from the server
 func (o *InfrastructureGatewayProfile) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the InfrastructureGatewayProfile
 func (o *InfrastructureGatewayProfile) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the InfrastructureGatewayProfile
 func (o *InfrastructureGatewayProfile) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the InfrastructureGatewayProfile
 func (o *InfrastructureGatewayProfile) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the InfrastructureGatewayProfile
 func (o *InfrastructureGatewayProfile) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the InfrastructureGatewayProfile
 func (o *InfrastructureGatewayProfile) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the InfrastructureGatewayProfile
 func (o *InfrastructureGatewayProfile) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

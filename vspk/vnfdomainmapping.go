@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // VNFDomainMappingIdentity represents the Identity of the object
-var VNFDomainMappingIdentity = bambou.Identity {
-    Name:     "vnfdomainmapping",
-    Category: "vnfdomainmappings",
+var VNFDomainMappingIdentity = bambou.Identity{
+	Name:     "vnfdomainmapping",
+	Category: "vnfdomainmappings",
 }
 
 // VNFDomainMappingsList represents a list of VNFDomainMappings
@@ -42,136 +42,125 @@ type VNFDomainMappingsList []*VNFDomainMapping
 // An Ancestor is defined as an entity that has VNFDomainMapping as a descendant.
 // An Ancestor can get a list of its child VNFDomainMappings, but not necessarily create one.
 type VNFDomainMappingsAncestor interface {
-    VNFDomainMappings(*bambou.FetchingInfo) (VNFDomainMappingsList, *bambou.Error)
+	VNFDomainMappings(*bambou.FetchingInfo) (VNFDomainMappingsList, *bambou.Error)
 }
 
 // VNFDomainMappingsParent is the interface that a parent of a VNFDomainMapping must implement.
 // A Parent is defined as an entity that has VNFDomainMapping as a child.
 // A Parent is an Ancestor which can create a VNFDomainMapping.
 type VNFDomainMappingsParent interface {
-    VNFDomainMappingsAncestor
-    CreateVNFDomainMapping(*VNFDomainMapping) (*bambou.Error)
+	VNFDomainMappingsAncestor
+	CreateVNFDomainMapping(*VNFDomainMapping) *bambou.Error
 }
 
 // VNFDomainMapping represents the model of a vnfdomainmapping
 type VNFDomainMapping struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    SegmentationID int `json:"segmentationID,omitempty"`
-    SegmentationType string `json:"segmentationType,omitempty"`
-    ServiceId string `json:"serviceId,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EnterpriseName string `json:"enterpriseName,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    AssociatedDomainID string `json:"associatedDomainID,omitempty"`
-    AssociatedDomainName string `json:"associatedDomainName,omitempty"`
-    AssociatedEnterpriseID string `json:"associatedEnterpriseID,omitempty"`
-    AssociatedNSGatewayID string `json:"associatedNSGatewayID,omitempty"`
-    AssociatedNSGatewayName string `json:"associatedNSGatewayName,omitempty"`
-    AutoCreated bool `json:"autoCreated"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID                      string        `json:"ID,omitempty"`
+	ParentID                string        `json:"parentID,omitempty"`
+	ParentType              string        `json:"parentType,omitempty"`
+	Owner                   string        `json:"owner,omitempty"`
+	LastUpdatedBy           string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate         string        `json:"lastUpdatedDate,omitempty"`
+	SegmentationID          int           `json:"segmentationID,omitempty"`
+	SegmentationType        string        `json:"segmentationType,omitempty"`
+	ServiceId               string        `json:"serviceId,omitempty"`
+	EmbeddedMetadata        []interface{} `json:"embeddedMetadata,omitempty"`
+	EnterpriseName          string        `json:"enterpriseName,omitempty"`
+	EntityScope             string        `json:"entityScope,omitempty"`
+	CreationDate            string        `json:"creationDate,omitempty"`
+	AssociatedDomainID      string        `json:"associatedDomainID,omitempty"`
+	AssociatedDomainName    string        `json:"associatedDomainName,omitempty"`
+	AssociatedEnterpriseID  string        `json:"associatedEnterpriseID,omitempty"`
+	AssociatedNSGatewayID   string        `json:"associatedNSGatewayID,omitempty"`
+	AssociatedNSGatewayName string        `json:"associatedNSGatewayName,omitempty"`
+	AutoCreated             bool          `json:"autoCreated"`
+	Owner                   string        `json:"owner,omitempty"`
+	ExternalID              string        `json:"externalID,omitempty"`
 }
 
 // NewVNFDomainMapping returns a new *VNFDomainMapping
 func NewVNFDomainMapping() *VNFDomainMapping {
 
-    return &VNFDomainMapping{
-        SegmentationType: "VLAN",
-        AutoCreated: false,
-        }
+	return &VNFDomainMapping{
+		SegmentationType: "VLAN",
+		AutoCreated:      false,
+	}
 }
 
 // Identity returns the Identity of the object.
 func (o *VNFDomainMapping) Identity() bambou.Identity {
 
-    return VNFDomainMappingIdentity
+	return VNFDomainMappingIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *VNFDomainMapping) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *VNFDomainMapping) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the VNFDomainMapping from the server
 func (o *VNFDomainMapping) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the VNFDomainMapping into the server
 func (o *VNFDomainMapping) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the VNFDomainMapping from the server
 func (o *VNFDomainMapping) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the VNFDomainMapping
 func (o *VNFDomainMapping) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the VNFDomainMapping
 func (o *VNFDomainMapping) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the VNFDomainMapping
 func (o *VNFDomainMapping) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the VNFDomainMapping
 func (o *VNFDomainMapping) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the VNFDomainMapping
 func (o *VNFDomainMapping) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the VNFDomainMapping
 func (o *VNFDomainMapping) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

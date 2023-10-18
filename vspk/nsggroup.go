@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // NSGGroupIdentity represents the Identity of the object
-var NSGGroupIdentity = bambou.Identity {
-    Name:     "nsggroup",
-    Category: "nsggroups",
+var NSGGroupIdentity = bambou.Identity{
+	Name:     "nsggroup",
+	Category: "nsggroups",
 }
 
 // NSGGroupsList represents a list of NSGGroups
@@ -42,166 +42,148 @@ type NSGGroupsList []*NSGGroup
 // An Ancestor is defined as an entity that has NSGGroup as a descendant.
 // An Ancestor can get a list of its child NSGGroups, but not necessarily create one.
 type NSGGroupsAncestor interface {
-    NSGGroups(*bambou.FetchingInfo) (NSGGroupsList, *bambou.Error)
+	NSGGroups(*bambou.FetchingInfo) (NSGGroupsList, *bambou.Error)
 }
 
 // NSGGroupsParent is the interface that a parent of a NSGGroup must implement.
 // A Parent is defined as an entity that has NSGGroup as a child.
 // A Parent is an Ancestor which can create a NSGGroup.
 type NSGGroupsParent interface {
-    NSGGroupsAncestor
-    CreateNSGGroup(*NSGGroup) (*bambou.Error)
+	NSGGroupsAncestor
+	CreateNSGGroup(*NSGGroup) *bambou.Error
 }
 
 // NSGGroup represents the model of a nsggroup
 type NSGGroup struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    Description string `json:"description,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    NsgGroupId int `json:"nsgGroupId,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	NsgGroupId       int           `json:"nsgGroupId,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewNSGGroup returns a new *NSGGroup
 func NewNSGGroup() *NSGGroup {
 
-    return &NSGGroup{
-        }
+	return &NSGGroup{}
 }
 
 // Identity returns the Identity of the object.
 func (o *NSGGroup) Identity() bambou.Identity {
 
-    return NSGGroupIdentity
+	return NSGGroupIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *NSGGroup) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *NSGGroup) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the NSGGroup from the server
 func (o *NSGGroup) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the NSGGroup into the server
 func (o *NSGGroup) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the NSGGroup from the server
 func (o *NSGGroup) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the NSGGroup
 func (o *NSGGroup) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the NSGGroup
 func (o *NSGGroup) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the NSGGroup
 func (o *NSGGroup) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the NSGGroup
 func (o *NSGGroup) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the NSGGroup
 func (o *NSGGroup) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the NSGGroup
 func (o *NSGGroup) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // NSGateways retrieves the list of child NSGateways of the NSGGroup
 func (o *NSGGroup) NSGateways(info *bambou.FetchingInfo) (NSGatewaysList, *bambou.Error) {
 
-    var list NSGatewaysList
-    err := bambou.CurrentSession().FetchChildren(o, NSGatewayIdentity, &list, info)
-    return list, err
+	var list NSGatewaysList
+	err := bambou.CurrentSession().FetchChildren(o, NSGatewayIdentity, &list, info)
+	return list, err
 }
-
-
 
 // AssignNSGateways assigns the list of NSGateways to the NSGGroup
 func (o *NSGGroup) AssignNSGateways(children NSGatewaysList) *bambou.Error {
 
-    list := []bambou.Identifiable{}
-    for _, c := range children {
-        list = append(list, c)
-    }
+	list := []bambou.Identifiable{}
+	for _, c := range children {
+		list = append(list, c)
+	}
 
-    return bambou.CurrentSession().AssignChildren(o, list, NSGatewayIdentity)
+	return bambou.CurrentSession().AssignChildren(o, list, NSGatewayIdentity)
 }
-
 
 // DUCGroupBindings retrieves the list of child DUCGroupBindings of the NSGGroup
 func (o *NSGGroup) DUCGroupBindings(info *bambou.FetchingInfo) (DUCGroupBindingsList, *bambou.Error) {
 
-    var list DUCGroupBindingsList
-    err := bambou.CurrentSession().FetchChildren(o, DUCGroupBindingIdentity, &list, info)
-    return list, err
+	var list DUCGroupBindingsList
+	err := bambou.CurrentSession().FetchChildren(o, DUCGroupBindingIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateDUCGroupBinding creates a new child DUCGroupBinding under the NSGGroup
 func (o *NSGGroup) CreateDUCGroupBinding(child *DUCGroupBinding) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

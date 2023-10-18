@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // UplinkRDIdentity represents the Identity of the object
-var UplinkRDIdentity = bambou.Identity {
-    Name:     "uplinkroutedistinguisher",
-    Category: "uplinkroutedistinguishers",
+var UplinkRDIdentity = bambou.Identity{
+	Name:     "uplinkroutedistinguisher",
+	Category: "uplinkroutedistinguishers",
 }
 
 // UplinkRDsList represents a list of UplinkRDs
@@ -42,127 +42,116 @@ type UplinkRDsList []*UplinkRD
 // An Ancestor is defined as an entity that has UplinkRD as a descendant.
 // An Ancestor can get a list of its child UplinkRDs, but not necessarily create one.
 type UplinkRDsAncestor interface {
-    UplinkRDs(*bambou.FetchingInfo) (UplinkRDsList, *bambou.Error)
+	UplinkRDs(*bambou.FetchingInfo) (UplinkRDsList, *bambou.Error)
 }
 
 // UplinkRDsParent is the interface that a parent of a UplinkRD must implement.
 // A Parent is defined as an entity that has UplinkRD as a child.
 // A Parent is an Ancestor which can create a UplinkRD.
 type UplinkRDsParent interface {
-    UplinkRDsAncestor
-    CreateUplinkRD(*UplinkRD) (*bambou.Error)
+	UplinkRDsAncestor
+	CreateUplinkRD(*UplinkRD) *bambou.Error
 }
 
 // UplinkRD represents the model of a uplinkroutedistinguisher
 type UplinkRD struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    RouteDistinguisher string `json:"routeDistinguisher,omitempty"`
-    UplinkType string `json:"uplinkType,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID                 string        `json:"ID,omitempty"`
+	ParentID           string        `json:"parentID,omitempty"`
+	ParentType         string        `json:"parentType,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
+	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
+	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope        string        `json:"entityScope,omitempty"`
+	RouteDistinguisher string        `json:"routeDistinguisher,omitempty"`
+	UplinkType         string        `json:"uplinkType,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
+	ExternalID         string        `json:"externalID,omitempty"`
 }
 
 // NewUplinkRD returns a new *UplinkRD
 func NewUplinkRD() *UplinkRD {
 
-    return &UplinkRD{
-        UplinkType: "RD_PRIMARY1",
-        }
+	return &UplinkRD{
+		UplinkType: "RD_PRIMARY1",
+	}
 }
 
 // Identity returns the Identity of the object.
 func (o *UplinkRD) Identity() bambou.Identity {
 
-    return UplinkRDIdentity
+	return UplinkRDIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *UplinkRD) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *UplinkRD) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the UplinkRD from the server
 func (o *UplinkRD) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the UplinkRD into the server
 func (o *UplinkRD) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the UplinkRD from the server
 func (o *UplinkRD) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the UplinkRD
 func (o *UplinkRD) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the UplinkRD
 func (o *UplinkRD) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the UplinkRD
 func (o *UplinkRD) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the UplinkRD
 func (o *UplinkRD) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the UplinkRD
 func (o *UplinkRD) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the UplinkRD
 func (o *UplinkRD) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

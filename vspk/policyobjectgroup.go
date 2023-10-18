@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // PolicyObjectGroupIdentity represents the Identity of the object
-var PolicyObjectGroupIdentity = bambou.Identity {
-    Name:     "policyobjectgroup",
-    Category: "policyobjectgroups",
+var PolicyObjectGroupIdentity = bambou.Identity{
+	Name:     "policyobjectgroup",
+	Category: "policyobjectgroups",
 }
 
 // PolicyObjectGroupsList represents a list of PolicyObjectGroups
@@ -42,171 +42,153 @@ type PolicyObjectGroupsList []*PolicyObjectGroup
 // An Ancestor is defined as an entity that has PolicyObjectGroup as a descendant.
 // An Ancestor can get a list of its child PolicyObjectGroups, but not necessarily create one.
 type PolicyObjectGroupsAncestor interface {
-    PolicyObjectGroups(*bambou.FetchingInfo) (PolicyObjectGroupsList, *bambou.Error)
+	PolicyObjectGroups(*bambou.FetchingInfo) (PolicyObjectGroupsList, *bambou.Error)
 }
 
 // PolicyObjectGroupsParent is the interface that a parent of a PolicyObjectGroup must implement.
 // A Parent is defined as an entity that has PolicyObjectGroup as a child.
 // A Parent is an Ancestor which can create a PolicyObjectGroup.
 type PolicyObjectGroupsParent interface {
-    PolicyObjectGroupsAncestor
-    CreatePolicyObjectGroup(*PolicyObjectGroup) (*bambou.Error)
+	PolicyObjectGroupsAncestor
+	CreatePolicyObjectGroup(*PolicyObjectGroup) *bambou.Error
 }
 
 // PolicyObjectGroup represents the model of a policyobjectgroup
 type PolicyObjectGroup struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    Description string `json:"description,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    Type string `json:"type,omitempty"`
-    
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
+	Type             string        `json:"type,omitempty"`
 }
 
 // NewPolicyObjectGroup returns a new *PolicyObjectGroup
 func NewPolicyObjectGroup() *PolicyObjectGroup {
 
-    return &PolicyObjectGroup{
-        }
+	return &PolicyObjectGroup{}
 }
 
 // Identity returns the Identity of the object.
 func (o *PolicyObjectGroup) Identity() bambou.Identity {
 
-    return PolicyObjectGroupIdentity
+	return PolicyObjectGroupIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *PolicyObjectGroup) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *PolicyObjectGroup) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the PolicyObjectGroup from the server
 func (o *PolicyObjectGroup) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the PolicyObjectGroup into the server
 func (o *PolicyObjectGroup) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the PolicyObjectGroup from the server
 func (o *PolicyObjectGroup) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Gateways retrieves the list of child Gateways of the PolicyObjectGroup
 func (o *PolicyObjectGroup) Gateways(info *bambou.FetchingInfo) (GatewaysList, *bambou.Error) {
 
-    var list GatewaysList
-    err := bambou.CurrentSession().FetchChildren(o, GatewayIdentity, &list, info)
-    return list, err
+	var list GatewaysList
+	err := bambou.CurrentSession().FetchChildren(o, GatewayIdentity, &list, info)
+	return list, err
 }
-
-
 
 // AssignGateways assigns the list of Gateways to the PolicyObjectGroup
 func (o *PolicyObjectGroup) AssignGateways(children GatewaysList) *bambou.Error {
 
-    list := []bambou.Identifiable{}
-    for _, c := range children {
-        list = append(list, c)
-    }
+	list := []bambou.Identifiable{}
+	for _, c := range children {
+		list = append(list, c)
+	}
 
-    return bambou.CurrentSession().AssignChildren(o, list, GatewayIdentity)
+	return bambou.CurrentSession().AssignChildren(o, list, GatewayIdentity)
 }
-
 
 // Permissions retrieves the list of child Permissions of the PolicyObjectGroup
 func (o *PolicyObjectGroup) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the PolicyObjectGroup
 func (o *PolicyObjectGroup) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the PolicyObjectGroup
 func (o *PolicyObjectGroup) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the PolicyObjectGroup
 func (o *PolicyObjectGroup) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the PolicyObjectGroup
 func (o *PolicyObjectGroup) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the PolicyObjectGroup
 func (o *PolicyObjectGroup) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // NSGateways retrieves the list of child NSGateways of the PolicyObjectGroup
 func (o *PolicyObjectGroup) NSGateways(info *bambou.FetchingInfo) (NSGatewaysList, *bambou.Error) {
 
-    var list NSGatewaysList
-    err := bambou.CurrentSession().FetchChildren(o, NSGatewayIdentity, &list, info)
-    return list, err
+	var list NSGatewaysList
+	err := bambou.CurrentSession().FetchChildren(o, NSGatewayIdentity, &list, info)
+	return list, err
 }
-
-
 
 // AssignNSGateways assigns the list of NSGateways to the PolicyObjectGroup
 func (o *PolicyObjectGroup) AssignNSGateways(children NSGatewaysList) *bambou.Error {
 
-    list := []bambou.Identifiable{}
-    for _, c := range children {
-        list = append(list, c)
-    }
+	list := []bambou.Identifiable{}
+	for _, c := range children {
+		list = append(list, c)
+	}
 
-    return bambou.CurrentSession().AssignChildren(o, list, NSGatewayIdentity)
+	return bambou.CurrentSession().AssignChildren(o, list, NSGatewayIdentity)
 }
-

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // VrsInfoIdentity represents the Identity of the object
-var VrsInfoIdentity = bambou.Identity {
-    Name:     "vrsinfo",
-    Category: "vrsinfos",
+var VrsInfoIdentity = bambou.Identity{
+	Name:     "vrsinfo",
+	Category: "vrsinfos",
 }
 
 // VrsInfosList represents a list of VrsInfos
@@ -42,126 +42,114 @@ type VrsInfosList []*VrsInfo
 // An Ancestor is defined as an entity that has VrsInfo as a descendant.
 // An Ancestor can get a list of its child VrsInfos, but not necessarily create one.
 type VrsInfosAncestor interface {
-    VrsInfos(*bambou.FetchingInfo) (VrsInfosList, *bambou.Error)
+	VrsInfos(*bambou.FetchingInfo) (VrsInfosList, *bambou.Error)
 }
 
 // VrsInfosParent is the interface that a parent of a VrsInfo must implement.
 // A Parent is defined as an entity that has VrsInfo as a child.
 // A Parent is an Ancestor which can create a VrsInfo.
 type VrsInfosParent interface {
-    VrsInfosAncestor
-    CreateVrsInfo(*VrsInfo) (*bambou.Error)
+	VrsInfosAncestor
+	CreateVrsInfo(*VrsInfo) *bambou.Error
 }
 
 // VrsInfo represents the model of a vrsinfo
 type VrsInfo struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    NodeSegmentID int `json:"nodeSegmentID,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    VrsIP string `json:"vrsIP,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	NodeSegmentID    int           `json:"nodeSegmentID,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	VrsIP            string        `json:"vrsIP,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewVrsInfo returns a new *VrsInfo
 func NewVrsInfo() *VrsInfo {
 
-    return &VrsInfo{
-        }
+	return &VrsInfo{}
 }
 
 // Identity returns the Identity of the object.
 func (o *VrsInfo) Identity() bambou.Identity {
 
-    return VrsInfoIdentity
+	return VrsInfoIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *VrsInfo) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *VrsInfo) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the VrsInfo from the server
 func (o *VrsInfo) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the VrsInfo into the server
 func (o *VrsInfo) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the VrsInfo from the server
 func (o *VrsInfo) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the VrsInfo
 func (o *VrsInfo) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the VrsInfo
 func (o *VrsInfo) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the VrsInfo
 func (o *VrsInfo) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the VrsInfo
 func (o *VrsInfo) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the VrsInfo
 func (o *VrsInfo) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the VrsInfo
 func (o *VrsInfo) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

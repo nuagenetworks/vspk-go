@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ShuntLinkIdentity represents the Identity of the object
-var ShuntLinkIdentity = bambou.Identity {
-    Name:     "shuntlink",
-    Category: "shuntlinks",
+var ShuntLinkIdentity = bambou.Identity{
+	Name:     "shuntlink",
+	Category: "shuntlinks",
 }
 
 // ShuntLinksList represents a list of ShuntLinks
@@ -42,153 +42,135 @@ type ShuntLinksList []*ShuntLink
 // An Ancestor is defined as an entity that has ShuntLink as a descendant.
 // An Ancestor can get a list of its child ShuntLinks, but not necessarily create one.
 type ShuntLinksAncestor interface {
-    ShuntLinks(*bambou.FetchingInfo) (ShuntLinksList, *bambou.Error)
+	ShuntLinks(*bambou.FetchingInfo) (ShuntLinksList, *bambou.Error)
 }
 
 // ShuntLinksParent is the interface that a parent of a ShuntLink must implement.
 // A Parent is defined as an entity that has ShuntLink as a child.
 // A Parent is an Ancestor which can create a ShuntLink.
 type ShuntLinksParent interface {
-    ShuntLinksAncestor
-    CreateShuntLink(*ShuntLink) (*bambou.Error)
+	ShuntLinksAncestor
+	CreateShuntLink(*ShuntLink) *bambou.Error
 }
 
 // ShuntLink represents the model of a shuntlink
 type ShuntLink struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    VLANPeer1ID string `json:"VLANPeer1ID,omitempty"`
-    VLANPeer2ID string `json:"VLANPeer2ID,omitempty"`
-    Name string `json:"name,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    GatewayPeer1ID string `json:"gatewayPeer1ID,omitempty"`
-    GatewayPeer2ID string `json:"gatewayPeer2ID,omitempty"`
-    PermittedAction string `json:"permittedAction,omitempty"`
-    Description string `json:"description,omitempty"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID               string        `json:"ID,omitempty"`
+	ParentID         string        `json:"parentID,omitempty"`
+	ParentType       string        `json:"parentType,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	VLANPeer1ID      string        `json:"VLANPeer1ID,omitempty"`
+	VLANPeer2ID      string        `json:"VLANPeer2ID,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
+	GatewayPeer1ID   string        `json:"gatewayPeer1ID,omitempty"`
+	GatewayPeer2ID   string        `json:"gatewayPeer2ID,omitempty"`
+	PermittedAction  string        `json:"permittedAction,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope      string        `json:"entityScope,omitempty"`
+	CreationDate     string        `json:"creationDate,omitempty"`
+	Owner            string        `json:"owner,omitempty"`
+	ExternalID       string        `json:"externalID,omitempty"`
 }
 
 // NewShuntLink returns a new *ShuntLink
 func NewShuntLink() *ShuntLink {
 
-    return &ShuntLink{
-        }
+	return &ShuntLink{}
 }
 
 // Identity returns the Identity of the object.
 func (o *ShuntLink) Identity() bambou.Identity {
 
-    return ShuntLinkIdentity
+	return ShuntLinkIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ShuntLink) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ShuntLink) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the ShuntLink from the server
 func (o *ShuntLink) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ShuntLink into the server
 func (o *ShuntLink) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ShuntLink from the server
 func (o *ShuntLink) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the ShuntLink
 func (o *ShuntLink) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the ShuntLink
 func (o *ShuntLink) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the ShuntLink
 func (o *ShuntLink) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the ShuntLink
 func (o *ShuntLink) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // VirtualUplinks retrieves the list of child VirtualUplinks of the ShuntLink
 func (o *ShuntLink) VirtualUplinks(info *bambou.FetchingInfo) (VirtualUplinksList, *bambou.Error) {
 
-    var list VirtualUplinksList
-    err := bambou.CurrentSession().FetchChildren(o, VirtualUplinkIdentity, &list, info)
-    return list, err
+	var list VirtualUplinksList
+	err := bambou.CurrentSession().FetchChildren(o, VirtualUplinkIdentity, &list, info)
+	return list, err
 }
-
-
-
 
 // Alarms retrieves the list of child Alarms of the ShuntLink
 func (o *ShuntLink) Alarms(info *bambou.FetchingInfo) (AlarmsList, *bambou.Error) {
 
-    var list AlarmsList
-    err := bambou.CurrentSession().FetchChildren(o, AlarmIdentity, &list, info)
-    return list, err
+	var list AlarmsList
+	err := bambou.CurrentSession().FetchChildren(o, AlarmIdentity, &list, info)
+	return list, err
 }
-
-
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the ShuntLink
 func (o *ShuntLink) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the ShuntLink
 func (o *ShuntLink) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ForwardingPathListEntryIdentity represents the Identity of the object
-var ForwardingPathListEntryIdentity = bambou.Identity {
-    Name:     "forwardingpathlistentry",
-    Category: "forwardingpathlistentries",
+var ForwardingPathListEntryIdentity = bambou.Identity{
+	Name:     "forwardingpathlistentry",
+	Category: "forwardingpathlistentries",
 }
 
 // ForwardingPathListEntriesList represents a list of ForwardingPathListEntries
@@ -42,135 +42,124 @@ type ForwardingPathListEntriesList []*ForwardingPathListEntry
 // An Ancestor is defined as an entity that has ForwardingPathListEntry as a descendant.
 // An Ancestor can get a list of its child ForwardingPathListEntries, but not necessarily create one.
 type ForwardingPathListEntriesAncestor interface {
-    ForwardingPathListEntries(*bambou.FetchingInfo) (ForwardingPathListEntriesList, *bambou.Error)
+	ForwardingPathListEntries(*bambou.FetchingInfo) (ForwardingPathListEntriesList, *bambou.Error)
 }
 
 // ForwardingPathListEntriesParent is the interface that a parent of a ForwardingPathListEntry must implement.
 // A Parent is defined as an entity that has ForwardingPathListEntry as a child.
 // A Parent is an Ancestor which can create a ForwardingPathListEntry.
 type ForwardingPathListEntriesParent interface {
-    ForwardingPathListEntriesAncestor
-    CreateForwardingPathListEntry(*ForwardingPathListEntry) (*bambou.Error)
+	ForwardingPathListEntriesAncestor
+	CreateForwardingPathListEntry(*ForwardingPathListEntry) *bambou.Error
 }
 
 // ForwardingPathListEntry represents the model of a forwardingpathlistentry
 type ForwardingPathListEntry struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    FCOverride string `json:"FCOverride,omitempty"`
-    DSCPRemarking string `json:"DSCPRemarking,omitempty"`
-    LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-    LastUpdatedDate string `json:"lastUpdatedDate,omitempty"`
-    RemoteUplinkPreference string `json:"remoteUplinkPreference,omitempty"`
-    SlaAware bool `json:"slaAware"`
-    EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-    EntityScope string `json:"entityScope,omitempty"`
-    ForwardingAction string `json:"forwardingAction,omitempty"`
-    UplinkPreference string `json:"uplinkPreference,omitempty"`
-    CreationDate string `json:"creationDate,omitempty"`
-    Priority int `json:"priority,omitempty"`
-    Owner string `json:"owner,omitempty"`
-    ExternalID string `json:"externalID,omitempty"`
-    
+	ID                     string        `json:"ID,omitempty"`
+	ParentID               string        `json:"parentID,omitempty"`
+	ParentType             string        `json:"parentType,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
+	FCOverride             string        `json:"FCOverride,omitempty"`
+	DSCPRemarking          string        `json:"DSCPRemarking,omitempty"`
+	LastUpdatedBy          string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate        string        `json:"lastUpdatedDate,omitempty"`
+	RemoteUplinkPreference string        `json:"remoteUplinkPreference,omitempty"`
+	SlaAware               bool          `json:"slaAware"`
+	EmbeddedMetadata       []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope            string        `json:"entityScope,omitempty"`
+	ForwardingAction       string        `json:"forwardingAction,omitempty"`
+	UplinkPreference       string        `json:"uplinkPreference,omitempty"`
+	CreationDate           string        `json:"creationDate,omitempty"`
+	Priority               int           `json:"priority,omitempty"`
+	Owner                  string        `json:"owner,omitempty"`
+	ExternalID             string        `json:"externalID,omitempty"`
 }
 
 // NewForwardingPathListEntry returns a new *ForwardingPathListEntry
 func NewForwardingPathListEntry() *ForwardingPathListEntry {
 
-    return &ForwardingPathListEntry{
-        FCOverride: "NONE",
-        DSCPRemarking: "None",
-        RemoteUplinkPreference: "DEFAULT",
-        SlaAware: false,
-        }
+	return &ForwardingPathListEntry{
+		FCOverride:             "NONE",
+		DSCPRemarking:          "None",
+		RemoteUplinkPreference: "DEFAULT",
+		SlaAware:               false,
+	}
 }
 
 // Identity returns the Identity of the object.
 func (o *ForwardingPathListEntry) Identity() bambou.Identity {
 
-    return ForwardingPathListEntryIdentity
+	return ForwardingPathListEntryIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ForwardingPathListEntry) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ForwardingPathListEntry) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the ForwardingPathListEntry from the server
 func (o *ForwardingPathListEntry) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ForwardingPathListEntry into the server
 func (o *ForwardingPathListEntry) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ForwardingPathListEntry from the server
 func (o *ForwardingPathListEntry) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // Permissions retrieves the list of child Permissions of the ForwardingPathListEntry
 func (o *ForwardingPathListEntry) Permissions(info *bambou.FetchingInfo) (PermissionsList, *bambou.Error) {
 
-    var list PermissionsList
-    err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
-    return list, err
+	var list PermissionsList
+	err := bambou.CurrentSession().FetchChildren(o, PermissionIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreatePermission creates a new child Permission under the ForwardingPathListEntry
 func (o *ForwardingPathListEntry) CreatePermission(child *Permission) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // Metadatas retrieves the list of child Metadatas of the ForwardingPathListEntry
 func (o *ForwardingPathListEntry) Metadatas(info *bambou.FetchingInfo) (MetadatasList, *bambou.Error) {
 
-    var list MetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
-    return list, err
+	var list MetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, MetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateMetadata creates a new child Metadata under the ForwardingPathListEntry
 func (o *ForwardingPathListEntry) CreateMetadata(child *Metadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-
 
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the ForwardingPathListEntry
 func (o *ForwardingPathListEntry) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 
-    var list GlobalMetadatasList
-    err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
-    return list, err
+	var list GlobalMetadatasList
+	err := bambou.CurrentSession().FetchChildren(o, GlobalMetadataIdentity, &list, info)
+	return list, err
 }
-
-
 
 // CreateGlobalMetadata creates a new child GlobalMetadata under the ForwardingPathListEntry
 func (o *ForwardingPathListEntry) CreateGlobalMetadata(child *GlobalMetadata) *bambou.Error {
 
-    return bambou.CurrentSession().CreateChild(o, child)
+	return bambou.CurrentSession().CreateChild(o, child)
 }
-

@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // FlowstatisticsaggregationruleIdentity represents the Identity of the object
-var FlowstatisticsaggregationruleIdentity = bambou.Identity {
-    Name:     "flowstatisticsaggregationrule",
-    Category: "flowstatisticsaggregationrules",
+var FlowstatisticsaggregationruleIdentity = bambou.Identity{
+	Name:     "flowstatisticsaggregationrule",
+	Category: "flowstatisticsaggregationrules",
 }
 
 // FlowstatisticsaggregationrulesList represents a list of Flowstatisticsaggregationrules
@@ -42,73 +42,71 @@ type FlowstatisticsaggregationrulesList []*Flowstatisticsaggregationrule
 // An Ancestor is defined as an entity that has Flowstatisticsaggregationrule as a descendant.
 // An Ancestor can get a list of its child Flowstatisticsaggregationrules, but not necessarily create one.
 type FlowstatisticsaggregationrulesAncestor interface {
-    Flowstatisticsaggregationrules(*bambou.FetchingInfo) (FlowstatisticsaggregationrulesList, *bambou.Error)
+	Flowstatisticsaggregationrules(*bambou.FetchingInfo) (FlowstatisticsaggregationrulesList, *bambou.Error)
 }
 
 // FlowstatisticsaggregationrulesParent is the interface that a parent of a Flowstatisticsaggregationrule must implement.
 // A Parent is defined as an entity that has Flowstatisticsaggregationrule as a child.
 // A Parent is an Ancestor which can create a Flowstatisticsaggregationrule.
 type FlowstatisticsaggregationrulesParent interface {
-    FlowstatisticsaggregationrulesAncestor
-    CreateFlowstatisticsaggregationrule(*Flowstatisticsaggregationrule) (*bambou.Error)
+	FlowstatisticsaggregationrulesAncestor
+	CreateFlowstatisticsaggregationrule(*Flowstatisticsaggregationrule) *bambou.Error
 }
 
 // Flowstatisticsaggregationrule represents the model of a flowstatisticsaggregationrule
 type Flowstatisticsaggregationrule struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    MatchingCriteria string `json:"matchingCriteria,omitempty"`
-    Description string `json:"description,omitempty"`
-    AggregationCriteria string `json:"aggregationCriteria,omitempty"`
-    AssociatedTrafficTypeID string `json:"associatedTrafficTypeID,omitempty"`
-    
+	ID                      string `json:"ID,omitempty"`
+	ParentID                string `json:"parentID,omitempty"`
+	ParentType              string `json:"parentType,omitempty"`
+	Owner                   string `json:"owner,omitempty"`
+	Name                    string `json:"name,omitempty"`
+	MatchingCriteria        string `json:"matchingCriteria,omitempty"`
+	Description             string `json:"description,omitempty"`
+	AggregationCriteria     string `json:"aggregationCriteria,omitempty"`
+	AssociatedTrafficTypeID string `json:"associatedTrafficTypeID,omitempty"`
 }
 
 // NewFlowstatisticsaggregationrule returns a new *Flowstatisticsaggregationrule
 func NewFlowstatisticsaggregationrule() *Flowstatisticsaggregationrule {
 
-    return &Flowstatisticsaggregationrule{
-        MatchingCriteria: "L4_SERVICE",
-        AggregationCriteria: "FORWARD_AND_REVERSE_TRAFFIC_PORT_AGG",
-        }
+	return &Flowstatisticsaggregationrule{
+		MatchingCriteria:    "L4_SERVICE",
+		AggregationCriteria: "FORWARD_AND_REVERSE_TRAFFIC_PORT_AGG",
+	}
 }
 
 // Identity returns the Identity of the object.
 func (o *Flowstatisticsaggregationrule) Identity() bambou.Identity {
 
-    return FlowstatisticsaggregationruleIdentity
+	return FlowstatisticsaggregationruleIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *Flowstatisticsaggregationrule) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *Flowstatisticsaggregationrule) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the Flowstatisticsaggregationrule from the server
 func (o *Flowstatisticsaggregationrule) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the Flowstatisticsaggregationrule into the server
 func (o *Flowstatisticsaggregationrule) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the Flowstatisticsaggregationrule from the server
 func (o *Flowstatisticsaggregationrule) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-

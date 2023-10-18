@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // UnderlayTestIdentity represents the Identity of the object
-var UnderlayTestIdentity = bambou.Identity {
-    Name:     "underlaytest",
-    Category: "underlaytests",
+var UnderlayTestIdentity = bambou.Identity{
+	Name:     "underlaytest",
+	Category: "underlaytests",
 }
 
 // UnderlayTestsList represents a list of UnderlayTests
@@ -42,99 +42,94 @@ type UnderlayTestsList []*UnderlayTest
 // An Ancestor is defined as an entity that has UnderlayTest as a descendant.
 // An Ancestor can get a list of its child UnderlayTests, but not necessarily create one.
 type UnderlayTestsAncestor interface {
-    UnderlayTests(*bambou.FetchingInfo) (UnderlayTestsList, *bambou.Error)
+	UnderlayTests(*bambou.FetchingInfo) (UnderlayTestsList, *bambou.Error)
 }
 
 // UnderlayTestsParent is the interface that a parent of a UnderlayTest must implement.
 // A Parent is defined as an entity that has UnderlayTest as a child.
 // A Parent is an Ancestor which can create a UnderlayTest.
 type UnderlayTestsParent interface {
-    UnderlayTestsAncestor
-    CreateUnderlayTest(*UnderlayTest) (*bambou.Error)
+	UnderlayTestsAncestor
+	CreateUnderlayTest(*UnderlayTest) *bambou.Error
 }
 
 // UnderlayTest represents the model of a underlaytest
 type UnderlayTest struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    Name string `json:"name,omitempty"`
-    TestResult string `json:"testResult,omitempty"`
-    UnderlayTestServer string `json:"underlayTestServer,omitempty"`
-    UnderlayTestType string `json:"underlayTestType,omitempty"`
-    CreateOnly bool `json:"createOnly"`
-    AssociatedDataPathID string `json:"associatedDataPathID,omitempty"`
-    AssociatedNSGatewayID string `json:"associatedNSGatewayID,omitempty"`
-    AssociatedNSGatewayName string `json:"associatedNSGatewayName,omitempty"`
-    AssociatedSystemID string `json:"associatedSystemID,omitempty"`
-    AssociatedTestSuiteRunID string `json:"associatedTestSuiteRunID,omitempty"`
-    AssociatedUplinkConnectionID string `json:"associatedUplinkConnectionID,omitempty"`
-    AssociatedUplinkInterface string `json:"associatedUplinkInterface,omitempty"`
-    StartDateTime int `json:"startDateTime,omitempty"`
-    StopDateTime int `json:"stopDateTime,omitempty"`
-    RunBandwidthTest bool `json:"runBandwidthTest"`
-    RunConnectivityTest bool `json:"runConnectivityTest"`
-    RunMTUDiscoveryTest bool `json:"runMTUDiscoveryTest"`
-    Duration int `json:"duration,omitempty"`
-    
+	ID                           string `json:"ID,omitempty"`
+	ParentID                     string `json:"parentID,omitempty"`
+	ParentType                   string `json:"parentType,omitempty"`
+	Owner                        string `json:"owner,omitempty"`
+	Name                         string `json:"name,omitempty"`
+	TestResult                   string `json:"testResult,omitempty"`
+	UnderlayTestServer           string `json:"underlayTestServer,omitempty"`
+	UnderlayTestType             string `json:"underlayTestType,omitempty"`
+	CreateOnly                   bool   `json:"createOnly"`
+	AssociatedDataPathID         string `json:"associatedDataPathID,omitempty"`
+	AssociatedNSGatewayID        string `json:"associatedNSGatewayID,omitempty"`
+	AssociatedNSGatewayName      string `json:"associatedNSGatewayName,omitempty"`
+	AssociatedSystemID           string `json:"associatedSystemID,omitempty"`
+	AssociatedTestSuiteRunID     string `json:"associatedTestSuiteRunID,omitempty"`
+	AssociatedUplinkConnectionID string `json:"associatedUplinkConnectionID,omitempty"`
+	AssociatedUplinkInterface    string `json:"associatedUplinkInterface,omitempty"`
+	StartDateTime                int    `json:"startDateTime,omitempty"`
+	StopDateTime                 int    `json:"stopDateTime,omitempty"`
+	RunBandwidthTest             bool   `json:"runBandwidthTest"`
+	RunConnectivityTest          bool   `json:"runConnectivityTest"`
+	RunMTUDiscoveryTest          bool   `json:"runMTUDiscoveryTest"`
+	Duration                     int    `json:"duration,omitempty"`
 }
 
 // NewUnderlayTest returns a new *UnderlayTest
 func NewUnderlayTest() *UnderlayTest {
 
-    return &UnderlayTest{
-        CreateOnly: false,
-        RunBandwidthTest: true,
-        RunConnectivityTest: true,
-        RunMTUDiscoveryTest: true,
-        }
+	return &UnderlayTest{
+		CreateOnly:          false,
+		RunBandwidthTest:    true,
+		RunConnectivityTest: true,
+		RunMTUDiscoveryTest: true,
+	}
 }
 
 // Identity returns the Identity of the object.
 func (o *UnderlayTest) Identity() bambou.Identity {
 
-    return UnderlayTestIdentity
+	return UnderlayTestIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *UnderlayTest) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *UnderlayTest) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the UnderlayTest from the server
 func (o *UnderlayTest) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the UnderlayTest into the server
 func (o *UnderlayTest) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the UnderlayTest from the server
 func (o *UnderlayTest) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-
 
 // TestRuns retrieves the list of child TestRuns of the UnderlayTest
 func (o *UnderlayTest) TestRuns(info *bambou.FetchingInfo) (TestRunsList, *bambou.Error) {
 
-    var list TestRunsList
-    err := bambou.CurrentSession().FetchChildren(o, TestRunIdentity, &list, info)
-    return list, err
+	var list TestRunsList
+	err := bambou.CurrentSession().FetchChildren(o, TestRunIdentity, &list, info)
+	return list, err
 }
-
-
-

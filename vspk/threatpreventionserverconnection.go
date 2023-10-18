@@ -30,9 +30,9 @@ package vspk
 import "github.com/nuagenetworks/go-bambou/bambou"
 
 // ThreatPreventionServerConnectionIdentity represents the Identity of the object
-var ThreatPreventionServerConnectionIdentity = bambou.Identity {
-    Name:     "threatpreventionserverconnection",
-    Category: "threatpreventionserverconnections",
+var ThreatPreventionServerConnectionIdentity = bambou.Identity{
+	Name:     "threatpreventionserverconnection",
+	Category: "threatpreventionserverconnections",
 }
 
 // ThreatPreventionServerConnectionsList represents a list of ThreatPreventionServerConnections
@@ -42,69 +42,66 @@ type ThreatPreventionServerConnectionsList []*ThreatPreventionServerConnection
 // An Ancestor is defined as an entity that has ThreatPreventionServerConnection as a descendant.
 // An Ancestor can get a list of its child ThreatPreventionServerConnections, but not necessarily create one.
 type ThreatPreventionServerConnectionsAncestor interface {
-    ThreatPreventionServerConnections(*bambou.FetchingInfo) (ThreatPreventionServerConnectionsList, *bambou.Error)
+	ThreatPreventionServerConnections(*bambou.FetchingInfo) (ThreatPreventionServerConnectionsList, *bambou.Error)
 }
 
 // ThreatPreventionServerConnectionsParent is the interface that a parent of a ThreatPreventionServerConnection must implement.
 // A Parent is defined as an entity that has ThreatPreventionServerConnection as a child.
 // A Parent is an Ancestor which can create a ThreatPreventionServerConnection.
 type ThreatPreventionServerConnectionsParent interface {
-    ThreatPreventionServerConnectionsAncestor
-    CreateThreatPreventionServerConnection(*ThreatPreventionServerConnection) (*bambou.Error)
+	ThreatPreventionServerConnectionsAncestor
+	CreateThreatPreventionServerConnection(*ThreatPreventionServerConnection) *bambou.Error
 }
 
 // ThreatPreventionServerConnection represents the model of a threatpreventionserverconnection
 type ThreatPreventionServerConnection struct {
-    ID         string `json:"ID,omitempty"`
-    ParentID   string `json:"parentID,omitempty"`
-    ParentType string `json:"parentType,omitempty"`
-    Owner      string `json:"owner,omitempty"`
-    FQDN string `json:"FQDN,omitempty"`
-    NodeInfo []interface{} `json:"nodeInfo,omitempty"`
-    Status string `json:"status,omitempty"`
-    
+	ID         string        `json:"ID,omitempty"`
+	ParentID   string        `json:"parentID,omitempty"`
+	ParentType string        `json:"parentType,omitempty"`
+	Owner      string        `json:"owner,omitempty"`
+	FQDN       string        `json:"FQDN,omitempty"`
+	NodeInfo   []interface{} `json:"nodeInfo,omitempty"`
+	Status     string        `json:"status,omitempty"`
 }
 
 // NewThreatPreventionServerConnection returns a new *ThreatPreventionServerConnection
 func NewThreatPreventionServerConnection() *ThreatPreventionServerConnection {
 
-    return &ThreatPreventionServerConnection{
-        }
+	return &ThreatPreventionServerConnection{}
 }
 
 // Identity returns the Identity of the object.
 func (o *ThreatPreventionServerConnection) Identity() bambou.Identity {
 
-    return ThreatPreventionServerConnectionIdentity
+	return ThreatPreventionServerConnectionIdentity
 }
 
 // Identifier returns the value of the object's unique identifier.
 func (o *ThreatPreventionServerConnection) Identifier() string {
 
-    return o.ID
+	return o.ID
 }
 
 // SetIdentifier sets the value of the object's unique identifier.
 func (o *ThreatPreventionServerConnection) SetIdentifier(ID string) {
 
-    o.ID = ID
+	o.ID = ID
 }
 
 // Fetch retrieves the ThreatPreventionServerConnection from the server
 func (o *ThreatPreventionServerConnection) Fetch() *bambou.Error {
 
-    return bambou.CurrentSession().FetchEntity(o)
+	return bambou.CurrentSession().FetchEntity(o)
 }
 
 // Save saves the ThreatPreventionServerConnection into the server
 func (o *ThreatPreventionServerConnection) Save() *bambou.Error {
 
-    return bambou.CurrentSession().SaveEntity(o)
+	return bambou.CurrentSession().SaveEntity(o)
 }
 
 // Delete deletes the ThreatPreventionServerConnection from the server
 func (o *ThreatPreventionServerConnection) Delete() *bambou.Error {
 
-    return bambou.CurrentSession().DeleteEntity(o)
+	return bambou.CurrentSession().DeleteEntity(o)
 }
-

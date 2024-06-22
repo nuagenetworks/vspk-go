@@ -386,6 +386,14 @@ func (o *Subnet) AssignIKEGatewayConnections(children IKEGatewayConnectionsList)
 	return bambou.CurrentSession().AssignChildren(o, list, IKEGatewayConnectionIdentity)
 }
 
+// FloatingIps retrieves the list of child FloatingIps of the Subnet
+func (o *Subnet) FloatingIps(info *bambou.FetchingInfo) (FloatingIpsList, *bambou.Error) {
+
+	var list FloatingIpsList
+	err := bambou.CurrentSession().FetchChildren(o, FloatingIpIdentity, &list, info)
+	return list, err
+}
+
 // GlobalMetadatas retrieves the list of child GlobalMetadatas of the Subnet
 func (o *Subnet) GlobalMetadatas(info *bambou.FetchingInfo) (GlobalMetadatasList, *bambou.Error) {
 

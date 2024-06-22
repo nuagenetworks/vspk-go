@@ -55,23 +55,24 @@ type IPv6FilterProfilesParent interface {
 
 // IPv6FilterProfile represents the model of a ipv6filterprofile
 type IPv6FilterProfile struct {
-	ID               string        `json:"ID,omitempty"`
-	ParentID         string        `json:"parentID,omitempty"`
-	ParentType       string        `json:"parentType,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	Name             string        `json:"name,omitempty"`
-	LastUpdatedBy    string        `json:"lastUpdatedBy,omitempty"`
-	LastUpdatedDate  string        `json:"lastUpdatedDate,omitempty"`
-	Description      string        `json:"description,omitempty"`
-	BlobText         string        `json:"blobText,omitempty"`
-	BlobType         string        `json:"blobType,omitempty"`
-	EmbeddedMetadata []interface{} `json:"embeddedMetadata,omitempty"`
-	EntityScope      string        `json:"entityScope,omitempty"`
-	CreationDate     string        `json:"creationDate,omitempty"`
-	AssocEntityType  string        `json:"assocEntityType,omitempty"`
-	CustomerID       int           `json:"customerID,omitempty"`
-	Owner            string        `json:"owner,omitempty"`
-	ExternalID       string        `json:"externalID,omitempty"`
+	ID                 string        `json:"ID,omitempty"`
+	ParentID           string        `json:"parentID,omitempty"`
+	ParentType         string        `json:"parentType,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
+	Name               string        `json:"name,omitempty"`
+	LastUpdatedBy      string        `json:"lastUpdatedBy,omitempty"`
+	LastUpdatedDate    string        `json:"lastUpdatedDate,omitempty"`
+	Description        string        `json:"description,omitempty"`
+	BlobText           string        `json:"blobText,omitempty"`
+	BlobText_SRL_23_10 string        `json:"blobText_SRL_23_10,omitempty"`
+	BlobType           string        `json:"blobType,omitempty"`
+	EmbeddedMetadata   []interface{} `json:"embeddedMetadata,omitempty"`
+	EntityScope        string        `json:"entityScope,omitempty"`
+	CreationDate       string        `json:"creationDate,omitempty"`
+	AssocEntityType    string        `json:"assocEntityType,omitempty"`
+	CustomerID         int           `json:"customerID,omitempty"`
+	Owner              string        `json:"owner,omitempty"`
+	ExternalID         string        `json:"externalID,omitempty"`
 }
 
 // NewIPv6FilterProfile returns a new *IPv6FilterProfile
